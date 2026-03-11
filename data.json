@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-03-11T20:42:31Z",
-  "total": 11,
+  "actualizado": "2026-03-11T21:04:27Z",
+  "total": 10,
   "registros": [
     {
       "localidad": "Villa de Soto",
@@ -120,18 +120,6 @@
       "contacto": "Cria Dtto San Marcos Sierras",
       "telefono": "3549496020",
       "foto": "https://drive.google.com/open?id=1kxevZhxTN4bRJgff1wR3i2pSQuUblMcu",
-      "estado": ""
-    },
-    {
-      "localidad": "Cruz del Eje",
-      "nombre": "Jonas joaquin Aguirre",
-      "edad": "14",
-      "fecha": "18/02/2026",
-      "hora": "1:30:00",
-      "descripcion": "0",
-      "contacto": "Duv Investigaciones",
-      "telefono": "3549426755",
-      "foto": "https://drive.google.com/open?id=1rGT1a1JrG7IXXdhIbU0X0X1cUziX0xEO",
       "estado": ""
     }
   ]
