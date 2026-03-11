@@ -2,7 +2,7 @@ name: Actualizar datos desde Google Sheets
 
 on:
   schedule:
-    - cron: '*/5 * * * *'   # Cada 5 minutos
+    - cron: '*/1 * * * *'   # Cada 1 minutos
   workflow_dispatch:          # Ejecución manual desde GitHub
 
 jobs:
