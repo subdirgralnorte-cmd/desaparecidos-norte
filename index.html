@@ -3,122 +3,77 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Desaparecidos – Dirección General Departamentales Norte</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <title>Desaparecidos – Diagnóstico</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --azul-profundo: #0d2545;
-      --azul-medio:    #163a6e;
-      --azul-acento:   #1a6fba;
-      --celeste-suave: #e8f0fa;
-      --blanco:        #ffffff;
-      --gris-fondo:    #f2f4f8;
-      --gris-borde:    #d0d8e8;
-      --rojo-alerta:   #c0392b;
-      --texto-oscuro:  #1a1f2e;
-      --texto-medio:   #3d4a60;
-      --texto-suave:   #6b7896;
-      --sombra-suave:  0 2px 12px rgba(13,37,69,.10);
-      --sombra-hover:  0 6px 24px rgba(13,37,69,.18);
-      --radio:         10px;
-      --f-titulo:      'Playfair Display', Georgia, serif;
-      --f-cuerpo:      'DM Sans', system-ui, sans-serif;
+      --azul-profundo: #0d2545; --azul-medio: #163a6e; --azul-acento: #1a6fba;
+      --celeste-suave: #e8f0fa; --blanco: #ffffff; --gris-fondo: #f2f4f8;
+      --gris-borde: #d0d8e8; --rojo-alerta: #c0392b; --texto-oscuro: #1a1f2e;
+      --texto-medio: #3d4a60; --texto-suave: #6b7896;
+      --sombra-suave: 0 2px 12px rgba(13,37,69,.10);
+      --sombra-hover: 0 6px 24px rgba(13,37,69,.18);
+      --radio: 10px; --f-titulo: 'Playfair Display', Georgia, serif;
+      --f-cuerpo: 'DM Sans', system-ui, sans-serif;
     }
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-    html { scroll-behavior:smooth; }
     body { font-family:var(--f-cuerpo); background:var(--gris-fondo); color:var(--texto-oscuro); min-height:100vh; }
-
-    header {
-      background: linear-gradient(135deg, var(--azul-profundo) 0%, var(--azul-medio) 100%);
-      color: var(--blanco);
-      position: sticky; top:0; z-index:100;
-      box-shadow: 0 4px 20px rgba(0,0,0,.35);
-    }
+    header { background:linear-gradient(135deg,var(--azul-profundo),var(--azul-medio)); color:#fff; position:sticky; top:0; z-index:100; box-shadow:0 4px 20px rgba(0,0,0,.35); }
     header::before { content:''; display:block; height:6px; background:linear-gradient(90deg,#74b9e8,#a8d4f5,#74b9e8); }
     header::after  { content:''; display:block; height:4px; background:linear-gradient(90deg,var(--azul-acento),#74b9e8,var(--azul-acento)); }
-    .header-inner {
-      max-width:1100px; margin:0 auto; padding:16px 28px;
-      display:flex; align-items:center; gap:20px;
-    }
+    .header-inner { max-width:1100px; margin:0 auto; padding:16px 28px; display:flex; align-items:center; gap:20px; }
     .header-escudo { width:70px; height:70px; border-radius:50%; object-fit:contain; flex-shrink:0; filter:drop-shadow(0 2px 6px rgba(0,0,0,.5)); }
     .header-textos { flex:1; }
     .header-sup { font-size:11px; font-weight:500; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,.65); margin-bottom:4px; }
     .header-h1 { font-family:var(--f-titulo); font-size:clamp(17px,3vw,27px); font-weight:700; line-height:1.2; }
-
-    .status-bar {
-      background:var(--azul-profundo); color:rgba(255,255,255,.75);
-      font-size:12px; padding:7px 28px;
-      display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px;
-    }
+    .status-bar { background:var(--azul-profundo); color:rgba(255,255,255,.75); font-size:12px; padding:7px 28px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px; }
     .status-bar span { display:flex; align-items:center; gap:6px; }
     .dot { width:8px; height:8px; border-radius:50%; background:#4ade80; animation:pulso 2s ease-in-out infinite; }
-    @keyframes pulso { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.85)} }
-
+    @keyframes pulso { 0%,100%{opacity:1} 50%{opacity:.4} }
     main { max-width:1100px; margin:0 auto; padding:32px 20px 60px; }
-
-    #estado-carga { text-align:center; padding:60px 20px; color:var(--texto-medio); }
+    #estado-carga { text-align:center; padding:40px 20px; color:var(--texto-medio); }
     .spinner { width:44px; height:44px; border:4px solid var(--gris-borde); border-top-color:var(--azul-acento); border-radius:50%; animation:spin .9s linear infinite; margin:0 auto 16px; }
     @keyframes spin { to{transform:rotate(360deg)} }
-
     #sin-resultados { display:none; text-align:center; padding:60px 20px; color:var(--texto-suave); font-size:16px; }
     #contenedor-fichas { display:flex; flex-direction:column; gap:24px; }
-
-    .ficha {
-      background:var(--blanco); border-radius:var(--radio);
-      box-shadow:var(--sombra-suave); border:1px solid var(--gris-borde);
-      overflow:hidden; display:flex; flex-direction:row;
-      transition:box-shadow .25s ease, transform .25s ease;
-      animation:entrar .4s ease both;
-    }
+    .ficha { background:var(--blanco); border-radius:var(--radio); box-shadow:var(--sombra-suave); border:1px solid var(--gris-borde); overflow:hidden; display:flex; flex-direction:row; transition:box-shadow .25s, transform .25s; animation:entrar .4s ease both; }
     .ficha:hover { box-shadow:var(--sombra-hover); transform:translateY(-2px); }
     @keyframes entrar { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
-
     .ficha-franja { width:6px; flex-shrink:0; background:linear-gradient(180deg,var(--rojo-alerta),#e74c3c); }
-
-    .ficha-foto-col {
-      display:flex; flex-direction:column; align-items:center;
-      padding:24px 20px 20px; background:#f8fafd;
-      border-right:1px solid var(--gris-borde);
-      min-width:180px; max-width:200px; flex-shrink:0;
-    }
+    .ficha-foto-col { display:flex; flex-direction:column; align-items:center; padding:24px 20px 20px; background:#f8fafd; border-right:1px solid var(--gris-borde); min-width:180px; max-width:200px; flex-shrink:0; }
     .foto-marco { width:150px; height:180px; border:3px solid var(--texto-oscuro); border-radius:4px; overflow:hidden; background:#e0e5ee; display:flex; align-items:center; justify-content:center; }
     .foto-marco img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
     .foto-vacia { display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--texto-suave); font-size:12px; font-weight:500; text-transform:uppercase; letter-spacing:1px; text-align:center; padding:10px; }
     .foto-vacia svg { width:40px; height:40px; opacity:.45; }
-
     .ficha-contacto { margin-top:14px; font-size:11px; font-weight:500; color:var(--texto-medio); text-align:center; line-height:1.6; }
     .ficha-contacto strong { display:block; font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--texto-suave); margin-bottom:2px; }
     .ficha-tel { display:inline-block; margin-top:5px; font-size:12px; font-weight:600; color:var(--azul-acento); }
-
     .ficha-datos-col { flex:1; padding:24px 28px; display:flex; flex-direction:column; gap:18px; }
     .ficha-enc { display:flex; flex-wrap:wrap; gap:10px 24px; padding-bottom:16px; border-bottom:1px solid var(--celeste-suave); }
     .chip { display:flex; flex-direction:column; gap:2px; }
     .chip .et { font-size:9.5px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--texto-suave); }
     .chip .va { font-size:14px; font-weight:600; color:var(--texto-oscuro); }
     .chip-loc .va { color:var(--rojo-alerta); font-size:15px; font-family:var(--f-titulo); }
-
     .ficha-nombre { font-family:var(--f-titulo); font-size:clamp(20px,2.5vw,26px); font-weight:700; color:var(--azul-profundo); line-height:1.2; }
     .edad-badge { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:var(--texto-medio); background:var(--celeste-suave); border:1px solid #c0d4ed; border-radius:20px; padding:4px 12px; margin-top:4px; width:fit-content; }
     .ficha-desc { font-size:14px; color:var(--texto-medio); line-height:1.7; }
     .ficha-desc .et-desc { font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--texto-suave); display:block; margin-bottom:4px; }
-
     footer { background:var(--azul-profundo); color:rgba(255,255,255,.5); text-align:center; padding:18px 20px; font-size:12px; }
 
-    .error-box { background:#fff; border:1px solid #fca5a5; border-radius:8px; padding:24px 28px; max-width:560px; margin:0 auto; text-align:left; }
-    .error-box h3 { color:#c0392b; font-size:16px; margin-bottom:12px; }
-    .error-box p { font-size:13px; color:#3d4a60; line-height:1.8; }
+    /* PANEL DE DIAGNÓSTICO */
+    #diag-panel { background:#1e293b; color:#94a3b8; font-family:monospace; font-size:12px; padding:16px 20px; margin-bottom:20px; border-radius:8px; border:1px solid #334155; }
+    #diag-panel .diag-title { color:#38bdf8; font-weight:700; font-size:13px; margin-bottom:10px; }
+    #diag-panel .diag-ok   { color:#4ade80; }
+    #diag-panel .diag-err  { color:#f87171; }
+    #diag-panel .diag-warn { color:#fbbf24; }
+    #diag-panel .diag-url  { word-break:break-all; color:#c084fc; margin:4px 0; }
+    #diag-panel a { color:#38bdf8; }
 
     @media(max-width:680px){
-      .ficha { flex-direction:column; }
-      .ficha-franja { width:100%; height:5px; }
-      .ficha-foto-col { flex-direction:row; max-width:100%; min-width:unset; border-right:none; border-bottom:1px solid var(--gris-borde); padding:18px 20px; align-items:flex-start; gap:18px; }
-      .foto-marco { width:100px; height:120px; flex-shrink:0; }
-      .ficha-contacto { text-align:left; margin-top:0; }
-      .ficha-datos-col { padding:18px 20px; }
-      .header-inner { padding:14px 16px; }
-      .header-escudo { width:54px; height:54px; }
+      .ficha{flex-direction:column} .ficha-franja{width:100%;height:5px}
+      .ficha-foto-col{flex-direction:row;max-width:100%;min-width:unset;border-right:none;border-bottom:1px solid var(--gris-borde);padding:18px 20px;align-items:flex-start;gap:18px}
+      .foto-marco{width:100px;height:120px;flex-shrink:0} .ficha-contacto{text-align:left;margin-top:0}
+      .ficha-datos-col{padding:18px 20px} .header-inner{padding:14px 16px} .header-escudo{width:54px;height:54px}
     }
   </style>
 </head>
@@ -142,6 +97,13 @@
 <main>
   <div id="estado-carga"><div class="spinner"></div><p>Obteniendo registros actualizados…</p></div>
   <div id="sin-resultados"><p>✅ No hay casos vigentes en este momento.</p></div>
+
+  <!-- PANEL DE DIAGNÓSTICO — se oculta automáticamente si todo funciona -->
+  <div id="diag-panel" style="display:none">
+    <div class="diag-title">🔧 Panel de diagnóstico</div>
+    <div id="diag-log"></div>
+  </div>
+
   <div id="contenedor-fichas" role="list"></div>
 </main>
 
@@ -150,107 +112,96 @@
 </footer>
 
 <script>
-  /* ════════════════════════════════════════════════════
-     CONFIGURACIÓN
-  ════════════════════════════════════════════════════ */
   const SHEET_ID   = '1DiIcQc1ck2Whs4UMUwxvPLfDqVcRf2jVpPmTqAM806E';
-  const SHEET_NAME = 'Webdata';   // nombre exacto de la hoja
-  const INTERVALO  = 60_000;      // recarga cada 60 segundos
+  const SHEET_NAME = 'Webdata';
+  const INTERVALO  = 60_000;
 
-  // Índices de columna (base 0 = columna A)
   const COL = {
-    localidad:   3,   // D
-    nombre:      4,   // E
-    edad:        5,   // F
-    fecha:       7,   // H
-    hora:        8,   // I
-    descripcion: 9,   // J
-    contacto:   10,   // K
-    telefono:   11,   // L
-    foto:       13,   // N
+    localidad:   3,
+    nombre:      4,
+    edad:        5,
+    fecha:       7,
+    hora:        8,
+    descripcion: 9,
+    contacto:   10,
+    telefono:   11,
+    foto:       13,
   };
 
-  /* ════════════════════════════════════════════════════
-     CONVIERTE LINKS DE GOOGLE DRIVE EN URLS DE IMAGEN
-     Soporta: /d/ID/view  y  ?id=ID
-  ════════════════════════════════════════════════════ */
+  // ── DIAGNÓSTICO ──────────────────────────────────────
+  var diagPanel = document.getElementById('diag-panel');
+  var diagLog   = document.getElementById('diag-log');
+  var diagLines = [];
+
+  function log(msg, tipo) {
+    tipo = tipo || '';
+    diagLines.push('<div class="diag-' + tipo + '">' + msg + '</div>');
+    diagLog.innerHTML = diagLines.join('');
+    diagPanel.style.display = 'block';
+  }
+
+  // ── FIX LINKS GOOGLE DRIVE ───────────────────────────
   function fixDriveUrl(url) {
     if (!url || !url.trim()) return '';
     if (url.includes('drive.google.com')) {
-      let id = '';
-      if (url.includes('/d/'))  id = url.split('/d/')[1].split('/')[0];
+      var id = '';
+      if (url.includes('/d/'))   id = url.split('/d/')[1].split('/')[0];
       else if (url.includes('id=')) id = url.split('id=')[1].split('&')[0];
       if (id) return 'https://lh3.googleusercontent.com/d/' + id;
     }
     return url;
   }
 
-  /* ════════════════════════════════════════════════════
-     ESCAPE HTML
-  ════════════════════════════════════════════════════ */
   const esc = t => String(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
   function iconoVacio() {
     return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>';
   }
 
-  /* ════════════════════════════════════════════════════
-     GENERA HTML DE UNA TARJETA
-  ════════════════════════════════════════════════════ */
   function crearFicha(r) {
-    const fotoURL = fixDriveUrl(r.foto);
-    const imgHTML = fotoURL
-      ? '<img src="'+fotoURL+'" alt="Foto de '+esc(r.nombre)+'" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="foto-vacia" style="display:none">'+iconoVacio()+'<span>Sin imagen</span></div>'
+    var fotoURL = fixDriveUrl(r.foto);
+    var imgHTML = fotoURL
+      ? '<img src="'+fotoURL+'" alt="'+esc(r.nombre)+'" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><div class="foto-vacia" style="display:none">'+iconoVacio()+'<span>Sin imagen</span></div>'
       : '<div class="foto-vacia">'+iconoVacio()+'<span>Sin imagen</span></div>';
 
     return '<article class="ficha" role="listitem">'
-      + '<div class="ficha-franja"></div>'
-      + '<div class="ficha-foto-col">'
-      +   '<div class="foto-marco">'+imgHTML+'</div>'
-      +   '<div class="ficha-contacto"><strong>Cualquier información a:</strong>'+esc(r.contacto||'—')+'<br><span class="ficha-tel">📞 '+esc(r.telefono||'—')+'</span></div>'
-      + '</div>'
-      + '<div class="ficha-datos-col">'
-      +   '<div class="ficha-enc">'
-      +     '<div class="chip chip-loc"><span class="et">Desaparecido en</span><span class="va">'+esc(r.localidad||'—')+'</span></div>'
-      +     '<div class="chip"><span class="et">En fecha</span><span class="va">'+esc(r.fecha||'—')+'</span></div>'
-      +     '<div class="chip"><span class="et">A las</span><span class="va">'+esc(r.hora||'—')+'</span></div>'
-      +   '</div>'
-      +   '<div><p class="ficha-nombre">'+esc(r.nombre||'—')+'</p>'
-      +   '<span class="edad-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg> '+esc(r.edad||'—')+' años</span></div>'
-      +   '<div class="ficha-desc"><span class="et-desc">Descripción</span>'+esc(r.descripcion||'—')+'</div>'
-      + '</div>'
-      + '</article>';
+      +'<div class="ficha-franja"></div>'
+      +'<div class="ficha-foto-col"><div class="foto-marco">'+imgHTML+'</div>'
+      +'<div class="ficha-contacto"><strong>Cualquier información a:</strong>'+esc(r.contacto||'—')+'<br><span class="ficha-tel">📞 '+esc(r.telefono||'—')+'</span></div></div>'
+      +'<div class="ficha-datos-col">'
+      +'<div class="ficha-enc">'
+      +'<div class="chip chip-loc"><span class="et">Desaparecido en</span><span class="va">'+esc(r.localidad||'—')+'</span></div>'
+      +'<div class="chip"><span class="et">En fecha</span><span class="va">'+esc(r.fecha||'—')+'</span></div>'
+      +'<div class="chip"><span class="et">A las</span><span class="va">'+esc(r.hora||'—')+'</span></div>'
+      +'</div>'
+      +'<div><p class="ficha-nombre">'+esc(r.nombre||'—')+'</p>'
+      +'<span class="edad-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg> '+esc(r.edad||'—')+' años</span></div>'
+      +'<div class="ficha-desc"><span class="et-desc">Descripción</span>'+esc(r.descripcion||'—')+'</div>'
+      +'</div></article>';
   }
 
-  /* ════════════════════════════════════════════════════
-     CARGA DATOS VÍA GOOGLE VISUALIZATION API (JSONP)
-     ─ No requiere CORS, funciona desde GitHub Pages
-     ─ Solo requiere que la planilla sea pública
-     ─ Lee únicamente la hoja SHEET_NAME
-  ════════════════════════════════════════════════════ */
-  function cargarDatos() {
+  // ── CARGA VÍA JSONP (intento 1: con nombre de hoja) ──
+  function cargarConHoja(sheetName) {
     return new Promise(function(resolve, reject) {
-      const cb = '__gviz_' + Date.now();
-      const timer = setTimeout(function() {
+      var cb    = '__gviz_' + Date.now();
+      var timer = setTimeout(function() {
         delete window[cb];
-        reject(new Error('Timeout — verificá que la planilla sea pública'));
-      }, 15000);
+        reject(new Error('TIMEOUT esperando respuesta de Google (hoja: "' + sheetName + '")'));
+      }, 12000);
 
       window[cb] = function(resp) {
         clearTimeout(timer);
         delete window[cb];
-
         if (!resp || !resp.table) {
-          reject(new Error('Respuesta vacía de Google Sheets'));
+          reject(new Error('Respuesta sin tabla (hoja: "' + sheetName + '") — resp.status=' + (resp && resp.status)));
           return;
         }
-
         try {
-          const cols = resp.table.cols;
-          const rows = resp.table.rows.map(function(row) {
+          var cols = resp.table.cols;
+          var rows = resp.table.rows.map(function(row) {
             return cols.map(function(_, ci) {
               var cell = row.c[ci];
-              if (!cell || cell.v === null || cell.v === undefined) return '';
+              if (!cell || cell.v == null) return '';
               return cell.f ? String(cell.f) : String(cell.v);
             });
           });
@@ -258,35 +209,31 @@
         } catch(e) { reject(e); }
       };
 
-      // Consulta SQL para traer todas las filas de la hoja Webdata
-      var query  = encodeURIComponent('select *');
-      var sheet  = encodeURIComponent(SHEET_NAME);
-      var url    = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID
-                 + '/gviz/tq?tqx=out:json&tq=' + query
-                 + '&sheet=' + sheet
-                 + '&callback=' + cb;
+      var url = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID
+              + '/gviz/tq?tqx=out:json'
+              + '&tq=' + encodeURIComponent('select *')
+              + (sheetName ? '&sheet=' + encodeURIComponent(sheetName) : '')
+              + '&callback=' + cb;
+
+      log('Intentando URL: <a href="' + url + '" target="_blank">abrir en nueva pestaña</a>', 'url');
 
       var s = document.createElement('script');
       s.src = url;
       s.onerror = function() {
-        clearTimeout(timer);
-        delete window[cb];
-        reject(new Error('No se pudo conectar con Google Sheets'));
+        clearTimeout(timer); delete window[cb];
+        reject(new Error('Error de red al cargar script JSONP (hoja: "' + sheetName + '")'));
       };
       s.onload = function() { s.remove(); };
       document.head.appendChild(s);
     });
   }
 
-  /* ════════════════════════════════════════════════════
-     PROCESAR FILAS
-  ════════════════════════════════════════════════════ */
   function procesarFilas(filas) {
     var result = [];
     for (var i = 0; i < filas.length; i++) {
-      var f = filas[i];
+      var f      = filas[i];
       var nombre = (f[COL.nombre] || '').trim();
-      if (!nombre) continue; // ignorar filas vacías
+      if (!nombre) continue;
       result.push({
         localidad:   (f[COL.localidad]   || '').trim(),
         nombre:      nombre,
@@ -299,18 +246,14 @@
         foto:        (f[COL.foto]        || '').trim(),
       });
     }
-    result.reverse(); // más reciente primero
+    result.reverse();
     return result;
   }
 
-  /* ════════════════════════════════════════════════════
-     RENDER
-  ════════════════════════════════════════════════════ */
   function render(registros) {
+    document.getElementById('estado-carga').style.display = 'none';
     var contenedor    = document.getElementById('contenedor-fichas');
-    var estadoCarga   = document.getElementById('estado-carga');
     var sinResultados = document.getElementById('sin-resultados');
-    estadoCarga.style.display = 'none';
 
     if (registros.length === 0) {
       sinResultados.style.display = 'block';
@@ -318,45 +261,57 @@
       document.getElementById('status-txt').textContent = 'No hay búsquedas vigentes.';
       return;
     }
+    // Todo OK — ocultar panel de diagnóstico
+    diagPanel.style.display = 'none';
     sinResultados.style.display = 'none';
     contenedor.innerHTML = registros.map(crearFicha).join('');
-    var hora = new Date().toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+    var hora = new Date().toLocaleTimeString('es-AR', {hour:'2-digit',minute:'2-digit',second:'2-digit'});
     document.getElementById('status-txt').textContent =
-      registros.length + ' caso' + (registros.length !== 1 ? 's' : '') +
-      ' vigente' + (registros.length !== 1 ? 's' : '') + ' · Actualizado: ' + hora;
+      registros.length + ' caso' + (registros.length!==1?'s':'') +
+      ' vigente' + (registros.length!==1?'s':'') + ' · Actualizado: ' + hora;
   }
 
-  /* ════════════════════════════════════════════════════
-     CICLO PRINCIPAL
-  ════════════════════════════════════════════════════ */
-  function cargarYRenderizar() {
-    cargarDatos()
-      .then(function(filas) {
-        render(procesarFilas(filas));
-      })
-      .catch(function(err) {
-        console.error('Error:', err.message);
-        document.getElementById('estado-carga').style.display = 'none';
-        document.getElementById('status-txt').textContent = '⚠️ Error al cargar datos';
+  // ── ESTRATEGIA DE CARGA CON FALLBACK ─────────────────
+  // Intento 1: hoja "Webdata"
+  // Intento 2: primera hoja del sheet (sin especificar nombre)
+  async function cargarYRenderizar() {
+    log('Iniciando carga... Sheet ID: ' + SHEET_ID, 'warn');
 
-        var c = document.getElementById('contenedor-fichas');
-        if (!c.innerHTML.trim()) {
-          c.innerHTML = '<div class="error-box">'
-            + '<h3>⚠️ No se pudieron cargar los datos</h3>'
-            + '<p><strong>Error:</strong> ' + esc(err.message) + '</p>'
-            + '<p style="margin-top:10px"><strong>Verificá que:</strong><br>'
-            + '1. La planilla sea pública (Compartir → Cualquier persona con el enlace → Lector)<br>'
-            + '2. La hoja se llame exactamente <strong>Webdata</strong> (con esa mayúscula)<br>'
-            + '3. Estés accediendo desde el sitio de GitHub Pages, no desde un archivo local</p>'
-            + '</div>';
-        }
-      });
+    try {
+      log('Intento 1: hoja "' + SHEET_NAME + '"', '');
+      var filas = await cargarConHoja(SHEET_NAME);
+      log('✅ Hoja "' + SHEET_NAME + '" respondió. Filas: ' + filas.length, 'ok');
+      var registros = procesarFilas(filas);
+      log('✅ Registros con nombre: ' + registros.length, 'ok');
+      render(registros);
+      return;
+    } catch(e1) {
+      log('❌ Intento 1 falló: ' + e1.message, 'err');
+    }
+
+    try {
+      log('Intento 2: sin especificar hoja (primera hoja del sheet)', '');
+      var filas2 = await cargarConHoja('');
+      log('✅ Primera hoja respondió. Filas: ' + filas2.length, 'ok');
+      var registros2 = procesarFilas(filas2);
+      log('✅ Registros con nombre: ' + registros2.length, 'ok');
+      render(registros2);
+      return;
+    } catch(e2) {
+      log('❌ Intento 2 falló: ' + e2.message, 'err');
+    }
+
+    // Ambos fallaron
+    document.getElementById('estado-carga').style.display = 'none';
+    document.getElementById('status-txt').textContent = '⚠️ Error al cargar datos';
+    log('─────────────────────────────────────', '');
+    log('⚠️ AMBOS INTENTOS FALLARON', 'err');
+    log('Verificá que la planilla esté compartida como pública.', 'warn');
+    log('Si el link de arriba abre en una pestaña nueva y ves JSON → el problema es otro.', 'warn');
+    log('Si pide login → la planilla NO es pública todavía.', 'err');
   }
 
-  // Carga inmediata al abrir + F5 recarga la página completa
   cargarYRenderizar();
-
-  // Auto-refresh cada 60 segundos sin recargar la página
   setInterval(cargarYRenderizar, INTERVALO);
 </script>
 </body>
