@@ -3,57 +3,108 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Desaparecidos – Dirección General Departamentales Norte</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <title>Búsqueda de Personas - Dirección General Departamentales Norte</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --azul-profundo: #0d2545; --azul-medio: #163a6e; --azul-acento: #1a6fba;
-      --celeste-suave: #e8f0fa; --blanco: #ffffff; --gris-fondo: #f2f4f8;
-      --gris-borde: #d0d8e8; --rojo-alerta: #c0392b; --texto-oscuro: #1a1f2e;
-      --texto-medio: #3d4a60; --texto-suave: #6b7896;
-      --sombra-suave: 0 2px 12px rgba(13,37,69,.10);
+      --azul-policia: #0d2545;
+      --gris-claro: #f8f9fa;
+      --borde-tarjeta: #dee2e6;
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { background: var(--gris-fondo); color: var(--texto-oscuro); font-family: 'DM Sans', sans-serif; }
-    header { background: var(--azul-profundo); color: var(--blanco); padding: 30px 20px; text-align: center; border-bottom: 4px solid var(--azul-acento); }
-    .escudo { height: 80px; margin-bottom: 15px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
-    header h1 { font-family: 'Playfair Display', serif; font-size: 2rem; }
-    .status-bar { max-width: 1100px; margin: -20px auto 20px; background: var(--blanco); padding: 15px 25px; border-radius: 10px; display: flex; align-items: center; box-shadow: var(--sombra-suave); border: 1px solid var(--gris-borde); position: relative; z-index: 10; }
-    .status-dot { height: 10px; width: 10px; background: #27ae60; border-radius: 50%; display: inline-block; margin-right: 8px; }
-    .contenedor { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; padding: 20px; }
-    .ficha { background: var(--blanco); border-radius: 12px; overflow: hidden; box-shadow: var(--sombra-suave); border: 1px solid var(--gris-borde); display: flex; flex-direction: column; transition: 0.3s; }
-    .ficha:hover { transform: translateY(-5px); }
-    .foto-wrapper { width: 100%; height: 350px; background: #ddd; position: relative; }
-    .foto-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-    .tag-alerta { position: absolute; top: 15px; left: 15px; background: var(--rojo-alerta); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; }
-    .ficha-info { padding: 20px; flex-grow: 1; }
-    .nombre { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--azul-profundo); margin-bottom: 10px; }
-    .dato { font-size: 0.85rem; margin-bottom: 5px; color: var(--texto-medio); }
-    .dato b { color: var(--azul-medio); }
-    .loader { text-align: center; padding: 100px; font-size: 1.2rem; color: var(--azul-medio); }
+
+    body { 
+      font-family: 'Roboto', sans-serif; 
+      background-color: #ffffff; 
+      margin: 0; padding: 0; color: #333; 
+    }
+
+    /* Cabecera Institucional */
+    header { 
+      background-color: var(--azul-policia); 
+      color: white; padding: 20px; 
+      text-align: center; border-bottom: 5px solid #1a6fba; 
+    }
+    .escudo { height: 100px; margin-bottom: 10px; }
+    header h1 { margin: 5px 0; font-family: 'Montserrat', sans-serif; font-size: 1.5rem; text-transform: uppercase; }
+
+    .status-bar { 
+      max-width: 900px; margin: 15px auto; 
+      padding: 10px; text-align: center; 
+      font-size: 0.9rem; color: #666; border-bottom: 1px solid #eee;
+    }
+
+    /* Contenedor de Fichas (Apiladas verticalmente) */
+    .contenedor { 
+      max-width: 900px; margin: 0 auto; 
+      padding: 20px; display: flex; flex-direction: column; gap: 30px; 
+    }
+
+    /* Diseño de la Ficha Horizontal */
+    .ficha { 
+      display: flex; background: var(--gris-claro); 
+      border: 1px solid var(--borde-tarjeta); 
+      border-radius: 4px; overflow: hidden; 
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    /* Columna Izquierda: Foto y Contacto */
+    .col-izquierda { 
+      width: 300px; min-width: 300px; 
+      padding: 15px; display: flex; flex-direction: column; align-items: center; 
+      background: #fff; border-right: 1px solid #ddd;
+    }
+
+    .foto-marco { 
+      width: 270px; height: 340px; 
+      border: 3px solid #000; /* Borde negro bien visible */
+      margin-bottom: 15px; overflow: hidden; background: #eee;
+    }
+    .foto-marco img { width: 100%; height: 100%; object-fit: cover; }
+
+    .contacto-pie { 
+      font-size: 0.75rem; font-weight: bold; text-align: center; 
+      color: #c0392b; line-height: 1.3; text-transform: uppercase;
+    }
+
+    /* Columna Derecha: Información Estructurada */
+    .col-derecha { 
+      flex-grow: 1; padding: 25px; 
+      display: flex; flex-direction: column; justify-content: center;
+    }
+
+    .info-grupo { margin-bottom: 20px; }
+    .info-linea { font-size: 1rem; margin-bottom: 6px; text-transform: uppercase; }
+    .info-linea b { color: var(--azul-policia); }
+
+    .loader { text-align: center; padding: 50px; font-weight: bold; }
+
+    /* Adaptación para Celulares */
+    @media (max-width: 700px) {
+      .ficha { flex-direction: column; }
+      .col-izquierda { width: 100%; min-width: 100%; border-right: none; border-bottom: 1px solid #ddd; }
+      .col-derecha { padding: 20px; }
+    }
   </style>
 </head>
 <body>
+
   <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Escudo_de_la_Polic%C3%ADa_de_la_Provincia_de_C%C3%B3rdoba.png" alt="Escudo Policía" class="escudo">
+    <img src="Diapositiva1-removebg-preview.png" alt="Escudo Policía" class="escudo">
     <h1>Búsqueda de Personas</h1>
-    <p>Dirección General Departamentales Norte · Policía de Córdoba</p>
+    <p>Dirección General Departamentales Norte</p>
   </header>
 
-  <div class="status-bar">
-    <div><span class="status-dot"></span> <span id="status-txt">Sincronizando con base de datos oficial...</span></div>
-  </div>
+  <div class="status-bar" id="status-txt">Sincronizando registros oficiales...</div>
 
   <main id="contenedor-fichas" class="contenedor">
-    <div class="loader">Cargando registros...</div>
+    <div class="loader">Cargando base de datos institucional...</div>
   </main>
 
   <script>
-    // Transforma links de Drive para que se vean en la web
-    function transformarFoto(url) {
-      if (!url) return 'https://via.placeholder.com/400x500?text=Sin+Foto';
-      const id = url.match(/(?:id=|d\/)([a-zA-Z0-9_-]+)/);
-      return id ? `https://lh3.googleusercontent.com/d/${id[1]}` : url;
+    function formatDriveLink(url) {
+      if (!url) return '';
+      const match = url.match(/(?:id=|d\/)([a-zA-Z0-9_-]+)/);
+      return match ? `https://lh3.googleusercontent.com/d/${match[1]}` : url;
     }
 
     async function cargar() {
@@ -64,30 +115,50 @@
         const lista = data.registros || [];
 
         if (lista.length === 0) {
-          contenedor.innerHTML = '<div class="loader">No hay alertas vigentes en la hoja WebData.</div>';
-          document.getElementById('status-txt').innerText = 'Base de datos vacía';
+          contenedor.innerHTML = '<div class="loader">No se registran alertas vigentes.</div>';
           return;
         }
 
-        contenedor.innerHTML = lista.map(r => `
+        contenedor.innerHTML = lista.map(r => {
+          const fotoUrl = formatDriveLink(r.foto);
+          return `
           <article class="ficha">
-            <div class="foto-wrapper">
-              <div class="tag-alerta">Búsqueda Vigente</div>
-              <img src="${transformarFoto(r.foto)}" onerror="this.src='https://via.placeholder.com/400x500?text=Error+en+Imagen'">
+            <div class="col-izquierda">
+              <div class="foto-marco">
+                <img src="${fotoUrl}" onerror="this.src='https://via.placeholder.com/270x340?text=SIN+IMAGEN'">
+              </div>
+              <div class="contacto-pie">
+                CUALQUIER INFORMACIÓN A:<br>${r.contacto || 'POLICÍA LOCAL'}<br>AL TEL: ${r.telefono || '101 / 911'}
+              </div>
             </div>
-            <div class="ficha-info">
-              <h2 class="nombre">${r.nombre || 'Sin Nombre'}</h2>
-              <div class="dato"><b>Edad:</b> ${r.edad || '-'} años</div>
-              <div class="dato"><b>Localidad:</b> ${r.localidad || '-'}</div>
-              <div class="dato"><b>Visto por última vez:</b> ${r.fecha || '-'}</div>
-              <div class="dato" style="margin-top:10px; font-style:italic;">"${r.descripcion || ''}"</div>
+            
+            <div class="col-derecha">
+              <div class="info-grupo">
+                <div class="info-linea"><b>DESAPARECIDO EN:</b> ${r.localidad || '-'}</div>
+                <div class="info-linea"><b>EN FECHA:</b> ${r.fecha || '-'}</div>
+                <div class="info-linea"><b>A LAS:</b> ${r.hora || '-'}</div>
+              </div>
+
+              <div class="info-grupo">
+                <div class="info-linea"><b>NOMBRE COMPLETO:</b> ${r.nombre || 'N/C'}</div>
+                <div class="info-linea"><b>EDAD:</b> ${r.edad || '-'} AÑOS</div>
+              </div>
+
+              <div class="info-grupo">
+                <div class="info-linea"><b>DESCRIPCIÓN:</b></div>
+                <div style="font-size: 0.95rem; line-height: 1.4; text-align: justify;">
+                  ${r.descripcion || 'Sin descripción adicional disponible.'}
+                </div>
+              </div>
             </div>
           </article>
-        `).join('');
+          `;
+        }).join('');
 
-        document.getElementById('status-txt').innerText = `${data.total} registros cargados desde WebData`;
+        document.getElementById('status-txt').innerText = `Sistema actualizado: ${lista.length} alertas vigentes`;
+
       } catch (e) {
-        document.getElementById('contenedor-fichas').innerHTML = '<div class="loader">Error al leer data.json</div>';
+        document.getElementById('contenedor-fichas').innerHTML = '<div class="loader">Error de conexión con la base de datos.</div>';
       }
     }
     window.onload = cargar;
