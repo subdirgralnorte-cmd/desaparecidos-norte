@@ -168,7 +168,6 @@
     contacto:   10,   // K
     telefono:   11,   // L
     foto:       13,   // N
-    estado:     14,   // O
   };
 
   /* ════════════════════════════════════════════════════
@@ -287,9 +286,7 @@
     for (var i = 0; i < filas.length; i++) {
       var f = filas[i];
       var nombre = (f[COL.nombre] || '').trim();
-      if (!nombre) continue;
-      var estado = (f[COL.estado] || '').toUpperCase();
-      if (estado.indexOf('HALLADO') >= 0) continue;
+      if (!nombre) continue; // ignorar filas vacías
       result.push({
         localidad:   (f[COL.localidad]   || '').trim(),
         nombre:      nombre,
@@ -300,7 +297,6 @@
         contacto:    (f[COL.contacto]    || '').trim(),
         telefono:    (f[COL.telefono]    || '').trim(),
         foto:        (f[COL.foto]        || '').trim(),
-        estado:      (f[COL.estado]      || '').trim(),
       });
     }
     result.reverse(); // más reciente primero
