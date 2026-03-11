@@ -18,19 +18,18 @@
       margin: 0; padding: 0; color: #333; 
     }
 
-    /* Cabecera Institucional */
+/* Cabecera Institucional */
     header { 
       background-color: var(--azul-policia); 
-      color: white; padding: 20px; 
-      text-align: center; border-bottom: 5px solid #1a6fba; 
+      color: white; 
+      padding: 40px 20px; /* Aumenté el padding para que respire más el escudo grande */
+      text-align: center; 
+      border-bottom: 5px solid #1a6fba; 
     }
-    .escudo { height: 100px; margin-bottom: 10px; }
-    header h1 { margin: 5px 0; font-family: 'Montserrat', sans-serif; font-size: 1.5rem; text-transform: uppercase; }
-
-    .status-bar { 
-      max-width: 900px; margin: 15px auto; 
-      padding: 10px; text-align: center; 
-      font-size: 0.9rem; color: #666; border-bottom: 1px solid #eee;
+    .escudo { 
+      height: 300px; /* Tamaño mucho más visible */
+      margin-bottom: 15px; 
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5)); /* Le da más relieve */
     }
 
     /* Contenedor de Fichas (Apiladas verticalmente) */
