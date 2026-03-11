@@ -1,19 +1,7 @@
 {
-  "actualizado": "2026-03-11T15:06:44Z",
-  "total": 11,
+  "actualizado": "2026-03-11T15:57:34Z",
+  "total": 6,
   "registros": [
-    {
-      "localidad": "Villa de Soto",
-      "nombre": "Paredes Claudio Javier",
-      "edad": "41",
-      "fecha": "3/03/2026",
-      "hora": "22:00:00",
-      "descripcion": "0",
-      "contacto": "Patrulla Preventiva Villa de Soto",
-      "telefono": "3549426784",
-      "foto": "https://drive.google.com/open?id=1Z4SwzUmfntI13Z_LHYR_M5O2nWb_xQa5",
-      "estado": ""
-    },
     {
       "localidad": "San Marcos Sierras",
       "nombre": "German Gonzalo Diaz",
@@ -39,18 +27,6 @@
       "estado": ""
     },
     {
-      "localidad": "CRUZ DEL EJE",
-      "nombre": "MAURICIO ULISES MUÑOZ",
-      "edad": "15",
-      "fecha": "1/03/2026",
-      "hora": "23:55:00",
-      "descripcion": "vestía un short color azul con amarillo, una remera del mismo color, un par de zapatillas color blancas marca Adidas, cabello castaño corto, rapado a los costados, posee un lunar en la nariz, de contextura física delgada, de 1,70 aprox",
-      "contacto": "DIVISION INVESTIGACIONES CRUZ DEL EJE",
-      "telefono": "3549-426763",
-      "foto": "https://drive.google.com/open?id=1YzY-Rhh53dHT0koItR-xRyRh12OaL9C1",
-      "estado": ""
-    },
-    {
       "localidad": "VILLA DOLORES",
       "nombre": "JORGE ALEJANDRO LOPEZ",
       "edad": "52",
@@ -60,18 +36,6 @@
       "contacto": "CRIA. VILLA DOLORES",
       "telefono": "354426416",
       "foto": "https://drive.google.com/open?id=1hFWDk2q8ku850V_LFYnnYF_zMsvbZjCO",
-      "estado": ""
-    },
-    {
-      "localidad": "TANTI",
-      "nombre": "RAMOS SANDRA ISABEL",
-      "edad": "54",
-      "fecha": "23/02/2026",
-      "hora": "22:00:00",
-      "descripcion": "SIN DATOS",
-      "contacto": "TANTI",
-      "telefono": "3541641559",
-      "foto": "https://drive.google.com/open?id=1jWfpKxexx5bQUSZlBGTBePLEx3mZfke6",
       "estado": ""
     },
     {
@@ -99,18 +63,6 @@
       "estado": ""
     },
     {
-      "localidad": "VILLA DE SOTO",
-      "nombre": "FRANCO MATIAS",
-      "edad": "34",
-      "fecha": "23/02/2026",
-      "hora": "7:00:00",
-      "descripcion": "El mismo es de contextura robusta, aprox. 1,70 m de altura, cabello castaño oscuro",
-      "contacto": "VILLA DE SOTO",
-      "telefono": "3544 40-7572",
-      "foto": "https://drive.google.com/open?id=1XRFxpIk3hBVMCr0Vd0zxqsNxaqifuR2Q",
-      "estado": ""
-    },
-    {
       "localidad": "San Marcos Sierras",
       "nombre": "BNB",
       "edad": "16",
@@ -120,18 +72,6 @@
       "contacto": "Cria Dtto San Marcos Sierras",
       "telefono": "3549496020",
       "foto": "https://drive.google.com/open?id=1kxevZhxTN4bRJgff1wR3i2pSQuUblMcu",
-      "estado": ""
-    },
-    {
-      "localidad": "Cruz del Eje",
-      "nombre": "Jonas joaquin Aguirre",
-      "edad": "14",
-      "fecha": "18/02/2026",
-      "hora": "1:30:00",
-      "descripcion": "0",
-      "contacto": "Duv Investigaciones",
-      "telefono": "3549426755",
-      "foto": "https://drive.google.com/open?id=1rGT1a1JrG7IXXdhIbU0X0X1cUziX0xEO",
       "estado": ""
     }
   ]
