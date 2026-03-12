@@ -6,140 +6,31 @@
   <title>Búsqueda de Personas - Dirección General Departamentales Norte</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
-  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <style>
     :root {
-      --azul-policia: #0d2545;
-      --azul-acento: #1a6fba;
-      --gris-claro: #f8f9fa;
+      --azul-policia: #0d2545; --azul-acento: #1a6fba; --gris-claro: #f8f9fa;
     }
-
-    body { 
-      font-family: 'Roboto', sans-serif; 
-      background-color: #ffffff; 
-      margin: 0; padding: 0; color: #333; 
-    }
-
-    /* CABECERA (Imagen 1) */
-    header { 
-      background-color: var(--azul-policia); 
-      color: white; 
-      padding: 50px 60px; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center;
-      border-bottom: 8px solid var(--azul-acento);
-    }
-
-    .header-left h1 { 
-      margin: 0; 
-      font-family: 'Montserrat', sans-serif; 
-      font-size: 5.5rem; 
-      line-height: 0.9;
-      text-transform: uppercase;
-      letter-spacing: -3px;
-    }
-
-    .header-left p { 
-      font-size: 1.8rem; 
-      margin-top: 15px; 
-      font-weight: 400;
-      text-transform: uppercase;
-      margin-bottom: 0;
-    }
-
-    .escudo-header { 
-      height: 280px; 
-      filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
-    }
-
-    /* BARRA DE ESTADO */
-    .status-bar {
-      text-align: center;
-      padding: 10px;
-      background: #f1f1f1;
-      font-size: 0.9rem;
-      color: #555;
-      border-bottom: 1px solid #ddd;
-    }
-
-    /* CONTENEDOR DE FICHAS */
-    .contenedor { 
-      max-width: 1000px; 
-      margin: 40px auto; 
-      padding: 0 20px; 
-      display: flex; 
-      flex-direction: column; 
-      gap: 40px; 
-      min-height: 60vh;
-    }
-
-    /* FICHA HORIZONTAL */
-    .ficha { 
-      display: flex; 
-      background: var(--gris-claro); 
-      border: 1px solid #ddd; 
-      border-radius: 4px; 
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      position: relative;
-    }
-
-    .col-izquierda { 
-      width: 320px; min-width: 320px; 
-      padding: 20px; 
-      background: #fff; 
-      border-right: 2px solid #000;
-      display: flex; flex-direction: column; align-items: center;
-    }
-
-    .foto-marco { 
-      width: 280px; height: 350px; 
-      border: 4px solid #000; 
-      background: #eee; overflow: hidden;
-    }
+    body { font-family: 'Roboto', sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; }
+    header { background-color: var(--azul-policia); color: white; padding: 50px 60px; display: flex; justify-content: space-between; align-items: center; border-bottom: 8px solid var(--azul-acento); }
+    .header-left h1 { margin: 0; font-family: 'Montserrat', sans-serif; font-size: 5.5rem; line-height: 0.9; text-transform: uppercase; letter-spacing: -3px; }
+    .header-left p { font-size: 1.8rem; margin-top: 15px; font-weight: 400; text-transform: uppercase; margin-bottom: 0; }
+    .escudo-header { height: 280px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
+    .status-bar { text-align: center; padding: 10px; background: #f1f1f1; font-size: 0.9rem; color: #555; border-bottom: 1px solid #ddd; }
+    .contenedor { max-width: 1000px; margin: 40px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; min-height: 60vh; }
+    .ficha { display: flex; background: var(--gris-claro); border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+    .col-izquierda { width: 320px; min-width: 320px; padding: 20px; background: #fff; border-right: 2px solid #000; display: flex; flex-direction: column; align-items: center; }
+    .foto-marco { width: 280px; height: 350px; border: 4px solid #000; background: #eee; overflow: hidden; }
     .foto-marco img { width: 100%; height: 100%; object-fit: cover; }
-
-    .contacto-pie { 
-      margin-top: 15px; font-size: 0.8rem; font-weight: bold; 
-      color: #c0392b; text-align: center; text-transform: uppercase;
-    }
-
-    .col-derecha { 
-      flex-grow: 1; padding: 30px; 
-      display: flex; flex-direction: column; justify-content: center;
-    }
-
+    .contacto-pie { margin-top: 15px; font-size: 0.8rem; font-weight: bold; color: #c0392b; text-align: center; text-transform: uppercase; }
+    .col-derecha { flex-grow: 1; padding: 30px; display: flex; flex-direction: column; justify-content: center; }
     .info-linea { font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase; }
     .info-linea b { color: var(--azul-policia); }
-
-    /* BOTÓN PDF */
-    .btn-pdf {
-      background-color: var(--azul-policia);
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      font-size: 1rem;
-      font-weight: bold;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-top: 20px;
-      align-self: flex-start;
-      transition: background 0.3s;
-      display: flex; align-items: center; gap: 8px;
-    }
+    .btn-pdf { background-color: var(--azul-policia); color: white; border: none; padding: 12px 20px; font-size: 1rem; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 20px; align-self: flex-start; transition: background 0.3s; display: flex; align-items: center; gap: 8px; }
     .btn-pdf:hover { background-color: var(--azul-acento); }
-
-    /* CIERRE (Imagen 2) */
-    footer {
-      background-color: var(--azul-policia);
-      height: 80px;
-      margin-top: 60px;
-      border-top: 8px solid var(--azul-acento);
-      width: 100%;
-    }
-
+    footer { background-color: var(--azul-policia); height: 80px; margin-top: 60px; border-top: 8px solid var(--azul-acento); width: 100%; }
+    
     @media (max-width: 900px) {
       header { flex-direction: column; text-align: center; padding: 30px 20px; }
       .header-left h1 { font-size: 3rem; }
@@ -168,37 +59,31 @@
   <footer id="pie-institucional"></footer>
 
   <script>
-    // Variable global para almacenar los datos y usarlos al armar el PDF
     let datosGlobales = [];
 
-    // Limpia y adapta el link de Drive
+    // Usamos el formato lh3 de Google para asegurar que la imagen funcione en el PDF sin bloqueos
     function formatDriveLink(url) {
       if (!url) return '';
       const match = url.match(/(?:id=|d\/)([a-zA-Z0-9_-]+)/);
       return match ? `https://lh3.googleusercontent.com/d/${match[1]}` : url;
     }
 
-    // Función principal de carga de datos
     async function cargar() {
       try {
-        // El "?nocache=" asegura que F5 o el recargo automático SIEMPRE traigan la última versión
-        const timestamp = new Date().getTime();
-        const resp = await fetch('data.json?nocache=' + timestamp);
+        const resp = await fetch('data.json?nocache=' + new Date().getTime());
         const data = await resp.json();
         
         const contenedor = document.getElementById('contenedor-fichas');
         datosGlobales = data.registros || [];
 
-        // Actualizar barra de estado con la hora de última consulta
         const horaConsulta = new Date().toLocaleTimeString('es-AR', {hour: '2-digit', minute:'2-digit', second:'2-digit'});
-        document.getElementById('status-txt').innerText = `Última sincronización: ${horaConsulta} - ${datosGlobales.length} registros vigentes`;
+        document.getElementById('status-txt').innerText = `Última consulta: ${horaConsulta} - ${datosGlobales.length} registros (Recordá que la web demora 6 min en reflejar cambios del Excel)`;
 
         if (datosGlobales.length === 0) {
           contenedor.innerHTML = '<h2 style="text-align:center; color:#c0392b;">No hay alertas vigentes en este momento.</h2>';
           return;
         }
 
-        // Armar HTML de todas las fichas
         let htmlFichas = '';
         datosGlobales.forEach((r, index) => {
           htmlFichas += `
@@ -212,7 +97,6 @@
                   AL TEL: ${r.telefono || '101 / 911'}
                 </div>
               </div>
-              
               <div class="col-derecha">
                 <div class="info-linea"><b>DESAPARECIDO EN:</b> ${r.localidad || '-'}</div>
                 <div class="info-linea"><b>EN FECHA:</b> ${r.fecha || '-'}</div>
@@ -225,100 +109,86 @@
                 <div style="font-size: 1rem; text-align: justify; line-height: 1.4; margin-bottom: 10px;">
                   ${r.descripcion || 'Sin descripción adicional.'}
                 </div>
-                
-                <button class="btn-pdf" onclick="descargarPDF(${index})">
-                  📄 Descargar PDF
-                </button>
+                <button class="btn-pdf" onclick="descargarPDF(${index})">📄 Descargar PDF</button>
               </div>
             </article>
           `;
         });
-        
         contenedor.innerHTML = htmlFichas;
 
       } catch (e) {
-        document.getElementById('status-txt').innerText = 'Error de conexión';
+        document.getElementById('status-txt').innerText = 'Conectando con la base de datos...';
       }
     }
 
-    // Función para crear un PDF tamaño A4 exacto con cabecera y pie
+    // El nuevo motor de PDF que NO sale en blanco
     function descargarPDF(index) {
       const r = datosGlobales[index];
-      
-      // Mostrar alerta mientras procesa
       const statusOriginal = document.getElementById('status-txt').innerText;
-      document.getElementById('status-txt').innerText = '⏳ Generando documento PDF... Por favor espere.';
+      document.getElementById('status-txt').innerText = '⏳ Generando PDF... Por favor espere.';
 
-      // 1. Crear un contenedor temporal "invisible" con proporciones de hoja A4 (1000x1414)
-      const tempDiv = document.createElement('div');
-      tempDiv.style.position = 'absolute';
-      tempDiv.style.left = '-9999px';
-      tempDiv.style.width = '1000px';
-      tempDiv.style.height = '1414px'; // Proporción estricta A4
-      tempDiv.style.backgroundColor = '#ffffff';
-      tempDiv.style.display = 'flex';
-      tempDiv.style.flexDirection = 'column';
-
-      // 2. Extraer partes de la página
-      const headerHtml = document.getElementById('cabecera-institucional').outerHTML;
-      const footerHtml = document.getElementById('pie-institucional').outerHTML;
+      const fotoUrl = formatDriveLink(r.foto);
       
-      // 3. Reconstruir la ficha SIN el botón de PDF para la impresión
-      const fichaImpresion = `
-        <div style="flex-grow: 1; padding: 60px; display: flex; flex-direction: column; justify-content: center;">
-          <div class="ficha" style="box-shadow: none; border: 2px solid #000;">
-            <div class="col-izquierda" style="border-right: 2px solid #000;">
-              <div class="foto-marco">
-                <img src="${formatDriveLink(r.foto)}" crossorigin="anonymous" onerror="this.src='https://via.placeholder.com/280x350?text=SIN+IMAGEN'">
-              </div>
-              <div class="contacto-pie">
-                CUALQUIER INFORMACIÓN A:<br>${r.contacto || 'POLICÍA LOCAL'}<br>
-                AL TEL: ${r.telefono || '101 / 911'}
-              </div>
+      // Creamos la estructura A4 exacta pero en formato texto (Soluciona el error en blanco)
+      const htmlParaPDF = `
+        <div style="width: 1000px; min-height: 1414px; position: relative; background: #ffffff; font-family: 'Roboto', sans-serif; color: #333;">
+          
+          <div style="background-color: #0d2545; color: white; padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; border-bottom: 8px solid #1a6fba;">
+            <div>
+              <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 4rem; line-height: 1; text-transform: uppercase; letter-spacing: -2px;">Búsqueda de<br>Personas</h1>
+              <p style="font-size: 1.5rem; margin-top: 15px; font-weight: 400; text-transform: uppercase;">Dirección General Departamentales Norte</p>
             </div>
-            <div class="col-derecha">
-                <div class="info-linea"><b>DESAPARECIDO EN:</b> ${r.localidad || '-'}</div>
-                <div class="info-linea"><b>EN FECHA:</b> ${r.fecha || '-'}</div>
-                <div class="info-linea"><b>A LAS:</b> ${r.hora || '-'}</div>
-                <br><br>
-                <div class="info-linea"><b>NOMBRE COMPLETO:</b> ${r.nombre || '-'}</div>
-                <div class="info-linea"><b>EDAD:</b> ${r.edad || '-'} AÑOS</div>
-                <br><br>
-                <div class="info-linea"><b>DESCRIPCIÓN:</b></div>
+            <img src="Diapositiva1-removebg-preview.png" style="height: 200px;">
+          </div>
+          
+          <div style="padding: 60px;">
+            <div style="display: flex; background: #f8f9fa; border: 2px solid #000; border-radius: 4px;">
+              <div style="width: 320px; min-width: 320px; padding: 20px; background: #fff; border-right: 2px solid #000; text-align: center;">
+                <div style="width: 280px; height: 350px; border: 4px solid #000; background: #eee; overflow: hidden; margin: 0 auto;">
+                  <img src="${fotoUrl}" style="width: 100%; height: 100%; object-fit: cover;" crossorigin="anonymous">
+                </div>
+                <div style="margin-top: 20px; font-size: 0.9rem; font-weight: bold; color: #c0392b; text-transform: uppercase;">
+                  CUALQUIER INFORMACIÓN A:<br>${r.contacto || 'POLICÍA LOCAL'}<br><br>AL TEL: ${r.telefono || '101 / 911'}
+                </div>
+              </div>
+              
+              <div style="flex-grow: 1; padding: 30px; display: flex; flex-direction: column; justify-content: center;">
+                <div style="font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase;"><b>DESAPARECIDO EN:</b> ${r.localidad || '-'}</div>
+                <div style="font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase;"><b>EN FECHA:</b> ${r.fecha || '-'}</div>
+                <div style="font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase;"><b>A LAS:</b> ${r.hora || '-'}</div>
+                <br>
+                <div style="font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase;"><b>NOMBRE COMPLETO:</b> ${r.nombre || '-'}</div>
+                <div style="font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase;"><b>EDAD:</b> ${r.edad || '-'} AÑOS</div>
+                <br>
+                <div style="font-size: 1.2rem; margin-bottom: 10px; text-transform: uppercase;"><b>DESCRIPCIÓN:</b></div>
                 <div style="font-size: 1.1rem; text-align: justify; line-height: 1.5;">
                   ${r.descripcion || 'Sin descripción adicional.'}
                 </div>
+              </div>
             </div>
           </div>
+          
+          <div style="background-color: #0d2545; height: 80px; border-top: 8px solid #1a6fba; position: absolute; bottom: 0; width: 100%;"></div>
         </div>
       `;
 
-      // 4. Unir todo en el contenedor temporal y forzar el footer abajo
-      tempDiv.innerHTML = headerHtml + fichaImpresion + footerHtml.replace('<footer', '<footer style="margin-top:auto;"');
-      document.body.appendChild(tempDiv);
-
-      // 5. Configurar html2pdf para A4
       const nombreArchivo = r.nombre ? r.nombre.replace(/ /g, '_') : 'Busqueda';
       const opt = {
         margin:       0,
         filename:     `Alerta_${nombreArchivo}.pdf`,
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2, useCORS: true, logging: false },
+        html2canvas:  { scale: 2, useCORS: true },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
       };
 
-      // 6. Generar y limpiar
-      html2pdf().set(opt).from(tempDiv).save().then(() => {
-        document.body.removeChild(tempDiv);
+      html2pdf().set(opt).from(htmlParaPDF).save().then(() => {
         document.getElementById('status-txt').innerText = statusOriginal;
       });
     }
 
-    // Iniciar al cargar la página
     window.onload = () => {
       cargar();
-      // Auto-actualizar cada 60.000 milisegundos (1 minuto)
-      setInterval(cargar, 60000);
+      setInterval(cargar, 60000); // Consulta real cada 1 minuto (depende del delay de GitHub)
     };
   </script>
 </body>
