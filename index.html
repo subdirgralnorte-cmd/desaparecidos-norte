@@ -9,9 +9,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <style>
-    :root {
-      --azul-policia: #0d2545; --azul-acento: #1a6fba; --gris-claro: #f8f9fa;
-    }
+    /* DISEÑO INTACTO - NO SE MODIFICÓ NADA AQUÍ */
+    :root { --azul-policia: #0d2545; --azul-acento: #1a6fba; --gris-claro: #f8f9fa; }
     body { font-family: 'Roboto', sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; }
     header { background-color: var(--azul-policia); color: white; padding: 50px 60px; display: flex; justify-content: space-between; align-items: center; border-bottom: 8px solid var(--azul-acento); }
     .header-left h1 { margin: 0; font-family: 'Montserrat', sans-serif; font-size: 5.5rem; line-height: 0.9; text-transform: uppercase; letter-spacing: -3px; }
@@ -27,7 +26,7 @@
     .col-derecha { flex-grow: 1; padding: 30px; display: flex; flex-direction: column; justify-content: center; }
     .info-linea { font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase; }
     .info-linea b { color: var(--azul-policia); }
-    .btn-pdf { background-color: var(--azul-policia); color: white; border: none; padding: 12px 20px; font-size: 1rem; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 20px; align-self: flex-start; transition: background 0.3s; display: flex; align-items: center; gap: 8px; }
+    .btn-pdf { background-color: var(--azul-policia); color: white; border: none; padding: 12px 20px; font-size: 1rem; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 20px; align-self: flex-start; display: flex; align-items: center; gap: 8px; transition: background 0.3s; }
     .btn-pdf:hover { background-color: var(--azul-acento); }
     footer { background-color: var(--azul-policia); height: 80px; margin-top: 60px; border-top: 8px solid var(--azul-acento); width: 100%; }
     
@@ -50,7 +49,7 @@
     <img src="Diapositiva1-removebg-preview.png" alt="Escudo Policía" class="escudo-header">
   </header>
 
-  <div class="status-bar" id="status-txt">Iniciando sistema...</div>
+  <div class="status-bar" id="status-txt">Sincronizando datos con Google Sheets...</div>
 
   <main id="contenedor-fichas" class="contenedor">
     <div style="text-align:center; padding:50px; font-size: 1.2rem;">Cargando registros oficiales...</div>
@@ -59,137 +58,148 @@
   <footer id="pie-institucional"></footer>
 
   <script>
+    const SHEET_ID = '1neR9rlM_zrmowM83YEz25SUf9rYWqs3f7XnilZB1G9g';
+    const SHEET_NAME = 'datos'; 
+    const URL_SHEET = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${SHEET_NAME}`;
+
     let datosGlobales = [];
 
-    // Usamos el formato lh3 de Google para asegurar que la imagen funcione en el PDF sin bloqueos
     function formatDriveLink(url) {
       if (!url) return '';
       const match = url.match(/(?:id=|d\/)([a-zA-Z0-9_-]+)/);
       return match ? `https://lh3.googleusercontent.com/d/${match[1]}` : url;
     }
 
-    async function cargar() {
+    async function cargarDatos() {
       try {
-        const resp = await fetch('data.json?nocache=' + new Date().getTime());
-        const data = await resp.json();
-        
-        const contenedor = document.getElementById('contenedor-fichas');
-        datosGlobales = data.registros || [];
+        const res = await fetch(URL_SHEET + "&nocache=" + new Date().getTime());
+        const text = await res.text();
+        const json = JSON.parse(text.substr(47).slice(0, -2));
+        const rows = json.table.rows;
 
-        const horaConsulta = new Date().toLocaleTimeString('es-AR', {hour: '2-digit', minute:'2-digit', second:'2-digit'});
-        document.getElementById('status-txt').innerText = `Última consulta: ${horaConsulta} - ${datosGlobales.length} registros (Recordá que la web demora 6 min en reflejar cambios del Excel)`;
+        // MAPEO EXACTO DE COLUMNAS SOLICITADO
+        datosGlobales = rows.map(row => ({
+          localidad: row.c[3] ? row.c[3].v : '-',        
+          nombre: row.c[4] ? row.c[4].v : '-',           
+          edad: row.c[5] ? row.c[5].v : '-',             
+          fecha: row.c[7] ? row.c[7].v : '-',            
+          hora: row.c[8] ? row.c[8].v : '-',             
+          descripcion: row.c[9] ? row.c[9].v : '',       
+          dependencia: row.c[10] ? row.c[10].v : '-',    
+          telefono: row.c[11] ? row.c[11].v : '-',       
+          resena: row.c[12] ? row.c[12].v : '',          
+          foto: row.c[14] ? row.c[14].v : ''             
+        }));
 
-        if (datosGlobales.length === 0) {
-          contenedor.innerHTML = '<h2 style="text-align:center; color:#c0392b;">No hay alertas vigentes en este momento.</h2>';
-          return;
-        }
-
-        let htmlFichas = '';
-        datosGlobales.forEach((r, index) => {
-          htmlFichas += `
-            <article class="ficha">
-              <div class="col-izquierda">
-                <div class="foto-marco">
-                  <img src="${formatDriveLink(r.foto)}" crossorigin="anonymous" onerror="this.src='https://via.placeholder.com/280x350?text=SIN+IMAGEN'">
-                </div>
-                <div class="contacto-pie">
-                  CUALQUIER INFORMACIÓN A:<br>${r.contacto || 'POLICÍA LOCAL'}<br>
-                  AL TEL: ${r.telefono || '101 / 911'}
-                </div>
-              </div>
-              <div class="col-derecha">
-                <div class="info-linea"><b>DESAPARECIDO EN:</b> ${r.localidad || '-'}</div>
-                <div class="info-linea"><b>EN FECHA:</b> ${r.fecha || '-'}</div>
-                <div class="info-linea"><b>A LAS:</b> ${r.hora || '-'}</div>
-                <br>
-                <div class="info-linea"><b>NOMBRE COMPLETO:</b> ${r.nombre || '-'}</div>
-                <div class="info-linea"><b>EDAD:</b> ${r.edad || '-'} AÑOS</div>
-                <br>
-                <div class="info-linea"><b>DESCRIPCIÓN:</b></div>
-                <div style="font-size: 1rem; text-align: justify; line-height: 1.4; margin-bottom: 10px;">
-                  ${r.descripcion || 'Sin descripción adicional.'}
-                </div>
-                <button class="btn-pdf" onclick="descargarPDF(${index})">📄 Descargar PDF</button>
-              </div>
-            </article>
-          `;
-        });
-        contenedor.innerHTML = htmlFichas;
-
+        renderizarFichas();
+        const ahora = new Date().toLocaleTimeString('es-AR');
+        document.getElementById('status-txt').innerText = `Actualización en tiempo real activa: ${ahora} - ${datosGlobales.length} registros`;
       } catch (e) {
-        document.getElementById('status-txt').innerText = 'Conectando con la base de datos...';
+        document.getElementById('status-txt').innerText = 'Error de conexión con el Excel.';
       }
     }
 
-    // El nuevo motor de PDF que NO sale en blanco
+    function renderizarFichas() {
+      const contenedor = document.getElementById('contenedor-fichas');
+      
+      if (datosGlobales.length === 0) {
+        contenedor.innerHTML = '<h2 style="text-align:center; color:#c0392b;">No hay alertas vigentes en este momento.</h2>';
+        return;
+      }
+
+      contenedor.innerHTML = datosGlobales.map((r, i) => `
+        <article class="ficha">
+          <div class="col-izquierda">
+            <div class="foto-marco">
+              <img src="${formatDriveLink(r.foto)}" crossorigin="anonymous" onerror="this.src='https://via.placeholder.com/280x350?text=SIN+IMAGEN'">
+            </div>
+            <div class="contacto-pie">
+              INFORMAR A:<br>${r.dependencia}<br><br>
+              TEL: ${r.telefono} / 911
+            </div>
+          </div>
+          <div class="col-derecha">
+            <div class="info-linea"><b>DESAPARECIDO EN:</b> ${r.localidad}</div>
+            <div class="info-linea"><b>FECHA:</b> ${r.fecha} | <b>HORA:</b> ${r.hora}</div>
+            <br>
+            <div class="info-linea"><b>NOMBRE:</b> ${r.nombre}</div>
+            <div class="info-linea"><b>EDAD:</b> ${r.edad} AÑOS</div>
+            <br>
+            <div class="info-linea"><b>DESCRIPCIÓN / VESTIMENTA:</b></div>
+            <div style="font-size:0.95rem; line-height:1.4; text-align:justify; margin-bottom:10px;">${r.descripcion || 'Sin datos'}</div>
+            <div class="info-linea"><b>RESEÑA DEL HECHO:</b></div>
+            <div style="font-size:0.95rem; line-height:1.4; text-align:justify;">${r.resena || 'Sin reseña'}</div>
+            
+            <button class="btn-pdf" onclick="descargarPDF(${i})">📄 Descargar PDF</button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // PDF CALIBRADO A TAMAÑO A4 EXACTO (210mm x 297mm)
     function descargarPDF(index) {
       const r = datosGlobales[index];
       const statusOriginal = document.getElementById('status-txt').innerText;
-      document.getElementById('status-txt').innerText = '⏳ Generando PDF... Por favor espere.';
+      document.getElementById('status-txt').innerText = '⏳ Generando PDF A4... Por favor espere.';
 
-      const fotoUrl = formatDriveLink(r.foto);
-      
-      // Creamos la estructura A4 exacta pero en formato texto (Soluciona el error en blanco)
       const htmlParaPDF = `
-        <div style="width: 1000px; min-height: 1414px; position: relative; background: #ffffff; font-family: 'Roboto', sans-serif; color: #333;">
+        <div style="width: 210mm; min-height: 296mm; position: relative; background: #ffffff; font-family: 'Roboto', sans-serif; box-sizing: border-box; overflow: hidden;">
           
-          <div style="background-color: #0d2545; color: white; padding: 40px 60px; display: flex; justify-content: space-between; align-items: center; border-bottom: 8px solid #1a6fba;">
+          <div style="background-color: #0d2545; color: white; padding: 40px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 8px solid #1a6fba;">
             <div>
-              <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 4rem; line-height: 1; text-transform: uppercase; letter-spacing: -2px;">Búsqueda de<br>Personas</h1>
-              <p style="font-size: 1.5rem; margin-top: 15px; font-weight: 400; text-transform: uppercase;">Dirección General Departamentales Norte</p>
+              <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 3.5rem; line-height: 1; text-transform: uppercase; letter-spacing: -2px;">Búsqueda de<br>Personas</h1>
+              <p style="font-size: 1.3rem; margin-top: 15px; font-weight: 400; text-transform: uppercase; margin-bottom: 0;">Dirección General Departamentales Norte</p>
             </div>
-            <img src="Diapositiva1-removebg-preview.png" style="height: 200px;">
+            <img src="Diapositiva1-removebg-preview.png" style="height: 160px;">
           </div>
           
-          <div style="padding: 60px;">
+          <div style="padding: 40px 50px;">
             <div style="display: flex; background: #f8f9fa; border: 2px solid #000; border-radius: 4px;">
-              <div style="width: 320px; min-width: 320px; padding: 20px; background: #fff; border-right: 2px solid #000; text-align: center;">
-                <div style="width: 280px; height: 350px; border: 4px solid #000; background: #eee; overflow: hidden; margin: 0 auto;">
-                  <img src="${fotoUrl}" style="width: 100%; height: 100%; object-fit: cover;" crossorigin="anonymous">
+              
+              <div style="width: 280px; min-width: 280px; padding: 20px; background: #fff; border-right: 2px solid #000; text-align: center;">
+                <div style="width: 240px; height: 300px; border: 4px solid #000; background: #eee; overflow: hidden; margin: 0 auto;">
+                  <img src="${formatDriveLink(r.foto)}" style="width: 100%; height: 100%; object-fit: cover;" crossorigin="anonymous">
                 </div>
-                <div style="margin-top: 20px; font-size: 0.9rem; font-weight: bold; color: #c0392b; text-transform: uppercase;">
-                  CUALQUIER INFORMACIÓN A:<br>${r.contacto || 'POLICÍA LOCAL'}<br><br>AL TEL: ${r.telefono || '101 / 911'}
+                <div style="margin-top: 20px; font-size: 0.85rem; font-weight: bold; color: #c0392b; text-transform: uppercase;">
+                   INFORMAR A:<br>${r.dependencia}<br><br>TEL: ${r.telefono} / 911
                 </div>
               </div>
               
-              <div style="flex-grow: 1; padding: 30px; display: flex; flex-direction: column; justify-content: center;">
-                <div style="font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase;"><b>DESAPARECIDO EN:</b> ${r.localidad || '-'}</div>
-                <div style="font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase;"><b>EN FECHA:</b> ${r.fecha || '-'}</div>
-                <div style="font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase;"><b>A LAS:</b> ${r.hora || '-'}</div>
+              <div style="flex-grow: 1; padding: 25px; display: flex; flex-direction: column; justify-content: center;">
+                <div style="font-size: 1.1rem; margin-bottom: 12px; text-transform: uppercase;"><b>DESAPARECIDO EN:</b> ${r.localidad}</div>
+                <div style="font-size: 1.1rem; margin-bottom: 12px; text-transform: uppercase;"><b>FECHA:</b> ${r.fecha} | <b>HORA:</b> ${r.hora}</div>
                 <br>
-                <div style="font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase;"><b>NOMBRE COMPLETO:</b> ${r.nombre || '-'}</div>
-                <div style="font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase;"><b>EDAD:</b> ${r.edad || '-'} AÑOS</div>
+                <div style="font-size: 1.3rem; margin-bottom: 12px; text-transform: uppercase;"><b>NOMBRE:</b> ${r.nombre}</div>
+                <div style="font-size: 1.1rem; margin-bottom: 12px; text-transform: uppercase;"><b>EDAD:</b> ${r.edad} AÑOS</div>
                 <br>
-                <div style="font-size: 1.2rem; margin-bottom: 10px; text-transform: uppercase;"><b>DESCRIPCIÓN:</b></div>
-                <div style="font-size: 1.1rem; text-align: justify; line-height: 1.5;">
-                  ${r.descripcion || 'Sin descripción adicional.'}
-                </div>
+                <div style="font-size: 1rem; margin-bottom: 5px; text-transform: uppercase;"><b>DESCRIPCIÓN / VESTIMENTA:</b></div>
+                <div style="font-size: 1rem; text-align: justify; line-height: 1.4; margin-bottom: 15px;">${r.descripcion || 'Sin datos'}</div>
+                <div style="font-size: 1rem; margin-bottom: 5px; text-transform: uppercase;"><b>RESEÑA DEL HECHO:</b></div>
+                <div style="font-size: 1rem; text-align: justify; line-height: 1.4;">${r.resena || 'Sin reseña'}</div>
               </div>
+
             </div>
           </div>
           
-          <div style="background-color: #0d2545; height: 80px; border-top: 8px solid #1a6fba; position: absolute; bottom: 0; width: 100%;"></div>
+          <div style="background-color: #0d2545; height: 60px; border-top: 8px solid #1a6fba; position: absolute; bottom: 0; width: 100%;"></div>
         </div>
       `;
 
       const nombreArchivo = r.nombre ? r.nombre.replace(/ /g, '_') : 'Busqueda';
-      const opt = {
+      
+      html2pdf().set({
         margin:       0,
         filename:     `Alerta_${nombreArchivo}.pdf`,
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { scale: 2, useCORS: true },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-      };
-
-      html2pdf().set(opt).from(htmlParaPDF).save().then(() => {
+      }).from(htmlParaPDF).save().then(() => {
         document.getElementById('status-txt').innerText = statusOriginal;
       });
     }
 
-    window.onload = () => {
-      cargar();
-      setInterval(cargar, 60000); // Consulta real cada 1 minuto (depende del delay de GitHub)
-    };
+    window.onload = cargarDatos;
+    setInterval(cargarDatos, 30000); // Consulta real cada 30 segundos
   </script>
 </body>
 </html>
