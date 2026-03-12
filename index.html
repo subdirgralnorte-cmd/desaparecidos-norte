@@ -9,6 +9,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <style>
+    /* DISEÑO WEB Y MÓVIL INTACTO */
     :root { --azul-policia: #0d2545; --azul-acento: #1a6fba; --gris-claro: #f8f9fa; }
     body { font-family: 'Roboto', sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; }
     header { background-color: var(--azul-policia); color: white; padding: 50px 60px; display: flex; justify-content: space-between; align-items: center; border-bottom: 8px solid var(--azul-acento); }
@@ -57,7 +58,7 @@
   <footer id="pie-institucional"></footer>
 
   <script>
-    // URL DE TU SCRIPT EN VIVO
+    // TU URL DE SCRIPT YA ESTÁ COLOCADA AQUÍ
     const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbw8m7K4ogyIhubFaTUUG5gn-lcb75NJlM708VM1yoHCuiOmhpF4WfHbvaKOE4ZmRNBl/exec';
 
     let datosGlobales = [];
@@ -66,6 +67,20 @@
       if (!url) return '';
       const match = url.match(/(?:id=|d\/)([a-zA-Z0-9_-]+)/);
       return match ? `https://lh3.googleusercontent.com/d/${match[1]}` : url;
+    }
+
+    // Funciones de limpieza por si el script aún manda formatos viejos
+    function limpiarTexto(texto) {
+      if (!texto) return '-';
+      if (texto.includes('T') && texto.includes('1899')) {
+        let d = new Date(texto);
+        return d.toLocaleTimeString('es-AR', {hour: '2-digit', minute:'2-digit'});
+      }
+      if (texto.includes('T') && texto.length > 15) {
+        let p = texto.split('T')[0].split('-');
+        return `${p[2]}/${p[1]}/${p[0]}`;
+      }
+      return texto;
     }
 
     async function cargarDatos() {
@@ -101,8 +116,8 @@
             </div>
           </div>
           <div class="col-derecha">
-            <div class="info-linea"><b>DESAPARECIDO EN:</b> ${r.localidad}</div>
-            <div class="info-linea"><b>FECHA:</b> ${r.fecha} | <b>HORA:</b> ${r.hora}</div>
+            <div class="info-linea"><b>DESAPARECIDO EN:</b> ${limpiarTexto(r.localidad)}</div>
+            <div class="info-linea"><b>FECHA:</b> ${limpiarTexto(r.fecha)} | <b>HORA:</b> ${limpiarTexto(r.hora)}</div>
             <br>
             <div class="info-linea"><b>NOMBRE:</b> ${r.nombre}</div>
             <div class="info-linea"><b>EDAD:</b> ${r.edad} AÑOS</div>
@@ -118,48 +133,51 @@
       `).join('');
     }
 
+    // PDF A4 HORIZONTAL CON FICHA ACHICADA 30%
     function descargarPDF(index) {
       const r = datosGlobales[index];
       const statusOriginal = document.getElementById('status-txt').innerText;
-      document.getElementById('status-txt').innerText = '⏳ Generando PDF A4... Por favor espere.';
+      document.getElementById('status-txt').innerText = '⏳ Generando PDF A4 Horizontal... Por favor espere.';
 
       const htmlParaPDF = `
-        <div style="width: 210mm; min-height: 296mm; position: relative; background: #ffffff; font-family: 'Roboto', sans-serif; box-sizing: border-box; overflow: hidden;">
+        <div style="width: 297mm; min-height: 210mm; position: relative; background: #ffffff; font-family: 'Roboto', sans-serif; box-sizing: border-box; overflow: hidden;">
           
-          <div style="background-color: #0d2545; color: white; padding: 40px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 8px solid #1a6fba;">
+          <div style="background-color: #0d2545; color: white; padding: 25px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 8px solid #1a6fba;">
             <div>
-              <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 3.5rem; line-height: 1; text-transform: uppercase; letter-spacing: -2px;">Búsqueda de<br>Personas</h1>
-              <p style="font-size: 1.3rem; margin-top: 15px; font-weight: 400; text-transform: uppercase; margin-bottom: 0;">Dirección General Departamentales Norte</p>
+              <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 3rem; line-height: 1; text-transform: uppercase; letter-spacing: -2px;">Búsqueda de Personas</h1>
+              <p style="font-size: 1.2rem; margin-top: 5px; font-weight: 400; text-transform: uppercase; margin-bottom: 0;">Dirección General Departamentales Norte</p>
             </div>
-            <img src="https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png" style="height: 160px;" crossorigin="anonymous">
+            <img src="https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png" style="height: 100px;" crossorigin="anonymous">
           </div>
           
-          <div style="padding: 40px 50px;">
-            <div style="display: flex; background: #f8f9fa; border: 2px solid #000; border-radius: 4px;">
-              <div style="width: 280px; min-width: 280px; padding: 20px; background: #fff; border-right: 2px solid #000; text-align: center;">
-                <div style="width: 240px; height: 300px; border: 4px solid #000; background: #eee; overflow: hidden; margin: 0 auto;">
-                  <img src="${formatDriveLink(r.foto)}" style="width: 100%; height: 100%; object-fit: cover;" crossorigin="anonymous">
+          <div style="padding: 20px 50px; display: flex; justify-content: center; align-items: center; height: 130mm;">
+            <div style="transform: scale(0.70); transform-origin: center center; width: 100%; max-width: 1100px;">
+              <div style="display: flex; background: #f8f9fa; border: 2px solid #000; border-radius: 4px;">
+                <div style="width: 320px; min-width: 320px; padding: 20px; background: #fff; border-right: 2px solid #000; text-align: center;">
+                  <div style="width: 280px; height: 350px; border: 4px solid #000; background: #eee; overflow: hidden; margin: 0 auto;">
+                    <img src="${formatDriveLink(r.foto)}" style="width: 100%; height: 100%; object-fit: cover;" crossorigin="anonymous">
+                  </div>
+                  <div style="margin-top: 20px; font-size: 1rem; font-weight: bold; color: #c0392b; text-transform: uppercase;">
+                     INFORMAR A:<br>${r.dependencia}<br><br>TEL: ${r.telefono} / 911
+                  </div>
                 </div>
-                <div style="margin-top: 20px; font-size: 0.85rem; font-weight: bold; color: #c0392b; text-transform: uppercase;">
-                   INFORMAR A:<br>${r.dependencia}<br><br>TEL: ${r.telefono} / 911
+                <div style="flex-grow: 1; padding: 30px; display: flex; flex-direction: column; justify-content: center;">
+                  <div style="font-size: 1.3rem; margin-bottom: 12px; text-transform: uppercase;"><b>DESAPARECIDO EN:</b> ${limpiarTexto(r.localidad)}</div>
+                  <div style="font-size: 1.3rem; margin-bottom: 12px; text-transform: uppercase;"><b>FECHA:</b> ${limpiarTexto(r.fecha)} | <b>HORA:</b> ${limpiarTexto(r.hora)}</div>
+                  <br>
+                  <div style="font-size: 1.5rem; margin-bottom: 12px; text-transform: uppercase;"><b>NOMBRE:</b> ${r.nombre}</div>
+                  <div style="font-size: 1.3rem; margin-bottom: 12px; text-transform: uppercase;"><b>EDAD:</b> ${r.edad} AÑOS</div>
+                  <br>
+                  <div style="font-size: 1.2rem; margin-bottom: 5px; text-transform: uppercase;"><b>DESCRIPCIÓN / VESTIMENTA:</b></div>
+                  <div style="font-size: 1.2rem; text-align: justify; line-height: 1.4; margin-bottom: 15px;">${r.descripcion || 'Sin datos'}</div>
+                  <div style="font-size: 1.2rem; margin-bottom: 5px; text-transform: uppercase;"><b>RESEÑA DEL HECHO:</b></div>
+                  <div style="font-size: 1.2rem; text-align: justify; line-height: 1.4;">${r.resena || 'Sin reseña'}</div>
                 </div>
-              </div>
-              <div style="flex-grow: 1; padding: 25px; display: flex; flex-direction: column; justify-content: center;">
-                <div style="font-size: 1.1rem; margin-bottom: 12px; text-transform: uppercase;"><b>DESAPARECIDO EN:</b> ${r.localidad}</div>
-                <div style="font-size: 1.1rem; margin-bottom: 12px; text-transform: uppercase;"><b>FECHA:</b> ${r.fecha} | <b>HORA:</b> ${r.hora}</div>
-                <br>
-                <div style="font-size: 1.3rem; margin-bottom: 12px; text-transform: uppercase;"><b>NOMBRE:</b> ${r.nombre}</div>
-                <div style="font-size: 1.1rem; margin-bottom: 12px; text-transform: uppercase;"><b>EDAD:</b> ${r.edad} AÑOS</div>
-                <br>
-                <div style="font-size: 1rem; margin-bottom: 5px; text-transform: uppercase;"><b>DESCRIPCIÓN / VESTIMENTA:</b></div>
-                <div style="font-size: 1rem; text-align: justify; line-height: 1.4; margin-bottom: 15px;">${r.descripcion || 'Sin datos'}</div>
-                <div style="font-size: 1rem; margin-bottom: 5px; text-transform: uppercase;"><b>RESEÑA DEL HECHO:</b></div>
-                <div style="font-size: 1rem; text-align: justify; line-height: 1.4;">${r.resena || 'Sin reseña'}</div>
               </div>
             </div>
           </div>
           
-          <div style="background-color: #0d2545; height: 60px; border-top: 8px solid #1a6fba; position: absolute; bottom: 0; width: 100%;"></div>
+          <div style="background-color: #0d2545; height: 40px; border-top: 8px solid #1a6fba; position: absolute; bottom: 0; width: 100%;"></div>
         </div>
       `;
 
@@ -170,7 +188,8 @@
         filename:     `Alerta_${nombreArchivo}.pdf`,
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { scale: 2, useCORS: true },
-        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        // AQUÍ ES DONDE SE CONFIGURA COMO HORIZONTAL (landscape)
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'landscape' }
       }).from(htmlParaPDF).save().then(() => {
         document.getElementById('status-txt').innerText = statusOriginal;
       });
