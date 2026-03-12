@@ -58,11 +58,11 @@
   <footer id="pie-institucional"></footer>
 
   <script>
-    // TU URL DE SCRIPT DE GOOGLE
     const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbw8m7K4ogyIhubFaTUUG5gn-lcb75NJlM708VM1yoHCuiOmhpF4WfHbvaKOE4ZmRNBl/exec';
 
     let datosGlobales = [];
 
+    // Link arreglado para evitar bloqueos
     function formatDriveLink(url) {
       if (!url) return '';
       const match = url.match(/(?:id=|d\/)([a-zA-Z0-9_-]+)/);
@@ -132,70 +132,84 @@
       `).join('');
     }
 
-    // EL NUEVO CREADOR DE PDF: SIN EL "TRANSFORM" QUE FALLABA, ACHICADO NATURALMENTE Y ARRIBA
+    // NUEVO MOTOR PDF A4 HORIZONTAL EXACTO (1122px x 793px)
     function descargarPDF(index) {
       const r = datosGlobales[index];
       const statusOriginal = document.getElementById('status-txt').innerText;
-      document.getElementById('status-txt').innerText = '⏳ Generando PDF A4 Horizontal... Por favor espere.';
+      document.getElementById('status-txt').innerText = '⏳ Generando PDF A4... Por favor espere.';
 
-      const htmlParaPDF = `
-        <div style="width: 297mm; height: 209mm; position: relative; background: #ffffff; font-family: 'Roboto', sans-serif; box-sizing: border-box; overflow: hidden;">
+      // 1. Crear el contenedor físico invisible
+      const tempDiv = document.createElement('div');
+      tempDiv.style.position = 'absolute';
+      tempDiv.style.top = '-9999px';
+      tempDiv.style.left = '0';
+      
+      // Armamos la hoja en la medida exacta de A4 Horizontal para que calce justo (1122x793)
+      tempDiv.innerHTML = `
+        <div id="molde-impresion" style="width: 1122px; height: 793px; position: relative; background: #ffffff; font-family: 'Roboto', sans-serif; box-sizing: border-box; overflow: hidden;">
           
-          <div style="background-color: #0d2545; color: white; padding: 25px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 8px solid #1a6fba;">
+          <div style="background-color: #0d2545; color: white; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 8px solid #1a6fba; height: 160px; box-sizing: border-box;">
             <div>
-              <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 3rem; line-height: 1; text-transform: uppercase; letter-spacing: -2px;">Búsqueda de Personas</h1>
-              <p style="font-size: 1.2rem; margin-top: 5px; font-weight: 400; text-transform: uppercase; margin-bottom: 0;">Dirección General Departamentales Norte</p>
+              <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 3.5rem; line-height: 1; text-transform: uppercase; letter-spacing: -2px;">Búsqueda de Personas</h1>
+              <p style="font-size: 1.3rem; margin-top: 5px; font-weight: 400; text-transform: uppercase; margin-bottom: 0;">Dirección General Departamentales Norte</p>
             </div>
-            <img src="https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png" style="height: 100px;" crossorigin="anonymous">
+            <img src="https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png" style="height: 110px;" crossorigin="anonymous">
           </div>
           
-          <div style="padding: 0 50px; margin-top: 30px; display: flex; justify-content: center;">
-            <div style="width: 100%; max-width: 950px; display: flex; background: #f8f9fa; border: 2px solid #000; border-radius: 4px;">
+          <div style="padding: 30px 50px; height: 583px; box-sizing: border-box;">
+            <div style="display: flex; background: #f8f9fa; border: 2px solid #000; border-radius: 4px; height: 100%;">
               
-              <div style="width: 280px; min-width: 280px; padding: 15px; background: #fff; border-right: 2px solid #000; text-align: center;">
-                <div style="width: 220px; height: 280px; border: 4px solid #000; background: #eee; overflow: hidden; margin: 0 auto;">
+              <div style="width: 320px; min-width: 320px; padding: 20px; background: #fff; border-right: 2px solid #000; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div style="width: 260px; height: 320px; border: 4px solid #000; background: #eee; overflow: hidden;">
                   <img src="${formatDriveLink(r.foto)}" style="width: 100%; height: 100%; object-fit: cover;" crossorigin="anonymous">
                 </div>
-                <div style="margin-top: 15px; font-size: 0.9rem; font-weight: bold; color: #c0392b; text-transform: uppercase;">
+                <div style="margin-top: 15px; font-size: 1rem; font-weight: bold; color: #c0392b; text-transform: uppercase; text-align: center;">
                    INFORMAR A:<br>${r.dependencia}<br><br>TEL: ${r.telefono} / 911
                 </div>
               </div>
               
-              <div style="flex-grow: 1; padding: 20px 25px; display: flex; flex-direction: column; justify-content: flex-start;">
-                <div style="font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase;"><b>DESAPARECIDO EN:</b> ${limpiarTexto(r.localidad)}</div>
-                <div style="font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase;"><b>FECHA:</b> ${limpiarTexto(r.fecha)} | <b>HORA:</b> ${limpiarTexto(r.hora)}</div>
+              <div style="flex-grow: 1; padding: 30px; display: flex; flex-direction: column; justify-content: flex-start;">
+                <div style="font-size: 1.2rem; margin-bottom: 10px; text-transform: uppercase;"><b>DESAPARECIDO EN:</b> ${limpiarTexto(r.localidad)}</div>
+                <div style="font-size: 1.2rem; margin-bottom: 10px; text-transform: uppercase;"><b>FECHA:</b> ${limpiarTexto(r.fecha)} | <b>HORA:</b> ${limpiarTexto(r.hora)}</div>
                 <br>
-                <div style="font-size: 1.3rem; margin-bottom: 10px; text-transform: uppercase;"><b>NOMBRE:</b> ${r.nombre}</div>
-                <div style="font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase;"><b>EDAD:</b> ${r.edad} AÑOS</div>
+                <div style="font-size: 1.5rem; margin-bottom: 10px; text-transform: uppercase; color: #0d2545;"><b>NOMBRE:</b> ${r.nombre}</div>
+                <div style="font-size: 1.2rem; margin-bottom: 10px; text-transform: uppercase;"><b>EDAD:</b> ${r.edad} AÑOS</div>
                 <br>
-                <div style="font-size: 1rem; margin-bottom: 5px; text-transform: uppercase;"><b>DESCRIPCIÓN / VESTIMENTA:</b></div>
-                <div style="font-size: 0.95rem; text-align: justify; line-height: 1.4; margin-bottom: 10px;">${r.descripcion || 'Sin datos'}</div>
-                <div style="font-size: 1rem; margin-bottom: 5px; text-transform: uppercase;"><b>RESEÑA DEL HECHO:</b></div>
-                <div style="font-size: 0.95rem; text-align: justify; line-height: 1.4;">${r.resena || 'Sin reseña'}</div>
+                <div style="font-size: 1.1rem; margin-bottom: 5px; text-transform: uppercase;"><b>DESCRIPCIÓN / VESTIMENTA:</b></div>
+                <div style="font-size: 1.1rem; text-align: justify; line-height: 1.3; margin-bottom: 15px; max-height: 100px; overflow: hidden;">${r.descripcion || 'Sin datos'}</div>
+                <div style="font-size: 1.1rem; margin-bottom: 5px; text-transform: uppercase;"><b>RESEÑA DEL HECHO:</b></div>
+                <div style="font-size: 1.1rem; text-align: justify; line-height: 1.3; max-height: 100px; overflow: hidden;">${r.resena || 'Sin reseña'}</div>
               </div>
 
             </div>
           </div>
           
-          <div style="background-color: #0d2545; height: 40px; border-top: 8px solid #1a6fba; position: absolute; bottom: 0; width: 100%;"></div>
+          <div style="background-color: #0d2545; height: 50px; border-top: 8px solid #1a6fba; position: absolute; bottom: 0; width: 100%; box-sizing: border-box;"></div>
         </div>
       `;
 
+      // 2. Lo conectamos al documento web
+      document.body.appendChild(tempDiv);
+
       const nombreArchivo = r.nombre ? r.nombre.replace(/ /g, '_') : 'Busqueda';
-      
+      const molde = document.getElementById('molde-impresion');
+
+      // 3. Imprimimos forzando a que la cámara capture solo ese recuadro de píxeles
       html2pdf().set({
         margin:       0,
         filename:     `Alerta_${nombreArchivo}.pdf`,
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2, useCORS: true },
-        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'landscape' }
-      }).from(htmlParaPDF).save().then(() => {
+        html2canvas:  { scale: 2, useCORS: true, windowWidth: 1122, windowHeight: 793 },
+        jsPDF:        { unit: 'px', format: [1122, 793], orientation: 'landscape' }
+      }).from(molde).save().then(() => {
+        // 4. Limpiamos la basura invisible
+        document.body.removeChild(tempDiv);
         document.getElementById('status-txt').innerText = statusOriginal;
       });
     }
 
     window.onload = cargarDatos;
-    setInterval(cargarDatos, 10000); // Consulta el Script cada 10 segundos
+    setInterval(cargarDatos, 10000); 
   </script>
 </body>
 </html>
