@@ -1,7 +1,19 @@
 {
-  "actualizado": "2026-03-11T23:49:57Z",
-  "total": 5,
+  "actualizado": "2026-03-12T02:50:42Z",
+  "total": 11,
   "registros": [
+    {
+      "localidad": "Villa de Soto",
+      "nombre": "Paredes Claudio Javier",
+      "edad": "41",
+      "fecha": "3/03/2026",
+      "hora": "22:00:00",
+      "descripcion": "0",
+      "contacto": "Patrulla Preventiva Villa de Soto",
+      "telefono": "3549426784",
+      "foto": "https://drive.google.com/open?id=1Z4SwzUmfntI13Z_LHYR_M5O2nWb_xQa5",
+      "estado": ""
+    },
     {
       "localidad": "San Marcos Sierras",
       "nombre": "German Gonzalo Diaz",
@@ -12,6 +24,18 @@
       "contacto": "Cria Dtto San Marcos Sierras",
       "telefono": "3549496020",
       "foto": "https://drive.google.com/open?id=10fhXA1CiJWXP7Gv1zGB-uFCzK1mOz4Hv",
+      "estado": ""
+    },
+    {
+      "localidad": "CRUZ DEL EJE",
+      "nombre": "MARIO MAURICIO MUÑOZ",
+      "edad": "52",
+      "fecha": "1/03/2026",
+      "hora": "23:50:00",
+      "descripcion": "un jogging color gris, remera color negra con un logo en el pecho, y una riñonera color negra con amarilla, zapatillas color gris y azul, contextura física delegada, de 2 Mts. aprox. de altura, cabello corto canoso",
+      "contacto": "DIVISION DE INVESTIGACIONES",
+      "telefono": "03549-426763",
+      "foto": "https://drive.google.com/open?id=1BnO0Yb0qgChGRkaWzeaurzuxFQxN45BA",
       "estado": ""
     },
     {
@@ -27,6 +51,18 @@
       "estado": ""
     },
     {
+      "localidad": "VILLA DOLORES",
+      "nombre": "JORGE ALEJANDRO LOPEZ",
+      "edad": "52",
+      "fecha": "3/03/2026",
+      "hora": "23:00:00",
+      "descripcion": "VESTIA, SHORT TIPO FUTBOL COLOR NEGRO, GORRA COLOR ROJO, TORSO DESNUDO, OJOTAS O ZAPATILLAS NEGRA.-",
+      "contacto": "CRIA. VILLA DOLORES",
+      "telefono": "354426416",
+      "foto": "https://drive.google.com/open?id=1hFWDk2q8ku850V_LFYnnYF_zMsvbZjCO",
+      "estado": ""
+    },
+    {
       "localidad": "TANTI",
       "nombre": "RAMOS SANDRA ISABEL",
       "edad": "54",
@@ -36,6 +72,18 @@
       "contacto": "TANTI",
       "telefono": "3541641559",
       "foto": "https://drive.google.com/open?id=1jWfpKxexx5bQUSZlBGTBePLEx3mZfke6",
+      "estado": ""
+    },
+    {
+      "localidad": "DEAN FUNES",
+      "nombre": "MAXIMO ROMERO",
+      "edad": "16",
+      "fecha": "1/03/2026",
+      "hora": "2:00:00",
+      "descripcion": "TES CLARA, CONTEXTURA DELGADA, MIDE 1.76, OJOS VERDES ,VESTIA JEAN AZUL REMERA BLANCA ADIDAS CON RAYAS NEGRAS",
+      "contacto": "CRIA DEAN FUNES",
+      "telefono": "03521426232",
+      "foto": "https://drive.google.com/open?id=18KJ3gXelnVLAZgrMmBAgWk2U5Lkh2Apx",
       "estado": ""
     },
     {
@@ -51,6 +99,18 @@
       "estado": ""
     },
     {
+      "localidad": "VILLA DE SOTO",
+      "nombre": "FRANCO MATIAS",
+      "edad": "34",
+      "fecha": "23/02/2026",
+      "hora": "7:00:00",
+      "descripcion": "El mismo es de contextura robusta, aprox. 1,70 m de altura, cabello castaño oscuro",
+      "contacto": "VILLA DE SOTO",
+      "telefono": "3544 40-7572",
+      "foto": "https://drive.google.com/open?id=1XRFxpIk3hBVMCr0Vd0zxqsNxaqifuR2Q",
+      "estado": ""
+    },
+    {
       "localidad": "San Marcos Sierras",
       "nombre": "BNB",
       "edad": "16",
@@ -60,6 +120,18 @@
       "contacto": "Cria Dtto San Marcos Sierras",
       "telefono": "3549496020",
       "foto": "https://drive.google.com/open?id=1kxevZhxTN4bRJgff1wR3i2pSQuUblMcu",
+      "estado": ""
+    },
+    {
+      "localidad": "Cruz del Eje",
+      "nombre": "Jonas joaquin Aguirre",
+      "edad": "14",
+      "fecha": "18/02/2026",
+      "hora": "1:30:00",
+      "descripcion": "0",
+      "contacto": "Duv Investigaciones",
+      "telefono": "3549426755",
+      "foto": "https://drive.google.com/open?id=1rGT1a1JrG7IXXdhIbU0X0X1cUziX0xEO",
       "estado": ""
     }
   ]
