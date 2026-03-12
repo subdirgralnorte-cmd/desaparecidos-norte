@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-03-12T12:27:08Z",
-  "total": 11,
+  "actualizado": "2026-03-12T14:35:36Z",
+  "total": 7,
   "registros": [
     {
       "localidad": "Villa de Soto",
@@ -12,18 +12,6 @@
       "contacto": "Patrulla Preventiva Villa de Soto",
       "telefono": "3549426784",
       "foto": "https://drive.google.com/open?id=1Z4SwzUmfntI13Z_LHYR_M5O2nWb_xQa5",
-      "estado": ""
-    },
-    {
-      "localidad": "San Marcos Sierras",
-      "nombre": "German Gonzalo Diaz",
-      "edad": "59",
-      "fecha": "2/03/2026",
-      "hora": "21:00:00",
-      "descripcion": "Desconoce la Vestimenta",
-      "contacto": "Cria Dtto San Marcos Sierras",
-      "telefono": "3549496020",
-      "foto": "https://drive.google.com/open?id=10fhXA1CiJWXP7Gv1zGB-uFCzK1mOz4Hv",
       "estado": ""
     },
     {
@@ -48,18 +36,6 @@
       "contacto": "DIVISION INVESTIGACIONES CRUZ DEL EJE",
       "telefono": "3549-426763",
       "foto": "https://drive.google.com/open?id=1YzY-Rhh53dHT0koItR-xRyRh12OaL9C1",
-      "estado": ""
-    },
-    {
-      "localidad": "VILLA DOLORES",
-      "nombre": "JORGE ALEJANDRO LOPEZ",
-      "edad": "52",
-      "fecha": "3/03/2026",
-      "hora": "23:00:00",
-      "descripcion": "VESTIA, SHORT TIPO FUTBOL COLOR NEGRO, GORRA COLOR ROJO, TORSO DESNUDO, OJOTAS O ZAPATILLAS NEGRA.-",
-      "contacto": "CRIA. VILLA DOLORES",
-      "telefono": "354426416",
-      "foto": "https://drive.google.com/open?id=1hFWDk2q8ku850V_LFYnnYF_zMsvbZjCO",
       "estado": ""
     },
     {
@@ -96,30 +72,6 @@
       "contacto": "CONTEXTURA FÍSICA DELGADA, 1.60M, CABELLOS COLOR CASTAÑO, TIENE PROBLEMAS DE CONDUCTA Y APARENTEMENTE CONSUME ALCOHOL",
       "telefono": "3549426724",
       "foto": "https://drive.google.com/open?id=1szSl5YZMV_7kOUaLyPFJqTwO9SGN7r7i",
-      "estado": ""
-    },
-    {
-      "localidad": "VILLA DE SOTO",
-      "nombre": "FRANCO MATIAS",
-      "edad": "34",
-      "fecha": "23/02/2026",
-      "hora": "7:00:00",
-      "descripcion": "El mismo es de contextura robusta, aprox. 1,70 m de altura, cabello castaño oscuro",
-      "contacto": "VILLA DE SOTO",
-      "telefono": "3544 40-7572",
-      "foto": "https://drive.google.com/open?id=1XRFxpIk3hBVMCr0Vd0zxqsNxaqifuR2Q",
-      "estado": ""
-    },
-    {
-      "localidad": "San Marcos Sierras",
-      "nombre": "BNB",
-      "edad": "16",
-      "fecha": "17/02/2026",
-      "hora": "1:20:00",
-      "descripcion": "0",
-      "contacto": "Cria Dtto San Marcos Sierras",
-      "telefono": "3549496020",
-      "foto": "https://drive.google.com/open?id=1kxevZhxTN4bRJgff1wR3i2pSQuUblMcu",
       "estado": ""
     },
     {
