@@ -1,7 +1,19 @@
 {
-  "actualizado": "2026-03-14T23:56:35Z",
-  "total": 11,
+  "actualizado": "2026-03-15T02:54:54Z",
+  "total": 12,
   "registros": [
+    {
+      "localidad": "SAN MARCOS SIERRAS",
+      "nombre": "LOPEZ MARIANA SOL",
+      "edad": "27",
+      "fecha": "14/03/2026",
+      "hora": "21:50:00",
+      "descripcion": "0",
+      "contacto": "SAN MARCOS SIERRAS",
+      "telefono": "3549496020",
+      "foto": "https://drive.google.com/open?id=12aVz2HkYwqbCT5HTbrdwxj-iK5PMWcTi",
+      "estado": ""
+    },
     {
       "localidad": "Villa de Soto",
       "nombre": "Paredes Claudio Javier",
