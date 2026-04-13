@@ -1,7 +1,19 @@
 {
-  "actualizado": "2026-04-13T06:33:13Z",
-  "total": 12,
+  "actualizado": "2026-04-13T08:33:18Z",
+  "total": 13,
   "registros": [
+    {
+      "localidad": "VILLA DE SOTO",
+      "nombre": "FRANCISCO EZEQUIEL GONZÁLEZ RODRÍGUEZ",
+      "edad": "23",
+      "fecha": "12/04/2026",
+      "hora": "3:05:00",
+      "descripcion": "CONTEXTURA FÍSICA DELGADA, TES TRIGUEÑA, OJOS MARRONES CLAROS, DE 1.70  DE ALTO APROXIMADAMENTE, CABELLO CORTO CON RULOS COLOR NEGRO, TATUAJE DE UN LEÓN EN EL PECHO, EN EL BRAZO IZQUIERDO EL NOMBRE \"RENATA\", NO APORTA VESTIMENTA AL MOMENTO",
+      "contacto": "VILLA DE SOTO",
+      "telefono": "3549426755",
+      "foto": "https://drive.google.com/open?id=1Kd4-ZX3xz5vG4TqWP5HJz01qlRX1b3iL",
+      "estado": ""
+    },
     {
       "localidad": "SAN MARCOS SIERRAS",
       "nombre": "LOPEZ MARIANA SOL",
