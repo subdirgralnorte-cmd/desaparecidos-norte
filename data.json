@@ -1,7 +1,19 @@
 {
-  "actualizado": "2026-04-19T19:02:01Z",
-  "total": 14,
+  "actualizado": "2026-04-19T19:49:22Z",
+  "total": 15,
   "registros": [
+    {
+      "localidad": "SERREZUELA",
+      "nombre": "CARRIZO GRACIELA EVA",
+      "edad": "56",
+      "fecha": "19/04/2026",
+      "hora": "14:20:00",
+      "descripcion": "DE CONTEXTURA FÍSICA FORMAL, 1,65 MTS, 56 KG APROX, TEZ BLANCA, CABELLO RUBIO, ANGIOMA EN LA NARIZ Y TATUAJE EN HOMBRO IZQUIERDO,",
+      "contacto": "De contextura física formal, 1,65 Mts,  56 kg aprox, tez blanca, cabello rubio,  angioma en la nariz y tatuaje en hombro izquierdo",
+      "telefono": "62/26",
+      "foto": "https://drive.google.com/open?id=1ZsFSG_O6bL0HTiFCc6uUCEWNmQPWUeGP",
+      "estado": ""
+    },
     {
       "localidad": "VILLA CARLOS PAZ",
       "nombre": "IRENE GALVAN",
