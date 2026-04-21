@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-04-21T07:09:43Z",
-  "total": 15,
+  "actualizado": "2026-04-21T09:02:13Z",
+  "total": 18,
   "registros": [
     {
       "localidad": "SERREZUELA",
@@ -36,6 +36,42 @@
       "contacto": "VILLA DE SOTO",
       "telefono": "3549426755",
       "foto": "https://drive.google.com/open?id=1Kd4-ZX3xz5vG4TqWP5HJz01qlRX1b3iL",
+      "estado": ""
+    },
+    {
+      "localidad": "POZO DEL ÑATO (MEDIA NARANJA)",
+      "nombre": "MALDONADO CINTHIA",
+      "edad": "36",
+      "fecha": "31/03/2026",
+      "hora": "8:00:00",
+      "descripcion": "desconoce la vestimenta",
+      "contacto": "URD CRUZ DEL EJE",
+      "telefono": "0000000000000",
+      "foto": "https://drive.google.com/open?id=1kvfFy-UNDUD4DKb-Z3EbjvBWHPsozEFy",
+      "estado": ""
+    },
+    {
+      "localidad": "villa de soto",
+      "nombre": "quintero maria jimena",
+      "edad": "45",
+      "fecha": "19/03/2026",
+      "hora": "8:00:00",
+      "descripcion": "), contextura física robusta, tes trigueña, ojos marrones claros, cabello negro, de 1.60 de altura aprox, la cual vestia pantalón color de jeans color azul y campera deportiva color azul con lineas amarillas y un escudo del equipo de futbol boca",
+      "contacto": "urd cruz del eje",
+      "telefono": "0000000000",
+      "foto": "https://drive.google.com/open?id=1VJ1ryZu_FQQsWx7GcJB0T4xX9SFmEzXW",
+      "estado": ""
+    },
+    {
+      "localidad": "COSQUIN",
+      "nombre": "ESMERALDA MARISA PEREYRA LOPEZ",
+      "edad": "2",
+      "fecha": "18/03/2026",
+      "hora": "15:00:00",
+      "descripcion": "VESTIA UN BODY DE COLOR GRIS. 60 CM DE ALTURA APROXIMADAMENTE, TEZ TRIGUEÑA, PELO CASTAÑO",
+      "contacto": "CRIA. DTTO. COSQUIN",
+      "telefono": "03541-458160",
+      "foto": "https://drive.google.com/open?id=1G4e0uMOjJ5vb1bnxi76TU3ZOZdXkV-mh",
       "estado": ""
     },
     {
