@@ -1,7 +1,55 @@
 {
-  "actualizado": "2026-04-21T23:46:49Z",
-  "total": 18,
+  "actualizado": "2026-04-22T01:07:32Z",
+  "total": 22,
   "registros": [
+    {
+      "localidad": "CUESTA BLANCA",
+      "nombre": "LUCANO MARQUEZ",
+      "edad": "31",
+      "fecha": "19/04/2026",
+      "hora": "12:00:00",
+      "descripcion": "S/D",
+      "contacto": "DIC DUAR",
+      "telefono": "138/26",
+      "foto": "https://drive.google.com/open?id=1kDpuBU9b0ozaM2PQNi1xtx0WVDfqHBMT",
+      "estado": ""
+    },
+    {
+      "localidad": "CUESTA BLANCA",
+      "nombre": "IVAN EZEQUIEL GONZALEZ",
+      "edad": "32",
+      "fecha": "19/04/2026",
+      "hora": "12:00:00",
+      "descripcion": "S/D",
+      "contacto": "DIC DUAR",
+      "telefono": "138/26",
+      "foto": "https://drive.google.com/open?id=19b3ExNAyXiq8hYC5yb7hU2nzMQZrQfHn",
+      "estado": ""
+    },
+    {
+      "localidad": "CUESTA BLANCA",
+      "nombre": "JONATHAN CUELLO",
+      "edad": "32",
+      "fecha": "19/04/2026",
+      "hora": "12:00:00",
+      "descripcion": "S/D",
+      "contacto": "DUAR- DIC- SUB CRIA ICHO CRUZ",
+      "telefono": "138/26",
+      "foto": "https://drive.google.com/open?id=1HVcw0s1QAt67oz6W3xzSkUo33_jx7f0P",
+      "estado": ""
+    },
+    {
+      "localidad": "TANTI",
+      "nombre": "NANI RODRIGO MARCELO",
+      "edad": "56",
+      "fecha": "20/04/2026",
+      "hora": "17:10:00",
+      "descripcion": "Vestía campera verde, jean oscuro, 1,65m de estatura, tez blanco, con barba. Se activa protocolo de búsqueda, se autoriza difusión de fotografía.",
+      "contacto": "CRIA TANTI, DIC, DUAR",
+      "telefono": "SAC 14630290",
+      "foto": "https://drive.google.com/open?id=11ufZ7G9mL2goOrr5cpAwumJLVIWgwr1g",
+      "estado": "https://drive.google.com/open?id=1nYN7ffWFitUAeNYY0X9ipWNqUCskIobP"
+    },
     {
       "localidad": "SERREZUELA",
       "nombre": "CARRIZO GRACIELA EVA",
