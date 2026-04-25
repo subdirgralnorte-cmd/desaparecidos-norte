@@ -1,7 +1,19 @@
 {
-  "actualizado": "2026-04-25T22:18:02Z",
-  "total": 23,
+  "actualizado": "2026-04-25T22:59:57Z",
+  "total": 24,
   "registros": [
+    {
+      "localidad": "VILLA DE MARIA",
+      "nombre": "LUNA PILAR MIRANDA",
+      "edad": "16",
+      "fecha": "24/04/2026",
+      "hora": "16:30:00",
+      "descripcion": "contextura física robusta, de 1,60 Mts, 60 kg aprox, tez trigueña, cabello teñido colorado claro,  un piercing en la nariz lado derecho y otro en labio inferior, vestía joggins gris, zapatillas puma color azul con líneas blancas, con 2 mochilas, una color marron con naranja del colegio y otra color gris con frajas verdes con roja.",
+      "contacto": "DESTACAMENTO SANTA ELENA",
+      "telefono": "0",
+      "foto": "https://drive.google.com/open?id=1NC4f109QxPDHv-3sVNA1ebi-L7MntDQJ",
+      "estado": ""
+    },
     {
       "localidad": "CUESTA BLANCA",
       "nombre": "LUCANO MARQUEZ",
