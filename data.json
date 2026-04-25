@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-04-25T08:03:25Z",
-  "total": 22,
+  "actualizado": "2026-04-25T09:06:49Z",
+  "total": 23,
   "registros": [
     {
       "localidad": "CUESTA BLANCA",
@@ -265,6 +265,18 @@
       "telefono": "3549426755",
       "foto": "https://drive.google.com/open?id=1rGT1a1JrG7IXXdhIbU0X0X1cUziX0xEO",
       "estado": ""
+    },
+    {
+      "localidad": "VILLA DE SOTO",
+      "nombre": "DIAZ IVAN EZEQUIEL",
+      "edad": "19",
+      "fecha": "21/04/2026",
+      "hora": "03:30",
+      "descripcion": "Contextura física delgado, tes trigueña, ojos marrones, cabello negro, corto, de 1.60 mts aprox, el cual vestía pantalón color de jogging color gris, con tres líneas negras al costado, campera de nylon  negra y campera de acetato de Argentina, quien tiene problema de adicciones.",
+      "contacto": "PERSONAL DE SECCION INVESTIGACIONES Y DUAR",
+      "telefono": "303/26",
+      "foto": "Columna 13",
+      "estado": "Columna 14"
     }
   ]
 }
