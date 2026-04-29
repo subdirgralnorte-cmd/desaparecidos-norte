@@ -1,7 +1,19 @@
 {
-  "actualizado": "2026-04-29T07:12:25Z",
-  "total": 25,
+  "actualizado": "2026-04-29T09:26:10Z",
+  "total": 26,
   "registros": [
+    {
+      "localidad": "Pasaje Cuchilla Nevada s/n, Villa Carlos Paz",
+      "nombre": "Ordóñez Eusebio Félix",
+      "edad": "75",
+      "fecha": "28/04/2026",
+      "hora": "1:45:00",
+      "descripcion": "vestía un jean azul oscuro, campera azul oscuro, zapatos color claro, le faltan piezas dentales, canoso, 1,70 mts, contextura física delgado, menciona tiene principio de Alzheimer, sufre corazón y presión arterial",
+      "contacto": "Unidad Judicial de Villa Carlos Paz",
+      "telefono": "3541428181",
+      "foto": "https://drive.google.com/open?id=1nbNawVAwxFmgstXrLuOAUnLUE5NfFSZU",
+      "estado": ""
+    },
     {
       "localidad": "SAN FRANCISCO",
       "nombre": "ABRIL BERGUESE",
