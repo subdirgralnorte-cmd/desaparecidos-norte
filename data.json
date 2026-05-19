@@ -1,7 +1,19 @@
 {
-  "actualizado": "2026-05-19T05:57:38Z",
-  "total": 2,
+  "actualizado": "2026-05-19T10:00:50Z",
+  "total": 3,
   "registros": [
+    {
+      "localidad": "SAN MARTIN 1115 HUERTA GRANDE",
+      "nombre": "NINA VICTORIA ULRICH",
+      "edad": "13",
+      "fecha": "18/05/2026",
+      "hora": "4:00:00",
+      "descripcion": "Mide 1,64 mts, es delgada, de tez blanca, ojos marrones y cabello castaño oscuro al hombro. Vestía pantalón ancho negro, polera roja y campera azul.",
+      "contacto": "Huerta Grande",
+      "telefono": "3548426661",
+      "foto": "https://drive.google.com/open?id=1IsbsIT0R2PVVnJQVtOPeKqrhSgCHZos2",
+      "estado": ""
+    },
     {
       "localidad": "Segunda Sombra s/n B° Tortoza Unquillo",
       "nombre": "JUAN ALFREDO AGUINALDO",
