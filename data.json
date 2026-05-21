@@ -1,7 +1,19 @@
 {
-  "actualizado": "2026-05-21T19:16:43Z",
-  "total": 3,
+  "actualizado": "2026-05-21T21:00:02Z",
+  "total": 4,
   "registros": [
+    {
+      "localidad": "Magallanes esq. Balboa - VALLE HERMOSO",
+      "nombre": "TROGLIO ROLANDO ALBERTO",
+      "edad": "65",
+      "fecha": "21/05/2026",
+      "hora": "16:40:00",
+      "descripcion": "Sin datos",
+      "contacto": "VALLE HERMOSO",
+      "telefono": "3548 559182",
+      "foto": "https://drive.google.com/open?id=1wfQx_y53-v_BL2KIKyJDTEKd4Uuv92Mj",
+      "estado": ""
+    },
     {
       "localidad": "SAN MARTIN 1115 HUERTA GRANDE",
       "nombre": "NINA VICTORIA ULRICH",
