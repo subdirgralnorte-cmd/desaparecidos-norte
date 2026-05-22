@@ -1,7 +1,31 @@
 {
-  "actualizado": "2026-05-22T05:47:23Z",
-  "total": 4,
+  "actualizado": "2026-05-22T08:41:49Z",
+  "total": 6,
   "registros": [
+    {
+      "localidad": "Mza 212 Lote 2 Chacras La Josefina Villa Giardino",
+      "nombre": "MOLINA RUIZ ANDREY ANTONIE",
+      "edad": "25",
+      "fecha": "22/05/2026",
+      "hora": "2:30:00",
+      "descripcion": "Mide 1.80 aprox Tes de piel oscura (de color) pantalón jogging negro/oscuro \nBuzo negro con letras blancas y fucsia ,Mochila negra, gorra (no recuerda color)",
+      "contacto": "COMISARIA VILLA GIARDINO",
+      "telefono": "3548491232",
+      "foto": "https://drive.google.com/open?id=15TL9bm9y6zbplDBcjsMOZ9wZViBNA0oN",
+      "estado": ""
+    },
+    {
+      "localidad": "Av. Belgrano 1.800 (Hospital Regional Villa Dolores",
+      "nombre": "BUSTOS BRUNO",
+      "edad": "24",
+      "fecha": "22/05/2026",
+      "hora": "2:00:00",
+      "descripcion": "vestía buso deportivo rosa y campera de color negro",
+      "contacto": "DPTAL SAN JAVIER",
+      "telefono": "426416",
+      "foto": "https://drive.google.com/open?id=1YzfIv_Uj46gkIK2Ku3v-hb7OhCobFTJr",
+      "estado": ""
+    },
     {
       "localidad": "Magallanes esq. Balboa - VALLE HERMOSO",
       "nombre": "TROGLIO ROLANDO ALBERTO",
