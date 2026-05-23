@@ -1,7 +1,19 @@
 {
-  "actualizado": "2026-05-23T20:35:25Z",
-  "total": 7,
+  "actualizado": "2026-05-23T21:34:54Z",
+  "total": 8,
   "registros": [
+    {
+      "localidad": "TUCUMAN 555",
+      "nombre": "GALARZA MARIANELA LIZ",
+      "edad": "30",
+      "fecha": "23/05/2026",
+      "hora": "16:45:00",
+      "descripcion": "mide 1.75 mt de altura, es de contextura física robusta, tez trigueña, cabello negro hasta los hombros con rodete, posee un tatuaje chico en el cuello, vestía buzo tipo canguro verde oscuro, calza negra y no posee teléfono.",
+      "contacto": "INVESTIGACIONES",
+      "telefono": "3521526542",
+      "foto": "https://drive.google.com/open?id=1GCqSWb-t_XA1bmbB80G8Vims3NEiEx0z",
+      "estado": ""
+    },
     {
       "localidad": "Capilla del Monte",
       "nombre": "Romero Lorena Mabel",
