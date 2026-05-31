@@ -1,7 +1,19 @@
 {
-  "actualizado": "2026-05-31T22:34:33Z",
-  "total": 8,
+  "actualizado": "2026-05-31T23:41:34Z",
+  "total": 9,
   "registros": [
+    {
+      "localidad": "Marcos Sierras",
+      "nombre": "CHAPARRO VÍCTOR HUGO",
+      "edad": "35",
+      "fecha": "31/05/2026",
+      "hora": "18:45:00",
+      "descripcion": "Buzo color Marrón Claro, pantalón de Jean Azul.gorra negra,zapatillas Adidas de cuero blancas contextura física: mide 1,70mts Altura, tés morocho,cabello negro con rulos, ojos marrón oscuro,barba candado,delgado,posee un tatuaje en su mano derecha con el nombre DAY y un corazón",
+      "contacto": "CRIA SAN MARCOS",
+      "telefono": "3549528468",
+      "foto": "https://drive.google.com/open?id=1ShhzWeqxEfBCFLVtAAC9cAITxqzGFHk_",
+      "estado": ""
+    },
     {
       "localidad": "TUCUMAN 555",
       "nombre": "GALARZA MARIANELA LIZ",
