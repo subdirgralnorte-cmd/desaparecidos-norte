@@ -1,7 +1,19 @@
 {
-  "actualizado": "2026-06-02T21:47:44Z",
-  "total": 9,
+  "actualizado": "2026-06-02T23:23:30Z",
+  "total": 10,
   "registros": [
+    {
+      "localidad": "COSQUIN",
+      "nombre": "BARRIONUEVO AIRTON MAXIMO",
+      "edad": "13",
+      "fecha": "2/06/2026",
+      "hora": "17:50:00",
+      "descripcion": "mide 1,75 metros de estatura, es de contextura física robusta, tez blanca y tiene un corte en la ceja; al momento de su desaparición vestía una campera a cuadros negra con líneas blancas, pantalón joggin azul oscuro y zapatillas grises con negro.",
+      "contacto": "COSQUIN",
+      "telefono": "3541458160",
+      "foto": "https://drive.google.com/open?id=1U1jeZtXfGtrgdZyJ-F33oQlYNbt7QteN",
+      "estado": ""
+    },
     {
       "localidad": "SAN MARCOS SIERRAS",
       "nombre": "CHAPARRO VÍCTOR HUGO",
