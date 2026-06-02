@@ -108,7 +108,7 @@
               <img src="${formatDriveLink(r.foto)}" onerror="this.src='https://via.placeholder.com/280x350?text=SIN+IMAGEN'">
             </div>
             <div class="contacto-pie">
-              INFORMAR A:<br>${r.contacto || 'Dependencia Policial'}<br><br>
+              INFORMAR A:<br>${r.contacto || r.dependencia || 'Dependencia Policial'}<br><br>
               TEL: ${r.telefono || '-'} / 911
             </div>
           </div>
@@ -130,139 +130,114 @@
       `).join('');
     }
 
-    // MOTOR DE IMPRESIÓN RÍGIDO ANTIDEFORMACIONES
+    // NUEVO MOTOR PDF: ENCUADRE DE ARRIBA HACIA ABAJO + ESPERA DE FOTO
     function descargarPDF(index) {
       const r = datosGlobales[index];
-      const statusOriginal = document.getElementById('status-txt').innerText;
-      document.getElementById('status-txt').innerText = '⏳ Generando Alerta Oficial en Alta Calidad... Por favor espere.';
+      const statusTxt = document.getElementById('status-txt');
+      const statusOriginal = statusTxt.innerText;
+      statusTxt.innerText = '⏳ Cargando imagen oficial y generando Alerta A4...';
 
+      // Contenedor temporal puesto detrás de la web (no fuera de la pantalla)
       const tempDiv = document.createElement('div');
       tempDiv.style.position = 'absolute';
-      tempDiv.style.top = '-9999px';
+      tempDiv.style.top = '0';
       tempDiv.style.left = '0';
-      tempDiv.style.width = '794px';
-      tempDiv.style.height = '1123px';
-      tempDiv.style.overflow = 'hidden';
-      
-      // Maquetación absoluta por tabla para evitar fallas de escalado en dispositivos móviles
+      tempDiv.style.zIndex = '-999';
+      tempDiv.style.width = '794px'; 
+      tempDiv.style.visibility = 'hidden'; // Oculto pero físicamente presente para el render
+
       tempDiv.innerHTML = `
-        <table id="molde-impresion" width="794" height="1123" border="0" cellspacing="0" cellpadding="0" style="width: 794px; height: 1123px; background: #ffffff; font-family: 'Roboto', sans-serif; table-layout: fixed; box-sizing: border-box;">
-          <tr height="160">
-            <td style="background-color: #0d2545; padding: 25px 40px; border-bottom: 8px solid #1a6fba; vertical-align: middle;">
-              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="table-layout: fixed;">
-                <tr>
-                  <td style="vertical-align: middle;">
-                    <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 2.6rem; line-height: 1.1; text-transform: uppercase; letter-spacing: -1px; color: #ffffff; font-weight: 900;">Búsqueda de<br>Personas</h1>
-                    <p style="font-size: 1.1rem; margin: 8px 0 0 0; font-weight: 700; text-transform: uppercase; color: #ffffff;">Dirección General Departamentales Norte</p>
-                    <p style="font-size: 0.85rem; margin: 4px 0 0 0; font-weight: 400; text-transform: uppercase; color: #a4c8e1; letter-spacing: 0px;">Información aportada por las Unidades Regionales Departamentales Norte</p>
-                  </td>
-                  <td width="130" style="text-align: right; vertical-align: middle;">
-                    <img src="https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png" style="height: 110px; width: auto; object-fit: contain;">
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
+        <div id="molde-impresion" style="width: 794px; min-height: 1123px; background: #ffffff; font-family: 'Roboto', sans-serif; box-sizing: border-box; display: flex; flex-direction: column;">
           
-          <tr>
-            <td style="padding: 35px; vertical-align: top; background: #ffffff;">
-              <table width="714" border="0" cellspacing="0" cellpadding="0" style="background: #f8f9fa; border: 2px solid #000000; border-radius: 8px; table-layout: fixed; height: 860px;">
-                <tr>
-                  <td style="padding: 25px; vertical-align: top;">
-                    
-                    <table width="664" border="0" cellspacing="0" cellpadding="0" style="table-layout: fixed;">
-                      <tr>
-                        <td width="280" style="vertical-align: top; padding-right: 25px; border-right: 1px solid #cccccc;">
-                          <div style="width: 280px; height: 350px; border: 4px solid #000000; background: #eeeeee; display: flex; justify-content: center; align-items: center; overflow: hidden;">
-                            <img src="${formatDriveLink(r.foto)}" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.src='https://via.placeholder.com/280x350?text=SIN+IMAGEN'">
-                          </div>
-                          
-                          <div style="margin-top: 25px; font-size: 1.05rem; font-weight: bold; color: #c0392b; text-transform: uppercase; text-align: center; border: 2px dashed #c0392b; padding: 15px; background: #ffffff; line-height: 1.4;">
-                            INFORMAR A:<br>
-                            <span style="color: #000000; font-weight: bold;">${r.contacto || 'Dependencia Policial'}</span><br><br>
-                            TEL: <span style="color: #000000; font-weight: bold;">${r.telefono || '-'} / 911</span>
-                          </div>
-                        </td>
-                        
-                        <td width="384" style="vertical-align: top; padding-left: 25px;">
-                          <div style="background: #0d2545; color: #ffffff; padding: 10px; text-align: center; font-size: 1.2rem; font-weight: bold; margin-bottom: 20px; text-transform: uppercase; border-radius: 4px; font-family: 'Montserrat', sans-serif;">
-                            Datos de la Persona
-                          </div>
-                          
-                          <div style="font-size: 1.1rem; margin-bottom: 12px; text-transform: uppercase; line-height: 1.3;">
-                            <b>NOMBRE:</b> <span style="color: #0d2545; font-size: 1.5rem; font-weight: 900; font-family: 'Montserrat', sans-serif; display: block; margin-top: 3px;">${r.nombre}</span>
-                          </div>
-                          
-                          <div style="font-size: 1.1rem; margin-bottom: 12px; text-transform: uppercase;">
-                            <b>EDAD:</b> <span style="font-weight: normal; color: #333333;">${r.edad} AÑOS</span>
-                          </div>
-                          
-                          <div style="border-top: 1px solid #cccccc; margin: 15px 0;"></div>
-                          
-                          <div style="font-size: 1.1rem; margin-bottom: 12px; text-transform: uppercase; line-height: 1.3;">
-                            <b>DESAPARECIDO EN:</b> <span style="font-weight: normal; color: #333333;">${limpiarTexto(r.localidad)}</span>
-                          </div>
-                          
-                          <div style="font-size: 1.1rem; margin-bottom: 12px; text-transform: uppercase;">
-                            <b>FECHA:</b> <span style="font-weight: normal; color: #333333;">${limpiarTexto(r.fecha)}</span> &nbsp;|&nbsp; <b>HORA:</b> <span style="font-weight: normal; color: #333333;">${limpiarTexto(r.hora)}</span>
-                          </div>
-                          
-                          <div style="border-top: 1px solid #cccccc; margin: 15px 0;"></div>
-                          
-                          <div style="font-size: 1rem; margin-bottom: 6px; text-transform: uppercase; color: #1a6fba; font-weight: bold;">
-                            DESCRIPCIÓN / VESTIMENTA:
-                          </div>
-                          <div style="font-size: 0.95rem; text-align: justify; line-height: 1.4; margin-bottom: 20px; background: #ffffff; padding: 12px; border: 1px solid #dddddd; border-radius: 4px; min-height: 90px; color: #333333; word-wrap: break-word;">
-                            ${r.descripcion || 'Sin datos'}
-                          </div>
-                          
-                          <div style="font-size: 1rem; margin-bottom: 6px; text-transform: uppercase; color: #1a6fba; font-weight: bold;">
-                            RESEÑA DEL HECHO:
-                          </div>
-                          <div style="font-size: 0.95rem; text-align: justify; line-height: 1.4; background: #ffffff; padding: 12px; border: 1px solid #dddddd; border-radius: 4px; min-height: 110px; color: #333333; word-wrap: break-word;">
-                            ${r.resena || 'Sin reseña'}
-                          </div>
-                        </td>
-                      </tr>
-                    </table>
-                    
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
+          <div style="background-color: #0d2545; color: white; padding: 30px 40px; border-bottom: 8px solid #1a6fba;">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td style="vertical-align: middle;">
+                  <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 40px; line-height: 1; text-transform: uppercase;">Búsqueda de Personas</h1>
+                  <p style="font-size: 18px; margin: 10px 0 0 0; font-weight: 700; text-transform: uppercase;">Dirección General Departamentales Norte</p>
+                  <p style="font-size: 13px; margin: 5px 0 0 0; color: #a4c8e1; text-transform: uppercase;">Información aportada por las Unidades Regionales Departamentales Norte</p>
+                </td>
+                <td align="right" width="130" style="vertical-align: middle;">
+                  <img src="https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png" style="height: 110px;">
+                </td>
+              </tr>
+            </table>
+          </div>
           
-          <tr height="40">
-            <td style="background-color: #0d2545; border-top: 8px solid #1a6fba;"></td>
-          </tr>
-        </table>
+          <div style="padding: 40px; flex-grow: 1;">
+            
+            <div style="text-align: center;">
+              <div style="display: inline-block; width: 340px; height: 420px; border: 4px solid #000; background: #eee; overflow: hidden; margin-bottom: 15px;">
+                <img id="foto-pdf-generar" src="${formatDriveLink(r.foto)}" style="width: 100%; height: 100%; object-fit: contain;" crossorigin="anonymous">
+              </div>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 20px;">
+              <div style="display: inline-block; font-size: 18px; font-weight: bold; color: #c0392b; text-transform: uppercase; border: 2px dashed #c0392b; padding: 15px 30px; background: #fdf5f5;">
+                INFORMAR A:<br>
+                <span style="color: #000; font-size: 22px;">${r.contacto || r.dependencia || 'Dependencia Policial'}</span><br><br>
+                TEL: <span style="color: #000; font-size: 24px;">${r.telefono || '-'} / 911</span>
+              </div>
+            </div>
+            
+            <div style="border-top: 5px solid #000; margin: 25px 0;"></div>
+            
+            <div style="font-size: 18px; line-height: 1.5; color: #000;">
+              <p style="margin: 8px 0; text-transform: uppercase;"><b>DESAPARECIDO EN:</b> ${limpiarTexto(r.localidad)}</p>
+              <p style="margin: 8px 0; text-transform: uppercase;"><b>FECHA:</b> ${limpiarTexto(r.fecha)} &nbsp;&nbsp;|&nbsp;&nbsp; <b>HORA:</b> ${limpiarTexto(r.hora)}</p>
+              
+              <p style="margin: 15px 0 8px 0; text-transform: uppercase;"><b>NOMBRE:</b> <span style="color: #0d2545; font-size: 26px; font-weight: 900; font-family: 'Montserrat', sans-serif;">${r.nombre}</span></p>
+              <p style="margin: 8px 0; text-transform: uppercase;"><b>EDAD:</b> ${r.edad} AÑOS</p>
+              
+              <p style="margin: 25px 0 5px 0; text-transform: uppercase; color: #1a6fba; font-weight: bold;">DESCRIPCIÓN / VESTIMENTA:</p>
+              <div style="text-align: justify; font-size: 16px; background: #f8f9fa; padding: 12px; border-left: 4px solid #1a6fba;">
+                ${r.descripcion || 'Sin datos'}
+              </div>
+              
+              <p style="margin: 20px 0 5px 0; text-transform: uppercase; color: #1a6fba; font-weight: bold;">RESEÑA DEL HECHO:</p>
+              <div style="text-align: justify; font-size: 16px; background: #f8f9fa; padding: 12px; border-left: 4px solid #1a6fba;">
+                ${r.resena || 'Sin reseña'}
+              </div>
+            </div>
+
+          </div>
+        </div>
       `;
 
       document.body.appendChild(tempDiv);
 
-      const nombreArchivo = r.nombre ? r.nombre.replace(/ /g, '_') : 'Busqueda';
-      const molde = document.getElementById('molde-impresion');
+      const imgPDF = document.getElementById('foto-pdf-generar');
+      
+      // Función interna que genera el PDF SOLO cuando la imagen está lista
+      const crearPDF = () => {
+        const nombreArchivo = r.nombre ? r.nombre.replace(/ /g, '_') : 'Busqueda';
+        const molde = document.getElementById('molde-impresion');
 
-      html2pdf().set({
-        margin:       0,
-        filename:     `Alerta_${nombreArchivo}.pdf`,
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { 
-          scale: 2, 
-          useCORS: true, 
-          width: 794, 
-          height: 1123,
-          windowWidth: 794,
-          windowHeight: 1123
-        },
-        jsPDF:        { unit: 'px', format: [794, 1123], orientation: 'portrait' }
-      }).from(molde).save().then(() => {
-        document.body.removeChild(tempDiv);
-        document.getElementById('status-txt').innerText = statusOriginal;
-      }).catch(err => {
-        console.error(err);
-        document.getElementById('status-txt').innerText = 'Error al procesar la imagen.';
-      });
+        html2pdf().set({
+          margin:       0,
+          filename:     `Alerta_${nombreArchivo}.pdf`,
+          image:        { type: 'jpeg', quality: 0.98 },
+          html2canvas:  { scale: 2, useCORS: true, windowWidth: 794 },
+          jsPDF:        { unit: 'px', format: [794, 1123], orientation: 'portrait' }
+        }).from(molde).save().then(() => {
+          document.body.removeChild(tempDiv);
+          statusTxt.innerText = statusOriginal;
+        }).catch(err => {
+          document.body.removeChild(tempDiv);
+          statusTxt.innerText = 'Error al crear el PDF.';
+        });
+      };
+
+      // Sensor inteligente de imagen
+      if (imgPDF.complete) {
+        crearPDF();
+      } else {
+        imgPDF.onload = crearPDF;
+        imgPDF.onerror = () => {
+          imgPDF.src = 'https://via.placeholder.com/340x420?text=SIN+IMAGEN';
+          crearPDF(); // Si falla la foto de Drive, le pone un recuadro temporal pero CREA EL PDF igual
+        };
+      }
     }
 
     window.onload = cargarDatos;
