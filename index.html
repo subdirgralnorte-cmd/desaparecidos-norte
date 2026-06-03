@@ -130,38 +130,42 @@
       `).join('');
     }
 
-    // NUEVO MOTOR PDF: ENCUADRE DE ARRIBA HACIA ABAJO + ESPERA DE FOTO
+    // =========================================================================
+    // NUEVO MOTOR PDF: ENCUADRE DE ARRIBA HACIA ABAJO + SENSOR DE FOTO ESTRICTO
+    // =========================================================================
     function descargarPDF(index) {
       const r = datosGlobales[index];
+      if (!r) {
+        alert("Error: No se encontraron los datos para generar el PDF.");
+        return;
+      }
+
       const statusTxt = document.getElementById('status-txt');
       const statusOriginal = statusTxt.innerText;
       statusTxt.innerText = '⏳ Cargando imagen oficial y generando Alerta A4...';
 
-      // Contenedor temporal puesto detrás de la web (no fuera de la pantalla)
+      // 1. Contenedor temporal rígido e invisible
       const tempDiv = document.createElement('div');
       tempDiv.style.position = 'absolute';
       tempDiv.style.top = '0';
       tempDiv.style.left = '0';
       tempDiv.style.zIndex = '-999';
-      tempDiv.style.width = '794px'; 
-      tempDiv.style.visibility = 'hidden'; // Oculto pero físicamente presente para el render
+      tempDiv.style.width = '794px';       // Ancho estricto A4
+      tempDiv.style.minHeight = '1123px';  // Alto estricto A4
+      tempDiv.style.background = '#ffffff';
+      tempDiv.style.visibility = 'hidden'; 
 
+      // 2. Molde HTML Vertical
       tempDiv.innerHTML = `
-        <div id="molde-impresion" style="width: 794px; min-height: 1123px; background: #ffffff; font-family: 'Roboto', sans-serif; box-sizing: border-box; display: flex; flex-direction: column;">
+        <div id="molde-impresion" style="width: 794px; min-height: 1123px; font-family: 'Roboto', sans-serif; box-sizing: border-box; display: flex; flex-direction: column;">
           
-          <div style="background-color: #0d2545; color: white; padding: 30px 40px; border-bottom: 8px solid #1a6fba;">
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td style="vertical-align: middle;">
-                  <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 40px; line-height: 1; text-transform: uppercase;">Búsqueda de Personas</h1>
-                  <p style="font-size: 18px; margin: 10px 0 0 0; font-weight: 700; text-transform: uppercase;">Dirección General Departamentales Norte</p>
-                  <p style="font-size: 13px; margin: 5px 0 0 0; color: #a4c8e1; text-transform: uppercase;">Información aportada por las Unidades Regionales Departamentales Norte</p>
-                </td>
-                <td align="right" width="130" style="vertical-align: middle;">
-                  <img src="https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png" style="height: 110px;">
-                </td>
-              </tr>
-            </table>
+          <div style="background-color: #0d2545; color: white; padding: 30px 40px; border-bottom: 8px solid #1a6fba; display: flex; justify-content: space-between; align-items: center;">
+            <div style="flex: 1;">
+              <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 40px; line-height: 1; text-transform: uppercase;">Búsqueda de Personas</h1>
+              <p style="font-size: 18px; margin: 10px 0 0 0; font-weight: 700; text-transform: uppercase;">Dirección General Departamentales Norte</p>
+              <p style="font-size: 13px; margin: 5px 0 0 0; color: #a4c8e1; text-transform: uppercase;">Información aportada por las Unidades Regionales Departamentales Norte</p>
+            </div>
+            <img src="https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png" style="height: 110px;" crossorigin="anonymous">
           </div>
           
           <div style="padding: 40px; flex-grow: 1;">
@@ -186,8 +190,8 @@
               <p style="margin: 8px 0; text-transform: uppercase;"><b>DESAPARECIDO EN:</b> ${limpiarTexto(r.localidad)}</p>
               <p style="margin: 8px 0; text-transform: uppercase;"><b>FECHA:</b> ${limpiarTexto(r.fecha)} &nbsp;&nbsp;|&nbsp;&nbsp; <b>HORA:</b> ${limpiarTexto(r.hora)}</p>
               
-              <p style="margin: 15px 0 8px 0; text-transform: uppercase;"><b>NOMBRE:</b> <span style="color: #0d2545; font-size: 26px; font-weight: 900; font-family: 'Montserrat', sans-serif;">${r.nombre}</span></p>
-              <p style="margin: 8px 0; text-transform: uppercase;"><b>EDAD:</b> ${r.edad} AÑOS</p>
+              <p style="margin: 15px 0 8px 0; text-transform: uppercase;"><b>NOMBRE:</b> <span style="color: #0d2545; font-size: 26px; font-weight: 900; font-family: 'Montserrat', sans-serif;">${r.nombre || '-'}</span></p>
+              <p style="margin: 8px 0; text-transform: uppercase;"><b>EDAD:</b> ${r.edad || '-'} AÑOS</p>
               
               <p style="margin: 25px 0 5px 0; text-transform: uppercase; color: #1a6fba; font-weight: bold;">DESCRIPCIÓN / VESTIMENTA:</p>
               <div style="text-align: justify; font-size: 16px; background: #f8f9fa; padding: 12px; border-left: 4px solid #1a6fba;">
@@ -208,8 +212,8 @@
 
       const imgPDF = document.getElementById('foto-pdf-generar');
       
-      // Función interna que genera el PDF SOLO cuando la imagen está lista
-      const crearPDF = () => {
+      // 3. Ejecutor del PDF
+      const compilarYDescargar = () => {
         const nombreArchivo = r.nombre ? r.nombre.replace(/ /g, '_') : 'Busqueda';
         const molde = document.getElementById('molde-impresion');
 
@@ -217,25 +221,27 @@
           margin:       0,
           filename:     `Alerta_${nombreArchivo}.pdf`,
           image:        { type: 'jpeg', quality: 0.98 },
-          html2canvas:  { scale: 2, useCORS: true, windowWidth: 794 },
+          html2canvas:  { scale: 2, useCORS: true, windowWidth: 794 }, // Fuerza la lectura tamaño PC
           jsPDF:        { unit: 'px', format: [794, 1123], orientation: 'portrait' }
         }).from(molde).save().then(() => {
           document.body.removeChild(tempDiv);
           statusTxt.innerText = statusOriginal;
         }).catch(err => {
+          console.error(err);
           document.body.removeChild(tempDiv);
-          statusTxt.innerText = 'Error al crear el PDF.';
+          statusTxt.innerText = 'Error al generar el PDF.';
         });
       };
 
-      // Sensor inteligente de imagen
+      // 4. Sensor Inteligente de Imagen
       if (imgPDF.complete) {
-        crearPDF();
+        compilarYDescargar();
       } else {
-        imgPDF.onload = crearPDF;
+        imgPDF.onload = compilarYDescargar;
         imgPDF.onerror = () => {
-          imgPDF.src = 'https://via.placeholder.com/340x420?text=SIN+IMAGEN';
-          crearPDF(); // Si falla la foto de Drive, le pone un recuadro temporal pero CREA EL PDF igual
+          // Si por alguna razón Google Drive bloquea la foto, se crea igual
+          imgPDF.src = 'https://via.placeholder.com/340x420?text=FOTO+NO+DISPONIBLE';
+          compilarYDescargar(); 
         };
       }
     }
