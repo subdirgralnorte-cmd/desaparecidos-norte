@@ -1,7 +1,19 @@
 {
-  "actualizado": "2026-06-04T12:14:47Z",
-  "total": 11,
+  "actualizado": "2026-06-04T15:47:55Z",
+  "total": 12,
   "registros": [
+    {
+      "localidad": "Capilla del Monte",
+      "nombre": "Maximiliano Emanuel Eckerdt",
+      "edad": "38",
+      "fecha": "3/06/2026",
+      "hora": "18:16:00",
+      "descripcion": "S/D",
+      "contacto": "CAPILLA DEL MONTE",
+      "telefono": "3548435568",
+      "foto": "https://drive.google.com/open?id=1q7QVdq9j3ZBsAQ0YjE5cRaubAQyqeeES",
+      "estado": ""
+    },
     {
       "localidad": "Paraje Rural \"Los Troncos\" Dpto Tulumba",
       "nombre": "ROSSA ALFREDO GUILLERMO",
