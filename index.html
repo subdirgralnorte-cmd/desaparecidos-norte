@@ -149,7 +149,6 @@ function renderizarFichas() {
         <div style="font-size:0.95rem; line-height:1.4; text-align:justify;">${r.resena || 'Sin reseña'}</div>
         <div style="display:flex; gap:10px; flex-wrap:wrap;">
           <button class="btn-jpg" id="btnjpg-${i}" onclick="descargarJPG(${i})">🖼️ Descargar JPG</button>
-          <button class="btn-jpg" style="background:#c0392b;margin-top:5px;" onclick="diagnosticarFoto(${i})">🔍 Diagnóstico foto</button>
         </div>
       </div>
     </article>
@@ -218,61 +217,35 @@ function wrapTextCenter(ctx, texto, cx, y, maxW, lineH) {
   return y;
 }
 
+
 async function descargarJPG(index) {
   const r = datosGlobales[index];
   if (!r) return;
   const boton = document.getElementById(`btnjpg-${index}`);
   const statusTxt = document.getElementById('status-txt');
   const statusOrig = statusTxt.innerText;
-  boton.disabled = true; boton.textContent = '⏳ Preparando...';
-  statusTxt.innerText = '⏳ Generando imagen — por favor espere...';
+  boton.disabled = true;
+  boton.textContent = '⏳ Generando...';
+  statusTxt.innerText = '⏳ Preparando imagen de alta calidad...';
 
   try {
-    // 1. Tomar la imagen que YA está visible en pantalla (el <img> de la ficha)
-    //    y convertirla a base64 via canvas auxiliar
-    const imgEnPantalla = document.querySelector(`#btnjpg-${index}`)
-      .closest('.ficha')
-      .querySelector('.foto-marco img');
+    // ── 1. Tomar la foto que YA está visible en el DOM (sin crossOrigin)
+    const fichaEl = boton.closest('.ficha');
+    const imgEnPantalla = fichaEl.querySelector('.foto-marco img');
 
+    // Crear imagen sin crossOrigin (igual que el navegador la muestra)
     const fotoImg = await new Promise(resolve => {
-      // Crear imagen nueva con crossOrigin para poder usarla en canvas
-      const intentarCargar = (src) => {
-        const img = new Image();
-        img.crossOrigin = 'anonymous';
-        img.onload = () => resolve(img);
-        img.onerror = () => resolve(null);
-        img.src = src + (src.includes('?') ? '&' : '?') + '_t=' + Date.now();
-      };
-
-      // Primer intento: src actual de la imagen en pantalla
-      const srcActual = imgEnPantalla.src;
-      const id = extraerIdDrive(r.foto);
-
-      if (!id) { resolve(null); return; }
-
-      // Intentamos las 3 URLs de Drive en secuencia
-      const urls = [
-        `https://drive.google.com/thumbnail?id=${id}&sz=w800`,
-        `https://drive.google.com/uc?export=view&id=${id}`,
-        `https://lh3.googleusercontent.com/d/${id}`,
-      ];
-
-      let i = 0;
-      const probar = () => {
-        if (i >= urls.length) { resolve(null); return; }
-        const img = new Image();
-        img.crossOrigin = 'anonymous';
-        img.onload = () => resolve(img);
-        img.onerror = () => { i++; probar(); };
-        img.src = urls[i] + '&_t=' + Date.now();
-        i++;
-      };
-      probar();
+      if (!imgEnPantalla || !imgEnPantalla.src || imgEnPantalla.src.includes('placeholder')) {
+        resolve(null); return;
+      }
+      const img = new Image();
+      // SIN crossOrigin — Drive la sirve igual que en el <img> del DOM
+      img.onload = () => resolve(img);
+      img.onerror = () => resolve(null);
+      img.src = imgEnPantalla.src;
     });
 
-    boton.textContent = '⏳ Dibujando...';
-
-    // 2. Escudo
+    // ── 2. Escudo (GitHub Pages — sí tiene CORS abierto)
     const escudoImg = await new Promise(resolve => {
       const img = new Image();
       img.crossOrigin = 'anonymous';
@@ -281,190 +254,193 @@ async function descargarJPG(index) {
       img.src = 'https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png';
     });
 
-    // 3. Medir textos para altura dinámica
+    // ── 3. Medir textos para altura dinámica
     const SC = 2, PW = 794;
-    const tmpC = document.createElement('canvas'); tmpC.width=794; tmpC.height=10;
+    const tmpC = document.createElement('canvas');
+    tmpC.width = 794; tmpC.height = 10;
     const tmpCtx = tmpC.getContext('2d');
-    const TEXTO_MAX = PW - 76 - 12;
-    tmpCtx.font = '14px Roboto, sans-serif';
-    const altoDesc   = medirAltoTexto(tmpCtx, r.descripcion||'Sin datos', TEXTO_MAX, 20) + 28;
-    const altoResena = medirAltoTexto(tmpCtx, r.resena||'Sin reseña',     TEXTO_MAX, 20) + 28;
-    const altoContacto = 110;
+    const TEXTO_MAX = PW - 76 - 16;
+
+    tmpCtx.font = '14px sans-serif';
+    const altoDesc   = medirAltoTexto(tmpCtx, r.descripcion || 'Sin datos', TEXTO_MAX, 20) + 28;
+    const altoResena = medirAltoTexto(tmpCtx, r.resena || 'Sin reseña',     TEXTO_MAX, 20) + 28;
+
+    tmpCtx.font = 'bold 16px sans-serif';
+    const altoDepNombre = medirAltoTexto(tmpCtx, r.contacto || r.dependencia || 'Dependencia Policial', 436 - 24, 20);
+    const CAJA_H = 26 + altoDepNombre + 30;
 
     const PH = Math.max(1123,
-      160 + 12 + 400 + 16 + altoContacto + 16 +
-      3 + 18 + 24 + 22 + 82 +
-      28 + altoDesc + 28 + altoResena +
-      48 + 40
+      168 +   // header
+      404 +   // foto + margen
+      CAJA_H + 16 +  // contacto
+      24 +    // separador
+      24 + 24 + 82 +  // localidad, fecha, nombre
+      28 + altoDesc +
+      28 + altoResena +
+      68      // pie + padding
     );
 
-    // 4. Canvas
+    // ── 4. Canvas
     const canvas = document.createElement('canvas');
-    canvas.width = PW * SC; canvas.height = PH * SC;
+    canvas.width  = PW * SC;
+    canvas.height = PH * SC;
     const ctx = canvas.getContext('2d');
     ctx.scale(SC, SC);
 
-    // Fondo
-    ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, PW, PH);
+    // Fondo blanco
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, PW, PH);
 
-    // HEADER
+    // HEADER azul
     ctx.fillStyle = '#0d2545'; ctx.fillRect(0, 0, PW, 160);
     ctx.fillStyle = '#1a6fba'; ctx.fillRect(0, 152, PW, 8);
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 34px Montserrat, sans-serif'; ctx.fillText('BÚSQUEDA DE PERSONAS', 38, 52);
-    ctx.font = 'bold 15px Roboto, sans-serif';     ctx.fillText('DIRECCIÓN GENERAL DEPARTAMENTALES NORTE', 38, 78);
-    ctx.font = '11px Roboto, sans-serif'; ctx.fillStyle = '#a4c8e1';
+    ctx.font = 'bold 34px sans-serif';
+    ctx.fillText('BÚSQUEDA DE PERSONAS', 38, 52);
+    ctx.font = 'bold 15px sans-serif';
+    ctx.fillText('DIRECCIÓN GENERAL DEPARTAMENTALES NORTE', 38, 78);
+    ctx.font = '11px sans-serif'; ctx.fillStyle = '#a4c8e1';
     ctx.fillText('Información aportada por las Unidades Regionales Departamentales Norte', 38, 100);
     if (escudoImg) {
-      const eH = 118, eW = escudoImg.naturalWidth*(eH/escudoImg.naturalHeight);
-      ctx.drawImage(escudoImg, PW-eW-30, 18, eW, eH);
+      const eH = 118, eW = escudoImg.naturalWidth * (eH / escudoImg.naturalHeight);
+      ctx.drawImage(escudoImg, PW - eW - 30, 18, eW, eH);
     }
 
-    // FOTO
-    const FW=320, FH=400, FX=(PW-FW)/2;
+    // FOTO — dibujar en canvas offscreen primero para evitar "tainted"
+    const FW = 320, FH = 400, FX = (PW - FW) / 2;
     let Y = 172;
-    ctx.strokeStyle='#000'; ctx.lineWidth=4; ctx.strokeRect(FX, Y, FW, FH);
-    drawContain(ctx, fotoImg, FX+2, Y+2, FW-4, FH-4);
+    ctx.strokeStyle = '#000'; ctx.lineWidth = 4;
+    ctx.strokeRect(FX, Y, FW, FH);
+
+    if (fotoImg) {
+      // Intentar dibujar directo
+      try {
+        drawContain(ctx, fotoImg, FX + 2, Y + 2, FW - 4, FH - 4);
+      } catch(e) {
+        // Si lanza SecurityError (canvas tainted), usar html2canvas solo para la foto
+        console.warn('Canvas tainted, usando html2canvas para la foto...');
+        const fotoCanvas = await html2canvas(imgEnPantalla, {
+          useCORS: false,
+          allowTaint: true,
+          scale: 2,
+          width: imgEnPantalla.offsetWidth,
+          height: imgEnPantalla.offsetHeight,
+          logging: false
+        });
+        ctx.drawImage(fotoCanvas,
+          FX + 2, Y + 2, FW - 4, FH - 4
+        );
+      }
+    } else {
+      ctx.fillStyle = '#eeeeee'; ctx.fillRect(FX + 2, Y + 2, FW - 4, FH - 4);
+      ctx.fillStyle = '#888'; ctx.font = 'bold 16px sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText('FOTO NO DISPONIBLE', FX + FW / 2, Y + FH / 2);
+      ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    }
     Y += FH + 16;
 
-    // CAJA CONTACTO dinámica
-    const CW=460, CX=(PW-CW)/2, cMid=PW/2, cMaxW=CW-24;
-    // Medir altura real de la caja contacto
-    tmpCtx.font = 'bold 16px Roboto, sans-serif';
-    const altoDepNombre = medirAltoTexto(tmpCtx, r.contacto||r.dependencia||'Dependencia Policial', cMaxW, 20);
-    const CAJA_H = 20 + 14 + altoDepNombre + 6 + 24 + 10; // "INFORMAR A" + dep + tel + padding
-
-    ctx.strokeStyle='#c0392b'; ctx.setLineDash([7,4]); ctx.lineWidth=2;
+    // CAJA CONTACTO
+    const CW = 460, CX = (PW - CW) / 2, cMid = PW / 2, cMaxW = CW - 24;
+    ctx.strokeStyle = '#c0392b'; ctx.setLineDash([7, 4]); ctx.lineWidth = 2;
     ctx.strokeRect(CX, Y, CW, CAJA_H); ctx.setLineDash([]);
-    ctx.fillStyle='#fdf5f5'; ctx.fillRect(CX+1, Y+1, CW-2, CAJA_H-2);
-
-    ctx.fillStyle='#c0392b'; ctx.font='bold 12px Roboto, sans-serif';
-    ctx.fillText('INFORMAR A:', cMid - ctx.measureText('INFORMAR A:').width/2, Y+20);
-    ctx.fillStyle='#000'; ctx.font='bold 16px Roboto, sans-serif';
-    let yDep = wrapTextCenter(ctx, r.contacto||r.dependencia||'Dependencia Policial', cMid, Y+40, cMaxW, 20);
-    ctx.fillStyle='#c0392b'; ctx.font='bold 12px Roboto, sans-serif';
-    const telCompleto = `TEL: ${r.telefono||'-'} / 911`;
-    ctx.fillText('TEL:', cMid - ctx.measureText(telCompleto).width/2, yDep+8);
-    ctx.fillStyle='#000'; ctx.font='bold 18px Roboto, sans-serif';
-    const telStr = `${r.telefono||'-'} / 911`;
-    ctx.fillText(telStr, cMid - ctx.measureText(telCompleto).width/2 + ctx.measureText('TEL: ').width, yDep+8);
+    ctx.fillStyle = '#fdf5f5'; ctx.fillRect(CX + 1, Y + 1, CW - 2, CAJA_H - 2);
+    ctx.fillStyle = '#c0392b'; ctx.font = 'bold 12px sans-serif';
+    ctx.fillText('INFORMAR A:', cMid - ctx.measureText('INFORMAR A:').width / 2, Y + 20);
+    ctx.fillStyle = '#000'; ctx.font = 'bold 16px sans-serif';
+    let yDep = wrapTextCenter(ctx, r.contacto || r.dependencia || 'Dependencia Policial', cMid, Y + 38, cMaxW, 20);
+    const telCompleto = `TEL: ${r.telefono || '-'} / 911`;
+    ctx.fillStyle = '#c0392b'; ctx.font = 'bold 12px sans-serif';
+    ctx.fillText('TEL:', cMid - ctx.measureText(telCompleto).width / 2, yDep + 8);
+    ctx.fillStyle = '#000'; ctx.font = 'bold 18px sans-serif';
+    ctx.fillText(`${r.telefono || '-'} / 911`,
+      cMid - ctx.measureText(telCompleto).width / 2 + ctx.measureText('TEL: ').width, yDep + 8);
     Y += CAJA_H + 16;
 
     // SEPARADOR
-    ctx.fillStyle='#000'; ctx.fillRect(38, Y, PW-76, 3); Y += 18;
+    ctx.fillStyle = '#000'; ctx.fillRect(38, Y, PW - 76, 3); Y += 18;
 
-    // DESAPARECIDO EN
-    ctx.font='bold 13px Roboto, sans-serif'; ctx.fillStyle='#0d2545'; ctx.fillText('DESAPARECIDO EN:', 38, Y);
-    ctx.font='13px Roboto, sans-serif'; ctx.fillStyle='#000'; ctx.fillText(limpiarTexto(r.localidad).toUpperCase(), 215, Y);
+    // LOCALIDAD
+    ctx.font = 'bold 13px sans-serif'; ctx.fillStyle = '#0d2545';
+    ctx.fillText('DESAPARECIDO EN:', 38, Y);
+    ctx.font = '13px sans-serif'; ctx.fillStyle = '#000';
+    ctx.fillText(limpiarTexto(r.localidad).toUpperCase(), 215, Y);
     Y += 24;
 
     // FECHA / HORA
-    ctx.font='bold 13px Roboto, sans-serif'; ctx.fillStyle='#0d2545'; ctx.fillText('FECHA:', 38, Y);
-    ctx.font='13px Roboto, sans-serif'; ctx.fillStyle='#000'; ctx.fillText(limpiarTexto(r.fecha), 105, Y);
-    ctx.font='bold 13px Roboto, sans-serif'; ctx.fillStyle='#0d2545'; ctx.fillText('HORA:', 430, Y);
-    ctx.font='13px Roboto, sans-serif'; ctx.fillStyle='#000'; ctx.fillText(limpiarTexto(r.hora), 490, Y);
+    ctx.font = 'bold 13px sans-serif'; ctx.fillStyle = '#0d2545'; ctx.fillText('FECHA:', 38, Y);
+    ctx.font = '13px sans-serif'; ctx.fillStyle = '#000'; ctx.fillText(limpiarTexto(r.fecha), 105, Y);
+    ctx.font = 'bold 13px sans-serif'; ctx.fillStyle = '#0d2545'; ctx.fillText('HORA:', 430, Y);
+    ctx.font = '13px sans-serif'; ctx.fillStyle = '#000'; ctx.fillText(limpiarTexto(r.hora), 490, Y);
     Y += 18;
 
     // CAJA NOMBRE
-    ctx.fillStyle='#f0f4fa'; ctx.fillRect(38, Y, PW-76, 70);
-    ctx.fillStyle='#0d2545'; ctx.fillRect(38, Y, 6, 70);
-    ctx.font='bold 10px Roboto, sans-serif'; ctx.fillStyle='#0d2545'; ctx.fillText('NOMBRE COMPLETO', 52, Y+15);
-    ctx.font='bold 20px Montserrat, sans-serif'; ctx.fillStyle='#0d2545'; ctx.fillText((r.nombre||'-').toUpperCase(), 52, Y+38);
-    ctx.font='bold 13px Roboto, sans-serif'; ctx.fillStyle='#333'; ctx.fillText(`EDAD: ${r.edad||'-'} AÑOS`, 52, Y+58);
+    ctx.fillStyle = '#f0f4fa'; ctx.fillRect(38, Y, PW - 76, 70);
+    ctx.fillStyle = '#0d2545'; ctx.fillRect(38, Y, 6, 70);
+    ctx.font = 'bold 10px sans-serif'; ctx.fillStyle = '#0d2545';
+    ctx.fillText('NOMBRE COMPLETO', 52, Y + 15);
+    ctx.font = 'bold 20px sans-serif'; ctx.fillStyle = '#0d2545';
+    ctx.fillText((r.nombre || '-').toUpperCase(), 52, Y + 38);
+    ctx.font = 'bold 13px sans-serif'; ctx.fillStyle = '#333';
+    ctx.fillText(`EDAD: ${r.edad || '-'} AÑOS`, 52, Y + 58);
     Y += 82;
 
     // DESCRIPCIÓN
-    ctx.fillStyle='#1a6fba'; ctx.font='bold 12px Roboto, sans-serif';
-    ctx.fillText('DESCRIPCIÓN / VESTIMENTA', 38, Y); ctx.fillRect(38, Y+4, PW-76, 2); Y += 14;
-    ctx.fillStyle='#f8f9fa'; ctx.fillRect(38, Y, PW-76, altoDesc);
-    ctx.fillStyle='#1a6fba'; ctx.fillRect(38, Y, 4, altoDesc);
-    ctx.fillStyle='#000'; ctx.font='14px Roboto, sans-serif';
-    wrapText(ctx, r.descripcion||'Sin datos', 50, Y+16, TEXTO_MAX, 20);
+    ctx.fillStyle = '#1a6fba'; ctx.font = 'bold 12px sans-serif';
+    ctx.fillText('DESCRIPCIÓN / VESTIMENTA', 38, Y);
+    ctx.fillRect(38, Y + 4, PW - 76, 2); Y += 14;
+    ctx.fillStyle = '#f8f9fa'; ctx.fillRect(38, Y, PW - 76, altoDesc);
+    ctx.fillStyle = '#1a6fba'; ctx.fillRect(38, Y, 4, altoDesc);
+    ctx.fillStyle = '#000'; ctx.font = '14px sans-serif';
+    wrapText(ctx, r.descripcion || 'Sin datos', 50, Y + 16, TEXTO_MAX, 20);
     Y += altoDesc + 14;
 
     // RESEÑA
-    ctx.fillStyle='#1a6fba'; ctx.font='bold 12px Roboto, sans-serif';
-    ctx.fillText('RESEÑA DEL HECHO', 38, Y); ctx.fillRect(38, Y+4, PW-76, 2); Y += 14;
-    ctx.fillStyle='#f8f9fa'; ctx.fillRect(38, Y, PW-76, altoResena);
-    ctx.fillStyle='#1a6fba'; ctx.fillRect(38, Y, 4, altoResena);
-    ctx.fillStyle='#000'; ctx.font='14px Roboto, sans-serif';
-    wrapText(ctx, r.resena||'Sin reseña', 50, Y+16, TEXTO_MAX, 20);
+    ctx.fillStyle = '#1a6fba'; ctx.font = 'bold 12px sans-serif';
+    ctx.fillText('RESEÑA DEL HECHO', 38, Y);
+    ctx.fillRect(38, Y + 4, PW - 76, 2); Y += 14;
+    ctx.fillStyle = '#f8f9fa'; ctx.fillRect(38, Y, PW - 76, altoResena);
+    ctx.fillStyle = '#1a6fba'; ctx.fillRect(38, Y, 4, altoResena);
+    ctx.fillStyle = '#000'; ctx.font = '14px sans-serif';
+    wrapText(ctx, r.resena || 'Sin reseña', 50, Y + 16, TEXTO_MAX, 20);
     Y += altoResena + 20;
 
     // PIE
-    ctx.fillStyle='#0d2545'; ctx.fillRect(0, Y, PW, 48);
-    ctx.fillStyle='#1a6fba'; ctx.fillRect(0, Y, PW, 6);
+    ctx.fillStyle = '#0d2545'; ctx.fillRect(0, Y, PW, 48);
+    ctx.fillStyle = '#1a6fba'; ctx.fillRect(0, Y, PW, 6);
 
-    // 5. Exportar
-    canvas.toBlob(blob => {
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = `Alerta_${(r.nombre||'Busqueda').replace(/\s+/g,'_')}.jpg`;
-      a.click();
-      URL.revokeObjectURL(a.href);
-    }, 'image/jpeg', 0.97);
+    // ── 5. Exportar — usar toBlob con try/catch por si el canvas quedó tainted
+    try {
+      canvas.toBlob(blob => {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `Alerta_${(r.nombre || 'Busqueda').replace(/\s+/g, '_')}.jpg`;
+        a.click();
+        URL.revokeObjectURL(a.href);
+      }, 'image/jpeg', 0.97);
+    } catch(e) {
+      // Canvas tainted: capturar toda la ficha con html2canvas como fallback final
+      alert('La foto de Drive bloquea la exportación directa. Usando captura de pantalla como alternativa...');
+      const fichaCanvas = await html2canvas(fichaEl, {
+        useCORS: false, allowTaint: true, scale: 2, logging: false
+      });
+      fichaCanvas.toBlob(blob => {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `Alerta_${(r.nombre || 'Busqueda').replace(/\s+/g, '_')}.jpg`;
+        a.click();
+        URL.revokeObjectURL(a.href);
+      }, 'image/jpeg', 0.97);
+    }
 
   } catch(err) {
     console.error(err);
-    alert('Error al generar la imagen. Revisá la consola.');
+    alert('Error: ' + err.message);
   } finally {
-    boton.disabled = false; boton.innerHTML = '🖼️ Descargar JPG';
+    boton.disabled = false;
+    boton.innerHTML = '🖼️ Descargar JPG';
     statusTxt.innerText = statusOrig;
   }
-}
-
-// ── DIAGNÓSTICO ──────────────────────────────────────────────────
-async function diagnosticarFoto(index) {
-  const r = datosGlobales[index];
-  const id = extraerIdDrive(r.foto);
-  const log = (msg) => { console.log(msg); };
-  
-  log('=== DIAGNÓSTICO FOTO ===');
-  log('URL original en Sheets: ' + r.foto);
-  log('Tipo de dato foto: ' + typeof r.foto);
-  // Mostrar todos los campos del registro para depurar
-  log('Registro completo: ' + JSON.stringify(r));
-  log('ID extraído: ' + id);
-
-  if (!id) { alert('No se pudo extraer ID de Drive de la URL: ' + r.foto); return; }
-
-  const urls = [
-    `https://drive.google.com/thumbnail?id=${id}&sz=w800`,
-    `https://drive.google.com/uc?export=view&id=${id}`,
-    `https://lh3.googleusercontent.com/d/${id}`,
-  ];
-
-  let resultados = 'URL raw: ' + r.foto + '\n' + 'ID: ' + id + '\n\n';
-
-  for (let i = 0; i < urls.length; i++) {
-    const url = urls[i];
-    const resultado = await new Promise(resolve => {
-      const img = new Image();
-      img.crossOrigin = 'anonymous';
-      let timedOut = false;
-      const timer = setTimeout(() => { timedOut = true; resolve('TIMEOUT'); }, 8000);
-      img.onload = () => {
-        clearTimeout(timer);
-        // Intentar dibujar en canvas para ver si está "tainted"
-        try {
-          const c = document.createElement('canvas');
-          c.width = 10; c.height = 10;
-          c.getContext('2d').drawImage(img, 0, 0, 10, 10);
-          c.toDataURL(); // esto lanza error si está tainted
-          resolve('✅ OK - cargó y canvas libre de CORS (' + img.naturalWidth + 'x' + img.naturalHeight + ')');
-        } catch(e) {
-          resolve('⚠️ Cargó visualmente PERO canvas bloqueado por CORS: ' + e.message);
-        }
-      };
-      img.onerror = () => { clearTimeout(timer); resolve('❌ ERROR - no cargó (bloqueada o privada)'); };
-      img.src = url + '&_t=' + Date.now();
-    });
-    log('URL ' + (i+1) + ': ' + url);
-    log('Resultado: ' + resultado);
-    resultados += 'URL ' + (i+1) + ': ' + resultado + '\n' + url + '\n\n';
-  }
-
-  alert('RESULTADOS (ver también consola F12):\n\n' + resultados);
 }
 
 window.onload = cargarDatos;
