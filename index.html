@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Búsqueda de Personas - Dirección General Departamentales Norte</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <style>
     :root { --azul-policia: #0d2545; --azul-acento: #1a6fba; --gris-claro: #f8f9fa; }
@@ -24,9 +23,6 @@
     .col-derecha { flex-grow: 1; padding: 30px; display: flex; flex-direction: column; justify-content: center; }
     .info-linea { font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase; }
     .info-linea b { color: var(--azul-policia); }
-    .btn-pdf { background-color: var(--azul-policia); color: white; border: none; padding: 12px 20px; font-size: 1rem; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 20px; align-self: flex-start; display: flex; align-items: center; gap: 8px; transition: background 0.3s; }
-    .btn-pdf:hover:not(:disabled) { background-color: var(--azul-acento); }
-    .btn-pdf:disabled { opacity: 0.5; cursor: not-allowed; }
     .btn-jpg { background-color: #1a6fba; color: white; border: none; padding: 12px 20px; font-size: 1rem; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 10px; align-self: flex-start; display: flex; align-items: center; gap: 8px; transition: background 0.3s; }
     .btn-jpg:hover:not(:disabled) { background-color: #145a9a; }
     .btn-jpg:disabled { opacity: 0.5; cursor: not-allowed; }
@@ -122,92 +118,11 @@ function renderizarFichas() {
         <div class="info-linea"><b>RESEÑA DEL HECHO:</b></div>
         <div style="font-size:0.95rem; line-height:1.4; text-align:justify;">${r.resena || 'Sin reseña'}</div>
         <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <button class="btn-pdf" id="btnpdf-${i}" onclick="descargarPDF(${i})">📄 Descargar PDF</button>
           <button class="btn-jpg" id="btnjpg-${i}" onclick="descargarJPG(${i})">🖼️ Descargar JPG</button>
         </div>
       </div>
     </article>
   `).join('');
-}
-
-// ══════════════════════════════════════════════════════════════════
-//  PDF (motor original que funcionaba bien)
-// ══════════════════════════════════════════════════════════════════
-function descargarPDF(index) {
-  const r = datosGlobales[index];
-  if (!r) return;
-  const boton = document.getElementById(`btnpdf-${index}`);
-  const statusTxt = document.getElementById('status-txt');
-  const statusOriginal = statusTxt.innerText;
-  boton.disabled = true; boton.textContent = '⏳ Generando PDF...';
-  statusTxt.innerText = '⏳ Generando Alerta PDF...';
-
-  const tempDiv = document.createElement('div');
-  tempDiv.style.cssText = 'position:absolute;top:0;left:0;z-index:-999;width:794px;visibility:hidden;';
-  tempDiv.innerHTML = `
-    <div id="molde-impresion" style="width:794px;min-height:1123px;background:#fff;font-family:'Roboto',sans-serif;box-sizing:border-box;display:flex;flex-direction:column;">
-      <div style="background:#0d2545;color:white;padding:30px 40px;border-bottom:8px solid #1a6fba;">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0"><tr>
-          <td style="vertical-align:middle;">
-            <h1 style="margin:0;font-family:'Montserrat',sans-serif;font-size:40px;line-height:1;text-transform:uppercase;">Búsqueda de Personas</h1>
-            <p style="font-size:18px;margin:10px 0 0 0;font-weight:700;text-transform:uppercase;">Dirección General Departamentales Norte</p>
-            <p style="font-size:13px;margin:5px 0 0 0;color:#a4c8e1;text-transform:uppercase;">Información aportada por las Unidades Regionales Departamentales Norte</p>
-          </td>
-          <td align="right" width="130" style="vertical-align:middle;">
-            <img src="https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png" style="height:110px;">
-          </td>
-        </tr></table>
-      </div>
-      <div style="padding:40px;flex-grow:1;">
-        <div style="text-align:center;">
-          <div style="display:inline-block;width:340px;height:420px;border:4px solid #000;background:#eee;overflow:hidden;margin-bottom:15px;">
-            <img id="foto-pdf-generar" src="${formatDriveLink(r.foto)}" style="width:100%;height:100%;object-fit:contain;" crossorigin="anonymous">
-          </div>
-        </div>
-        <div style="text-align:center;margin-bottom:20px;">
-          <div style="display:inline-block;font-size:18px;font-weight:bold;color:#c0392b;text-transform:uppercase;border:2px dashed #c0392b;padding:15px 30px;background:#fdf5f5;">
-            INFORMAR A:<br>
-            <span style="color:#000;font-size:22px;">${r.contacto || r.dependencia || 'Dependencia Policial'}</span><br><br>
-            TEL: <span style="color:#000;font-size:24px;">${r.telefono || '-'} / 911</span>
-          </div>
-        </div>
-        <div style="border-top:5px solid #000;margin:25px 0;"></div>
-        <div style="font-size:18px;line-height:1.5;color:#000;">
-          <p style="margin:8px 0;text-transform:uppercase;"><b>DESAPARECIDO EN:</b> ${limpiarTexto(r.localidad)}</p>
-          <p style="margin:8px 0;text-transform:uppercase;"><b>FECHA:</b> ${limpiarTexto(r.fecha)} &nbsp;|&nbsp; <b>HORA:</b> ${limpiarTexto(r.hora)}</p>
-          <p style="margin:15px 0 8px 0;text-transform:uppercase;"><b>NOMBRE:</b> <span style="color:#0d2545;font-size:26px;font-weight:900;font-family:'Montserrat',sans-serif;">${r.nombre}</span></p>
-          <p style="margin:8px 0;text-transform:uppercase;"><b>EDAD:</b> ${r.edad} AÑOS</p>
-          <p style="margin:25px 0 5px 0;text-transform:uppercase;color:#1a6fba;font-weight:bold;">DESCRIPCIÓN / VESTIMENTA:</p>
-          <div style="text-align:justify;font-size:16px;background:#f8f9fa;padding:12px;border-left:4px solid #1a6fba;">${r.descripcion || 'Sin datos'}</div>
-          <p style="margin:20px 0 5px 0;text-transform:uppercase;color:#1a6fba;font-weight:bold;">RESEÑA DEL HECHO:</p>
-          <div style="text-align:justify;font-size:16px;background:#f8f9fa;padding:12px;border-left:4px solid #1a6fba;">${r.resena || 'Sin reseña'}</div>
-        </div>
-      </div>
-    </div>`;
-  document.body.appendChild(tempDiv);
-
-  const imgPDF = document.getElementById('foto-pdf-generar');
-  const crearPDF = () => {
-    html2pdf().set({
-      margin: 0, filename: `Alerta_${(r.nombre||'Busqueda').replace(/ /g,'_')}.pdf`,
-      image: { type:'jpeg', quality:0.98 },
-      html2canvas: { scale:2, useCORS:true, windowWidth:794 },
-      jsPDF: { unit:'px', format:[794,1123], orientation:'portrait' }
-    }).from(document.getElementById('molde-impresion')).save().then(() => {
-      document.body.removeChild(tempDiv);
-      boton.disabled = false; boton.innerHTML = '📄 Descargar PDF';
-      statusTxt.innerText = statusOriginal;
-    }).catch(() => {
-      document.body.removeChild(tempDiv);
-      boton.disabled = false; boton.innerHTML = '📄 Descargar PDF';
-      statusTxt.innerText = 'Error al crear el PDF.';
-    });
-  };
-  if (imgPDF.complete) { crearPDF(); }
-  else {
-    imgPDF.onload  = crearPDF;
-    imgPDF.onerror = () => { imgPDF.src='https://via.placeholder.com/340x420?text=SIN+IMAGEN'; crearPDF(); };
-  }
 }
 
 // ══════════════════════════════════════════════════════════════════
