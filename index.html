@@ -4,12 +4,10 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Búsqueda de Personas - Dirección General Departamentales Norte</title>
-  
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <style>
-    /* DISEÑO WEB Y MÓVIL EN PANTALLA */
     :root { --azul-policia: #0d2545; --azul-acento: #1a6fba; --gris-claro: #f8f9fa; }
     body { font-family: 'Roboto', sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; }
     header { background-color: var(--azul-policia); color: white; padding: 50px 60px; display: flex; justify-content: space-between; align-items: center; border-bottom: 8px solid var(--azul-acento); }
@@ -20,18 +18,19 @@
     .contenedor { max-width: 1000px; margin: 40px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; min-height: 60vh; }
     .ficha { display: flex; background: var(--gris-claro); border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
     .col-izquierda { width: 320px; min-width: 320px; padding: 20px; background: #fff; border-right: 2px solid #000; display: flex; flex-direction: column; align-items: center; }
-    
     .foto-marco { width: 280px; height: 350px; border: 4px solid #000; background: #eee; display: flex; justify-content: center; align-items: center; overflow: hidden; }
     .foto-marco img { max-width: 100%; max-height: 100%; object-fit: contain; }
-    
     .contacto-pie { margin-top: 15px; font-size: 0.8rem; font-weight: bold; color: #c0392b; text-align: center; text-transform: uppercase; }
     .col-derecha { flex-grow: 1; padding: 30px; display: flex; flex-direction: column; justify-content: center; }
     .info-linea { font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase; }
     .info-linea b { color: var(--azul-policia); }
     .btn-pdf { background-color: var(--azul-policia); color: white; border: none; padding: 12px 20px; font-size: 1rem; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 20px; align-self: flex-start; display: flex; align-items: center; gap: 8px; transition: background 0.3s; }
-    .btn-pdf:hover { background-color: var(--azul-acento); }
+    .btn-pdf:hover:not(:disabled) { background-color: var(--azul-acento); }
+    .btn-pdf:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-jpg { background-color: #1a6fba; color: white; border: none; padding: 12px 20px; font-size: 1rem; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 10px; align-self: flex-start; display: flex; align-items: center; gap: 8px; transition: background 0.3s; }
+    .btn-jpg:hover:not(:disabled) { background-color: #145a9a; }
+    .btn-jpg:disabled { opacity: 0.5; cursor: not-allowed; }
     footer { background-color: var(--azul-policia); height: 80px; margin-top: 60px; border-top: 8px solid var(--azul-acento); width: 100%; }
-    
     @media (max-width: 900px) {
       header { flex-direction: column; text-align: center; padding: 30px 20px; }
       .header-left h1 { font-size: 3rem; }
@@ -42,7 +41,6 @@
   </style>
 </head>
 <body>
-
   <header id="cabecera-institucional">
     <div class="header-left">
       <h1>Búsqueda de<br>Personas</h1>
@@ -50,198 +48,451 @@
     </div>
     <img src="Diapositiva1-removebg-preview.png" alt="Escudo Policía" class="escudo-header">
   </header>
-
   <div class="status-bar" id="status-txt">Conectando con base de datos policial...</div>
-
   <main id="contenedor-fichas" class="contenedor">
     <div style="text-align:center; padding:50px; font-size: 1.2rem;">Cargando registros oficiales...</div>
   </main>
-
   <footer id="pie-institucional"></footer>
 
-  <script>
-    const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbw8m7K4ogyIhubFaTUUG5gn-lcb75NJlM708VM1yoHCuiOmhpF4WfHbvaKOE4ZmRNBl/exec';
-    let datosGlobales = [];
+<script>
+const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbw8m7K4ogyIhubFaTUUG5gn-lcb75NJlM708VM1yoHCuiOmhpF4WfHbvaKOE4ZmRNBl/exec';
+let datosGlobales = [];
 
-    function formatDriveLink(url) {
-      if (!url) return '';
-      const match = url.match(/(?:id=|d\/)([a-zA-Z0-9_-]+)/);
-      return match ? `https://drive.google.com/thumbnail?id=${match[1]}&sz=w800` : url; 
-    }
+function extraerIdDrive(url) {
+  if (!url) return null;
+  const m = url.match(/(?:id=|d\/)([a-zA-Z0-9_-]+)/);
+  return m ? m[1] : null;
+}
 
-    function limpiarTexto(texto) {
-      if (!texto) return '-';
-      if (texto.includes('T') && texto.includes('1899')) {
-        let d = new Date(texto);
-        return d.toLocaleTimeString('es-AR', {hour: '2-digit', minute:'2-digit'});
-      }
-      if (texto.includes('T') && texto.length > 15) {
-        let p = texto.split('T')[0].split('-');
-        return `${p[2]}/${p[1]}/${p[0]}`;
-      }
-      return texto;
-    }
+function formatDriveLink(url) {
+  const id = extraerIdDrive(url);
+  return id ? `https://drive.google.com/thumbnail?id=${id}&sz=w800` : '';
+}
 
-    async function cargarDatos() {
-      try {
-        const res = await fetch(URL_SCRIPT + "?nocache=" + new Date().getTime());
-        datosGlobales = await res.json();
-        renderizarFichas();
-        const ahora = new Date().toLocaleTimeString('es-AR');
-        document.getElementById('status-txt').innerText = `En vivo vía App Script: ${ahora} - ${datosGlobales.length} registros`;
-      } catch (e) {
-        document.getElementById('status-txt').innerText = 'Error de conexión con el Script en vivo.';
-      }
-    }
+function limpiarTexto(texto) {
+  if (!texto) return '-';
+  if (texto.includes('T') && texto.includes('1899')) {
+    return new Date(texto).toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit'});
+  }
+  if (texto.includes('T') && texto.length > 15) {
+    const p = texto.split('T')[0].split('-');
+    return `${p[2]}/${p[1]}/${p[0]}`;
+  }
+  return texto;
+}
 
-    function renderizarFichas() {
-      const contenedor = document.getElementById('contenedor-fichas');
-      if (datosGlobales.length === 0) {
-        contenedor.innerHTML = '<h2 style="text-align:center; color:#c0392b;">No hay alertas vigentes en este momento.</h2>';
-        return;
-      }
+async function cargarDatos() {
+  try {
+    const res = await fetch(URL_SCRIPT + '?nocache=' + Date.now());
+    datosGlobales = await res.json();
+    renderizarFichas();
+    document.getElementById('status-txt').innerText =
+      `En vivo vía App Script: ${new Date().toLocaleTimeString('es-AR')} - ${datosGlobales.length} registros`;
+  } catch(e) {
+    document.getElementById('status-txt').innerText = 'Error de conexión con el Script en vivo.';
+  }
+}
 
-      contenedor.innerHTML = datosGlobales.map((r, i) => `
-        <article class="ficha">
-          <div class="col-izquierda">
-            <div class="foto-marco">
-              <img src="${formatDriveLink(r.foto)}" onerror="this.src='https://via.placeholder.com/280x350?text=SIN+IMAGEN'">
-            </div>
-            <div class="contacto-pie">
-              INFORMAR A:<br>${r.contacto || r.dependencia || 'Dependencia Policial'}<br><br>
-              TEL: ${r.telefono || '-'} / 911
-            </div>
-          </div>
-          <div class="col-derecha">
-            <div class="info-linea"><b>DESAPARECIDO EN:</b> ${limpiarTexto(r.localidad)}</div>
-            <div class="info-linea"><b>FECHA:</b> ${limpiarTexto(r.fecha)} | <b>HORA:</b> ${limpiarTexto(r.hora)}</div>
-            <br>
-            <div class="info-linea"><b>NOMBRE:</b> ${r.nombre}</div>
-            <div class="info-linea"><b>EDAD:</b> ${r.edad} AÑOS</div>
-            <br>
-            <div class="info-linea"><b>DESCRIPCIÓN / VESTIMENTA:</b></div>
-            <div style="font-size:0.95rem; line-height:1.4; text-align:justify; margin-bottom:10px;">${r.descripcion || 'Sin datos'}</div>
-            <div class="info-linea"><b>RESEÑA DEL HECHO:</b></div>
-            <div style="font-size:0.95rem; line-height:1.4; text-align:justify;">${r.resena || 'Sin reseña'}</div>
-            
-            <button class="btn-pdf" onclick="descargarPDF(${i})">📄 Descargar PDF</button>
-          </div>
-        </article>
-      `).join('');
-    }
+function renderizarFichas() {
+  const contenedor = document.getElementById('contenedor-fichas');
+  if (!datosGlobales.length) {
+    contenedor.innerHTML = '<h2 style="text-align:center; color:#c0392b;">No hay alertas vigentes en este momento.</h2>';
+    return;
+  }
+  contenedor.innerHTML = datosGlobales.map((r, i) => `
+    <article class="ficha">
+      <div class="col-izquierda">
+        <div class="foto-marco">
+          <img src="${formatDriveLink(r.foto)}" onerror="this.src='https://via.placeholder.com/280x350?text=SIN+IMAGEN'">
+        </div>
+        <div class="contacto-pie">
+          INFORMAR A:<br>${r.contacto || r.dependencia || 'Dependencia Policial'}<br><br>
+          TEL: ${r.telefono || '-'} / 911
+        </div>
+      </div>
+      <div class="col-derecha">
+        <div class="info-linea"><b>DESAPARECIDO EN:</b> ${limpiarTexto(r.localidad)}</div>
+        <div class="info-linea"><b>FECHA:</b> ${limpiarTexto(r.fecha)} | <b>HORA:</b> ${limpiarTexto(r.hora)}</div>
+        <br>
+        <div class="info-linea"><b>NOMBRE:</b> ${r.nombre}</div>
+        <div class="info-linea"><b>EDAD:</b> ${r.edad} AÑOS</div>
+        <br>
+        <div class="info-linea"><b>DESCRIPCIÓN / VESTIMENTA:</b></div>
+        <div style="font-size:0.95rem; line-height:1.4; text-align:justify; margin-bottom:10px;">${r.descripcion || 'Sin datos'}</div>
+        <div class="info-linea"><b>RESEÑA DEL HECHO:</b></div>
+        <div style="font-size:0.95rem; line-height:1.4; text-align:justify;">${r.resena || 'Sin reseña'}</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn-pdf" id="btnpdf-${i}" onclick="descargarPDF(${i})">📄 Descargar PDF</button>
+          <button class="btn-jpg" id="btnjpg-${i}" onclick="descargarJPG(${i})">🖼️ Descargar JPG</button>
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
 
-    // NUEVO MOTOR PDF: ENCUADRE DE ARRIBA HACIA ABAJO + ESPERA DE FOTO
-    function descargarPDF(index) {
-      const r = datosGlobales[index];
-      const statusTxt = document.getElementById('status-txt');
-      const statusOriginal = statusTxt.innerText;
-      statusTxt.innerText = '⏳ Cargando imagen oficial y generando Alerta A4...';
+// ══════════════════════════════════════════════════════════════════
+//  PDF (motor original que funcionaba bien)
+// ══════════════════════════════════════════════════════════════════
+function descargarPDF(index) {
+  const r = datosGlobales[index];
+  if (!r) return;
+  const boton = document.getElementById(`btnpdf-${index}`);
+  const statusTxt = document.getElementById('status-txt');
+  const statusOriginal = statusTxt.innerText;
+  boton.disabled = true; boton.textContent = '⏳ Generando PDF...';
+  statusTxt.innerText = '⏳ Generando Alerta PDF...';
 
-      // Contenedor temporal puesto detrás de la web (no fuera de la pantalla)
-      const tempDiv = document.createElement('div');
-      tempDiv.style.position = 'absolute';
-      tempDiv.style.top = '0';
-      tempDiv.style.left = '0';
-      tempDiv.style.zIndex = '-999';
-      tempDiv.style.width = '794px'; 
-      tempDiv.style.visibility = 'hidden'; // Oculto pero físicamente presente para el render
-
-      tempDiv.innerHTML = `
-        <div id="molde-impresion" style="width: 794px; min-height: 1123px; background: #ffffff; font-family: 'Roboto', sans-serif; box-sizing: border-box; display: flex; flex-direction: column;">
-          
-          <div style="background-color: #0d2545; color: white; padding: 30px 40px; border-bottom: 8px solid #1a6fba;">
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-              <tr>
-                <td style="vertical-align: middle;">
-                  <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 40px; line-height: 1; text-transform: uppercase;">Búsqueda de Personas</h1>
-                  <p style="font-size: 18px; margin: 10px 0 0 0; font-weight: 700; text-transform: uppercase;">Dirección General Departamentales Norte</p>
-                  <p style="font-size: 13px; margin: 5px 0 0 0; color: #a4c8e1; text-transform: uppercase;">Información aportada por las Unidades Regionales Departamentales Norte</p>
-                </td>
-                <td align="right" width="130" style="vertical-align: middle;">
-                  <img src="https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png" style="height: 110px;">
-                </td>
-              </tr>
-            </table>
-          </div>
-          
-          <div style="padding: 40px; flex-grow: 1;">
-            
-            <div style="text-align: center;">
-              <div style="display: inline-block; width: 340px; height: 420px; border: 4px solid #000; background: #eee; overflow: hidden; margin-bottom: 15px;">
-                <img id="foto-pdf-generar" src="${formatDriveLink(r.foto)}" style="width: 100%; height: 100%; object-fit: contain;" crossorigin="anonymous">
-              </div>
-            </div>
-
-            <div style="text-align: center; margin-bottom: 20px;">
-              <div style="display: inline-block; font-size: 18px; font-weight: bold; color: #c0392b; text-transform: uppercase; border: 2px dashed #c0392b; padding: 15px 30px; background: #fdf5f5;">
-                INFORMAR A:<br>
-                <span style="color: #000; font-size: 22px;">${r.contacto || r.dependencia || 'Dependencia Policial'}</span><br><br>
-                TEL: <span style="color: #000; font-size: 24px;">${r.telefono || '-'} / 911</span>
-              </div>
-            </div>
-            
-            <div style="border-top: 5px solid #000; margin: 25px 0;"></div>
-            
-            <div style="font-size: 18px; line-height: 1.5; color: #000;">
-              <p style="margin: 8px 0; text-transform: uppercase;"><b>DESAPARECIDO EN:</b> ${limpiarTexto(r.localidad)}</p>
-              <p style="margin: 8px 0; text-transform: uppercase;"><b>FECHA:</b> ${limpiarTexto(r.fecha)} &nbsp;&nbsp;|&nbsp;&nbsp; <b>HORA:</b> ${limpiarTexto(r.hora)}</p>
-              
-              <p style="margin: 15px 0 8px 0; text-transform: uppercase;"><b>NOMBRE:</b> <span style="color: #0d2545; font-size: 26px; font-weight: 900; font-family: 'Montserrat', sans-serif;">${r.nombre}</span></p>
-              <p style="margin: 8px 0; text-transform: uppercase;"><b>EDAD:</b> ${r.edad} AÑOS</p>
-              
-              <p style="margin: 25px 0 5px 0; text-transform: uppercase; color: #1a6fba; font-weight: bold;">DESCRIPCIÓN / VESTIMENTA:</p>
-              <div style="text-align: justify; font-size: 16px; background: #f8f9fa; padding: 12px; border-left: 4px solid #1a6fba;">
-                ${r.descripcion || 'Sin datos'}
-              </div>
-              
-              <p style="margin: 20px 0 5px 0; text-transform: uppercase; color: #1a6fba; font-weight: bold;">RESEÑA DEL HECHO:</p>
-              <div style="text-align: justify; font-size: 16px; background: #f8f9fa; padding: 12px; border-left: 4px solid #1a6fba;">
-                ${r.resena || 'Sin reseña'}
-              </div>
-            </div>
-
+  const tempDiv = document.createElement('div');
+  tempDiv.style.cssText = 'position:absolute;top:0;left:0;z-index:-999;width:794px;visibility:hidden;';
+  tempDiv.innerHTML = `
+    <div id="molde-impresion" style="width:794px;min-height:1123px;background:#fff;font-family:'Roboto',sans-serif;box-sizing:border-box;display:flex;flex-direction:column;">
+      <div style="background:#0d2545;color:white;padding:30px 40px;border-bottom:8px solid #1a6fba;">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0"><tr>
+          <td style="vertical-align:middle;">
+            <h1 style="margin:0;font-family:'Montserrat',sans-serif;font-size:40px;line-height:1;text-transform:uppercase;">Búsqueda de Personas</h1>
+            <p style="font-size:18px;margin:10px 0 0 0;font-weight:700;text-transform:uppercase;">Dirección General Departamentales Norte</p>
+            <p style="font-size:13px;margin:5px 0 0 0;color:#a4c8e1;text-transform:uppercase;">Información aportada por las Unidades Regionales Departamentales Norte</p>
+          </td>
+          <td align="right" width="130" style="vertical-align:middle;">
+            <img src="https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png" style="height:110px;">
+          </td>
+        </tr></table>
+      </div>
+      <div style="padding:40px;flex-grow:1;">
+        <div style="text-align:center;">
+          <div style="display:inline-block;width:340px;height:420px;border:4px solid #000;background:#eee;overflow:hidden;margin-bottom:15px;">
+            <img id="foto-pdf-generar" src="${formatDriveLink(r.foto)}" style="width:100%;height:100%;object-fit:contain;" crossorigin="anonymous">
           </div>
         </div>
-      `;
+        <div style="text-align:center;margin-bottom:20px;">
+          <div style="display:inline-block;font-size:18px;font-weight:bold;color:#c0392b;text-transform:uppercase;border:2px dashed #c0392b;padding:15px 30px;background:#fdf5f5;">
+            INFORMAR A:<br>
+            <span style="color:#000;font-size:22px;">${r.contacto || r.dependencia || 'Dependencia Policial'}</span><br><br>
+            TEL: <span style="color:#000;font-size:24px;">${r.telefono || '-'} / 911</span>
+          </div>
+        </div>
+        <div style="border-top:5px solid #000;margin:25px 0;"></div>
+        <div style="font-size:18px;line-height:1.5;color:#000;">
+          <p style="margin:8px 0;text-transform:uppercase;"><b>DESAPARECIDO EN:</b> ${limpiarTexto(r.localidad)}</p>
+          <p style="margin:8px 0;text-transform:uppercase;"><b>FECHA:</b> ${limpiarTexto(r.fecha)} &nbsp;|&nbsp; <b>HORA:</b> ${limpiarTexto(r.hora)}</p>
+          <p style="margin:15px 0 8px 0;text-transform:uppercase;"><b>NOMBRE:</b> <span style="color:#0d2545;font-size:26px;font-weight:900;font-family:'Montserrat',sans-serif;">${r.nombre}</span></p>
+          <p style="margin:8px 0;text-transform:uppercase;"><b>EDAD:</b> ${r.edad} AÑOS</p>
+          <p style="margin:25px 0 5px 0;text-transform:uppercase;color:#1a6fba;font-weight:bold;">DESCRIPCIÓN / VESTIMENTA:</p>
+          <div style="text-align:justify;font-size:16px;background:#f8f9fa;padding:12px;border-left:4px solid #1a6fba;">${r.descripcion || 'Sin datos'}</div>
+          <p style="margin:20px 0 5px 0;text-transform:uppercase;color:#1a6fba;font-weight:bold;">RESEÑA DEL HECHO:</p>
+          <div style="text-align:justify;font-size:16px;background:#f8f9fa;padding:12px;border-left:4px solid #1a6fba;">${r.resena || 'Sin reseña'}</div>
+        </div>
+      </div>
+    </div>`;
+  document.body.appendChild(tempDiv);
 
-      document.body.appendChild(tempDiv);
+  const imgPDF = document.getElementById('foto-pdf-generar');
+  const crearPDF = () => {
+    html2pdf().set({
+      margin: 0, filename: `Alerta_${(r.nombre||'Busqueda').replace(/ /g,'_')}.pdf`,
+      image: { type:'jpeg', quality:0.98 },
+      html2canvas: { scale:2, useCORS:true, windowWidth:794 },
+      jsPDF: { unit:'px', format:[794,1123], orientation:'portrait' }
+    }).from(document.getElementById('molde-impresion')).save().then(() => {
+      document.body.removeChild(tempDiv);
+      boton.disabled = false; boton.innerHTML = '📄 Descargar PDF';
+      statusTxt.innerText = statusOriginal;
+    }).catch(() => {
+      document.body.removeChild(tempDiv);
+      boton.disabled = false; boton.innerHTML = '📄 Descargar PDF';
+      statusTxt.innerText = 'Error al crear el PDF.';
+    });
+  };
+  if (imgPDF.complete) { crearPDF(); }
+  else {
+    imgPDF.onload  = crearPDF;
+    imgPDF.onerror = () => { imgPDF.src='https://via.placeholder.com/340x420?text=SIN+IMAGEN'; crearPDF(); };
+  }
+}
 
-      const imgPDF = document.getElementById('foto-pdf-generar');
-      
-      // Función interna que genera el PDF SOLO cuando la imagen está lista
-      const crearPDF = () => {
-        const nombreArchivo = r.nombre ? r.nombre.replace(/ /g, '_') : 'Busqueda';
-        const molde = document.getElementById('molde-impresion');
+// ══════════════════════════════════════════════════════════════════
+//  JPG — motor canvas con layout dinámico (sin superposiciones)
+// ══════════════════════════════════════════════════════════════════
 
-        html2pdf().set({
-          margin:       0,
-          filename:     `Alerta_${nombreArchivo}.pdf`,
-          image:        { type: 'jpeg', quality: 0.98 },
-          html2canvas:  { scale: 2, useCORS: true, windowWidth: 794 },
-          jsPDF:        { unit: 'px', format: [794, 1123], orientation: 'portrait' }
-        }).from(molde).save().then(() => {
-          document.body.removeChild(tempDiv);
-          statusTxt.innerText = statusOriginal;
-        }).catch(err => {
-          document.body.removeChild(tempDiv);
-          statusTxt.innerText = 'Error al crear el PDF.';
-        });
-      };
+// Pide la foto al Apps Script como base64
+async function obtenerFotoBase64(fotoUrl) {
+  const id = extraerIdDrive(fotoUrl);
+  if (!id) return null;
+  try {
+    const res  = await fetch(`${URL_SCRIPT}?foto=${id}&nocache=${Date.now()}`);
+    const json = await res.json();
+    return json.base64 || null;
+  } catch(e) { return null; }
+}
 
-      // Sensor inteligente de imagen
-      if (imgPDF.complete) {
-        crearPDF();
-      } else {
-        imgPDF.onload = crearPDF;
-        imgPDF.onerror = () => {
-          imgPDF.src = 'https://via.placeholder.com/340x420?text=SIN+IMAGEN';
-          crearPDF(); // Si falla la foto de Drive, le pone un recuadro temporal pero CREA EL PDF igual
-        };
-      }
+// Carga imagen desde data:URL o URL normal
+function cargarImg(src) {
+  return new Promise(resolve => {
+    if (!src) { resolve(null); return; }
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload  = () => resolve(img);
+    img.onerror = () => resolve(null);
+    img.src = src;
+  });
+}
+
+// Word-wrap: dibuja texto y devuelve la Y donde terminó
+function wrapText(ctx, texto, x, y, maxW, lineH) {
+  const palabras = String(texto || '').split(' ');
+  let linea = '';
+  for (const pal of palabras) {
+    const prueba = linea + pal + ' ';
+    if (ctx.measureText(prueba).width > maxW && linea) {
+      ctx.fillText(linea.trimEnd(), x, y);
+      linea = pal + ' ';
+      y += lineH;
+    } else { linea = prueba; }
+  }
+  if (linea.trim()) { ctx.fillText(linea.trimEnd(), x, y); y += lineH; }
+  return y; // Y final real
+}
+
+// Mide cuántas líneas ocupa un texto (para calcular altura de caja)
+function medirAltoTexto(ctx, texto, maxW, lineH) {
+  const palabras = String(texto || '').split(' ');
+  let linea = '', lineas = 1;
+  for (const pal of palabras) {
+    const prueba = linea + pal + ' ';
+    if (ctx.measureText(prueba).width > maxW && linea) { linea = pal + ' '; lineas++; }
+    else linea = prueba;
+  }
+  return lineas * lineH;
+}
+
+// object-fit:contain en canvas
+function drawContain(ctx, img, x, y, w, h) {
+  ctx.fillStyle = '#eeeeee'; ctx.fillRect(x, y, w, h);
+  if (!img) {
+    ctx.fillStyle = '#888'; ctx.font = 'bold 16px sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('FOTO NO DISPONIBLE', x+w/2, y+h/2);
+    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    return;
+  }
+  const ratio = Math.min(w/img.naturalWidth, h/img.naturalHeight);
+  ctx.drawImage(img, x+(w-img.naturalWidth*ratio)/2, y+(h-img.naturalHeight*ratio)/2,
+                img.naturalWidth*ratio, img.naturalHeight*ratio);
+}
+
+// Dibuja texto centrado con wrap (para caja contacto)
+function wrapTextCenter(ctx, texto, cx, y, maxW, lineH) {
+  const palabras = String(texto||'').split(' ');
+  let linea = '';
+  const lineas = [];
+  for (const pal of palabras) {
+    const prueba = linea + pal + ' ';
+    if (ctx.measureText(prueba).width > maxW && linea) { lineas.push(linea.trimEnd()); linea = pal+' '; }
+    else linea = prueba;
+  }
+  if (linea.trim()) lineas.push(linea.trimEnd());
+  for (const l of lineas) { ctx.fillText(l, cx - ctx.measureText(l).width/2, y); y += lineH; }
+  return y;
+}
+
+async function descargarJPG(index) {
+  const r = datosGlobales[index];
+  if (!r) return;
+  const boton = document.getElementById(`btnjpg-${index}`);
+  const statusTxt = document.getElementById('status-txt');
+  const statusOrig = statusTxt.innerText;
+  boton.disabled = true; boton.textContent = '⏳ Obteniendo foto...';
+  statusTxt.innerText = '⏳ Obteniendo imagen del servidor — puede tardar unos segundos...';
+
+  try {
+    // 1. Foto via Apps Script base64
+    const fotoB64 = await obtenerFotoBase64(r.foto);
+    const fotoImg = await cargarImg(fotoB64);
+
+    boton.textContent = '⏳ Dibujando...';
+
+    // 2. Escudo (GitHub Pages, sin restricción CORS)
+    const escudoImg = await cargarImg(
+      'https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png'
+    );
+
+    // 3. Canvas dinámico: primero calculamos la altura total necesaria
+    const SC = 2, PW = 794;
+    // Medición previa de textos (usamos un canvas temporal)
+    const tmpC = document.createElement('canvas'); tmpC.width=794; tmpC.height=10;
+    const tmpCtx = tmpC.getContext('2d');
+    const TEXTO_MAX = PW - 76 - 12; // ancho útil dentro de cajas con padding
+
+    tmpCtx.font = '14px Roboto, sans-serif';
+    const altoDesc  = medirAltoTexto(tmpCtx, r.descripcion||'Sin datos', TEXTO_MAX, 20) + 24; // +padding
+    const altoResena = medirAltoTexto(tmpCtx, r.resena||'Sin reseña',   TEXTO_MAX, 20) + 24;
+
+    // Altura total estimada:
+    // header(160) + foto(400+12) + contacto(dyn) + sep(20) + filas datos(~160) + desc + resena + pie(48) + márgenes
+    const altoContacto = 106; // caja contacto fija
+    const PH = Math.max(1123,
+      160 + 12 + 400 + 12 + altoContacto + 16 +  // header + foto + contacto
+      3 + 18 +          // separador
+      22 + 22 + 68 +    // localidad, fecha, nombre+edad
+      28 + altoDesc +   // título desc + caja
+      28 + altoResena + // título resena + caja
+      48 + 40           // pie + margen
+    );
+
+    const canvas = document.createElement('canvas');
+    canvas.width  = PW * SC;
+    canvas.height = PH * SC;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(SC, SC);
+
+    // ── Fondo
+    ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, PW, PH);
+
+    // ── HEADER
+    ctx.fillStyle = '#0d2545'; ctx.fillRect(0, 0, PW, 160);
+    ctx.fillStyle = '#1a6fba'; ctx.fillRect(0, 152, PW, 8);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 34px Montserrat, sans-serif'; ctx.fillText('BÚSQUEDA DE PERSONAS', 38, 52);
+    ctx.font = 'bold 15px Roboto, sans-serif';     ctx.fillText('DIRECCIÓN GENERAL DEPARTAMENTALES NORTE', 38, 78);
+    ctx.font = '11px Roboto, sans-serif'; ctx.fillStyle = '#a4c8e1';
+    ctx.fillText('Información aportada por las Unidades Regionales Departamentales Norte', 38, 100);
+    if (escudoImg) {
+      const eH = 118, eW = escudoImg.naturalWidth*(eH/escudoImg.naturalHeight);
+      ctx.drawImage(escudoImg, PW-eW-30, 18, eW, eH);
     }
 
-    window.onload = cargarDatos;
-    setInterval(cargarDatos, 10000); 
-  </script>
+    // ── FOTO centrada
+    const FW=320, FH=400, FX=(PW-FW)/2;
+    let Y = 172;
+    ctx.strokeStyle='#000'; ctx.lineWidth=4; ctx.strokeRect(FX, Y, FW, FH);
+    drawContain(ctx, fotoImg, FX+2, Y+2, FW-4, FH-4);
+    Y += FH + 16;
+
+    // ── CAJA CONTACTO (altura fija, texto con wrap centrado)
+    const CW=460, CX=(PW-CW)/2;
+    const CAJA_H = altoContacto;
+    ctx.strokeStyle='#c0392b'; ctx.setLineDash([7,4]); ctx.lineWidth=2;
+    ctx.strokeRect(CX, Y, CW, CAJA_H); ctx.setLineDash([]);
+    ctx.fillStyle='#fdf5f5'; ctx.fillRect(CX+1, Y+1, CW-2, CAJA_H-2);
+
+    const cMid = PW/2, cMaxW = CW - 24;
+    ctx.fillStyle='#c0392b'; ctx.font='bold 12px Roboto, sans-serif';
+    ctx.fillText('INFORMAR A:', cMid - ctx.measureText('INFORMAR A:').width/2, Y+20);
+
+    // Nombre dependencia con wrap centrado
+    ctx.fillStyle='#000'; ctx.font='bold 16px Roboto, sans-serif';
+    let yDep = wrapTextCenter(ctx, r.contacto||r.dependencia||'Dependencia Policial', cMid, Y+40, cMaxW, 20);
+
+    // TEL
+    ctx.fillStyle='#c0392b'; ctx.font='bold 12px Roboto, sans-serif';
+    ctx.fillText('TEL:', cMid - ctx.measureText(`TEL: ${r.telefono||'-'} / 911`).width/2, yDep+6);
+    ctx.fillStyle='#000'; ctx.font='bold 18px Roboto, sans-serif';
+    const telStr = `${r.telefono||'-'} / 911`;
+    ctx.fillText(telStr, cMid - ctx.measureText(`TEL: ${telStr}`).width/2 + ctx.measureText('TEL: ').width - 4, yDep+6);
+
+    Y += CAJA_H + 16;
+
+    // ── SEPARADOR
+    ctx.fillStyle='#000'; ctx.fillRect(38, Y, PW-76, 3); Y += 18;
+
+    // ── DESAPARECIDO EN
+    ctx.font='bold 13px Roboto, sans-serif'; ctx.fillStyle='#0d2545';
+    ctx.fillText('DESAPARECIDO EN:', 38, Y);
+    ctx.font='13px Roboto, sans-serif'; ctx.fillStyle='#000';
+    ctx.fillText(limpiarTexto(r.localidad).toUpperCase(), 215, Y);
+    Y += 24;
+
+    // ── FECHA / HORA
+    ctx.font='bold 13px Roboto, sans-serif'; ctx.fillStyle='#0d2545'; ctx.fillText('FECHA:', 38, Y);
+    ctx.font='13px Roboto, sans-serif'; ctx.fillStyle='#000'; ctx.fillText(limpiarTexto(r.fecha), 105, Y);
+    ctx.font='bold 13px Roboto, sans-serif'; ctx.fillStyle='#0d2545'; ctx.fillText('HORA:', 430, Y);
+    ctx.font='13px Roboto, sans-serif'; ctx.fillStyle='#000'; ctx.fillText(limpiarTexto(r.hora), 490, Y);
+    Y += 18;
+
+    // ── CAJA NOMBRE (nombre en línea propia, edad debajo)
+    ctx.fillStyle='#f0f4fa'; ctx.fillRect(38, Y, PW-76, 70);
+    ctx.fillStyle='#0d2545'; ctx.fillRect(38, Y, 6, 70);
+    ctx.font='bold 10px Roboto, sans-serif'; ctx.fillStyle='#0d2545';
+    ctx.fillText('NOMBRE COMPLETO', 52, Y+15);
+    ctx.font='bold 20px Montserrat, sans-serif'; ctx.fillStyle='#0d2545';
+    ctx.fillText((r.nombre||'-').toUpperCase(), 52, Y+38);
+    // EDAD en línea separada, abajo del nombre
+    ctx.font='bold 13px Roboto, sans-serif'; ctx.fillStyle='#333';
+    ctx.fillText(`EDAD: ${r.edad||'-'} AÑOS`, 52, Y+58);
+    Y += 82;
+
+    // ── DESCRIPCIÓN
+    ctx.fillStyle='#1a6fba'; ctx.font='bold 12px Roboto, sans-serif';
+    ctx.fillText('DESCRIPCIÓN / VESTIMENTA', 38, Y);
+    ctx.fillRect(38, Y+4, PW-76, 2); Y += 14;
+    // Caja de altura dinámica
+    ctx.fillStyle='#f8f9fa'; ctx.fillRect(38, Y, PW-76, altoDesc);
+    ctx.fillStyle='#1a6fba'; ctx.fillRect(38, Y, 4, altoDesc);
+    ctx.fillStyle='#000'; ctx.font='14px Roboto, sans-serif';
+    wrapText(ctx, r.descripcion||'Sin datos', 50, Y+16, TEXTO_MAX, 20);
+    Y += altoDesc + 14;
+
+    // ── RESEÑA
+    ctx.fillStyle='#1a6fba'; ctx.font='bold 12px Roboto, sans-serif';
+    ctx.fillText('RESEÑA DEL HECHO', 38, Y);
+    ctx.fillRect(38, Y+4, PW-76, 2); Y += 14;
+    ctx.fillStyle='#f8f9fa'; ctx.fillRect(38, Y, PW-76, altoResena);
+    ctx.fillStyle='#1a6fba'; ctx.fillRect(38, Y, 4, altoResena);
+    ctx.fillStyle='#000'; ctx.font='14px Roboto, sans-serif';
+    wrapText(ctx, r.resena||'Sin reseña', 50, Y+16, TEXTO_MAX, 20);
+    Y += altoResena + 20;
+
+    // ── PIE
+    ctx.fillStyle='#0d2545'; ctx.fillRect(0, Y, PW, 48);
+    ctx.fillStyle='#1a6fba'; ctx.fillRect(0, Y, PW, 6);
+
+    // 4. Exportar
+    canvas.toBlob(blob => {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `Alerta_${(r.nombre||'Busqueda').replace(/\s+/g,'_')}.jpg`;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }, 'image/jpeg', 0.97);
+
+  } catch(err) {
+    console.error(err);
+    alert('Error al generar la imagen. Revisá la consola.');
+  } finally {
+    boton.disabled = false; boton.innerHTML = '🖼️ Descargar JPG';
+    statusTxt.innerText = statusOrig;
+  }
+}
+
+window.onload = cargarDatos;
+setInterval(cargarDatos, 10000);
+</script>
+
+<!--
+════════════════════════════════════════════════════════════════
+  AGREGAR AL Apps Script (Code.gs) para que el JPG funcione:
+
+  function doGet(e) {
+    if (e.parameter.foto) {
+      try {
+        var file = DriveApp.getFileById(e.parameter.foto);
+        var blob = file.getBlob();
+        var b64  = Utilities.base64Encode(blob.getBytes());
+        var mime = blob.getContentType();
+        return ContentService
+          .createTextOutput(JSON.stringify({ base64: 'data:'+mime+';base64,'+b64 }))
+          .setMimeType(ContentService.MimeType.JSON);
+      } catch(err) {
+        return ContentService
+          .createTextOutput(JSON.stringify({ base64: null }))
+          .setMimeType(ContentService.MimeType.JSON);
+      }
+    }
+    // ... resto del doGet normal ...
+  }
+
+  Luego republicar: Implementar → Administrar implementaciones → Editar → Nueva versión
+════════════════════════════════════════════════════════════════
+-->
 </body>
 </html>
