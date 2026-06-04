@@ -56,8 +56,22 @@ let datosGlobales = [];
 
 function extraerIdDrive(url) {
   if (!url) return null;
-  const m = url.match(/(?:id=|d\/)([a-zA-Z0-9_-]+)/);
-  return m ? m[1] : null;
+  url = url.trim();
+  // Formato: /file/d/ID/view  o  /file/d/ID
+  let m = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (m) return m[1];
+  // Formato: id=ID
+  m = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+  if (m) return m[1];
+  // Formato: /d/ID
+  m = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  if (m) return m[1];
+  // Formato: open?id=ID
+  m = url.match(/open\?id=([a-zA-Z0-9_-]+)/);
+  if (m) return m[1];
+  // Si la URL es directamente un ID (sin slash ni http)
+  if (/^[a-zA-Z0-9_-]{20,}$/.test(url)) return url;
+  return null;
 }
 
 function formatDriveLink(url) {
@@ -407,6 +421,9 @@ async function diagnosticarFoto(index) {
   
   log('=== DIAGNÓSTICO FOTO ===');
   log('URL original en Sheets: ' + r.foto);
+  log('Tipo de dato foto: ' + typeof r.foto);
+  // Mostrar todos los campos del registro para depurar
+  log('Registro completo: ' + JSON.stringify(r));
   log('ID extraído: ' + id);
 
   if (!id) { alert('No se pudo extraer ID de Drive de la URL: ' + r.foto); return; }
@@ -417,7 +434,7 @@ async function diagnosticarFoto(index) {
     `https://lh3.googleusercontent.com/d/${id}`,
   ];
 
-  let resultados = 'ID: ' + id + '\n\n';
+  let resultados = 'URL raw: ' + r.foto + '\n' + 'ID: ' + id + '\n\n';
 
   for (let i = 0; i < urls.length; i++) {
     const url = urls[i];
