@@ -4,8 +4,10 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Búsqueda de Personas - Dirección General Departamentales Norte</title>
+  
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
   <style>
     :root { --azul-policia: #0d2545; --azul-acento: #1a6fba; --gris-claro: #f8f9fa; }
     body { font-family: 'Roboto', sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; }
@@ -23,10 +25,11 @@
     .col-derecha { flex-grow: 1; padding: 30px; display: flex; flex-direction: column; justify-content: center; }
     .info-linea { font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase; }
     .info-linea b { color: var(--azul-policia); }
-    .btn-jpg { background-color: #1a6fba; color: white; border: none; padding: 12px 20px; font-size: 1rem; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 10px; align-self: flex-start; display: flex; align-items: center; gap: 8px; transition: background 0.3s; }
-    .btn-jpg:hover:not(:disabled) { background-color: #145a9a; }
-    .btn-jpg:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-pdf { background-color: var(--azul-policia); color: white; border: none; padding: 12px 20px; font-size: 1rem; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 20px; align-self: flex-start; display: flex; align-items: center; gap: 8px; transition: background 0.3s; }
+    .btn-pdf:hover:not(:disabled) { background-color: var(--azul-acento); }
+    .btn-pdf:disabled { opacity: 0.5; cursor: not-allowed; }
     footer { background-color: var(--azul-policia); height: 80px; margin-top: 60px; border-top: 8px solid var(--azul-acento); width: 100%; }
+    
     @media (max-width: 900px) {
       header { flex-direction: column; text-align: center; padding: 30px 20px; }
       .header-left h1 { font-size: 3rem; }
@@ -37,6 +40,7 @@
   </style>
 </head>
 <body>
+
   <header id="cabecera-institucional">
     <div class="header-left">
       <h1>Búsqueda de<br>Personas</h1>
@@ -44,404 +48,197 @@
     </div>
     <img src="Diapositiva1-removebg-preview.png" alt="Escudo Policía" class="escudo-header">
   </header>
+
   <div class="status-bar" id="status-txt">Conectando con base de datos policial...</div>
+
   <main id="contenedor-fichas" class="contenedor">
     <div style="text-align:center; padding:50px; font-size: 1.2rem;">Cargando registros oficiales...</div>
   </main>
+
   <footer id="pie-institucional"></footer>
 
-<script>
-const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbw8m7K4ogyIhubFaTUUG5gn-lcb75NJlM708VM1yoHCuiOmhpF4WfHbvaKOE4ZmRNBl/exec';
-let datosGlobales = [];
+  <script>
+    const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbw8m7K4ogyIhubFaTUUG5gn-lcb75NJlM708VM1yoHCuiOmhpF4WfHbvaKOE4ZmRNBl/exec';
+    let datosGlobales = [];
 
-function extraerIdDrive(url) {
-  if (!url) return null;
-  url = url.trim();
-  // Formato: /file/d/ID/view  o  /file/d/ID
-  let m = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-  if (m) return m[1];
-  // Formato: id=ID
-  m = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-  if (m) return m[1];
-  // Formato: /d/ID
-  m = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
-  if (m) return m[1];
-  // Formato: open?id=ID
-  m = url.match(/open\?id=([a-zA-Z0-9_-]+)/);
-  if (m) return m[1];
-  // Si la URL es directamente un ID (sin slash ni http)
-  if (/^[a-zA-Z0-9_-]{20,}$/.test(url)) return url;
-  return null;
-}
-
-function formatDriveLink(url) {
-  const id = extraerIdDrive(url);
-  return id ? `https://drive.google.com/thumbnail?id=${id}&sz=w800` : '';
-}
-
-// Cadena de fallbacks para foto en pantalla
-function onFotoError(imgEl, url, intento) {
-  const id = extraerIdDrive(url);
-  if (!id) { imgEl.src = 'https://via.placeholder.com/280x350?text=SIN+IMAGEN'; return; }
-  if (intento === 1) {
-    imgEl.onerror = () => onFotoError(imgEl, url, 2);
-    imgEl.src = `https://drive.google.com/uc?export=view&id=${id}`;
-  } else if (intento === 2) {
-    imgEl.onerror = () => onFotoError(imgEl, url, 3);
-    imgEl.src = `https://lh3.googleusercontent.com/d/${id}`;
-  } else {
-    imgEl.onerror = null;
-    imgEl.src = 'https://via.placeholder.com/280x350?text=SIN+IMAGEN';
-  }
-}
-
-function limpiarTexto(texto) {
-  if (!texto) return '-';
-  if (texto.includes('T') && texto.includes('1899')) {
-    return new Date(texto).toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit'});
-  }
-  if (texto.includes('T') && texto.length > 15) {
-    const p = texto.split('T')[0].split('-');
-    return `${p[2]}/${p[1]}/${p[0]}`;
-  }
-  return texto;
-}
-
-async function cargarDatos() {
-  try {
-    const res = await fetch(URL_SCRIPT + '?nocache=' + Date.now());
-    datosGlobales = await res.json();
-    renderizarFichas();
-    document.getElementById('status-txt').innerText =
-      `En vivo vía App Script: ${new Date().toLocaleTimeString('es-AR')} - ${datosGlobales.length} registros`;
-  } catch(e) {
-    document.getElementById('status-txt').innerText = 'Error de conexión con el Script en vivo.';
-  }
-}
-
-function renderizarFichas() {
-  const contenedor = document.getElementById('contenedor-fichas');
-  if (!datosGlobales.length) {
-    contenedor.innerHTML = '<h2 style="text-align:center; color:#c0392b;">No hay alertas vigentes en este momento.</h2>';
-    return;
-  }
-  contenedor.innerHTML = datosGlobales.map((r, i) => `
-    <article class="ficha">
-      <div class="col-izquierda">
-        <div class="foto-marco">
-          <img src="${formatDriveLink(r.foto)}" data-url="${r.foto}" onerror="onFotoError(this, this.dataset.url, 1)">
-        </div>
-        <div class="contacto-pie">
-          INFORMAR A:<br>${r.contacto || r.dependencia || 'Dependencia Policial'}<br><br>
-          TEL: ${r.telefono || '-'} / 911
-        </div>
-      </div>
-      <div class="col-derecha">
-        <div class="info-linea"><b>DESAPARECIDO EN:</b> ${limpiarTexto(r.localidad)}</div>
-        <div class="info-linea"><b>FECHA:</b> ${limpiarTexto(r.fecha)} | <b>HORA:</b> ${limpiarTexto(r.hora)}</div>
-        <br>
-        <div class="info-linea"><b>NOMBRE:</b> ${r.nombre}</div>
-        <div class="info-linea"><b>EDAD:</b> ${r.edad} AÑOS</div>
-        <br>
-        <div class="info-linea"><b>DESCRIPCIÓN / VESTIMENTA:</b></div>
-        <div style="font-size:0.95rem; line-height:1.4; text-align:justify; margin-bottom:10px;">${r.descripcion || 'Sin datos'}</div>
-        <div class="info-linea"><b>RESEÑA DEL HECHO:</b></div>
-        <div style="font-size:0.95rem; line-height:1.4; text-align:justify;">${r.resena || 'Sin reseña'}</div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <button class="btn-jpg" id="btnjpg-${i}" onclick="descargarJPG(${i})">🖼️ Descargar JPG</button>
-        </div>
-      </div>
-    </article>
-  `).join('');
-}
-
-// ══════════════════════════════════════════════════════════════════
-//  JPG — motor canvas con layout dinámico (sin superposiciones)
-// ══════════════════════════════════════════════════════════════════
-
-// Word-wrap: dibuja texto y devuelve la Y donde terminó
-function wrapText(ctx, texto, x, y, maxW, lineH) {
-  const palabras = String(texto || '').split(' ');
-  let linea = '';
-  for (const pal of palabras) {
-    const prueba = linea + pal + ' ';
-    if (ctx.measureText(prueba).width > maxW && linea) {
-      ctx.fillText(linea.trimEnd(), x, y);
-      linea = pal + ' ';
-      y += lineH;
-    } else { linea = prueba; }
-  }
-  if (linea.trim()) { ctx.fillText(linea.trimEnd(), x, y); y += lineH; }
-  return y; // Y final real
-}
-
-// Mide cuántas líneas ocupa un texto (para calcular altura de caja)
-function medirAltoTexto(ctx, texto, maxW, lineH) {
-  const palabras = String(texto || '').split(' ');
-  let linea = '', lineas = 1;
-  for (const pal of palabras) {
-    const prueba = linea + pal + ' ';
-    if (ctx.measureText(prueba).width > maxW && linea) { linea = pal + ' '; lineas++; }
-    else linea = prueba;
-  }
-  return lineas * lineH;
-}
-
-// object-fit:contain en canvas
-function drawContain(ctx, img, x, y, w, h) {
-  ctx.fillStyle = '#eeeeee'; ctx.fillRect(x, y, w, h);
-  if (!img) {
-    ctx.fillStyle = '#888'; ctx.font = 'bold 16px sans-serif';
-    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillText('FOTO NO DISPONIBLE', x+w/2, y+h/2);
-    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-    return;
-  }
-  const ratio = Math.min(w/img.naturalWidth, h/img.naturalHeight);
-  ctx.drawImage(img, x+(w-img.naturalWidth*ratio)/2, y+(h-img.naturalHeight*ratio)/2,
-                img.naturalWidth*ratio, img.naturalHeight*ratio);
-}
-
-// Dibuja texto centrado con wrap (para caja contacto)
-function wrapTextCenter(ctx, texto, cx, y, maxW, lineH) {
-  const palabras = String(texto||'').split(' ');
-  let linea = '';
-  const lineas = [];
-  for (const pal of palabras) {
-    const prueba = linea + pal + ' ';
-    if (ctx.measureText(prueba).width > maxW && linea) { lineas.push(linea.trimEnd()); linea = pal+' '; }
-    else linea = prueba;
-  }
-  if (linea.trim()) lineas.push(linea.trimEnd());
-  for (const l of lineas) { ctx.fillText(l, cx - ctx.measureText(l).width/2, y); y += lineH; }
-  return y;
-}
-
-
-
-// ══════════════════════════════════════════════════════════════════
-//  JPG: captura el molde HTML generado con html2canvas + allowTaint
-// ══════════════════════════════════════════════════════════════════
-async function descargarJPG(index) {
-  const r = datosGlobales[index];
-  if (!r) return;
-  const boton    = document.getElementById(`btnjpg-${index}`);
-  const statusTxt = document.getElementById('status-txt');
-  const statusOrig = statusTxt.innerText;
-  boton.disabled = true;
-  boton.textContent = '⏳ Generando...';
-  statusTxt.innerText = '⏳ Construyendo alerta — espere unos segundos...';
-
-  try {
-    // 1. Obtener src actual de la foto (la que ya cargó en pantalla)
-    const fichaEl       = boton.closest('.ficha');
-    const imgEnPantalla = fichaEl.querySelector('.foto-marco img');
-    const fotoSrc       = (imgEnPantalla && imgEnPantalla.complete && imgEnPantalla.naturalWidth > 0)
-                          ? imgEnPantalla.src : null;
-
-    // 2. Construir molde HTML fuera de pantalla (794 px, mismo ancho A4)
-    const molde = document.createElement('div');
-    molde.style.cssText = [
-      'position:fixed', 'top:0', 'left:-9999px',
-      'width:794px', 'background:#fff',
-      'font-family:Roboto,Arial,sans-serif',
-      'box-sizing:border-box', 'z-index:-1'
-    ].join(';');
-
-    // Calcular altura dinámica de cajas de texto
-    const tmpC = document.createElement('canvas');
-    tmpC.width = 714; tmpC.height = 10;
-    const tc = tmpC.getContext('2d');
-    tc.font = '15px Arial';
-    const medir = (txt) => {
-      const words = String(txt||'').split(' ');
-      let line = '', rows = 1;
-      for (const w of words) {
-        const t = line + w + ' ';
-        if (tc.measureText(t).width > 690 && line) { line = w + ' '; rows++; }
-        else line = t;
-      }
-      return rows * 22 + 24; // lineH + padding
-    };
-    const hDesc   = Math.max(46, medir(r.descripcion || 'Sin datos'));
-    const hResena = Math.max(46, medir(r.resena      || 'Sin reseña'));
-
-    molde.innerHTML = `
-      <!-- HEADER -->
-      <div style="background:#0d2545;color:#fff;padding:26px 38px 18px;border-bottom:7px solid #1a6fba;">
-        <table width="100%" cellpadding="0" cellspacing="0"><tr>
-          <td style="vertical-align:middle;">
-            <div style="font-size:32px;font-weight:900;text-transform:uppercase;line-height:1.1;">Búsqueda de Personas</div>
-            <div style="font-size:14px;font-weight:700;text-transform:uppercase;margin-top:7px;">Dirección General Departamentales Norte</div>
-            <div style="font-size:10px;color:#a4c8e1;margin-top:3px;text-transform:uppercase;">Información aportada por las Unidades Regionales Departamentales Norte</div>
-          </td>
-          <td width="120" align="right" style="vertical-align:middle;">
-            <img src="https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png"
-                 style="height:100px;display:block;">
-          </td>
-        </tr></table>
-      </div>
-
-      <!-- CUERPO -->
-      <div style="padding:28px 38px;">
-
-        <!-- FOTO centrada con borde -->
-        <div style="text-align:center;margin-bottom:16px;">
-          <div style="display:inline-block;width:300px;height:375px;border:4px solid #000;
-                      background:#eee;overflow:hidden;vertical-align:top;">
-            ${fotoSrc
-              ? `<img src="${fotoSrc}" style="width:300px;height:375px;object-fit:contain;display:block;">`
-              : `<div style="width:300px;height:375px;display:flex;align-items:center;justify-content:center;color:#888;font-weight:bold;">FOTO NO DISPONIBLE</div>`
-            }
-          </div>
-        </div>
-
-        <!-- CONTACTO -->
-        <div style="text-align:center;margin-bottom:18px;">
-          <div style="display:inline-block;border:2px dashed #c0392b;background:#fdf5f5;
-                      padding:12px 28px;border-radius:3px;">
-            <div style="color:#c0392b;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;">INFORMAR A:</div>
-            <div style="font-size:17px;font-weight:700;color:#000;margin:5px 0;">
-              ${r.contacto || r.dependencia || 'Dependencia Policial'}
-            </div>
-            <div style="font-size:12px;color:#c0392b;font-weight:700;">
-              TEL: <span style="color:#000;font-size:18px;font-weight:900;">${r.telefono || '-'} / 911</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- SEPARADOR -->
-        <div style="border-top:4px solid #000;margin:0 0 16px;"></div>
-
-        <!-- DATOS -->
-        <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;font-size:13px;">
-          <tr>
-            <td style="width:55%;padding-bottom:6px;vertical-align:top;">
-              <span style="color:#0d2545;font-weight:700;text-transform:uppercase;">Desaparecido en:</span><br>
-              <span style="font-size:14px;text-transform:uppercase;">${limpiarTexto(r.localidad)}</span>
-            </td>
-            <td style="width:23%;padding-bottom:6px;vertical-align:top;">
-              <span style="color:#0d2545;font-weight:700;text-transform:uppercase;">Fecha:</span><br>
-              <span style="font-size:14px;">${limpiarTexto(r.fecha)}</span>
-            </td>
-            <td style="width:22%;padding-bottom:6px;vertical-align:top;">
-              <span style="color:#0d2545;font-weight:700;text-transform:uppercase;">Hora:</span><br>
-              <span style="font-size:14px;">${limpiarTexto(r.hora)}</span>
-            </td>
-          </tr>
-        </table>
-
-        <!-- NOMBRE -->
-        <div style="background:#f0f4fa;border-left:6px solid #0d2545;padding:10px 16px;margin-bottom:14px;">
-          <div style="font-size:10px;font-weight:700;color:#0d2545;text-transform:uppercase;letter-spacing:1px;">Nombre completo</div>
-          <div style="font-size:22px;font-weight:900;color:#0d2545;text-transform:uppercase;margin-top:3px;">${r.nombre || '-'}</div>
-          <div style="font-size:13px;font-weight:700;color:#333;margin-top:4px;">EDAD: ${r.edad || '-'} AÑOS</div>
-        </div>
-
-        <!-- DESCRIPCIÓN -->
-        <div style="margin-bottom:12px;">
-          <div style="font-size:11px;font-weight:700;color:#1a6fba;text-transform:uppercase;
-                      letter-spacing:1px;border-bottom:2px solid #1a6fba;padding-bottom:3px;margin-bottom:6px;">
-            Descripción / Vestimenta
-          </div>
-          <div style="font-size:13px;line-height:1.65;text-align:justify;
-                      background:#f8f9fa;padding:10px 14px;border-left:4px solid #1a6fba;
-                      min-height:${hDesc}px;">
-            ${r.descripcion || 'Sin datos'}
-          </div>
-        </div>
-
-        <!-- RESEÑA -->
-        <div style="margin-bottom:12px;">
-          <div style="font-size:11px;font-weight:700;color:#1a6fba;text-transform:uppercase;
-                      letter-spacing:1px;border-bottom:2px solid #1a6fba;padding-bottom:3px;margin-bottom:6px;">
-            Reseña del hecho
-          </div>
-          <div style="font-size:13px;line-height:1.65;text-align:justify;
-                      background:#f8f9fa;padding:10px 14px;border-left:4px solid #1a6fba;
-                      min-height:${hResena}px;">
-            ${r.resena || 'Sin reseña'}
-          </div>
-        </div>
-
-      </div>
-
-      <!-- PIE -->
-      <div style="background:#0d2545;height:36px;border-top:6px solid #1a6fba;"></div>
-    `;
-
-    document.body.appendChild(molde);
-
-    // 3. Esperar que la foto del molde cargue antes de capturar
-    const imgMolde = molde.querySelector('img[src*="drive.google"]');
-    if (imgMolde && !imgMolde.complete) {
-      await new Promise(resolve => {
-        imgMolde.onload  = resolve;
-        imgMolde.onerror = resolve;
-        setTimeout(resolve, 5000); // máximo 5s de espera
-      });
+    function formatDriveLink(url) {
+      if (!url) return '';
+      const match = url.match(/(?:id=|d\/)([a-zA-Z0-9_-]+)/);
+      return match ? `https://drive.google.com/thumbnail?id=${match[1]}&sz=w800` : url; 
     }
 
-    // 4. Capturar con html2canvas (allowTaint=true: acepta imágenes sin CORS)
-    const capturedCanvas = await html2canvas(molde, {
-      useCORS:    false,   // NO usar CORS — Drive no lo permite
-      allowTaint: true,    // SÍ permitir imágenes "tainted" (Drive)
-      scale:      2,       // alta resolución
-      width:      794,
-      logging:    false,
-      backgroundColor: '#ffffff'
-    });
+    function limpiarTexto(texto) {
+      if (!texto) return '-';
+      if (texto.includes('T') && texto.includes('1899')) {
+        let d = new Date(texto);
+        return d.toLocaleTimeString('es-AR', {hour: '2-digit', minute:'2-digit'});
+      }
+      if (texto.includes('T') && texto.length > 15) {
+        let p = texto.split('T')[0].split('-');
+        return `${p[2]}/${p[1]}/${p[0]}`;
+      }
+      return texto;
+    }
 
-    document.body.removeChild(molde);
-
-    // 5. Descargar
-    capturedCanvas.toBlob(blob => {
-      const a = document.createElement('a');
-      a.href     = URL.createObjectURL(blob);
-      a.download = `Alerta_${(r.nombre || 'Busqueda').replace(/\s+/g, '_')}.jpg`;
-      a.click();
-      URL.revokeObjectURL(a.href);
-    }, 'image/jpeg', 0.97);
-
-  } catch(err) {
-    console.error(err);
-    alert('Error al generar la imagen: ' + err.message);
-  } finally {
-    boton.disabled = false;
-    boton.innerHTML = '🖼️ Descargar JPG';
-    statusTxt.innerText = statusOrig;
-  }
-}
-
-window.onload = cargarDatos;
-setInterval(cargarDatos, 10000);
-</script>
-
-<!--
-════════════════════════════════════════════════════════════════
-  AGREGAR AL Apps Script (Code.gs) para que el JPG funcione:
-
-  function doGet(e) {
-    if (e.parameter.foto) {
+    async function cargarDatos() {
       try {
-        var file = DriveApp.getFileById(e.parameter.foto);
-        var blob = file.getBlob();
-        var b64  = Utilities.base64Encode(blob.getBytes());
-        var mime = blob.getContentType();
-        return ContentService
-          .createTextOutput(JSON.stringify({ base64: 'data:'+mime+';base64,'+b64 }))
-          .setMimeType(ContentService.MimeType.JSON);
-      } catch(err) {
-        return ContentService
-          .createTextOutput(JSON.stringify({ base64: null }))
-          .setMimeType(ContentService.MimeType.JSON);
+        const res = await fetch(URL_SCRIPT + "?nocache=" + new Date().getTime());
+        datosGlobales = await res.json();
+        renderizarFichas();
+        const ahora = new Date().toLocaleTimeString('es-AR');
+        document.getElementById('status-txt').innerText = `En vivo vía App Script: ${ahora} - ${datosGlobales.length} registros`;
+      } catch (e) {
+        document.getElementById('status-txt').innerText = 'Error de conexión con el Script en vivo.';
       }
     }
-    // ... resto del doGet normal ...
-  }
 
-  Luego republicar: Implementar → Administrar implementaciones → Editar → Nueva versión
-════════════════════════════════════════════════════════════════
--->
+    function renderizarFichas() {
+      const contenedor = document.getElementById('contenedor-fichas');
+      if (datosGlobales.length === 0) {
+        contenedor.innerHTML = '<h2 style="text-align:center; color:#c0392b;">No hay alertas vigentes en este momento.</h2>';
+        return;
+      }
+
+      contenedor.innerHTML = datosGlobales.map((r, i) => `
+        <article class="ficha">
+          <div class="col-izquierda">
+            <div class="foto-marco">
+              <img src="${formatDriveLink(r.foto)}" onerror="this.src='https://via.placeholder.com/280x350?text=SIN+IMAGEN'">
+            </div>
+            <div class="contacto-pie">
+              INFORMAR A:<br>${r.contacto || r.dependencia || 'Dependencia Policial'}<br><br>
+              TEL: ${r.telefono || '-'} / 911
+            </div>
+          </div>
+          <div class="col-derecha">
+            <div class="info-linea"><b>DESAPARECIDO EN:</b> ${limpiarTexto(r.localidad)}</div>
+            <div class="info-linea"><b>FECHA:</b> ${limpiarTexto(r.fecha)} | <b>HORA:</b> ${limpiarTexto(r.hora)}</div>
+            <br>
+            <div class="info-linea"><b>NOMBRE:</b> ${r.nombre}</div>
+            <div class="info-linea"><b>EDAD:</b> ${r.edad} AÑOS</div>
+            <br>
+            <div class="info-linea"><b>DESCRIPCIÓN / VESTIMENTA:</b></div>
+            <div style="font-size:0.95rem; line-height:1.4; text-align:justify; margin-bottom:10px;">${r.descripcion || 'Sin datos'}</div>
+            <div class="info-linea"><b>RESEÑA DEL HECHO:</b></div>
+            <div style="font-size:0.95rem; line-height:1.4; text-align:justify;">${r.resena || 'Sin reseña'}</div>
+            
+            <button class="btn-pdf" id="btnpdf-${i}" onclick="descargarPDF(${i})">📄 Descargar PDF</button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function descargarPDF(index) {
+      const r = datosGlobales[index];
+      if (!r) return;
+
+      const boton = document.getElementById(`btnpdf-${index}`);
+      const statusTxt = document.getElementById('status-txt');
+      const statusOriginal = statusTxt.innerText;
+      boton.disabled = true;
+      boton.textContent = '⏳ Generando PDF...';
+      statusTxt.innerText = '⏳ Cargando imagen oficial y generando Alerta A4...';
+
+      const tempDiv = document.createElement('div');
+      tempDiv.style.position = 'absolute';
+      tempDiv.style.top = '0';
+      tempDiv.style.left = '0';
+      tempDiv.style.zIndex = '-999';
+      tempDiv.style.width = '794px';
+      tempDiv.style.visibility = 'hidden';
+
+      tempDiv.innerHTML = `
+        <div id="molde-impresion" style="width: 794px; min-height: 1123px; font-family: 'Roboto', sans-serif; box-sizing: border-box; display: flex; flex-direction: column;">
+          
+          <div style="background-color: #0d2545; color: white; padding: 30px 40px; border-bottom: 8px solid #1a6fba; display: flex; justify-content: space-between; align-items: center;">
+            <div style="flex: 1;">
+              <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 40px; line-height: 1; text-transform: uppercase;">Búsqueda de Personas</h1>
+              <p style="font-size: 18px; margin: 10px 0 0 0; font-weight: 700; text-transform: uppercase;">Dirección General Departamentales Norte</p>
+              <p style="font-size: 13px; margin: 5px 0 0 0; color: #a4c8e1; text-transform: uppercase;">Información aportada por las Unidades Regionales Departamentales Norte</p>
+            </div>
+            <img src="https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png" style="height: 110px;" crossorigin="anonymous">
+          </div>
+          
+          <div style="padding: 40px; flex-grow: 1;">
+            
+            <div style="text-align: center;">
+              <div style="display: inline-block; width: 340px; height: 420px; border: 4px solid #000; background: #eee; overflow: hidden; margin-bottom: 15px;">
+                <img id="foto-pdf-generar" src="${formatDriveLink(r.foto)}" style="width: 100%; height: 100%; object-fit: contain;" crossorigin="anonymous">
+              </div>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 20px;">
+              <div style="display: inline-block; font-size: 18px; font-weight: bold; color: #c0392b; text-transform: uppercase; border: 2px dashed #c0392b; padding: 15px 30px; background: #fdf5f5;">
+                INFORMAR A:<br>
+                <span style="color: #000; font-size: 22px;">${r.contacto || r.dependencia || 'Dependencia Policial'}</span><br><br>
+                TEL: <span style="color: #000; font-size: 24px;">${r.telefono || '-'} / 911</span>
+              </div>
+            </div>
+            
+            <div style="border-top: 5px solid #000; margin: 25px 0;"></div>
+            
+            <div style="font-size: 18px; line-height: 1.5; color: #000;">
+              <p style="margin: 8px 0; text-transform: uppercase;"><b>DESAPARECIDO EN:</b> ${limpiarTexto(r.localidad)}</p>
+              <p style="margin: 8px 0; text-transform: uppercase;"><b>FECHA:</b> ${limpiarTexto(r.fecha)} &nbsp;&nbsp;|&nbsp;&nbsp; <b>HORA:</b> ${limpiarTexto(r.hora)}</p>
+              
+              <p style="margin: 15px 0 8px 0; text-transform: uppercase;"><b>NOMBRE:</b> <span style="color: #0d2545; font-size: 26px; font-weight: 900; font-family: 'Montserrat', sans-serif;">${r.nombre || '-'}</span></p>
+              <p style="margin: 8px 0; text-transform: uppercase;"><b>EDAD:</b> ${r.edad || '-'} AÑOS</p>
+              
+              <p style="margin: 25px 0 5px 0; text-transform: uppercase; color: #1a6fba; font-weight: bold;">DESCRIPCIÓN / VESTIMENTA:</p>
+              <div style="text-align: justify; font-size: 16px; background: #f8f9fa; padding: 12px; border-left: 4px solid #1a6fba;">
+                ${r.descripcion || 'Sin datos'}
+              </div>
+              
+              <p style="margin: 20px 0 5px 0; text-transform: uppercase; color: #1a6fba; font-weight: bold;">RESEÑA DEL HECHO:</p>
+              <div style="text-align: justify; font-size: 16px; background: #f8f9fa; padding: 12px; border-left: 4px solid #1a6fba;">
+                ${r.resena || 'Sin reseña'}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(tempDiv);
+
+      const imgPDF = document.getElementById('foto-pdf-generar');
+      
+      const crearPDF = () => {
+        const nombreArchivo = r.nombre ? r.nombre.replace(/ /g, '_') : 'Busqueda';
+        const molde = document.getElementById('molde-impresion');
+
+        html2pdf().set({
+          margin:       0,
+          filename:     `Alerta_${nombreArchivo}.pdf`,
+          image:        { type: 'jpeg', quality: 0.98 },
+          html2canvas:  { scale: 2, useCORS: true, windowWidth: 794 },
+          jsPDF:        { unit: 'px', format: [794, 1123], orientation: 'portrait' }
+        }).from(molde).save().then(() => {
+          document.body.removeChild(tempDiv);
+          boton.disabled = false;
+          boton.innerHTML = '📄 Descargar PDF';
+          statusTxt.innerText = statusOriginal;
+        }).catch(err => {
+          document.body.removeChild(tempDiv);
+          boton.disabled = false;
+          boton.innerHTML = '📄 Descargar PDF';
+          statusTxt.innerText = 'Error al crear el PDF.';
+        });
+      };
+
+      if (imgPDF.complete) {
+        crearPDF();
+      } else {
+        imgPDF.onload  = crearPDF;
+        imgPDF.onerror = () => {
+          imgPDF.src = 'https://via.placeholder.com/340x420?text=SIN+IMAGEN';
+          crearPDF();
+        };
+      }
+    }
+
+    window.onload = cargarDatos;
+    setInterval(cargarDatos, 10000); 
+  </script>
 </body>
 </html>
