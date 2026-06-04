@@ -145,29 +145,6 @@ function renderizarFichas() {
 //  JPG — motor canvas con layout dinámico (sin superposiciones)
 // ══════════════════════════════════════════════════════════════════
 
-// Pide la foto al Apps Script como base64
-async function obtenerFotoBase64(fotoUrl) {
-  const id = extraerIdDrive(fotoUrl);
-  if (!id) return null;
-  try {
-    const res  = await fetch(`${URL_SCRIPT}?foto=${id}&nocache=${Date.now()}`);
-    const json = await res.json();
-    return json.base64 || null;
-  } catch(e) { return null; }
-}
-
-// Carga imagen desde data:URL o URL normal
-function cargarImg(src) {
-  return new Promise(resolve => {
-    if (!src) { resolve(null); return; }
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload  = () => resolve(img);
-    img.onerror = () => resolve(null);
-    img.src = src;
-  });
-}
-
 // Word-wrap: dibuja texto y devuelve la Y donde terminó
 function wrapText(ctx, texto, x, y, maxW, lineH) {
   const palabras = String(texto || '').split(' ');
@@ -232,54 +209,90 @@ async function descargarJPG(index) {
   const boton = document.getElementById(`btnjpg-${index}`);
   const statusTxt = document.getElementById('status-txt');
   const statusOrig = statusTxt.innerText;
-  boton.disabled = true; boton.textContent = '⏳ Obteniendo foto...';
-  statusTxt.innerText = '⏳ Obteniendo imagen del servidor — puede tardar unos segundos...';
+  boton.disabled = true; boton.textContent = '⏳ Preparando...';
+  statusTxt.innerText = '⏳ Generando imagen — por favor espere...';
 
   try {
-    // 1. Foto via Apps Script base64
-    const fotoB64 = await obtenerFotoBase64(r.foto);
-    const fotoImg = await cargarImg(fotoB64);
+    // 1. Tomar la imagen que YA está visible en pantalla (el <img> de la ficha)
+    //    y convertirla a base64 via canvas auxiliar
+    const imgEnPantalla = document.querySelector(`#btnjpg-${index}`)
+      .closest('.ficha')
+      .querySelector('.foto-marco img');
+
+    const fotoImg = await new Promise(resolve => {
+      // Crear imagen nueva con crossOrigin para poder usarla en canvas
+      const intentarCargar = (src) => {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => resolve(img);
+        img.onerror = () => resolve(null);
+        img.src = src + (src.includes('?') ? '&' : '?') + '_t=' + Date.now();
+      };
+
+      // Primer intento: src actual de la imagen en pantalla
+      const srcActual = imgEnPantalla.src;
+      const id = extraerIdDrive(r.foto);
+
+      if (!id) { resolve(null); return; }
+
+      // Intentamos las 3 URLs de Drive en secuencia
+      const urls = [
+        `https://drive.google.com/thumbnail?id=${id}&sz=w800`,
+        `https://drive.google.com/uc?export=view&id=${id}`,
+        `https://lh3.googleusercontent.com/d/${id}`,
+      ];
+
+      let i = 0;
+      const probar = () => {
+        if (i >= urls.length) { resolve(null); return; }
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => resolve(img);
+        img.onerror = () => { i++; probar(); };
+        img.src = urls[i] + '&_t=' + Date.now();
+        i++;
+      };
+      probar();
+    });
 
     boton.textContent = '⏳ Dibujando...';
 
-    // 2. Escudo (GitHub Pages, sin restricción CORS)
-    const escudoImg = await cargarImg(
-      'https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png'
-    );
+    // 2. Escudo
+    const escudoImg = await new Promise(resolve => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => resolve(img);
+      img.onerror = () => resolve(null);
+      img.src = 'https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png';
+    });
 
-    // 3. Canvas dinámico: primero calculamos la altura total necesaria
+    // 3. Medir textos para altura dinámica
     const SC = 2, PW = 794;
-    // Medición previa de textos (usamos un canvas temporal)
     const tmpC = document.createElement('canvas'); tmpC.width=794; tmpC.height=10;
     const tmpCtx = tmpC.getContext('2d');
-    const TEXTO_MAX = PW - 76 - 12; // ancho útil dentro de cajas con padding
-
+    const TEXTO_MAX = PW - 76 - 12;
     tmpCtx.font = '14px Roboto, sans-serif';
-    const altoDesc  = medirAltoTexto(tmpCtx, r.descripcion||'Sin datos', TEXTO_MAX, 20) + 24; // +padding
-    const altoResena = medirAltoTexto(tmpCtx, r.resena||'Sin reseña',   TEXTO_MAX, 20) + 24;
+    const altoDesc   = medirAltoTexto(tmpCtx, r.descripcion||'Sin datos', TEXTO_MAX, 20) + 28;
+    const altoResena = medirAltoTexto(tmpCtx, r.resena||'Sin reseña',     TEXTO_MAX, 20) + 28;
+    const altoContacto = 110;
 
-    // Altura total estimada:
-    // header(160) + foto(400+12) + contacto(dyn) + sep(20) + filas datos(~160) + desc + resena + pie(48) + márgenes
-    const altoContacto = 106; // caja contacto fija
     const PH = Math.max(1123,
-      160 + 12 + 400 + 12 + altoContacto + 16 +  // header + foto + contacto
-      3 + 18 +          // separador
-      22 + 22 + 68 +    // localidad, fecha, nombre+edad
-      28 + altoDesc +   // título desc + caja
-      28 + altoResena + // título resena + caja
-      48 + 40           // pie + margen
+      160 + 12 + 400 + 16 + altoContacto + 16 +
+      3 + 18 + 24 + 22 + 82 +
+      28 + altoDesc + 28 + altoResena +
+      48 + 40
     );
 
+    // 4. Canvas
     const canvas = document.createElement('canvas');
-    canvas.width  = PW * SC;
-    canvas.height = PH * SC;
+    canvas.width = PW * SC; canvas.height = PH * SC;
     const ctx = canvas.getContext('2d');
     ctx.scale(SC, SC);
 
-    // ── Fondo
+    // Fondo
     ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, PW, PH);
 
-    // ── HEADER
+    // HEADER
     ctx.fillStyle = '#0d2545'; ctx.fillRect(0, 0, PW, 160);
     ctx.fillStyle = '#1a6fba'; ctx.fillRect(0, 152, PW, 8);
     ctx.fillStyle = '#ffffff';
@@ -292,92 +305,82 @@ async function descargarJPG(index) {
       ctx.drawImage(escudoImg, PW-eW-30, 18, eW, eH);
     }
 
-    // ── FOTO centrada
+    // FOTO
     const FW=320, FH=400, FX=(PW-FW)/2;
     let Y = 172;
     ctx.strokeStyle='#000'; ctx.lineWidth=4; ctx.strokeRect(FX, Y, FW, FH);
     drawContain(ctx, fotoImg, FX+2, Y+2, FW-4, FH-4);
     Y += FH + 16;
 
-    // ── CAJA CONTACTO (altura fija, texto con wrap centrado)
-    const CW=460, CX=(PW-CW)/2;
-    const CAJA_H = altoContacto;
+    // CAJA CONTACTO dinámica
+    const CW=460, CX=(PW-CW)/2, cMid=PW/2, cMaxW=CW-24;
+    // Medir altura real de la caja contacto
+    tmpCtx.font = 'bold 16px Roboto, sans-serif';
+    const altoDepNombre = medirAltoTexto(tmpCtx, r.contacto||r.dependencia||'Dependencia Policial', cMaxW, 20);
+    const CAJA_H = 20 + 14 + altoDepNombre + 6 + 24 + 10; // "INFORMAR A" + dep + tel + padding
+
     ctx.strokeStyle='#c0392b'; ctx.setLineDash([7,4]); ctx.lineWidth=2;
     ctx.strokeRect(CX, Y, CW, CAJA_H); ctx.setLineDash([]);
     ctx.fillStyle='#fdf5f5'; ctx.fillRect(CX+1, Y+1, CW-2, CAJA_H-2);
 
-    const cMid = PW/2, cMaxW = CW - 24;
     ctx.fillStyle='#c0392b'; ctx.font='bold 12px Roboto, sans-serif';
     ctx.fillText('INFORMAR A:', cMid - ctx.measureText('INFORMAR A:').width/2, Y+20);
-
-    // Nombre dependencia con wrap centrado
     ctx.fillStyle='#000'; ctx.font='bold 16px Roboto, sans-serif';
     let yDep = wrapTextCenter(ctx, r.contacto||r.dependencia||'Dependencia Policial', cMid, Y+40, cMaxW, 20);
-
-    // TEL
     ctx.fillStyle='#c0392b'; ctx.font='bold 12px Roboto, sans-serif';
-    ctx.fillText('TEL:', cMid - ctx.measureText(`TEL: ${r.telefono||'-'} / 911`).width/2, yDep+6);
+    const telCompleto = `TEL: ${r.telefono||'-'} / 911`;
+    ctx.fillText('TEL:', cMid - ctx.measureText(telCompleto).width/2, yDep+8);
     ctx.fillStyle='#000'; ctx.font='bold 18px Roboto, sans-serif';
     const telStr = `${r.telefono||'-'} / 911`;
-    ctx.fillText(telStr, cMid - ctx.measureText(`TEL: ${telStr}`).width/2 + ctx.measureText('TEL: ').width - 4, yDep+6);
-
+    ctx.fillText(telStr, cMid - ctx.measureText(telCompleto).width/2 + ctx.measureText('TEL: ').width, yDep+8);
     Y += CAJA_H + 16;
 
-    // ── SEPARADOR
+    // SEPARADOR
     ctx.fillStyle='#000'; ctx.fillRect(38, Y, PW-76, 3); Y += 18;
 
-    // ── DESAPARECIDO EN
-    ctx.font='bold 13px Roboto, sans-serif'; ctx.fillStyle='#0d2545';
-    ctx.fillText('DESAPARECIDO EN:', 38, Y);
-    ctx.font='13px Roboto, sans-serif'; ctx.fillStyle='#000';
-    ctx.fillText(limpiarTexto(r.localidad).toUpperCase(), 215, Y);
+    // DESAPARECIDO EN
+    ctx.font='bold 13px Roboto, sans-serif'; ctx.fillStyle='#0d2545'; ctx.fillText('DESAPARECIDO EN:', 38, Y);
+    ctx.font='13px Roboto, sans-serif'; ctx.fillStyle='#000'; ctx.fillText(limpiarTexto(r.localidad).toUpperCase(), 215, Y);
     Y += 24;
 
-    // ── FECHA / HORA
+    // FECHA / HORA
     ctx.font='bold 13px Roboto, sans-serif'; ctx.fillStyle='#0d2545'; ctx.fillText('FECHA:', 38, Y);
     ctx.font='13px Roboto, sans-serif'; ctx.fillStyle='#000'; ctx.fillText(limpiarTexto(r.fecha), 105, Y);
     ctx.font='bold 13px Roboto, sans-serif'; ctx.fillStyle='#0d2545'; ctx.fillText('HORA:', 430, Y);
     ctx.font='13px Roboto, sans-serif'; ctx.fillStyle='#000'; ctx.fillText(limpiarTexto(r.hora), 490, Y);
     Y += 18;
 
-    // ── CAJA NOMBRE (nombre en línea propia, edad debajo)
+    // CAJA NOMBRE
     ctx.fillStyle='#f0f4fa'; ctx.fillRect(38, Y, PW-76, 70);
     ctx.fillStyle='#0d2545'; ctx.fillRect(38, Y, 6, 70);
-    ctx.font='bold 10px Roboto, sans-serif'; ctx.fillStyle='#0d2545';
-    ctx.fillText('NOMBRE COMPLETO', 52, Y+15);
-    ctx.font='bold 20px Montserrat, sans-serif'; ctx.fillStyle='#0d2545';
-    ctx.fillText((r.nombre||'-').toUpperCase(), 52, Y+38);
-    // EDAD en línea separada, abajo del nombre
-    ctx.font='bold 13px Roboto, sans-serif'; ctx.fillStyle='#333';
-    ctx.fillText(`EDAD: ${r.edad||'-'} AÑOS`, 52, Y+58);
+    ctx.font='bold 10px Roboto, sans-serif'; ctx.fillStyle='#0d2545'; ctx.fillText('NOMBRE COMPLETO', 52, Y+15);
+    ctx.font='bold 20px Montserrat, sans-serif'; ctx.fillStyle='#0d2545'; ctx.fillText((r.nombre||'-').toUpperCase(), 52, Y+38);
+    ctx.font='bold 13px Roboto, sans-serif'; ctx.fillStyle='#333'; ctx.fillText(`EDAD: ${r.edad||'-'} AÑOS`, 52, Y+58);
     Y += 82;
 
-    // ── DESCRIPCIÓN
+    // DESCRIPCIÓN
     ctx.fillStyle='#1a6fba'; ctx.font='bold 12px Roboto, sans-serif';
-    ctx.fillText('DESCRIPCIÓN / VESTIMENTA', 38, Y);
-    ctx.fillRect(38, Y+4, PW-76, 2); Y += 14;
-    // Caja de altura dinámica
+    ctx.fillText('DESCRIPCIÓN / VESTIMENTA', 38, Y); ctx.fillRect(38, Y+4, PW-76, 2); Y += 14;
     ctx.fillStyle='#f8f9fa'; ctx.fillRect(38, Y, PW-76, altoDesc);
     ctx.fillStyle='#1a6fba'; ctx.fillRect(38, Y, 4, altoDesc);
     ctx.fillStyle='#000'; ctx.font='14px Roboto, sans-serif';
     wrapText(ctx, r.descripcion||'Sin datos', 50, Y+16, TEXTO_MAX, 20);
     Y += altoDesc + 14;
 
-    // ── RESEÑA
+    // RESEÑA
     ctx.fillStyle='#1a6fba'; ctx.font='bold 12px Roboto, sans-serif';
-    ctx.fillText('RESEÑA DEL HECHO', 38, Y);
-    ctx.fillRect(38, Y+4, PW-76, 2); Y += 14;
+    ctx.fillText('RESEÑA DEL HECHO', 38, Y); ctx.fillRect(38, Y+4, PW-76, 2); Y += 14;
     ctx.fillStyle='#f8f9fa'; ctx.fillRect(38, Y, PW-76, altoResena);
     ctx.fillStyle='#1a6fba'; ctx.fillRect(38, Y, 4, altoResena);
     ctx.fillStyle='#000'; ctx.font='14px Roboto, sans-serif';
     wrapText(ctx, r.resena||'Sin reseña', 50, Y+16, TEXTO_MAX, 20);
     Y += altoResena + 20;
 
-    // ── PIE
+    // PIE
     ctx.fillStyle='#0d2545'; ctx.fillRect(0, Y, PW, 48);
     ctx.fillStyle='#1a6fba'; ctx.fillRect(0, Y, PW, 6);
 
-    // 4. Exportar
+    // 5. Exportar
     canvas.toBlob(blob => {
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
