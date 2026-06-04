@@ -218,224 +218,194 @@ function wrapTextCenter(ctx, texto, cx, y, maxW, lineH) {
 }
 
 
+
+// ══════════════════════════════════════════════════════════════════
+//  JPG: captura el molde HTML generado con html2canvas + allowTaint
+// ══════════════════════════════════════════════════════════════════
 async function descargarJPG(index) {
   const r = datosGlobales[index];
   if (!r) return;
-  const boton = document.getElementById(`btnjpg-${index}`);
+  const boton    = document.getElementById(`btnjpg-${index}`);
   const statusTxt = document.getElementById('status-txt');
   const statusOrig = statusTxt.innerText;
   boton.disabled = true;
   boton.textContent = '⏳ Generando...';
-  statusTxt.innerText = '⏳ Preparando imagen de alta calidad...';
+  statusTxt.innerText = '⏳ Construyendo alerta — espere unos segundos...';
 
   try {
-    // ── 1. Tomar la foto que YA está visible en el DOM (sin crossOrigin)
-    const fichaEl = boton.closest('.ficha');
+    // 1. Obtener src actual de la foto (la que ya cargó en pantalla)
+    const fichaEl       = boton.closest('.ficha');
     const imgEnPantalla = fichaEl.querySelector('.foto-marco img');
+    const fotoSrc       = (imgEnPantalla && imgEnPantalla.complete && imgEnPantalla.naturalWidth > 0)
+                          ? imgEnPantalla.src : null;
 
-    // Crear imagen sin crossOrigin (igual que el navegador la muestra)
-    const fotoImg = await new Promise(resolve => {
-      if (!imgEnPantalla || !imgEnPantalla.src || imgEnPantalla.src.includes('placeholder')) {
-        resolve(null); return;
-      }
-      const img = new Image();
-      // SIN crossOrigin — Drive la sirve igual que en el <img> del DOM
-      img.onload = () => resolve(img);
-      img.onerror = () => resolve(null);
-      img.src = imgEnPantalla.src;
-    });
+    // 2. Construir molde HTML fuera de pantalla (794 px, mismo ancho A4)
+    const molde = document.createElement('div');
+    molde.style.cssText = [
+      'position:fixed', 'top:0', 'left:-9999px',
+      'width:794px', 'background:#fff',
+      'font-family:Roboto,Arial,sans-serif',
+      'box-sizing:border-box', 'z-index:-1'
+    ].join(';');
 
-    // ── 2. Escudo (GitHub Pages — sí tiene CORS abierto)
-    const escudoImg = await new Promise(resolve => {
-      const img = new Image();
-      img.crossOrigin = 'anonymous';
-      img.onload = () => resolve(img);
-      img.onerror = () => resolve(null);
-      img.src = 'https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png';
-    });
-
-    // ── 3. Medir textos para altura dinámica
-    const SC = 2, PW = 794;
+    // Calcular altura dinámica de cajas de texto
     const tmpC = document.createElement('canvas');
-    tmpC.width = 794; tmpC.height = 10;
-    const tmpCtx = tmpC.getContext('2d');
-    const TEXTO_MAX = PW - 76 - 16;
-
-    tmpCtx.font = '14px sans-serif';
-    const altoDesc   = medirAltoTexto(tmpCtx, r.descripcion || 'Sin datos', TEXTO_MAX, 20) + 28;
-    const altoResena = medirAltoTexto(tmpCtx, r.resena || 'Sin reseña',     TEXTO_MAX, 20) + 28;
-
-    tmpCtx.font = 'bold 16px sans-serif';
-    const altoDepNombre = medirAltoTexto(tmpCtx, r.contacto || r.dependencia || 'Dependencia Policial', 436 - 24, 20);
-    const CAJA_H = 26 + altoDepNombre + 30;
-
-    const PH = Math.max(1123,
-      168 +   // header
-      404 +   // foto + margen
-      CAJA_H + 16 +  // contacto
-      24 +    // separador
-      24 + 24 + 82 +  // localidad, fecha, nombre
-      28 + altoDesc +
-      28 + altoResena +
-      68      // pie + padding
-    );
-
-    // ── 4. Canvas
-    const canvas = document.createElement('canvas');
-    canvas.width  = PW * SC;
-    canvas.height = PH * SC;
-    const ctx = canvas.getContext('2d');
-    ctx.scale(SC, SC);
-
-    // Fondo blanco
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, PW, PH);
-
-    // HEADER azul
-    ctx.fillStyle = '#0d2545'; ctx.fillRect(0, 0, PW, 160);
-    ctx.fillStyle = '#1a6fba'; ctx.fillRect(0, 152, PW, 8);
-    ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 34px sans-serif';
-    ctx.fillText('BÚSQUEDA DE PERSONAS', 38, 52);
-    ctx.font = 'bold 15px sans-serif';
-    ctx.fillText('DIRECCIÓN GENERAL DEPARTAMENTALES NORTE', 38, 78);
-    ctx.font = '11px sans-serif'; ctx.fillStyle = '#a4c8e1';
-    ctx.fillText('Información aportada por las Unidades Regionales Departamentales Norte', 38, 100);
-    if (escudoImg) {
-      const eH = 118, eW = escudoImg.naturalWidth * (eH / escudoImg.naturalHeight);
-      ctx.drawImage(escudoImg, PW - eW - 30, 18, eW, eH);
-    }
-
-    // FOTO — dibujar en canvas offscreen primero para evitar "tainted"
-    const FW = 320, FH = 400, FX = (PW - FW) / 2;
-    let Y = 172;
-    ctx.strokeStyle = '#000'; ctx.lineWidth = 4;
-    ctx.strokeRect(FX, Y, FW, FH);
-
-    if (fotoImg) {
-      // Intentar dibujar directo
-      try {
-        drawContain(ctx, fotoImg, FX + 2, Y + 2, FW - 4, FH - 4);
-      } catch(e) {
-        // Si lanza SecurityError (canvas tainted), usar html2canvas solo para la foto
-        console.warn('Canvas tainted, usando html2canvas para la foto...');
-        const fotoCanvas = await html2canvas(imgEnPantalla, {
-          useCORS: false,
-          allowTaint: true,
-          scale: 2,
-          width: imgEnPantalla.offsetWidth,
-          height: imgEnPantalla.offsetHeight,
-          logging: false
-        });
-        ctx.drawImage(fotoCanvas,
-          FX + 2, Y + 2, FW - 4, FH - 4
-        );
+    tmpC.width = 714; tmpC.height = 10;
+    const tc = tmpC.getContext('2d');
+    tc.font = '15px Arial';
+    const medir = (txt) => {
+      const words = String(txt||'').split(' ');
+      let line = '', rows = 1;
+      for (const w of words) {
+        const t = line + w + ' ';
+        if (tc.measureText(t).width > 690 && line) { line = w + ' '; rows++; }
+        else line = t;
       }
-    } else {
-      ctx.fillStyle = '#eeeeee'; ctx.fillRect(FX + 2, Y + 2, FW - 4, FH - 4);
-      ctx.fillStyle = '#888'; ctx.font = 'bold 16px sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText('FOTO NO DISPONIBLE', FX + FW / 2, Y + FH / 2);
-      ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-    }
-    Y += FH + 16;
+      return rows * 22 + 24; // lineH + padding
+    };
+    const hDesc   = Math.max(46, medir(r.descripcion || 'Sin datos'));
+    const hResena = Math.max(46, medir(r.resena      || 'Sin reseña'));
 
-    // CAJA CONTACTO
-    const CW = 460, CX = (PW - CW) / 2, cMid = PW / 2, cMaxW = CW - 24;
-    ctx.strokeStyle = '#c0392b'; ctx.setLineDash([7, 4]); ctx.lineWidth = 2;
-    ctx.strokeRect(CX, Y, CW, CAJA_H); ctx.setLineDash([]);
-    ctx.fillStyle = '#fdf5f5'; ctx.fillRect(CX + 1, Y + 1, CW - 2, CAJA_H - 2);
-    ctx.fillStyle = '#c0392b'; ctx.font = 'bold 12px sans-serif';
-    ctx.fillText('INFORMAR A:', cMid - ctx.measureText('INFORMAR A:').width / 2, Y + 20);
-    ctx.fillStyle = '#000'; ctx.font = 'bold 16px sans-serif';
-    let yDep = wrapTextCenter(ctx, r.contacto || r.dependencia || 'Dependencia Policial', cMid, Y + 38, cMaxW, 20);
-    const telCompleto = `TEL: ${r.telefono || '-'} / 911`;
-    ctx.fillStyle = '#c0392b'; ctx.font = 'bold 12px sans-serif';
-    ctx.fillText('TEL:', cMid - ctx.measureText(telCompleto).width / 2, yDep + 8);
-    ctx.fillStyle = '#000'; ctx.font = 'bold 18px sans-serif';
-    ctx.fillText(`${r.telefono || '-'} / 911`,
-      cMid - ctx.measureText(telCompleto).width / 2 + ctx.measureText('TEL: ').width, yDep + 8);
-    Y += CAJA_H + 16;
+    molde.innerHTML = `
+      <!-- HEADER -->
+      <div style="background:#0d2545;color:#fff;padding:26px 38px 18px;border-bottom:7px solid #1a6fba;">
+        <table width="100%" cellpadding="0" cellspacing="0"><tr>
+          <td style="vertical-align:middle;">
+            <div style="font-size:32px;font-weight:900;text-transform:uppercase;line-height:1.1;">Búsqueda de Personas</div>
+            <div style="font-size:14px;font-weight:700;text-transform:uppercase;margin-top:7px;">Dirección General Departamentales Norte</div>
+            <div style="font-size:10px;color:#a4c8e1;margin-top:3px;text-transform:uppercase;">Información aportada por las Unidades Regionales Departamentales Norte</div>
+          </td>
+          <td width="120" align="right" style="vertical-align:middle;">
+            <img src="https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png"
+                 style="height:100px;display:block;">
+          </td>
+        </tr></table>
+      </div>
 
-    // SEPARADOR
-    ctx.fillStyle = '#000'; ctx.fillRect(38, Y, PW - 76, 3); Y += 18;
+      <!-- CUERPO -->
+      <div style="padding:28px 38px;">
 
-    // LOCALIDAD
-    ctx.font = 'bold 13px sans-serif'; ctx.fillStyle = '#0d2545';
-    ctx.fillText('DESAPARECIDO EN:', 38, Y);
-    ctx.font = '13px sans-serif'; ctx.fillStyle = '#000';
-    ctx.fillText(limpiarTexto(r.localidad).toUpperCase(), 215, Y);
-    Y += 24;
+        <!-- FOTO centrada con borde -->
+        <div style="text-align:center;margin-bottom:16px;">
+          <div style="display:inline-block;width:300px;height:375px;border:4px solid #000;
+                      background:#eee;overflow:hidden;vertical-align:top;">
+            ${fotoSrc
+              ? `<img src="${fotoSrc}" style="width:300px;height:375px;object-fit:contain;display:block;">`
+              : `<div style="width:300px;height:375px;display:flex;align-items:center;justify-content:center;color:#888;font-weight:bold;">FOTO NO DISPONIBLE</div>`
+            }
+          </div>
+        </div>
 
-    // FECHA / HORA
-    ctx.font = 'bold 13px sans-serif'; ctx.fillStyle = '#0d2545'; ctx.fillText('FECHA:', 38, Y);
-    ctx.font = '13px sans-serif'; ctx.fillStyle = '#000'; ctx.fillText(limpiarTexto(r.fecha), 105, Y);
-    ctx.font = 'bold 13px sans-serif'; ctx.fillStyle = '#0d2545'; ctx.fillText('HORA:', 430, Y);
-    ctx.font = '13px sans-serif'; ctx.fillStyle = '#000'; ctx.fillText(limpiarTexto(r.hora), 490, Y);
-    Y += 18;
+        <!-- CONTACTO -->
+        <div style="text-align:center;margin-bottom:18px;">
+          <div style="display:inline-block;border:2px dashed #c0392b;background:#fdf5f5;
+                      padding:12px 28px;border-radius:3px;">
+            <div style="color:#c0392b;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;">INFORMAR A:</div>
+            <div style="font-size:17px;font-weight:700;color:#000;margin:5px 0;">
+              ${r.contacto || r.dependencia || 'Dependencia Policial'}
+            </div>
+            <div style="font-size:12px;color:#c0392b;font-weight:700;">
+              TEL: <span style="color:#000;font-size:18px;font-weight:900;">${r.telefono || '-'} / 911</span>
+            </div>
+          </div>
+        </div>
 
-    // CAJA NOMBRE
-    ctx.fillStyle = '#f0f4fa'; ctx.fillRect(38, Y, PW - 76, 70);
-    ctx.fillStyle = '#0d2545'; ctx.fillRect(38, Y, 6, 70);
-    ctx.font = 'bold 10px sans-serif'; ctx.fillStyle = '#0d2545';
-    ctx.fillText('NOMBRE COMPLETO', 52, Y + 15);
-    ctx.font = 'bold 20px sans-serif'; ctx.fillStyle = '#0d2545';
-    ctx.fillText((r.nombre || '-').toUpperCase(), 52, Y + 38);
-    ctx.font = 'bold 13px sans-serif'; ctx.fillStyle = '#333';
-    ctx.fillText(`EDAD: ${r.edad || '-'} AÑOS`, 52, Y + 58);
-    Y += 82;
+        <!-- SEPARADOR -->
+        <div style="border-top:4px solid #000;margin:0 0 16px;"></div>
 
-    // DESCRIPCIÓN
-    ctx.fillStyle = '#1a6fba'; ctx.font = 'bold 12px sans-serif';
-    ctx.fillText('DESCRIPCIÓN / VESTIMENTA', 38, Y);
-    ctx.fillRect(38, Y + 4, PW - 76, 2); Y += 14;
-    ctx.fillStyle = '#f8f9fa'; ctx.fillRect(38, Y, PW - 76, altoDesc);
-    ctx.fillStyle = '#1a6fba'; ctx.fillRect(38, Y, 4, altoDesc);
-    ctx.fillStyle = '#000'; ctx.font = '14px sans-serif';
-    wrapText(ctx, r.descripcion || 'Sin datos', 50, Y + 16, TEXTO_MAX, 20);
-    Y += altoDesc + 14;
+        <!-- DATOS -->
+        <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:14px;font-size:13px;">
+          <tr>
+            <td style="width:55%;padding-bottom:6px;vertical-align:top;">
+              <span style="color:#0d2545;font-weight:700;text-transform:uppercase;">Desaparecido en:</span><br>
+              <span style="font-size:14px;text-transform:uppercase;">${limpiarTexto(r.localidad)}</span>
+            </td>
+            <td style="width:23%;padding-bottom:6px;vertical-align:top;">
+              <span style="color:#0d2545;font-weight:700;text-transform:uppercase;">Fecha:</span><br>
+              <span style="font-size:14px;">${limpiarTexto(r.fecha)}</span>
+            </td>
+            <td style="width:22%;padding-bottom:6px;vertical-align:top;">
+              <span style="color:#0d2545;font-weight:700;text-transform:uppercase;">Hora:</span><br>
+              <span style="font-size:14px;">${limpiarTexto(r.hora)}</span>
+            </td>
+          </tr>
+        </table>
 
-    // RESEÑA
-    ctx.fillStyle = '#1a6fba'; ctx.font = 'bold 12px sans-serif';
-    ctx.fillText('RESEÑA DEL HECHO', 38, Y);
-    ctx.fillRect(38, Y + 4, PW - 76, 2); Y += 14;
-    ctx.fillStyle = '#f8f9fa'; ctx.fillRect(38, Y, PW - 76, altoResena);
-    ctx.fillStyle = '#1a6fba'; ctx.fillRect(38, Y, 4, altoResena);
-    ctx.fillStyle = '#000'; ctx.font = '14px sans-serif';
-    wrapText(ctx, r.resena || 'Sin reseña', 50, Y + 16, TEXTO_MAX, 20);
-    Y += altoResena + 20;
+        <!-- NOMBRE -->
+        <div style="background:#f0f4fa;border-left:6px solid #0d2545;padding:10px 16px;margin-bottom:14px;">
+          <div style="font-size:10px;font-weight:700;color:#0d2545;text-transform:uppercase;letter-spacing:1px;">Nombre completo</div>
+          <div style="font-size:22px;font-weight:900;color:#0d2545;text-transform:uppercase;margin-top:3px;">${r.nombre || '-'}</div>
+          <div style="font-size:13px;font-weight:700;color:#333;margin-top:4px;">EDAD: ${r.edad || '-'} AÑOS</div>
+        </div>
 
-    // PIE
-    ctx.fillStyle = '#0d2545'; ctx.fillRect(0, Y, PW, 48);
-    ctx.fillStyle = '#1a6fba'; ctx.fillRect(0, Y, PW, 6);
+        <!-- DESCRIPCIÓN -->
+        <div style="margin-bottom:12px;">
+          <div style="font-size:11px;font-weight:700;color:#1a6fba;text-transform:uppercase;
+                      letter-spacing:1px;border-bottom:2px solid #1a6fba;padding-bottom:3px;margin-bottom:6px;">
+            Descripción / Vestimenta
+          </div>
+          <div style="font-size:13px;line-height:1.65;text-align:justify;
+                      background:#f8f9fa;padding:10px 14px;border-left:4px solid #1a6fba;
+                      min-height:${hDesc}px;">
+            ${r.descripcion || 'Sin datos'}
+          </div>
+        </div>
 
-    // ── 5. Exportar — usar toBlob con try/catch por si el canvas quedó tainted
-    try {
-      canvas.toBlob(blob => {
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = `Alerta_${(r.nombre || 'Busqueda').replace(/\s+/g, '_')}.jpg`;
-        a.click();
-        URL.revokeObjectURL(a.href);
-      }, 'image/jpeg', 0.97);
-    } catch(e) {
-      // Canvas tainted: capturar toda la ficha con html2canvas como fallback final
-      alert('La foto de Drive bloquea la exportación directa. Usando captura de pantalla como alternativa...');
-      const fichaCanvas = await html2canvas(fichaEl, {
-        useCORS: false, allowTaint: true, scale: 2, logging: false
+        <!-- RESEÑA -->
+        <div style="margin-bottom:12px;">
+          <div style="font-size:11px;font-weight:700;color:#1a6fba;text-transform:uppercase;
+                      letter-spacing:1px;border-bottom:2px solid #1a6fba;padding-bottom:3px;margin-bottom:6px;">
+            Reseña del hecho
+          </div>
+          <div style="font-size:13px;line-height:1.65;text-align:justify;
+                      background:#f8f9fa;padding:10px 14px;border-left:4px solid #1a6fba;
+                      min-height:${hResena}px;">
+            ${r.resena || 'Sin reseña'}
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PIE -->
+      <div style="background:#0d2545;height:36px;border-top:6px solid #1a6fba;"></div>
+    `;
+
+    document.body.appendChild(molde);
+
+    // 3. Esperar que la foto del molde cargue antes de capturar
+    const imgMolde = molde.querySelector('img[src*="drive.google"]');
+    if (imgMolde && !imgMolde.complete) {
+      await new Promise(resolve => {
+        imgMolde.onload  = resolve;
+        imgMolde.onerror = resolve;
+        setTimeout(resolve, 5000); // máximo 5s de espera
       });
-      fichaCanvas.toBlob(blob => {
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = `Alerta_${(r.nombre || 'Busqueda').replace(/\s+/g, '_')}.jpg`;
-        a.click();
-        URL.revokeObjectURL(a.href);
-      }, 'image/jpeg', 0.97);
     }
+
+    // 4. Capturar con html2canvas (allowTaint=true: acepta imágenes sin CORS)
+    const capturedCanvas = await html2canvas(molde, {
+      useCORS:    false,   // NO usar CORS — Drive no lo permite
+      allowTaint: true,    // SÍ permitir imágenes "tainted" (Drive)
+      scale:      2,       // alta resolución
+      width:      794,
+      logging:    false,
+      backgroundColor: '#ffffff'
+    });
+
+    document.body.removeChild(molde);
+
+    // 5. Descargar
+    capturedCanvas.toBlob(blob => {
+      const a = document.createElement('a');
+      a.href     = URL.createObjectURL(blob);
+      a.download = `Alerta_${(r.nombre || 'Busqueda').replace(/\s+/g, '_')}.jpg`;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }, 'image/jpeg', 0.97);
 
   } catch(err) {
     console.error(err);
-    alert('Error: ' + err.message);
+    alert('Error al generar la imagen: ' + err.message);
   } finally {
     boton.disabled = false;
     boton.innerHTML = '🖼️ Descargar JPG';
