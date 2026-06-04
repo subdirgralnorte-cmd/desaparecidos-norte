@@ -65,6 +65,22 @@ function formatDriveLink(url) {
   return id ? `https://drive.google.com/thumbnail?id=${id}&sz=w800` : '';
 }
 
+// Cadena de fallbacks para foto en pantalla
+function onFotoError(imgEl, url, intento) {
+  const id = extraerIdDrive(url);
+  if (!id) { imgEl.src = 'https://via.placeholder.com/280x350?text=SIN+IMAGEN'; return; }
+  if (intento === 1) {
+    imgEl.onerror = () => onFotoError(imgEl, url, 2);
+    imgEl.src = `https://drive.google.com/uc?export=view&id=${id}`;
+  } else if (intento === 2) {
+    imgEl.onerror = () => onFotoError(imgEl, url, 3);
+    imgEl.src = `https://lh3.googleusercontent.com/d/${id}`;
+  } else {
+    imgEl.onerror = null;
+    imgEl.src = 'https://via.placeholder.com/280x350?text=SIN+IMAGEN';
+  }
+}
+
 function limpiarTexto(texto) {
   if (!texto) return '-';
   if (texto.includes('T') && texto.includes('1899')) {
@@ -99,7 +115,7 @@ function renderizarFichas() {
     <article class="ficha">
       <div class="col-izquierda">
         <div class="foto-marco">
-          <img src="${formatDriveLink(r.foto)}" onerror="this.src='https://via.placeholder.com/280x350?text=SIN+IMAGEN'">
+          <img src="${formatDriveLink(r.foto)}" data-url="${r.foto}" onerror="onFotoError(this, this.dataset.url, 1)">
         </div>
         <div class="contacto-pie">
           INFORMAR A:<br>${r.contacto || r.dependencia || 'Dependencia Policial'}<br><br>
