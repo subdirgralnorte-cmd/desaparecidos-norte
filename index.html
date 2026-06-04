@@ -135,6 +135,7 @@ function renderizarFichas() {
         <div style="font-size:0.95rem; line-height:1.4; text-align:justify;">${r.resena || 'Sin reseña'}</div>
         <div style="display:flex; gap:10px; flex-wrap:wrap;">
           <button class="btn-jpg" id="btnjpg-${i}" onclick="descargarJPG(${i})">🖼️ Descargar JPG</button>
+          <button class="btn-jpg" style="background:#c0392b;margin-top:5px;" onclick="diagnosticarFoto(${i})">🔍 Diagnóstico foto</button>
         </div>
       </div>
     </article>
@@ -396,6 +397,57 @@ async function descargarJPG(index) {
     boton.disabled = false; boton.innerHTML = '🖼️ Descargar JPG';
     statusTxt.innerText = statusOrig;
   }
+}
+
+// ── DIAGNÓSTICO ──────────────────────────────────────────────────
+async function diagnosticarFoto(index) {
+  const r = datosGlobales[index];
+  const id = extraerIdDrive(r.foto);
+  const log = (msg) => { console.log(msg); };
+  
+  log('=== DIAGNÓSTICO FOTO ===');
+  log('URL original en Sheets: ' + r.foto);
+  log('ID extraído: ' + id);
+
+  if (!id) { alert('No se pudo extraer ID de Drive de la URL: ' + r.foto); return; }
+
+  const urls = [
+    `https://drive.google.com/thumbnail?id=${id}&sz=w800`,
+    `https://drive.google.com/uc?export=view&id=${id}`,
+    `https://lh3.googleusercontent.com/d/${id}`,
+  ];
+
+  let resultados = 'ID: ' + id + '\n\n';
+
+  for (let i = 0; i < urls.length; i++) {
+    const url = urls[i];
+    const resultado = await new Promise(resolve => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      let timedOut = false;
+      const timer = setTimeout(() => { timedOut = true; resolve('TIMEOUT'); }, 8000);
+      img.onload = () => {
+        clearTimeout(timer);
+        // Intentar dibujar en canvas para ver si está "tainted"
+        try {
+          const c = document.createElement('canvas');
+          c.width = 10; c.height = 10;
+          c.getContext('2d').drawImage(img, 0, 0, 10, 10);
+          c.toDataURL(); // esto lanza error si está tainted
+          resolve('✅ OK - cargó y canvas libre de CORS (' + img.naturalWidth + 'x' + img.naturalHeight + ')');
+        } catch(e) {
+          resolve('⚠️ Cargó visualmente PERO canvas bloqueado por CORS: ' + e.message);
+        }
+      };
+      img.onerror = () => { clearTimeout(timer); resolve('❌ ERROR - no cargó (bloqueada o privada)'); };
+      img.src = url + '&_t=' + Date.now();
+    });
+    log('URL ' + (i+1) + ': ' + url);
+    log('Resultado: ' + resultado);
+    resultados += 'URL ' + (i+1) + ': ' + resultado + '\n' + url + '\n\n';
+  }
+
+  alert('RESULTADOS (ver también consola F12):\n\n' + resultados);
 }
 
 window.onload = cargarDatos;
