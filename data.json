@@ -1,7 +1,19 @@
 {
-  "actualizado": "2026-06-03T22:39:17Z",
-  "total": 10,
+  "actualizado": "2026-06-04T00:20:48Z",
+  "total": 11,
   "registros": [
+    {
+      "localidad": "Paraje Rural \"Los Troncos\" Dpto Tulumba",
+      "nombre": "ROSSA ALFREDO GUILLERMO",
+      "edad": "75",
+      "fecha": "28/05/2026",
+      "hora": "17:30:00",
+      "descripcion": "Se desconoce la vestimenta del masculino,ya que hace seis días no es visto en el lugar por los vecinos. Características morfológicas,tes trigueña,delgado,canoso,aproximadamente 1,70 mts.",
+      "contacto": "Cria San Jose de la Dormida",
+      "telefono": "3516343880-3516343927",
+      "foto": "https://drive.google.com/open?id=1EaR2l8jI4-016WX54lsNMoeOjrYpWDWK",
+      "estado": ""
+    },
     {
       "localidad": "COSQUIN",
       "nombre": "BARRIONUEVO AIRTON MAXIMO",
