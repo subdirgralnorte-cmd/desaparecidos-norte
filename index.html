@@ -62,12 +62,12 @@
   <script>
     const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbw8m7K4ogyIhubFaTUUG5gn-lcb75NJlM708VM1yoHCuiOmhpF4WfHbvaKOE4ZmRNBl/exec';
     
-    // 👇👇👇 DIRECTOR: PEGUE AQUÍ LA URL DE SU WORKER DE CLOUDFLARE 👇👇👇
-    const URL_PROXY = 'https://proxy-fotos-policia.tu-usuario.workers.dev/?id=';
+    // AQUÍ ESTÁ INYECTADO SU PROXY DE CLOUDFLARE
+    const URL_PROXY = 'https://proxy-fotos.hugocallejocapacitacion.workers.dev/?id=';
     
     let datosGlobales = [];
 
-    // Ahora enviamos el ID al proxy, NO a Drive directamente
+    // Enviamos el ID al proxy para saltar la seguridad CORS
     function formatDriveLink(url) {
       if (!url) return '';
       const match = url.match(/(?:id=|d\/)([a-zA-Z0-9_-]+)/);
@@ -149,7 +149,7 @@
       tempDiv.style.left = '0';
       tempDiv.style.zIndex = '-999';
       tempDiv.style.width = '794px'; 
-      // Calculamos altura dinámica real por si el texto es muy largo
+      // Altura dinámica: crecerá automáticamente si hay mucho texto
       tempDiv.style.minHeight = '1123px';  
       tempDiv.style.height = 'auto'; 
       tempDiv.style.background = '#ffffff';
@@ -217,9 +217,9 @@
 
         html2canvas(molde, { 
           scale: 2,           
-          useCORS: true,      // Ahora funcionará porque Cloudflare nos da el permiso
+          useCORS: true,      // Funcional gracias al Proxy Cloudflare
           width: 794,
-          height: molde.scrollHeight // Permite que crezca hacia abajo si el texto es larguísimo (Soluciona la superposición)
+          height: molde.scrollHeight // Evita cortes de texto en reseñas largas
         }).then(canvas => {
           const imgData = canvas.toDataURL('image/jpeg', 0.98);
           const link = document.createElement('a');
@@ -236,6 +236,7 @@
         });
       };
 
+      // Control estricto de carga de imagen
       if (imgPDF.complete) {
         compilarYDescargar();
       } else {
