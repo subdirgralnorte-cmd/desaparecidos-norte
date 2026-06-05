@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Búsqueda de Personas - Dirección General Departamentales Norte</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
@@ -62,17 +62,13 @@
   
   let datosGlobales = [];
 
-  // Detectar móvil (especialmente iOS)
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-
   function formatDriveLink(url) {
     if (!url) return '';
     const match = url.match(/(?:id=|d\/)([a-zA-Z0-9_-]+)/);
     return match ? `${URL_PROXY}${match[1]}` : url; 
   }
 
-  // Intenta convertir imagen a blob local (mejor para CORS)
+  // Convierte una URL de imagen (con proxy) en un Blob URL local (evita CORS completamente)
   async function convertirImagenABlob(urlImagen) {
     try {
       const response = await fetch(urlImagen, { mode: 'cors' });
@@ -80,8 +76,10 @@
       const blob = await response.blob();
       return URL.createObjectURL(blob);
     } catch (error) {
-      console.warn('No se pudo convertir a blob, se usará URL original:', error);
-      return urlImagen; // fallback a la URL original (el proxy intentará ayudar)
+      console.warn('Error cargando imagen, usando placeholder:', error);
+      // Placeholder local como blob también
+      const placeholderBlob = await fetch('https://via.placeholder.com/340x420?text=FOTO+NO+DISPONIBLE').then(r => r.blob());
+      return URL.createObjectURL(placeholderBlob);
     }
   }
 
@@ -146,19 +144,6 @@
     `).join('');
   }
 
-  // Función auxiliar: espera a que todas las imágenes dentro de un elemento estén cargadas
-  function esperarImagens(elemento) {
-    const imgs = Array.from(elemento.querySelectorAll('img'));
-    const promesas = imgs.map(img => {
-      if (img.complete && img.naturalHeight !== 0) return Promise.resolve();
-      return new Promise((resolve) => {
-        img.onload = resolve;
-        img.onerror = resolve; // no detener por errores
-      });
-    });
-    return Promise.all(promesas);
-  }
-
   async function descargarJPG(index) {
     const r = datosGlobales[index];
     if (!r) return;
@@ -168,24 +153,26 @@
     statusBar.innerText = '⏳ Preparando imagen de la alerta... (cargando foto)';
 
     try {
-      // Obtener URLs (intentando blob para evitar CORS)
+      // 1. Obtener la foto del desaparecido como Blob URL (sin CORS)
       const fotoUrlOriginal = formatDriveLink(r.foto);
+      const fotoBlobUrl = await convertirImagenABlob(fotoUrlOriginal);
+      
+      // 2. Escudo (también lo convertimos por si acaso, pero no es crítico)
       const escudoUrl = "https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png";
-      
-      const fotoUrl = await convertirImagenABlob(fotoUrlOriginal);
-      const escudoUrlBlob = await convertirImagenABlob(escudoUrl);
-      
-      // Crear div temporal FUERA de pantalla (left negativo, no visibility hidden)
+      const escudoBlobUrl = await convertirImagenABlob(escudoUrl);
+
+      // 3. Construir el HTML del cartel (mismo diseño, pero con las imágenes blob)
       const tempDiv = document.createElement('div');
+      // Uso visibility: hidden en lugar de top negativo -> más confiable para html2canvas
       tempDiv.style.position = 'absolute';
-      tempDiv.style.left = '-9999px';
+      tempDiv.style.left = '0';
       tempDiv.style.top = '0';
+      tempDiv.style.visibility = 'hidden';
       tempDiv.style.width = '794px';
       tempDiv.style.minHeight = '1123px';
       tempDiv.style.background = '#ffffff';
       tempDiv.style.zIndex = '-9999';
-      tempDiv.style.overflow = 'hidden';
-      
+
       tempDiv.innerHTML = `
         <div id="molde-impresion" style="width: 794px; min-height: 1123px; height: auto; background: #ffffff; font-family: 'Roboto', sans-serif; box-sizing: border-box; display: flex; flex-direction: column;">
           
@@ -195,14 +182,14 @@
               <p style="font-size: 18px; margin: 10px 0 0 0; font-weight: 700; text-transform: uppercase;">Dirección General Departamentales Norte</p>
               <p style="font-size: 13px; margin: 5px 0 0 0; color: #a4c8e1; text-transform: uppercase;">Información aportada por las Unidades Regionales Departamentales Norte</p>
             </div>
-            <img id="escudo-pdf" src="${escudoUrlBlob}" style="height: 110px;" crossorigin="anonymous">
+            <img id="escudo-pdf" src="${escudoBlobUrl}" style="height: 110px;">
           </div>
           
           <div style="padding: 40px; flex-grow: 1;">
             
             <div style="text-align: center;">
               <div style="display: inline-block; width: 340px; height: 420px; border: 4px solid #000; background: #eee; overflow: hidden; margin-bottom: 15px;">
-                <img id="foto-pdf-generar" src="${fotoUrl}" style="width: 100%; height: 100%; object-fit: contain;" crossorigin="anonymous">
+                <img id="foto-pdf-generar" src="${fotoBlobUrl}" style="width: 100%; height: 100%; object-fit: contain;">
               </div>
             </div>
 
@@ -237,64 +224,45 @@
           </div>
         </div>
       `;
-      
+
       document.body.appendChild(tempDiv);
       const molde = document.getElementById('molde-impresion');
+
+      // Esperamos un frame para que el navegador termine de aplicar estilos
+      await new Promise(requestAnimationFrame);
       
-      // Esperar a que las imágenes del molde se carguen (fundamental para móviles)
-      statusBar.innerText = '⏳ Cargando imágenes para generar el JPG...';
-      await esperarImagens(molde);
+      statusBar.innerText = '📸 Generando JPG, por favor espera...';
       
-      // Pequeña pausa adicional para que el navegador termine de pintar
-      await new Promise(resolve => setTimeout(resolve, 200));
-      
-      statusBar.innerText = '📸 Generando imagen, por favor espera...';
-      
-      // Escala dinámica: en móvil usar 1.5 para no agotar memoria; en PC 2
-      const scaleValue = isMobile ? 1.5 : 2;
-      
+      // html2canvas con opciones optimizadas
       const canvas = await html2canvas(molde, { 
-        scale: scaleValue,
+        scale: 2,
         backgroundColor: '#ffffff',
-        useCORS: true,      // Necesario si alguna imagen no es blob (fallback)
+        useCORS: false,     // Ya no lo necesitamos, las imágenes son blob locales
         width: 794,
         height: molde.scrollHeight,
         logging: false,
         allowTaint: false
       });
-      
-      const imgData = canvas.toDataURL('image/jpeg', 0.92);
+
+      // Descargar
+      const imgData = canvas.toDataURL('image/jpeg', 0.95);
       const nombreArchivo = (r.nombre ? r.nombre.replace(/ /g, '_') : 'Busqueda') + '_' + Date.now();
-      
-      // Manejo específico para iOS: no se puede descargar automáticamente, abrir en nueva pestaña
-      if (isIOS) {
-        // Abrir la imagen en una nueva pestaña para que el usuario la guarde manualmente
-        const ventana = window.open();
-        ventana.document.write(`<html><head><title>Alerta ${r.nombre}</title><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body style="display:flex; justify-content:center; align-items:center; background:#000;"><img src="${imgData}" style="max-width:100%; max-height:100%;" /><p style="color:white; text-align:center;">Mantén presionada la imagen para guardarla</p></body></html>`);
-        statusBar.innerText = textoOriginal + ' (Imagen abierta - Mantén presionada para guardar)';
-      } else {
-        // Android/PC: descarga directa
-        const link = document.createElement('a');
-        link.download = `Alerta_${nombreArchivo}.jpg`;
-        link.href = imgData;
-        link.click();
-        statusBar.innerText = textoOriginal + ' (JPG descargado correctamente)';
-      }
-      
-      // Limpiar
+      const link = document.createElement('a');
+      link.download = `Alerta_${nombreArchivo}.jpg`;
+      link.href = imgData;
+      link.click();
+
+      // Limpiar: remover div temporal y revocar blobs
       document.body.removeChild(tempDiv);
-      // Revocar blobs solo si son URLs de objeto (no URLs originales)
-      if (fotoUrl.startsWith('blob:')) URL.revokeObjectURL(fotoUrl);
-      if (escudoUrlBlob.startsWith('blob:')) URL.revokeObjectURL(escudoUrlBlob);
+      URL.revokeObjectURL(fotoBlobUrl);
+      URL.revokeObjectURL(escudoBlobUrl);
       
-      setTimeout(() => {
-        if (statusBar.innerText.includes('JPG') || statusBar.innerText.includes('abierta'))
-          statusBar.innerText = textoOriginal;
-      }, 5000);
+      statusBar.innerText = textoOriginal + ' (JPG descargado correctamente)';
+      setTimeout(() => { if (statusBar.innerText.includes('JPG descargado')) statusBar.innerText = textoOriginal; }, 3000);
       
     } catch (error) {
-      console.error('Error generando JPG en móvil:', error);
-      statusBar.innerText = '❌ Error al generar la imagen. Reintente o actualice la página.';
+      console.error('Error generando JPG:', error);
+      statusBar.innerText = '❌ Error al generar la imagen. Reintente.';
       setTimeout(() => { statusBar.innerText = textoOriginal; }, 4000);
     }
   }
