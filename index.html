@@ -6,7 +6,7 @@
   <title>Búsqueda de Personas - Dirección General Departamentales Norte</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <style>
     /* DISEÑO WEB Y MÓVIL EN PANTALLA */
@@ -124,25 +124,25 @@
             <div class="info-linea"><b>RESEÑA DEL HECHO:</b></div>
             <div style="font-size:0.95rem; line-height:1.4; text-align:justify;">${r.resena || 'Sin reseña'}</div>
             
-            <button class="btn-pdf" onclick="descargarPDF(${i})">📄 Descargar PDF</button>
+            <button class="btn-pdf" onclick="descargarJPG(${i})">📸 Descargar JPG</button>
           </div>
         </article>
       `).join('');
     }
 
     // =========================================================================
-    // NUEVO MOTOR PDF: ENCUADRE DE ARRIBA HACIA ABAJO + SENSOR DE FOTO ESTRICTO
+    // NUEVO MOTOR JPG: TOMA UNA CAPTURA EN ALTA RESOLUCIÓN Y DESCARGA UNA IMAGEN
     // =========================================================================
-    function descargarPDF(index) {
+    function descargarJPG(index) {
       const r = datosGlobales[index];
       if (!r) {
-        alert("Error: No se encontraron los datos para generar el PDF.");
+        alert("Error: No se encontraron los datos para generar el JPG.");
         return;
       }
 
       const statusTxt = document.getElementById('status-txt');
       const statusOriginal = statusTxt.innerText;
-      statusTxt.innerText = '⏳ Cargando imagen oficial y generando Alerta A4...';
+      statusTxt.innerText = '⏳ Cargando imagen oficial y generando Alerta JPG...';
 
       // 1. Contenedor temporal rígido e invisible
       const tempDiv = document.createElement('div');
@@ -157,7 +157,7 @@
 
       // 2. Molde HTML Vertical
       tempDiv.innerHTML = `
-        <div id="molde-impresion" style="width: 794px; min-height: 1123px; font-family: 'Roboto', sans-serif; box-sizing: border-box; display: flex; flex-direction: column;">
+        <div id="molde-impresion" style="width: 794px; min-height: 1123px; background: #ffffff; font-family: 'Roboto', sans-serif; box-sizing: border-box; display: flex; flex-direction: column;">
           
           <div style="background-color: #0d2545; color: white; padding: 30px 40px; border-bottom: 8px solid #1a6fba; display: flex; justify-content: space-between; align-items: center;">
             <div style="flex: 1;">
@@ -212,24 +212,34 @@
 
       const imgPDF = document.getElementById('foto-pdf-generar');
       
-      // 3. Ejecutor del PDF
+      // 3. Ejecutor del JPG
       const compilarYDescargar = () => {
         const nombreArchivo = r.nombre ? r.nombre.replace(/ /g, '_') : 'Busqueda';
         const molde = document.getElementById('molde-impresion');
 
-        html2pdf().set({
-          margin:       0,
-          filename:     `Alerta_${nombreArchivo}.pdf`,
-          image:        { type: 'jpeg', quality: 0.98 },
-          html2canvas:  { scale: 2, useCORS: true, windowWidth: 794 }, // Fuerza la lectura tamaño PC
-          jsPDF:        { unit: 'px', format: [794, 1123], orientation: 'portrait' }
-        }).from(molde).save().then(() => {
+        // Usamos html2canvas directamente para capturar la imagen
+        html2canvas(molde, { 
+          scale: 2,           // Escala X2 para alta definición (ideal para Zoom/WhatsApp)
+          useCORS: true,      // Permite leer las imágenes de Drive/Github
+          width: 794,         // Forzamos ancho A4
+          height: 1123        // Forzamos alto A4
+        }).then(canvas => {
+          // Convertimos el canvas generado a JPG en alta calidad (0.98)
+          const imgData = canvas.toDataURL('image/jpeg', 0.98);
+          
+          // Creamos un link invisible y simulamos un clic para descargar
+          const link = document.createElement('a');
+          link.download = `Alerta_${nombreArchivo}.jpg`;
+          link.href = imgData;
+          link.click();
+
+          // Limpiamos la pantalla
           document.body.removeChild(tempDiv);
           statusTxt.innerText = statusOriginal;
         }).catch(err => {
           console.error(err);
           document.body.removeChild(tempDiv);
-          statusTxt.innerText = 'Error al generar el PDF.';
+          statusTxt.innerText = 'Error al generar el JPG.';
         });
       };
 
@@ -239,7 +249,6 @@
       } else {
         imgPDF.onload = compilarYDescargar;
         imgPDF.onerror = () => {
-          // Si por alguna razón Google Drive bloquea la foto, se crea igual
           imgPDF.src = 'https://via.placeholder.com/340x420?text=FOTO+NO+DISPONIBLE';
           compilarYDescargar(); 
         };
