@@ -143,17 +143,16 @@
       const statusOriginal = statusTxt.innerText;
       statusTxt.innerText = '⏳ Conectando con Servidor Seguro y generando Alerta JPG...';
 
+      // 1. SOLUCIÓN AL BLANCO: Mover el div fuera de la pantalla en vez de hacerlo invisible
       const tempDiv = document.createElement('div');
       tempDiv.style.position = 'absolute';
-      tempDiv.style.top = '0';
+      tempDiv.style.top = '-10000px';  // Lo mandamos 10.000 pixeles arriba de la pantalla (oculto al usuario, visible al motor)
       tempDiv.style.left = '0';
       tempDiv.style.zIndex = '-999';
       tempDiv.style.width = '794px'; 
-      // Altura dinámica: crecerá automáticamente si hay mucho texto
       tempDiv.style.minHeight = '1123px';  
       tempDiv.style.height = 'auto'; 
       tempDiv.style.background = '#ffffff';
-      tempDiv.style.visibility = 'hidden'; 
 
       tempDiv.innerHTML = `
         <div id="molde-impresion" style="width: 794px; min-height: 1123px; height: auto; background: #ffffff; font-family: 'Roboto', sans-serif; box-sizing: border-box; display: flex; flex-direction: column;">
@@ -212,31 +211,34 @@
       const imgPDF = document.getElementById('foto-pdf-generar');
       
       const compilarYDescargar = () => {
-        const nombreArchivo = r.nombre ? r.nombre.replace(/ /g, '_') : 'Busqueda';
-        const molde = document.getElementById('molde-impresion');
+        // Le damos 500 milisegundos al sistema para que dibuje todo correctamente en memoria antes del flash
+        setTimeout(() => {
+            const nombreArchivo = r.nombre ? r.nombre.replace(/ /g, '_') : 'Busqueda';
+            const molde = document.getElementById('molde-impresion');
 
-        html2canvas(molde, { 
-          scale: 2,           
-          useCORS: true,      // Funcional gracias al Proxy Cloudflare
-          width: 794,
-          height: molde.scrollHeight // Evita cortes de texto en reseñas largas
-        }).then(canvas => {
-          const imgData = canvas.toDataURL('image/jpeg', 0.98);
-          const link = document.createElement('a');
-          link.download = `Alerta_${nombreArchivo}.jpg`;
-          link.href = imgData;
-          link.click();
+            html2canvas(molde, { 
+              scale: 2,           
+              useCORS: true,      
+              backgroundColor: '#ffffff', // Forzamos que el fondo de la imagen sea blanco y no transparente
+              width: 794,
+              height: molde.scrollHeight 
+            }).then(canvas => {
+              const imgData = canvas.toDataURL('image/jpeg', 0.98);
+              const link = document.createElement('a');
+              link.download = `Alerta_${nombreArchivo}.jpg`;
+              link.href = imgData;
+              link.click();
 
-          document.body.removeChild(tempDiv);
-          statusTxt.innerText = statusOriginal;
-        }).catch(err => {
-          console.error(err);
-          document.body.removeChild(tempDiv);
-          statusTxt.innerText = 'Error al generar el JPG.';
-        });
+              document.body.removeChild(tempDiv);
+              statusTxt.innerText = statusOriginal;
+            }).catch(err => {
+              console.error(err);
+              document.body.removeChild(tempDiv);
+              statusTxt.innerText = 'Error al generar el JPG.';
+            });
+        }, 500); // 0.5 segundos de espera inteligente
       };
 
-      // Control estricto de carga de imagen
       if (imgPDF.complete) {
         compilarYDescargar();
       } else {
