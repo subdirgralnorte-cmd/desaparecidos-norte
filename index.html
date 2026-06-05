@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
   <title>Búsqueda de Personas - Dirección General Departamentales Norte</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
@@ -62,13 +62,14 @@
   
   let datosGlobales = [];
 
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
   function formatDriveLink(url) {
     if (!url) return '';
     const match = url.match(/(?:id=|d\/)([a-zA-Z0-9_-]+)/);
     return match ? `${URL_PROXY}${match[1]}` : url; 
   }
 
-  // Convierte una URL de imagen (con proxy) en un Blob URL local (evita CORS completamente)
   async function convertirImagenABlob(urlImagen) {
     try {
       const response = await fetch(urlImagen, { mode: 'cors' });
@@ -76,10 +77,8 @@
       const blob = await response.blob();
       return URL.createObjectURL(blob);
     } catch (error) {
-      console.warn('Error cargando imagen, usando placeholder:', error);
-      // Placeholder local como blob también
-      const placeholderBlob = await fetch('https://via.placeholder.com/340x420?text=FOTO+NO+DISPONIBLE').then(r => r.blob());
-      return URL.createObjectURL(placeholderBlob);
+      console.warn('No se pudo convertir a blob, usando URL original:', error);
+      return urlImagen;
     }
   }
 
@@ -150,29 +149,22 @@
 
     const statusBar = document.getElementById('status-txt');
     const textoOriginal = statusBar.innerText;
-    statusBar.innerText = '⏳ Preparando imagen de la alerta... (cargando foto)';
+    statusBar.innerText = '⏳ Preparando imagen de la alerta...';
 
     try {
-      // 1. Obtener la foto del desaparecido como Blob URL (sin CORS)
-      const fotoUrlOriginal = formatDriveLink(r.foto);
-      const fotoBlobUrl = await convertirImagenABlob(fotoUrlOriginal);
-      
-      // 2. Escudo (también lo convertimos por si acaso, pero no es crítico)
-      const escudoUrl = "https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png";
-      const escudoBlobUrl = await convertirImagenABlob(escudoUrl);
+      // Obtener URLs convertidas a blob (evita CORS)
+      const fotoUrl = await convertirImagenABlob(formatDriveLink(r.foto));
+      const escudoUrl = await convertirImagenABlob("https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png");
 
-      // 3. Construir el HTML del cartel (mismo diseño, pero con las imágenes blob)
+      // Crear div temporal FUERA DE PANTALLA (top negativo - funcionaba en PC)
       const tempDiv = document.createElement('div');
-      // Uso visibility: hidden en lugar de top negativo -> más confiable para html2canvas
       tempDiv.style.position = 'absolute';
+      tempDiv.style.top = '-10000px';
       tempDiv.style.left = '0';
-      tempDiv.style.top = '0';
-      tempDiv.style.visibility = 'hidden';
       tempDiv.style.width = '794px';
-      tempDiv.style.minHeight = '1123px';
       tempDiv.style.background = '#ffffff';
       tempDiv.style.zIndex = '-9999';
-
+      
       tempDiv.innerHTML = `
         <div id="molde-impresion" style="width: 794px; min-height: 1123px; height: auto; background: #ffffff; font-family: 'Roboto', sans-serif; box-sizing: border-box; display: flex; flex-direction: column;">
           
@@ -182,14 +174,14 @@
               <p style="font-size: 18px; margin: 10px 0 0 0; font-weight: 700; text-transform: uppercase;">Dirección General Departamentales Norte</p>
               <p style="font-size: 13px; margin: 5px 0 0 0; color: #a4c8e1; text-transform: uppercase;">Información aportada por las Unidades Regionales Departamentales Norte</p>
             </div>
-            <img id="escudo-pdf" src="${escudoBlobUrl}" style="height: 110px;">
+            <img src="${escudoUrl}" style="height: 110px;">
           </div>
           
           <div style="padding: 40px; flex-grow: 1;">
             
             <div style="text-align: center;">
               <div style="display: inline-block; width: 340px; height: 420px; border: 4px solid #000; background: #eee; overflow: hidden; margin-bottom: 15px;">
-                <img id="foto-pdf-generar" src="${fotoBlobUrl}" style="width: 100%; height: 100%; object-fit: contain;">
+                <img id="foto-pdf" src="${fotoUrl}" style="width: 100%; height: 100%; object-fit: contain;">
               </div>
             </div>
 
@@ -224,46 +216,64 @@
           </div>
         </div>
       `;
-
+      
       document.body.appendChild(tempDiv);
       const molde = document.getElementById('molde-impresion');
-
-      // Esperamos un frame para que el navegador termine de aplicar estilos
-      await new Promise(requestAnimationFrame);
       
-      statusBar.innerText = '📸 Generando JPG, por favor espera...';
+      // Pequeña espera para que el navegador pinte el contenido (necesario en algunos móviles)
+      await new Promise(resolve => setTimeout(resolve, 300));
       
-      // html2canvas con opciones optimizadas
+      statusBar.innerText = '📸 Generando JPG...';
+      
       const canvas = await html2canvas(molde, { 
         scale: 2,
         backgroundColor: '#ffffff',
-        useCORS: false,     // Ya no lo necesitamos, las imágenes son blob locales
+        useCORS: true,
         width: 794,
         height: molde.scrollHeight,
-        logging: false,
-        allowTaint: false
+        logging: false
       });
-
-      // Descargar
-      const imgData = canvas.toDataURL('image/jpeg', 0.95);
-      const nombreArchivo = (r.nombre ? r.nombre.replace(/ /g, '_') : 'Busqueda') + '_' + Date.now();
-      const link = document.createElement('a');
-      link.download = `Alerta_${nombreArchivo}.jpg`;
-      link.href = imgData;
-      link.click();
-
-      // Limpiar: remover div temporal y revocar blobs
-      document.body.removeChild(tempDiv);
-      URL.revokeObjectURL(fotoBlobUrl);
-      URL.revokeObjectURL(escudoBlobUrl);
       
-      statusBar.innerText = textoOriginal + ' (JPG descargado correctamente)';
-      setTimeout(() => { if (statusBar.innerText.includes('JPG descargado')) statusBar.innerText = textoOriginal; }, 3000);
+      const imgData = canvas.toDataURL('image/jpeg', 0.92);
+      const nombreArchivo = (r.nombre ? r.nombre.replace(/ /g, '_') : 'Busqueda') + '_' + Date.now();
+      
+      // Manejo específico para iOS (no permite link.download)
+      if (isIOS) {
+        // Abrir imagen en nueva pestaña con instrucción
+        const nuevaVentana = window.open();
+        nuevaVentana.document.write(`
+          <html>
+            <head><title>Alerta ${r.nombre}</title><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+            <body style="display:flex; flex-direction:column; justify-content:center; align-items:center; background:#000; margin:0; padding:20px;">
+              <img src="${imgData}" style="max-width:100%; max-height:80vh;" />
+              <p style="color:white; text-align:center; font-family:sans-serif;">Mantén presionada la imagen y elige "Guardar imagen"</p>
+            </body>
+          </html>
+        `);
+        statusBar.innerText = textoOriginal + ' (Imagen abierta - Mantén presionada para guardar)';
+      } else {
+        // Android / PC / escritorio: descarga automática
+        const link = document.createElement('a');
+        link.download = `Alerta_${nombreArchivo}.jpg`;
+        link.href = imgData;
+        link.click();
+        statusBar.innerText = textoOriginal + ' (JPG descargado)';
+      }
+      
+      // Limpiar y revocar blobs
+      document.body.removeChild(tempDiv);
+      if (fotoUrl.startsWith('blob:')) URL.revokeObjectURL(fotoUrl);
+      if (escudoUrl.startsWith('blob:')) URL.revokeObjectURL(escudoUrl);
+      
+      setTimeout(() => {
+        if (statusBar.innerText.includes('JPG') || statusBar.innerText.includes('abierta'))
+          statusBar.innerText = textoOriginal;
+      }, 5000);
       
     } catch (error) {
-      console.error('Error generando JPG:', error);
+      console.error(error);
       statusBar.innerText = '❌ Error al generar la imagen. Reintente.';
-      setTimeout(() => { statusBar.innerText = textoOriginal; }, 4000);
+      setTimeout(() => statusBar.innerText = textoOriginal, 4000);
     }
   }
 
