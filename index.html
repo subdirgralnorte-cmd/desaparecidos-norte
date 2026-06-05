@@ -133,7 +133,7 @@ function renderizarFichas() {
 // ══════════════════════════════════════════════════════════════════
 //  PDF (motor original que funcionaba bien)
 // ══════════════════════════════════════════════════════════════════
-//function descargarPDF(index) {
+function descargarPDF(index) {
   const r = datosGlobales[index];
   if (!r) return;
   const boton = document.getElementById(`btnpdf-${index}`);
@@ -470,7 +470,7 @@ setInterval(cargarDatos, 10000);
 
 <!--
 ════════════════════════════════════════════════════════════════
-  AGREGAR AL Apps Script (Code.gs) para que el JPG funcione:
+  AGREGAR AL Apps Script (Code.gs) para que el JPG funcione:-->
 
   function doGet(e) {
     if (e.parameter.foto) {
@@ -491,7 +491,7 @@ setInterval(cargarDatos, 10000);
     // ... resto del doGet normal ...
   }
 
-  Luego republicar: Implementar → Administrar implementaciones → Editar → Nueva versión
+ <!-- Luego republicar: Implementar → Administrar implementaciones → Editar → Nueva versión
 ════════════════════════════════════════════════════════════════
 -->
 </body>
