@@ -4,12 +4,15 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Búsqueda de Personas - Dirección General Departamentales Norte</title>
+  
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@900&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
   <style>
+    /* DISEÑO WEB Y MÓVIL EN PANTALLA */
     :root { --azul-policia: #0d2545; --azul-acento: #1a6fba; --gris-claro: #f8f9fa; }
-    body { font-family: 'Roboto', sans-serif; background: #fff; margin: 0; padding: 0; color: #333; }
-    header { background: var(--azul-policia); color: #fff; padding: 50px 60px; display: flex; justify-content: space-between; align-items: center; border-bottom: 8px solid var(--azul-acento); }
+    body { font-family: 'Roboto', sans-serif; background-color: #ffffff; margin: 0; padding: 0; color: #333; }
+    header { background-color: var(--azul-policia); color: white; padding: 50px 60px; display: flex; justify-content: space-between; align-items: center; border-bottom: 8px solid var(--azul-acento); }
     .header-left h1 { margin: 0; font-family: 'Montserrat', sans-serif; font-size: 5.5rem; line-height: 0.9; text-transform: uppercase; letter-spacing: -3px; }
     .header-left p { font-size: 1.8rem; margin-top: 15px; font-weight: 400; text-transform: uppercase; margin-bottom: 0; }
     .escudo-header { height: 280px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
@@ -17,16 +20,18 @@
     .contenedor { max-width: 1000px; margin: 40px auto; padding: 0 20px; display: flex; flex-direction: column; gap: 40px; min-height: 60vh; }
     .ficha { display: flex; background: var(--gris-claro); border: 1px solid #ddd; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
     .col-izquierda { width: 320px; min-width: 320px; padding: 20px; background: #fff; border-right: 2px solid #000; display: flex; flex-direction: column; align-items: center; }
+    
     .foto-marco { width: 280px; height: 350px; border: 4px solid #000; background: #eee; display: flex; justify-content: center; align-items: center; overflow: hidden; }
     .foto-marco img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    
     .contacto-pie { margin-top: 15px; font-size: 0.8rem; font-weight: bold; color: #c0392b; text-align: center; text-transform: uppercase; }
     .col-derecha { flex-grow: 1; padding: 30px; display: flex; flex-direction: column; justify-content: center; }
     .info-linea { font-size: 1.1rem; margin-bottom: 10px; text-transform: uppercase; }
     .info-linea b { color: var(--azul-policia); }
-    .btn-jpg { background: var(--azul-policia); color: #fff; border: none; padding: 12px 20px; font-size: 1rem; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 20px; align-self: flex-start; display: flex; align-items: center; gap: 8px; transition: background 0.3s, opacity 0.3s; }
-    .btn-jpg:hover:not(:disabled) { background: var(--azul-acento); }
-    .btn-jpg:disabled { opacity: 0.5; cursor: not-allowed; }
-    footer { background: var(--azul-policia); height: 80px; margin-top: 60px; border-top: 8px solid var(--azul-acento); }
+    .btn-pdf { background-color: var(--azul-policia); color: white; border: none; padding: 12px 20px; font-size: 1rem; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 20px; align-self: flex-start; display: flex; align-items: center; gap: 8px; transition: background 0.3s; }
+    .btn-pdf:hover { background-color: var(--azul-acento); }
+    footer { background-color: var(--azul-policia); height: 80px; margin-top: 60px; border-top: 8px solid var(--azul-acento); width: 100%; }
+    
     @media (max-width: 900px) {
       header { flex-direction: column; text-align: center; padding: 30px 20px; }
       .header-left h1 { font-size: 3rem; }
@@ -38,286 +43,212 @@
 </head>
 <body>
 
-<header>
-  <div class="header-left">
-    <h1>Búsqueda de<br>Personas</h1>
-    <p>Dirección General Departamentales Norte</p>
-  </div>
-  <img src="Diapositiva1-removebg-preview.png" alt="Escudo Policía" class="escudo-header">
-</header>
+  <header id="cabecera-institucional">
+    <div class="header-left">
+      <h1>Búsqueda de<br>Personas</h1>
+      <p>Dirección General Departamentales Norte</p>
+    </div>
+    <img src="Diapositiva1-removebg-preview.png" alt="Escudo Policía" class="escudo-header">
+  </header>
 
-<div class="status-bar" id="status-txt">Conectando con base de datos policial...</div>
+  <div class="status-bar" id="status-txt">Conectando con base de datos policial...</div>
 
-<main id="contenedor-fichas" class="contenedor">
-  <div style="text-align:center;padding:50px;font-size:1.2rem;">Cargando registros oficiales...</div>
-</main>
+  <main id="contenedor-fichas" class="contenedor">
+    <div style="text-align:center; padding:50px; font-size: 1.2rem;">Cargando registros oficiales...</div>
+  </main>
 
-<footer></footer>
+  <footer id="pie-institucional"></footer>
 
-<script>
-const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbw8m7K4ogyIhubFaTUUG5gn-lcb75NJlM708VM1yoHCuiOmhpF4WfHbvaKOE4ZmRNBl/exec';
-let datosGlobales = [];
+  <script>
+    const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbw8m7K4ogyIhubFaTUUG5gn-lcb75NJlM708VM1yoHCuiOmhpF4WfHbvaKOE4ZmRNBl/exec';
+    
+    // 👇👇👇 DIRECTOR: PEGUE AQUÍ LA URL DE SU WORKER DE CLOUDFLARE 👇👇👇
+    const URL_PROXY = 'https://proxy-fotos-policia.tu-usuario.workers.dev/?id=';
+    
+    let datosGlobales = [];
 
-// Thumbnail de Drive para mostrar en pantalla
-function driveThumb(url) {
-  if (!url) return '';
-  const m = url.match(/(?:id=|d\/)([a-zA-Z0-9_-]+)/);
-  return m ? `https://drive.google.com/thumbnail?id=${m[1]}&sz=w800` : url;
-}
-
-// URL de la foto pasada por weserv (proxy CORS-libre) para usar en canvas
-function driveCors(url) {
-  if (!url) return null;
-  const m = url.match(/(?:id=|d\/)([a-zA-Z0-9_-]+)/);
-  if (!m) return url;
-  // weserv recibe la URL directa de descarga de Drive
-  const directa = `https://drive.google.com/uc?export=download&id=${m[1]}`;
-  return `https://images.weserv.nl/?url=${encodeURIComponent(directa)}&w=700&output=jpg`;
-}
-
-function limpiarTexto(t) {
-  if (!t) return '-';
-  if (t.includes('T') && t.includes('1899')) return new Date(t).toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});
-  if (t.includes('T') && t.length > 15) { const p=t.split('T')[0].split('-'); return `${p[2]}/${p[1]}/${p[0]}`; }
-  return t;
-}
-
-async function cargarDatos() {
-  try {
-    const res = await fetch(URL_SCRIPT + '?nocache=' + Date.now());
-    datosGlobales = await res.json();
-    renderizarFichas();
-    document.getElementById('status-txt').innerText =
-      `En vivo vía App Script: ${new Date().toLocaleTimeString('es-AR')} — ${datosGlobales.length} registros`;
-  } catch(e) {
-    document.getElementById('status-txt').innerText = 'Error de conexión con el Script en vivo.';
-  }
-}
-
-function renderizarFichas() {
-  const c = document.getElementById('contenedor-fichas');
-  if (!datosGlobales.length) { c.innerHTML='<h2 style="text-align:center;color:#c0392b;">No hay alertas vigentes.</h2>'; return; }
-  c.innerHTML = datosGlobales.map((r,i) => `
-    <article class="ficha">
-      <div class="col-izquierda">
-        <div class="foto-marco">
-          <img src="${driveThumb(r.foto)}" onerror="this.src='https://placehold.co/280x350/eee/999?text=SIN+IMAGEN'">
-        </div>
-        <div class="contacto-pie">INFORMAR A:<br>${r.contacto||r.dependencia||'Dependencia Policial'}<br><br>TEL: ${r.telefono||'-'} / 911</div>
-      </div>
-      <div class="col-derecha">
-        <div class="info-linea"><b>DESAPARECIDO EN:</b> ${limpiarTexto(r.localidad)}</div>
-        <div class="info-linea"><b>FECHA:</b> ${limpiarTexto(r.fecha)} | <b>HORA:</b> ${limpiarTexto(r.hora)}</div>
-        <br>
-        <div class="info-linea"><b>NOMBRE:</b> ${r.nombre}</div>
-        <div class="info-linea"><b>EDAD:</b> ${r.edad} AÑOS</div>
-        <br>
-        <div class="info-linea"><b>DESCRIPCIÓN / VESTIMENTA:</b></div>
-        <div style="font-size:.95rem;line-height:1.6;text-align:justify;margin-bottom:10px;">${r.descripcion||'Sin datos'}</div>
-        <div class="info-linea"><b>RESEÑA DEL HECHO:</b></div>
-        <div style="font-size:.95rem;line-height:1.6;text-align:justify;">${r.resena||'Sin reseña'}</div>
-        <button class="btn-jpg" id="btn-${i}" onclick="descargarJPG(${i})">🖼️ Descargar imagen</button>
-      </div>
-    </article>`).join('');
-}
-
-// ─── Carga imagen con crossOrigin, devuelve HTMLImageElement o null ───────────
-function cargarImg(src) {
-  return new Promise(resolve => {
-    if (!src) { resolve(null); return; }
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload  = () => resolve(img);
-    img.onerror = () => resolve(null);
-    img.src = src;
-  });
-}
-
-// ─── Dibuja texto con word-wrap en canvas ─────────────────────────────────────
-function wrapText(ctx, texto, x, y, maxW, lineH) {
-  const palabras = (texto||'Sin datos').split(' ');
-  let linea = '';
-  for (const pal of palabras) {
-    const prueba = linea + pal + ' ';
-    if (ctx.measureText(prueba).width > maxW && linea) {
-      ctx.fillText(linea.trimEnd(), x, y);
-      linea = pal + ' ';
-      y += lineH;
-    } else { linea = prueba; }
-  }
-  if (linea.trim()) ctx.fillText(linea.trimEnd(), x, y);
-  return y + lineH; // devuelve Y final
-}
-
-// ─── Dibuja imagen con object-fit:contain dentro de un rectángulo ─────────────
-function drawContain(ctx, img, x, y, w, h) {
-  ctx.fillStyle = '#eeeeee';
-  ctx.fillRect(x, y, w, h);
-  if (!img) {
-    ctx.fillStyle = '#999'; ctx.font = 'bold 20px sans-serif';
-    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillText('FOTO NO DISPONIBLE', x+w/2, y+h/2);
-    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-    return;
-  }
-  const ratio = Math.min(w / img.naturalWidth, h / img.naturalHeight);
-  const dw = img.naturalWidth * ratio, dh = img.naturalHeight * ratio;
-  ctx.drawImage(img, x + (w-dw)/2, y + (h-dh)/2, dw, dh);
-}
-
-// ─── GENERADOR PRINCIPAL ──────────────────────────────────────────────────────
-async function descargarJPG(index) {
-  const r = datosGlobales[index];
-  if (!r) return;
-
-  const boton = document.getElementById(`btn-${index}`);
-  const statusTxt = document.getElementById('status-txt');
-  const statusOrig = statusTxt.innerText;
-  boton.disabled = true;
-  boton.textContent = '⏳ Generando...';
-  statusTxt.innerText = '⏳ Cargando imagen y generando alerta...';
-
-  try {
-    // 1. Cargar foto via proxy CORS (weserv) y escudo
-    const [fotoImg, escudoImg] = await Promise.all([
-      cargarImg(driveCors(r.foto)),
-      cargarImg('https://images.weserv.nl/?url=' + encodeURIComponent('https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png'))
-    ]);
-
-    // 2. Canvas A4 vertical × 2 (alta resolución)
-    const SC = 2, PW = 794, PH = 1123;
-    const canvas = document.createElement('canvas');
-    canvas.width  = PW * SC;
-    canvas.height = PH * SC;
-    const ctx = canvas.getContext('2d');
-    ctx.scale(SC, SC);
-
-    // ── Fondo blanco
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, PW, PH);
-
-    // ── HEADER ────────────────────────────────────────────────────────────────
-    ctx.fillStyle = '#0d2545';
-    ctx.fillRect(0, 0, PW, 160);
-    ctx.fillStyle = '#1a6fba';
-    ctx.fillRect(0, 152, PW, 8);
-
-    ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 34px Montserrat, sans-serif';
-    ctx.fillText('BÚSQUEDA DE PERSONAS', 38, 52);
-    ctx.font = 'bold 15px Roboto, sans-serif';
-    ctx.fillText('DIRECCIÓN GENERAL DEPARTAMENTALES NORTE', 38, 78);
-    ctx.font = '11px Roboto, sans-serif';
-    ctx.fillStyle = '#a4c8e1';
-    ctx.fillText('Información aportada por las Unidades Regionales Departamentales Norte', 38, 100);
-
-    if (escudoImg) {
-      const eH = 118, eW = escudoImg.naturalWidth * (eH / escudoImg.naturalHeight);
-      ctx.drawImage(escudoImg, PW - eW - 30, 18, eW, eH);
+    // Ahora enviamos el ID al proxy, NO a Drive directamente
+    function formatDriveLink(url) {
+      if (!url) return '';
+      const match = url.match(/(?:id=|d\/)([a-zA-Z0-9_-]+)/);
+      return match ? `${URL_PROXY}${match[1]}` : url; 
     }
 
-    // ── FOTO (centrada, encuadrada) ────────────────────────────────────────────
-    const FW = 320, FH = 400, FX = (PW - FW) / 2, FY = 178;
-    ctx.strokeStyle = '#000'; ctx.lineWidth = 4;
-    ctx.strokeRect(FX, FY, FW, FH);
-    drawContain(ctx, fotoImg, FX+2, FY+2, FW-4, FH-4);
+    function limpiarTexto(texto) {
+      if (!texto) return '-';
+      if (texto.includes('T') && texto.includes('1899')) {
+        let d = new Date(texto);
+        return d.toLocaleTimeString('es-AR', {hour: '2-digit', minute:'2-digit'});
+      }
+      if (texto.includes('T') && texto.length > 15) {
+        let p = texto.split('T')[0].split('-');
+        return `${p[2]}/${p[1]}/${p[0]}`;
+      }
+      return texto;
+    }
 
-    // ── CAJA CONTACTO ─────────────────────────────────────────────────────────
-    const CY = FY + FH + 16, CW = 440, CX = (PW - CW) / 2;
-    ctx.strokeStyle = '#c0392b'; ctx.setLineDash([7,4]); ctx.lineWidth = 2;
-    ctx.strokeRect(CX, CY, CW, 88); ctx.setLineDash([]);
-    ctx.fillStyle = '#fdf5f5'; ctx.fillRect(CX+1, CY+1, CW-2, 86);
+    async function cargarDatos() {
+      try {
+        const res = await fetch(URL_SCRIPT + "?nocache=" + new Date().getTime());
+        datosGlobales = await res.json();
+        renderizarFichas();
+        const ahora = new Date().toLocaleTimeString('es-AR');
+        document.getElementById('status-txt').innerText = `En vivo vía App Script: ${ahora} - ${datosGlobales.length} registros`;
+      } catch (e) {
+        document.getElementById('status-txt').innerText = 'Error de conexión con el Script en vivo.';
+      }
+    }
 
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#c0392b'; ctx.font = 'bold 12px Roboto, sans-serif';
-    ctx.fillText('INFORMAR A:', PW/2, CY + 20);
-    ctx.fillStyle = '#000'; ctx.font = 'bold 17px Roboto, sans-serif';
-    ctx.fillText(r.contacto || r.dependencia || 'Dependencia Policial', PW/2, CY + 44);
-    ctx.fillStyle = '#c0392b'; ctx.font = 'bold 12px Roboto, sans-serif';
-    ctx.fillText('TEL:', PW/2 - 50, CY + 68);
-    ctx.fillStyle = '#000'; ctx.font = 'bold 19px Roboto, sans-serif';
-    ctx.fillText(`${r.telefono||'-'} / 911`, PW/2 + 15, CY + 68);
-    ctx.textAlign = 'left';
+    function renderizarFichas() {
+      const contenedor = document.getElementById('contenedor-fichas');
+      if (datosGlobales.length === 0) {
+        contenedor.innerHTML = '<h2 style="text-align:center; color:#c0392b;">No hay alertas vigentes en este momento.</h2>';
+        return;
+      }
 
-    // ── SEPARADOR ─────────────────────────────────────────────────────────────
-    let Y = CY + 104;
-    ctx.fillStyle = '#000'; ctx.fillRect(38, Y, PW-76, 3);
-    Y += 18;
+      contenedor.innerHTML = datosGlobales.map((r, i) => `
+        <article class="ficha">
+          <div class="col-izquierda">
+            <div class="foto-marco">
+              <img src="${formatDriveLink(r.foto)}" crossorigin="anonymous" onerror="this.src='https://via.placeholder.com/280x350?text=SIN+IMAGEN'">
+            </div>
+            <div class="contacto-pie">
+              INFORMAR A:<br>${r.contacto || r.dependencia || 'Dependencia Policial'}<br><br>
+              TEL: ${r.telefono || '-'} / 911
+            </div>
+          </div>
+          <div class="col-derecha">
+            <div class="info-linea"><b>DESAPARECIDO EN:</b> ${limpiarTexto(r.localidad)}</div>
+            <div class="info-linea"><b>FECHA:</b> ${limpiarTexto(r.fecha)} | <b>HORA:</b> ${limpiarTexto(r.hora)}</div>
+            <br>
+            <div class="info-linea"><b>NOMBRE:</b> ${r.nombre}</div>
+            <div class="info-linea"><b>EDAD:</b> ${r.edad} AÑOS</div>
+            <br>
+            <div class="info-linea"><b>DESCRIPCIÓN / VESTIMENTA:</b></div>
+            <div style="font-size:0.95rem; line-height:1.4; text-align:justify; margin-bottom:10px;">${r.descripcion || 'Sin datos'}</div>
+            <div class="info-linea"><b>RESEÑA DEL HECHO:</b></div>
+            <div style="font-size:0.95rem; line-height:1.4; text-align:justify;">${r.resena || 'Sin reseña'}</div>
+            
+            <button class="btn-pdf" onclick="descargarJPG(${i})">📸 Descargar JPG</button>
+          </div>
+        </article>
+      `).join('');
+    }
 
-    // ── DATOS: localidad / fecha / hora ───────────────────────────────────────
-    ctx.font = 'bold 13px Roboto, sans-serif'; ctx.fillStyle = '#0d2545';
-    ctx.fillText('DESAPARECIDO EN:', 38, Y);
-    ctx.font = '13px Roboto, sans-serif'; ctx.fillStyle = '#000';
-    ctx.fillText(limpiarTexto(r.localidad).toUpperCase(), 210, Y);
+    function descargarJPG(index) {
+      const r = datosGlobales[index];
+      if (!r) return;
 
-    Y += 22;
-    ctx.font = 'bold 13px Roboto, sans-serif'; ctx.fillStyle = '#0d2545';
-    ctx.fillText('FECHA:', 38, Y);
-    ctx.font = '13px Roboto, sans-serif'; ctx.fillStyle = '#000';
-    ctx.fillText(limpiarTexto(r.fecha), 105, Y);
-    ctx.font = 'bold 13px Roboto, sans-serif'; ctx.fillStyle = '#0d2545';
-    ctx.fillText('HORA:', 420, Y);
-    ctx.font = '13px Roboto, sans-serif'; ctx.fillStyle = '#000';
-    ctx.fillText(limpiarTexto(r.hora), 475, Y);
+      const statusTxt = document.getElementById('status-txt');
+      const statusOriginal = statusTxt.innerText;
+      statusTxt.innerText = '⏳ Conectando con Servidor Seguro y generando Alerta JPG...';
 
-    // ── NOMBRE (caja destacada) ───────────────────────────────────────────────
-    Y += 18;
-    ctx.fillStyle = '#f0f4fa'; ctx.fillRect(38, Y, PW-76, 62);
-    ctx.fillStyle = '#0d2545'; ctx.fillRect(38, Y, 6, 62);
-    ctx.fillStyle = '#0d2545'; ctx.font = 'bold 10px Roboto, sans-serif';
-    ctx.fillText('NOMBRE COMPLETO', 52, Y+16);
-    ctx.font = 'bold 22px Montserrat, sans-serif';
-    ctx.fillText((r.nombre||'-').toUpperCase(), 52, Y+40);
-    ctx.font = 'bold 13px Roboto, sans-serif';
-    ctx.fillText(`EDAD: ${r.edad||'-'} AÑOS`, 52+ctx.measureText((r.nombre||'-').toUpperCase()).width+20, Y+40);
+      const tempDiv = document.createElement('div');
+      tempDiv.style.position = 'absolute';
+      tempDiv.style.top = '0';
+      tempDiv.style.left = '0';
+      tempDiv.style.zIndex = '-999';
+      tempDiv.style.width = '794px'; 
+      // Calculamos altura dinámica real por si el texto es muy largo
+      tempDiv.style.minHeight = '1123px';  
+      tempDiv.style.height = 'auto'; 
+      tempDiv.style.background = '#ffffff';
+      tempDiv.style.visibility = 'hidden'; 
 
-    // ── DESCRIPCIÓN ───────────────────────────────────────────────────────────
-    Y += 76;
-    ctx.fillStyle = '#1a6fba'; ctx.font = 'bold 12px Roboto, sans-serif';
-    ctx.fillText('DESCRIPCIÓN / VESTIMENTA', 38, Y);
-    ctx.fillRect(38, Y+4, PW-76, 2);
-    Y += 14;
-    ctx.fillStyle = '#f8f9fa'; ctx.fillRect(38, Y, PW-76, 52);
-    ctx.fillStyle = '#1a6fba'; ctx.fillRect(38, Y, 4, 52);
-    ctx.fillStyle = '#000'; ctx.font = '13px Roboto, sans-serif';
-    wrapText(ctx, r.descripcion||'Sin datos', 50, Y+16, PW-90, 18);
+      tempDiv.innerHTML = `
+        <div id="molde-impresion" style="width: 794px; min-height: 1123px; height: auto; background: #ffffff; font-family: 'Roboto', sans-serif; box-sizing: border-box; display: flex; flex-direction: column;">
+          
+          <div style="background-color: #0d2545; color: white; padding: 30px 40px; border-bottom: 8px solid #1a6fba; display: flex; justify-content: space-between; align-items: center;">
+            <div style="flex: 1;">
+              <h1 style="margin: 0; font-family: 'Montserrat', sans-serif; font-size: 40px; line-height: 1; text-transform: uppercase;">Búsqueda de Personas</h1>
+              <p style="font-size: 18px; margin: 10px 0 0 0; font-weight: 700; text-transform: uppercase;">Dirección General Departamentales Norte</p>
+              <p style="font-size: 13px; margin: 5px 0 0 0; color: #a4c8e1; text-transform: uppercase;">Información aportada por las Unidades Regionales Departamentales Norte</p>
+            </div>
+            <img src="https://subdirgralnorte-cmd.github.io/desaparecidos-norte/Diapositiva1-removebg-preview.png" style="height: 110px;" crossorigin="anonymous">
+          </div>
+          
+          <div style="padding: 40px; flex-grow: 1;">
+            
+            <div style="text-align: center;">
+              <div style="display: inline-block; width: 340px; height: 420px; border: 4px solid #000; background: #eee; overflow: hidden; margin-bottom: 15px;">
+                <img id="foto-pdf-generar" src="${formatDriveLink(r.foto)}" style="width: 100%; height: 100%; object-fit: contain;" crossorigin="anonymous">
+              </div>
+            </div>
 
-    // ── RESEÑA ────────────────────────────────────────────────────────────────
-    Y += 66;
-    ctx.fillStyle = '#1a6fba'; ctx.font = 'bold 12px Roboto, sans-serif';
-    ctx.fillText('RESEÑA DEL HECHO', 38, Y);
-    ctx.fillRect(38, Y+4, PW-76, 2);
-    Y += 14;
-    ctx.fillStyle = '#f8f9fa'; ctx.fillRect(38, Y, PW-76, 52);
-    ctx.fillStyle = '#1a6fba'; ctx.fillRect(38, Y, 4, 52);
-    ctx.fillStyle = '#000'; ctx.font = '13px Roboto, sans-serif';
-    wrapText(ctx, r.resena||'Sin reseña', 50, Y+16, PW-90, 18);
+            <div style="text-align: center; margin-bottom: 20px;">
+              <div style="display: inline-block; font-size: 18px; font-weight: bold; color: #c0392b; text-transform: uppercase; border: 2px dashed #c0392b; padding: 15px 30px; background: #fdf5f5;">
+                INFORMAR A:<br>
+                <span style="color: #000; font-size: 22px;">${r.contacto || r.dependencia || 'Dependencia Policial'}</span><br><br>
+                TEL: <span style="color: #000; font-size: 24px;">${r.telefono || '-'} / 911</span>
+              </div>
+            </div>
+            
+            <div style="border-top: 5px solid #000; margin: 25px 0;"></div>
+            
+            <div style="font-size: 18px; line-height: 1.5; color: #000;">
+              <p style="margin: 8px 0; text-transform: uppercase;"><b>DESAPARECIDO EN:</b> ${limpiarTexto(r.localidad)}</p>
+              <p style="margin: 8px 0; text-transform: uppercase;"><b>FECHA:</b> ${limpiarTexto(r.fecha)} &nbsp;&nbsp;|&nbsp;&nbsp; <b>HORA:</b> ${limpiarTexto(r.hora)}</p>
+              
+              <p style="margin: 15px 0 8px 0; text-transform: uppercase;"><b>NOMBRE:</b> <span style="color: #0d2545; font-size: 26px; font-weight: 900; font-family: 'Montserrat', sans-serif;">${r.nombre || '-'}</span></p>
+              <p style="margin: 8px 0; text-transform: uppercase;"><b>EDAD:</b> ${r.edad || '-'} AÑOS</p>
+              
+              <p style="margin: 25px 0 5px 0; text-transform: uppercase; color: #1a6fba; font-weight: bold;">DESCRIPCIÓN / VESTIMENTA:</p>
+              <div style="text-align: justify; font-size: 16px; background: #f8f9fa; padding: 12px; border-left: 4px solid #1a6fba;">
+                ${r.descripcion || 'Sin datos'}
+              </div>
+              
+              <p style="margin: 20px 0 5px 0; text-transform: uppercase; color: #1a6fba; font-weight: bold;">RESEÑA DEL HECHO:</p>
+              <div style="text-align: justify; font-size: 16px; background: #f8f9fa; padding: 12px; border-left: 4px solid #1a6fba;">
+                ${r.resena || 'Sin reseña'}
+              </div>
+            </div>
 
-    // ── PIE ───────────────────────────────────────────────────────────────────
-    ctx.fillStyle = '#0d2545'; ctx.fillRect(0, PH-48, PW, 48);
-    ctx.fillStyle = '#1a6fba'; ctx.fillRect(0, PH-48, PW, 6);
+          </div>
+        </div>
+      `;
 
-    // 3. Exportar JPG alta calidad
-    canvas.toBlob(blob => {
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = `Alerta_${(r.nombre||'Busqueda').replace(/\s+/g,'_')}.jpg`;
-      a.click();
-      URL.revokeObjectURL(a.href);
-    }, 'image/jpeg', 0.97);
+      document.body.appendChild(tempDiv);
 
-  } catch(err) {
-    console.error(err);
-    alert('Error al generar la imagen. Verifique la consola.');
-  } finally {
-    boton.disabled = false;
-    boton.innerHTML = '🖼️ Descargar imagen';
-    statusTxt.innerText = statusOrig;
-  }
-}
+      const imgPDF = document.getElementById('foto-pdf-generar');
+      
+      const compilarYDescargar = () => {
+        const nombreArchivo = r.nombre ? r.nombre.replace(/ /g, '_') : 'Busqueda';
+        const molde = document.getElementById('molde-impresion');
 
-window.onload = cargarDatos;
-setInterval(cargarDatos, 10000);
-</script>
+        html2canvas(molde, { 
+          scale: 2,           
+          useCORS: true,      // Ahora funcionará porque Cloudflare nos da el permiso
+          width: 794,
+          height: molde.scrollHeight // Permite que crezca hacia abajo si el texto es larguísimo (Soluciona la superposición)
+        }).then(canvas => {
+          const imgData = canvas.toDataURL('image/jpeg', 0.98);
+          const link = document.createElement('a');
+          link.download = `Alerta_${nombreArchivo}.jpg`;
+          link.href = imgData;
+          link.click();
+
+          document.body.removeChild(tempDiv);
+          statusTxt.innerText = statusOriginal;
+        }).catch(err => {
+          console.error(err);
+          document.body.removeChild(tempDiv);
+          statusTxt.innerText = 'Error al generar el JPG.';
+        });
+      };
+
+      if (imgPDF.complete) {
+        compilarYDescargar();
+      } else {
+        imgPDF.onload = compilarYDescargar;
+        imgPDF.onerror = () => {
+          imgPDF.src = 'https://via.placeholder.com/340x420?text=FOTO+NO+DISPONIBLE';
+          compilarYDescargar(); 
+        };
+      }
+    }
+
+    window.onload = cargarDatos;
+    setInterval(cargarDatos, 10000); 
+  </script>
 </body>
 </html>
