@@ -1,7 +1,31 @@
 {
-  "actualizado": "2026-06-06T15:41:22Z",
-  "total": 13,
+  "actualizado": "2026-06-06T16:47:50Z",
+  "total": 15,
   "registros": [
+    {
+      "localidad": "San Marcos Sierras",
+      "nombre": "Mariana López",
+      "edad": "27",
+      "fecha": "14/06/2026",
+      "hora": "21:50:00",
+      "descripcion": "0",
+      "contacto": "San Marcos Sierras",
+      "telefono": "3549496020",
+      "foto": "https://drive.google.com/open?id=1pLJlKxGODf2UvGXFx8DPx1-GGUfSbTPb",
+      "estado": ""
+    },
+    {
+      "localidad": "Oncativo esquina Aristobulo d Valle Bº Alberdi",
+      "nombre": "Diaz Ivan Ezequiel",
+      "edad": "19",
+      "fecha": "21/04/2026",
+      "hora": "14:00:00",
+      "descripcion": "contextura física delgada, tes trigueña, ojos marrones, cabello negro, corto, de 1.60 mts aprox, vestía un jogging gris con líneas negras al costado, y dos camperas una de nylon negra y otra de acetato de Argentina",
+      "contacto": "Patrulla Preventiva Villa de Soto",
+      "telefono": "3513145825",
+      "foto": "https://drive.google.com/open?id=1zgkDf8TqkaKD-wz3Y7SXADnBz9gCYXn-",
+      "estado": ""
+    },
     {
       "localidad": "VILLA CARLOS PAZ",
       "nombre": "MEDERO YAMILA",
