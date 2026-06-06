@@ -1,7 +1,43 @@
 {
-  "actualizado": "2026-06-06T17:55:30Z",
-  "total": 15,
+  "actualizado": "2026-06-06T19:26:28Z",
+  "total": 18,
   "registros": [
+    {
+      "localidad": "Serrezuela",
+      "nombre": "CARRIZO GRACIELA EVA",
+      "edad": "56",
+      "fecha": "6/06/2026",
+      "hora": "14:20:00",
+      "descripcion": "De contextura física formal, 1,65 Mts,  56 kg aprox, tez blanca, cabello rubio,  angioma en la nariz y tatuaje en hombro izquierdo, la cual posee dispositivo salva teniendo como ultima ubicación  en Serrezuela",
+      "contacto": "Cria Serrezuela",
+      "telefono": "3549-492023",
+      "foto": "https://drive.google.com/open?id=1TobLpuYr1fW_lgtKdO9oYqFBVyVre7rs",
+      "estado": ""
+    },
+    {
+      "localidad": "Villa de Soto",
+      "nombre": "FRANCISCO EZEQUIEL GONZÁLEZ RODRÍGUEZ",
+      "edad": "23",
+      "fecha": "13/04/2026",
+      "hora": "3:05:00",
+      "descripcion": "contextura física delgada, tes trigueña, ojos marrones claros, 170 mts.  de alto, cabello corto con rulos color negro, tatuaje de un León en el pecho, en el brazo izquierdo el nombre \"Renata\", No aporta vestimenta al momento",
+      "contacto": "Comisaria Villa de Soto",
+      "telefono": "03549-426755",
+      "foto": "https://drive.google.com/open?id=1EwjrmIn8TkWKvUuQ5EVXkvpQkZkYUiSy",
+      "estado": ""
+    },
+    {
+      "localidad": "Media Naranja",
+      "nombre": "Maldonado Cinthia",
+      "edad": "36",
+      "fecha": "31/03/2026",
+      "hora": "19:30:00",
+      "descripcion": "desconociendo la vestimenta",
+      "contacto": "Subcrio Media Naranja",
+      "telefono": "03549-426755",
+      "foto": "https://drive.google.com/open?id=1xd1IlaHBGgTdQ41jel0ZmJ-LSYrXURSn",
+      "estado": ""
+    },
     {
       "localidad": "San Marcos Sierras",
       "nombre": "Mariana López",
