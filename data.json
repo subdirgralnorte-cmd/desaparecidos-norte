@@ -1,7 +1,19 @@
 {
-  "actualizado": "2026-06-08T04:56:00Z",
-  "total": 18,
+  "actualizado": "2026-06-08T09:25:28Z",
+  "total": 19,
   "registros": [
+    {
+      "localidad": "CIRCUITO VIEJO LAS RABONAS",
+      "nombre": "JONATHAN EMILIANO GODOY",
+      "edad": "25",
+      "fecha": "6/06/2026",
+      "hora": "2:00:00",
+      "descripcion": "CAMPERA TIPO INFLABLE COLOR BLANCA O GRIS, PANTALÓN DE JEANS COLOR NEGRO, ZAPATILLAS NEGRAS. CONTEXTURA FÍSICA DELGADO, 1,70 DE ESTATURA, TEZ TRIGUEÑA, CABELLO CORTO NEGRO",
+      "contacto": "COMISARIA DISTRITO NONO",
+      "telefono": "3544-498254",
+      "foto": "https://drive.google.com/open?id=1cAswCGmjaNt3SUMHQA4JvNmy3ZXPTTY1",
+      "estado": ""
+    },
     {
       "localidad": "Serrezuela",
       "nombre": "CARRIZO GRACIELA EVA",
