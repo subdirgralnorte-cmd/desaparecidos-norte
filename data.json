@@ -1,7 +1,19 @@
 {
-  "actualizado": "2026-06-10T04:39:53Z",
-  "total": 24,
+  "actualizado": "2026-06-10T08:36:25Z",
+  "total": 25,
   "registros": [
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "Banegas Ignacio David",
+      "edad": "16",
+      "fecha": "10/06/2026",
+      "hora": "2:50:00",
+      "descripcion": "campera inflable color negro, pantalon color negro y posee una mochila color gris y se moviliza en una bicicleta mountain bike color gris marca panasonic.",
+      "contacto": "COMISARIA SAN FRANCISCO",
+      "telefono": "3564443766",
+      "foto": "https://drive.google.com/open?id=1MO_9lOCP8DRZitHf6OToA6Fi3FcIbYAf",
+      "estado": ""
+    },
     {
       "localidad": "CRUZ DEL EJE",
       "nombre": "ARNEDO NOELIA LOURDES",
