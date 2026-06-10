@@ -1,7 +1,19 @@
 {
-  "actualizado": "2026-06-10T00:00:13Z",
-  "total": 23,
+  "actualizado": "2026-06-10T04:39:53Z",
+  "total": 24,
   "registros": [
+    {
+      "localidad": "CRUZ DEL EJE",
+      "nombre": "ARNEDO NOELIA LOURDES",
+      "edad": "44",
+      "fecha": "1/06/2026",
+      "hora": "15:30:00",
+      "descripcion": "DE APROXIMADAMENTE 1,60 MTS. DE ALTURA, CABELLO NEGRO CON ALGUNAS CANAS, OJOS MARRONES, CONTEXTURA ROBUSTA, TEZ TRIGUEÑA CLARA, SIN TATUAJES NI PIERCINGS VISIBLES",
+      "contacto": "DPTAL CRUZ DEL EJE, DUAR",
+      "telefono": "03549-426755",
+      "foto": "https://drive.google.com/open?id=1ecJRKVVHE8eFpMgC8OjCz_oYm36vB_jk",
+      "estado": ""
+    },
     {
       "localidad": "UNQUILLO",
       "nombre": "CUELLO ABIGAIL",
