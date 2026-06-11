@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-11T09:18:29Z",
-  "total": 28,
+  "actualizado": "2026-06-11T12:57:39Z",
+  "total": 29,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Villa Giardino",
+      "nombre": "Gatica Jorge Rodrigo",
+      "edad": "52",
+      "fecha": "10/06/2026",
+      "hora": "11:00:00",
+      "descripcion": "Ojos oscuros, test blanca, de 1,70 metros de altura, morrudo,",
+      "contacto": "Cria Villa Giardino",
+      "telefono": "03548491232",
+      "foto": "https://drive.google.com/open?id=1Csb6bthw1Z9napd08X7fAHZam1vqAgQQ",
       "estado": ""
     },
     {
