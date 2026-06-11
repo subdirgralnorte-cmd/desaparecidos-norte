@@ -1,7 +1,19 @@
 {
-  "actualizado": "2026-06-11T00:19:57Z",
-  "total": 25,
+  "actualizado": "2026-06-11T05:03:50Z",
+  "total": 26,
   "registros": [
+    {
+      "localidad": "SALSIPUEDES",
+      "nombre": "ALEX ODDIE",
+      "edad": "14",
+      "fecha": "10/06/2026",
+      "hora": "21:45:00",
+      "descripcion": "NO APORTA DATOS",
+      "contacto": "CAP SIERRAS CHICAS",
+      "telefono": "3516137194",
+      "foto": "https://drive.google.com/open?id=1dk_r6qzFQbhfQU-CASy9uRMncRcYo3bQ",
+      "estado": ""
+    },
     {
       "localidad": "SAN FRANCISCO",
       "nombre": "Banegas Ignacio David",
