@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-12T13:53:05Z",
-  "total": 31,
+  "actualizado": "2026-06-12T16:41:08Z",
+  "total": 35,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,54 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VALLE HERMOSO",
+      "nombre": "THIAGO CEBALLOS",
+      "edad": "15",
+      "fecha": "23/06/2026",
+      "hora": "3:10:00",
+      "descripcion": "Contextura Física: delgado, Altura: 1,60 mts, Pedo:50 KG, trigueño, Castaño Claro,Vestía: Campera Inflable Negra con Amarillo, Pantalón Deportivo Y Zapatillas Gris",
+      "contacto": "VALLE HERMOSO",
+      "telefono": "3548471870",
+      "foto": "https://drive.google.com/open?id=1CMlk35ztfHPQ4lOELeeSZk5QMPUQHgMk",
+      "estado": ""
+    },
+    {
+      "localidad": "Valle Hermoso",
+      "nombre": "CEBALLOS TIZIANO",
+      "edad": "15",
+      "fecha": "23/05/2026",
+      "hora": "3:10:00",
+      "descripcion": "contextura fisica delgado,1,50 mts ,46 Kg, trigueño, Castaño, Claro, Vestía Buzo Negro, Chaleco Inflable  Negro, Chalina Blanca con negro, Pantalón Deportivo Negro Zapatillas Grises",
+      "contacto": "VALLE HERMOSO",
+      "telefono": "3548471870",
+      "foto": "https://drive.google.com/open?id=1cc_XkuS93Xyn1m2BoMdNCfiR3Vti7SpL",
+      "estado": ""
+    },
+    {
+      "localidad": "JESUS MARIA",
+      "nombre": "Cesar Tobias Santucho",
+      "edad": "17",
+      "fecha": "6/08/2025",
+      "hora": "16:00:00",
+      "descripcion": "mide 1,70 mts aprox de alto, tez trigueño, delgado, cabello corto color negro peinado al costado, que posee varias cicatrices de cortes en ambos antebrazos y pecho, que no posee celular, que no tiene ningún tipo de patología médica, ni psiquiatrica conocida, que el mismo vestía un pantalón Jogins color gris, buzo color gris, zapatillas negras con suela blancas",
+      "contacto": "JESUS MARIA",
+      "telefono": "03525426705",
+      "foto": "https://drive.google.com/open?id=1E034kFASPhlAnLv50VAMr9TP0dVovLmc",
+      "estado": ""
+    },
+    {
+      "localidad": "JESUS MARIA",
+      "nombre": "EMANUEL EXEQUIEL LIENDO IPHARRAGUERRE",
+      "edad": "36",
+      "fecha": "27/03/2026",
+      "hora": "15:00:00",
+      "descripcion": "VESTIMENTA SE DESCONOCE, 1,75 mts de estatura, delgado, tes blanca, cabello castaño claro, sin tatuajes, con cicatriz en la nariz",
+      "contacto": "JESUS MARIA",
+      "telefono": "03525426705",
+      "foto": "https://drive.google.com/open?id=1KkHOgWf6kVRAFMbgIKja5uXRWVvVY5JP",
       "estado": ""
     },
     {
