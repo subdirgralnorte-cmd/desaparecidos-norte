@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-12T10:44:04Z",
-  "total": 29,
+  "actualizado": "2026-06-12T13:53:05Z",
+  "total": 31,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,30 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "COSQUIN",
+      "nombre": "NAUJECK SEBASTIAN ERICO",
+      "edad": "36",
+      "fecha": "18/10/2025",
+      "hora": "0:00:00",
+      "descripcion": "De 1.80 mts aprox. posee barba, es calvo en la parte superior  tiene cabello en sus laterales.",
+      "contacto": "COSQUIN",
+      "telefono": "3548426652",
+      "foto": "https://drive.google.com/open?id=1a9pPa2MhvZQdo-CaZc8j2xRSDDnnTrd2",
+      "estado": ""
+    },
+    {
+      "localidad": "La Cumbre",
+      "nombre": "GARCIA GERMAN ALEJANDRO",
+      "edad": "52",
+      "fecha": "17/07/2025",
+      "hora": "13:30:00",
+      "descripcion": "S/D",
+      "contacto": "LA CUMBRE",
+      "telefono": "3548456641",
+      "foto": "https://drive.google.com/open?id=1uVqLLFA8E6xiB8MrZgB005uqvXKk11Mf",
       "estado": ""
     },
     {
