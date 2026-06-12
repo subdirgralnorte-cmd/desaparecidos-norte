@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-12T20:37:56Z",
-  "total": 35,
+  "actualizado": "2026-06-12T22:14:01Z",
+  "total": 41,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,78 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SANTA MARIA DE PUNILLA",
+      "nombre": "BAIGORRIA MELISA AYELEN",
+      "edad": "31",
+      "fecha": "19/04/2026",
+      "hora": "20:30:00",
+      "descripcion": "Contextura física robusta, tez trigueña, 1,60 estatura aproximadamente. Vistiendo un poncho color marrón y una pollera de color blanco con bordados.",
+      "contacto": "COMISARIA COSQUIN",
+      "telefono": "03541-458160",
+      "foto": "https://drive.google.com/open?id=16DmQQjo99HMyp5Es0al3dJ1S__LbiyLf",
+      "estado": ""
+    },
+    {
+      "localidad": "SANTA MARÍA DE PUNILLA",
+      "nombre": "SIMONE SCALKO MARTINA",
+      "edad": "24",
+      "fecha": "19/04/2026",
+      "hora": "15:30:00",
+      "descripcion": "Contextura fisica delgada, tez blanca, cabello castaño claro. 1,60 aproximadamente de estatura. Patalon color negro, campera negracon peluche y remera negra.",
+      "contacto": "COMISARIA SANTA MARIA DE PUNILLA",
+      "telefono": "03541-488180",
+      "foto": "https://drive.google.com/open?id=10ri82KjZsRc_fcWGSe-1D_lo-auzu-p6",
+      "estado": ""
+    },
+    {
+      "localidad": "SANTA MARIA DE PUNILLA",
+      "nombre": "SIERNA NIKITA ELECTRA",
+      "edad": "20",
+      "fecha": "18/04/2026",
+      "hora": "8:00:00",
+      "descripcion": "Contextura fisica delgada, tez blanca, cejas prominentes, cabello color negro, 1,60 mts de estatura aproximadamente.",
+      "contacto": "COMISARIA SANTA MARÍA DE PUNILLA",
+      "telefono": "03541-488180",
+      "foto": "https://drive.google.com/open?id=1L3UgJ3Ut1CU6NwsdOiUOdPZCTLNp97-L",
+      "estado": ""
+    },
+    {
+      "localidad": "COSQUIN",
+      "nombre": "SANCHEZ LUNA MELINA MORENA",
+      "edad": "17",
+      "fecha": "2/04/2026",
+      "hora": "14:30:00",
+      "descripcion": "Contextura fisica delgada, tez blanca, cabello color negro, 1,55 de estatura aproximadamente.",
+      "contacto": "COMISARIA COSQUIN",
+      "telefono": "03541-458160",
+      "foto": "https://drive.google.com/open?id=1QK-PL2M7-haat6t8SBu0mdCymXxOloeO",
+      "estado": ""
+    },
+    {
+      "localidad": "COSQUIN",
+      "nombre": "CEJAS EMMANUEL EZEQUIEL",
+      "edad": "38",
+      "fecha": "31/03/2026",
+      "hora": "13:10:00",
+      "descripcion": "Contextura física robusta, piel trigueña, estatura 1,65 mts aproximadamente. No aportando vestimenta (ya que no lo vieron al momento de retirarse)",
+      "contacto": "COMISARIA COSQUIN",
+      "telefono": "03541-458160",
+      "foto": "https://drive.google.com/open?id=103lgmIxFvjMYHi25NhoiUjYSEqqPOfMt",
+      "estado": ""
+    },
+    {
+      "localidad": "COSQUIN",
+      "nombre": "MARTINI RIVAROLA FACUNDO",
+      "edad": "20",
+      "fecha": "1/02/2026",
+      "hora": "8:00:00",
+      "descripcion": "Contextura física robusta, estatura 1.70 mts, test blanca, con bigote y barba. Vestimenta short gris y remera oscura.",
+      "contacto": "Comisaria Cosquin",
+      "telefono": "03541-458160",
+      "foto": "https://drive.google.com/open?id=1HflkXN8yyQtljaTNTA242tyuKgxhlDg6",
       "estado": ""
     },
     {
