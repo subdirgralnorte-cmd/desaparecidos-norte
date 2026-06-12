@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-12T22:14:01Z",
-  "total": 41,
+  "actualizado": "2026-06-12T23:54:22Z",
+  "total": 49,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,102 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SANTA MARIA DE PUNILLA",
+      "nombre": "CACERES JUAN MANUEL",
+      "edad": "44",
+      "fecha": "30/03/2026",
+      "hora": "5:50:00",
+      "descripcion": "Contextura robusta, con pelo largo se sabe atar rodete, barbudo, trigueño.",
+      "contacto": "COMISARIA SANTA MARÍA DE PUNILLA",
+      "telefono": "03541-488180",
+      "foto": "https://drive.google.com/open?id=1iiIEMl9SzSDdFQMcPsS_TmUok_ERNCIG",
+      "estado": ""
+    },
+    {
+      "localidad": "SANTA MARIA DE PUNILLA",
+      "nombre": "LUCERO BAUTISTA",
+      "edad": "15",
+      "fecha": "25/03/2026",
+      "hora": "0:30:00",
+      "descripcion": "Contextura fisica delgada, tez trigueña, cabello corto, color negro",
+      "contacto": "COMISARIA SANTA MARÍA DE PUNILLA",
+      "telefono": "03541-488180",
+      "foto": "https://drive.google.com/open?id=1OKQ5eKfLjlMUVlKPX-mkJZH-TvP3BHjA",
+      "estado": ""
+    },
+    {
+      "localidad": "COSQUIN",
+      "nombre": "ALBORNOZ FRANCISCO GABRIEL",
+      "edad": "15",
+      "fecha": "18/03/2026",
+      "hora": "21:00:00",
+      "descripcion": "Vestía con una remesa negra, bermuda negra y zapatillas vans negras. Contextura fisica delgada, tez blanca, cabello corto color castaño.",
+      "contacto": "COMISARIA COSQUIN",
+      "telefono": "03541-458160",
+      "foto": "https://drive.google.com/open?id=1vATFYe4s4oF55Xot-KyA2yq7AZy13RYQ",
+      "estado": ""
+    },
+    {
+      "localidad": "COSQUIN",
+      "nombre": "BELLIDO BRUNO",
+      "edad": "14",
+      "fecha": "1/03/2026",
+      "hora": "8:00:00",
+      "descripcion": "Vestia Campera negra, bermuda jeans y gorra violeta. Contextura física normal, tez trigueña, cabello corto, ondulado color negro.",
+      "contacto": "COMISARIA COSQUIN",
+      "telefono": "03541-458160",
+      "foto": "https://drive.google.com/open?id=1I9AQWGwfURbggugNh9mXhxUwwkiDexs_",
+      "estado": ""
+    },
+    {
+      "localidad": "COSQUIN",
+      "nombre": "ALVAREZ ADOLFO RAUL",
+      "edad": "59",
+      "fecha": "8/02/2026",
+      "hora": "12:15:00",
+      "descripcion": "1,65 mts estatura, cabello corto canoso, ojos verdes, test trigueña, robusto. Vestia camisa rosa claro, pantalon jeans azul, zapatillas topper negras y una mochila gris donde llevaba una campera rompeviento gris.",
+      "contacto": "COMISARIA DE COSQUIN",
+      "telefono": "03541- 458160",
+      "foto": "https://drive.google.com/open?id=10c4GNMu-sqvVYSusU2lm__o3BfDruTtr",
+      "estado": ""
+    },
+    {
+      "localidad": "COSQUIN",
+      "nombre": "ROMERO ANTONELLA JENNY",
+      "edad": "17",
+      "fecha": "6/02/2026",
+      "hora": "21:00:00",
+      "descripcion": "Contextura física delgada, tez trigueña, 1,50 mts de estatura, pelo largo color castaño oscuro, tatuajes en brazos y piernas. Vestía musculosa color negra, pantalón pollera corta de jeans color claro, zapatillas y mochila color roja.",
+      "contacto": "COMISARIA COSQUIN",
+      "telefono": "03541-458160",
+      "foto": "https://drive.google.com/open?id=1CX2tennV4e8ClYECcih9yiNbmSiD_UbA",
+      "estado": ""
+    },
+    {
+      "localidad": "COSQUIN",
+      "nombre": "LESCANO FELIPE",
+      "edad": "15",
+      "fecha": "15/01/2026",
+      "hora": "23:30:00",
+      "descripcion": "Contextura física delgado, test blanca, pelo corto ondulado color castaño, vestía remera y Bermuda color negro",
+      "contacto": "COMISARIA COSQUIN",
+      "telefono": "03541-458160",
+      "foto": "https://drive.google.com/open?id=141U_rfQuGJWzZrhClGnAusxpHH8T4vaj",
+      "estado": ""
+    },
+    {
+      "localidad": "SANTA MARIA DE PUNILLA",
+      "nombre": "RIO LUCIA ABIGAIL",
+      "edad": "15",
+      "fecha": "27/03/2026",
+      "hora": "8:00:00",
+      "descripcion": "Contextura fisica delgada, tez blanca, cabello color negro, 1,50 aproximadamente de estatura",
+      "contacto": "CRIA SANTA MARIA DE PUNILLA",
+      "telefono": "03541-488180",
+      "foto": "https://drive.google.com/open?id=1jJXBIvG_J2gGLSIFJKf5d_nwl0iXgAH_",
       "estado": ""
     },
     {
