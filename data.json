@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-12T23:54:22Z",
-  "total": 49,
+  "actualizado": "2026-06-13T03:40:13Z",
+  "total": 50,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "MOLINARI",
+      "nombre": "SOSA KUNTUY",
+      "edad": "16",
+      "fecha": "12/06/2026",
+      "hora": "21:00:00",
+      "descripcion": "VESTIMENTA NEGRA, MOCHILA DE COLOR NEGRO, 1,60 m, cabello color rojo, con flequillo, piercing en la boca",
+      "contacto": "COSQUIN",
+      "telefono": "3541458160",
+      "foto": "https://drive.google.com/open?id=16IF70Irc091yEXQi8QrGTa50whLMHtcY",
       "estado": ""
     },
     {
