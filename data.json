@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-14T02:41:57Z",
-  "total": 50,
+  "actualizado": "2026-06-14T07:09:49Z",
+  "total": 51,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Villa Carlos Paz",
+      "nombre": "Gauna Eric José",
+      "edad": "14",
+      "fecha": "14/06/2026",
+      "hora": "1:00:00",
+      "descripcion": "Vestía pantalón negro, campera negra, remera azul, zapatillas grises, corte cabello castaño, tez trigueña",
+      "contacto": "DIC CARLOS PAZ",
+      "telefono": "438215",
+      "foto": "https://drive.google.com/open?id=1JQdT761AoK3Fu7TzIsfeUddRbRxti1C2",
       "estado": ""
     },
     {
