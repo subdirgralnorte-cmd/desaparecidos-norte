@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-14T12:26:40Z",
-  "total": 51,
+  "actualizado": "2026-06-14T14:54:15Z",
+  "total": 52,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "DEAN FUNES",
+      "nombre": "MARTINEZ ANGELES ABIGAIL DEL LUJAN",
+      "edad": "17",
+      "fecha": "13/06/2026",
+      "hora": "16:00:00",
+      "descripcion": "vestía con zapatillas color Blanco con negro , jeans color azul, tapado puffer largo con capucha con piel, de color negro;  Contextura física robusta, de tez trigueña, de 1,60 mts de altura , pelo corto, hasta los hombros, color castaño.",
+      "contacto": "CRIA. DTTO DEAN FUNES, CAP, INVESTIGACIONES CRIMINALES",
+      "telefono": "03521428898",
+      "foto": "https://drive.google.com/open?id=1IImdKcXNoSStJCcfPCbZBFUpn_T2SSpw",
       "estado": ""
     },
     {
