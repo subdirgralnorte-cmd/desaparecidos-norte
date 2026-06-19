@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-18T23:07:21Z",
-  "total": 52,
+  "actualizado": "2026-06-19T01:51:46Z",
+  "total": 53,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA DOLORES",
+      "nombre": "GUERRISI PABLO",
+      "edad": "43",
+      "fecha": "18/06/2026",
+      "hora": "20:00:00",
+      "descripcion": "INFORMA ENFERMERA DEL INTERNADO HOSPITAL REGIONAL VILLA DOLORES, VERONICA MERCADO, QUE EL PACIENTE DE SALUD MENTAL CONTEXTURA FISICA DELGADO, ROPA OSCURA SIN PODER ESPECIFICAR Y MOCHILA TIPO MORRAL COLOR OSCURO, EL CUAL SE RETIRA SIN ALTA MEDICA DE LA HABITACION N° 20 EN LA CUAL SE ENCONTRABA INTERNADO",
+      "contacto": "DPTAL. SAN JAVIER",
+      "telefono": "3544426416",
+      "foto": "https://drive.google.com/open?id=1OKRuVzdDzZuQiuobG8S9euAlA9N8E9Kt",
       "estado": ""
     },
     {
