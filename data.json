@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-19T14:28:57Z",
-  "total": 53,
+  "actualizado": "2026-06-19T17:00:09Z",
+  "total": 54,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VALLE HERMOSO",
+      "nombre": "MARCOS DARIO HEREDIA",
+      "edad": "38",
+      "fecha": "16/06/2026",
+      "hora": "0:10:00",
+      "descripcion": "NO RECUERDA VESTIMENTAS CON LAS QUE SALIO. SIENDO EL MISMO DE TEZ TRIGUEÑA UN METRO SETENTA APROXIMADO DE ESTATURA CABELLOS LARGOS OSCURO , OJOS MARRONES CON BARBA , ROBUSTO , Y POSEE UNA MOCHILA DE VIAJE TIPO MOCHILERO",
+      "contacto": "COMISARIA VALLE HERMOSO",
+      "telefono": "3548559182",
+      "foto": "https://drive.google.com/open?id=1-DKI97M3W09DbdORCaxPD81YIykZxXwK",
       "estado": ""
     },
     {
