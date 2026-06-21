@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-21T17:08:46Z",
-  "total": 56,
+  "actualizado": "2026-06-21T18:50:05Z",
+  "total": 57,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA CARLOS PAZ",
+      "nombre": "LAURA BELEN SUAREZ",
+      "edad": "37",
+      "fecha": "20/06/2026",
+      "hora": "14:00:00",
+      "descripcion": "SIN DATOS",
+      "contacto": "DIC CARLOS PAZ",
+      "telefono": "3541431101",
+      "foto": "https://drive.google.com/open?id=1CoQ9wGC0ab4mCldQx3ZmFEoMXeFzyLAk",
       "estado": ""
     },
     {
