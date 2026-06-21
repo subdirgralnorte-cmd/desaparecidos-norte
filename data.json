@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-21T15:31:10Z",
-  "total": 55,
+  "actualizado": "2026-06-21T17:08:46Z",
+  "total": 56,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "RIO CEBALLOS",
+      "nombre": "Andrada Diana",
+      "edad": "19",
+      "fecha": "21/06/2026",
+      "hora": "0:20:00",
+      "descripcion": "altura 1,70 aproximado, pelo oscuro , morena , en el momento la misma vestía de Botas Negras  y un pantalón Negro",
+      "contacto": "RIO CEBALLOS",
+      "telefono": "3543 57-2946",
+      "foto": "https://drive.google.com/open?id=1C08fz1h4k97sA-AW26UoWrPCxpu2nqJH",
       "estado": ""
     },
     {
