@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-21T00:01:41Z",
-  "total": 54,
+  "actualizado": "2026-06-21T05:13:08Z",
+  "total": 55,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA CARLOS PAZ",
+      "nombre": "Julio Cesar Castro",
+      "edad": "68",
+      "fecha": "20/06/2026",
+      "hora": "11:00:00",
+      "descripcion": "Viste campera azul, buzo gris con rayas azules, pantalón gris de acetato, zapatillas blancas marca Topper. Filiaciones: 1,65 mts de altura, cabello corto canoso, ojos marrones, con cicatrices de quemaduras visibles en ambas manos.",
+      "contacto": "BRIGADA DE INVESTIGACIONES VILLA CARLOS PAZ",
+      "telefono": "3541-438215",
+      "foto": "https://drive.google.com/open?id=1jfz4ACnl5qcyg8EEtLu7s5_clS5q0W46",
       "estado": ""
     },
     {
