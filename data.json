@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-23T00:20:15Z",
-  "total": 57,
+  "actualizado": "2026-06-23T04:36:01Z",
+  "total": 58,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA SARMIENTO",
+      "nombre": "SERENA VALENTINA MORENO",
+      "edad": "17",
+      "fecha": "22/06/2026",
+      "hora": "21:00:00",
+      "descripcion": "pantalon Jeans de color celeste claro (mono) buzo color negro con capucha marca puma, zapatillas de cuero blancas marca puma,  contextura fisica delgada, de 1,60 mts aprox. Tes de color trigueña, cabello de color castaño claro con mechas rojas hasta los hombros.",
+      "contacto": "SUB CRIA VILLA SARMIENTO",
+      "telefono": "3544-426427",
+      "foto": "https://drive.google.com/open?id=1m-EV4Io7EyLSgWSdMcefyIXsWrZS39oT",
       "estado": ""
     },
     {
@@ -459,7 +471,7 @@
       "estado": ""
     },
     {
-      "localidad": "LAS RAVONAS",
+      "localidad": "LAS RABONAS",
       "nombre": "JONATHAN EMILIANO GODOY",
       "edad": "25",
       "fecha": "6/06/2026",
