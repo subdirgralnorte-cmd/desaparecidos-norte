@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-25T01:53:30Z",
-  "total": 58,
+  "actualizado": "2026-06-25T06:03:53Z",
+  "total": 59,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Balnearia",
+      "nombre": "MARTINEZ MARIO ALBERTO",
+      "edad": "32",
+      "fecha": "24/06/2026",
+      "hora": "14:30:00",
+      "descripcion": "PANTALON GRIS DE JOGGING, CAMPERA DE JEANS, UNA GORRA CON VISERA CELESTE",
+      "contacto": "COMISARIA DE BALNEARIA Y DPTAL ANSENUZA",
+      "telefono": "3563-410819",
+      "foto": "https://drive.google.com/open?id=1i7joFb-BjVJeAzZnvMpQFj4xQrFPBEGI",
       "estado": ""
     },
     {
