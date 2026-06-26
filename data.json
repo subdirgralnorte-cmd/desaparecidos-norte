@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-26T19:14:23Z",
-  "total": 59,
+  "actualizado": "2026-06-26T20:57:04Z",
+  "total": 61,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,30 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "OBISPO TREJO",
+      "nombre": "ELISA ANAHI BONEL",
+      "edad": "04",
+      "fecha": "26/06/2026",
+      "hora": "15:45:00",
+      "descripcion": "Buzo Lila, bufanda negra, pantalón negro de algodón, Tes blanca, cabello ondulado ojos color marron, mide aprox 60 cm.",
+      "contacto": "COMISARIA OBISPO TREJO",
+      "telefono": "03575-497088",
+      "foto": "https://drive.google.com/open?id=1knljOKfzSPlItEJzHjqa_553P-rD1KXz",
+      "estado": ""
+    },
+    {
+      "localidad": "OBISPO TREJO",
+      "nombre": "ERIKA ANAHI BONEL",
+      "edad": "25",
+      "fecha": "26/06/2026",
+      "hora": "13:10:00",
+      "descripcion": "Al momento de la desaparición la Sra BONEL vestía Jeans Celeste, Chaleco Negro y zapatillas negra. La menor E.A.B vestía Buzo Lila, bufanda negra, pantalón negro de algodón.TES BLANCA, PELO ONDULADO DE COLOR NEGRO, MIDE APROX 1.6,DELGADA, COLOR DE OJOS MARRONES.",
+      "contacto": "COMISARIA OBISPO TREJO",
+      "telefono": "03575497088",
+      "foto": "https://drive.google.com/open?id=1t1HAdlWCc0C6F8DGfZpI8p3TEzrq8Kg-",
       "estado": ""
     },
     {
