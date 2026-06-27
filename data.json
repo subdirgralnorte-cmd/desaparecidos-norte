@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-27T01:33:34Z",
-  "total": 61,
+  "actualizado": "2026-06-27T05:35:32Z",
+  "total": 62,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "agua de oro",
+      "nombre": "olmos juan cruz",
+      "edad": "16",
+      "fecha": "26/06/2026",
+      "hora": "16:00:00",
+      "descripcion": "vestía Pantalón Oscuro, campera negra en la parte del pecho color azul (tipo rompe viento), zapatillas color blancas, de contextura física delgada, 1.70 mts de alto aprox. Cabello oscuro,",
+      "contacto": "agua de oro",
+      "telefono": "+54 9 3513 12-0848",
+      "foto": "https://drive.google.com/open?id=1MPR_dVLqDm--ZUCenZwrlA9gxUbIYCa1",
       "estado": ""
     },
     {
