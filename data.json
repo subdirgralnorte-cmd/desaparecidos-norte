@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-28T14:43:17Z",
-  "total": 64,
+  "actualizado": "2026-06-28T15:58:39Z",
+  "total": 65,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "TANTI",
+      "nombre": "Martín Saadetian",
+      "edad": "35",
+      "fecha": "28/06/2026",
+      "hora": "9:00:00",
+      "descripcion": "Contextura delgada, pelo negro ondulado con tintura color rojo, 1.70 mts de estatura, vestía campera roja, pantalón negro y pantuflas color azul, informa que tiene retraso madurativo y se encuentra bajo tratamiento psiquiátrico. autoriza difusión de imagen.",
+      "contacto": "COMISARIA DE TANTI",
+      "telefono": "3541555577",
+      "foto": "https://drive.google.com/open?id=1lT0NQPmLVKGtfPxAu7bLZQ0VwuI6ikDe",
       "estado": ""
     },
     {
