@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-28T11:22:12Z",
-  "total": 63,
+  "actualizado": "2026-06-28T12:51:49Z",
+  "total": 64,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA DOLORES",
+      "nombre": "ACOSTA MATEO",
+      "edad": "21",
+      "fecha": "28/06/2026",
+      "hora": "7:45:00",
+      "descripcion": "contextura física delgado, tez trigueña,1,70 Mts. aprox , vestia ropa oscura",
+      "contacto": "C.A.P",
+      "telefono": "3544426416",
+      "foto": "https://drive.google.com/open?id=1Fsr_s2InTBISHPs_f-GqnpDj4B5C2tXE",
       "estado": ""
     },
     {
