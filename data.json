@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-06-28T01:50:42Z",
-  "total": 62,
+  "actualizado": "2026-06-28T06:06:39Z",
+  "total": 63,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA DOLORES",
+      "nombre": "TATIANA VICTORIA BARACCO",
+      "edad": "25",
+      "fecha": "27/06/2026",
+      "hora": "0:00:00",
+      "descripcion": "CAMPERA DE COLOR NEGRO, CALZA DE COLOR MARRON, MOCHILA COLOR ROJO, 1,82 MTS. DE ESTATURA, TEZ BLANCO, OJOS VERDES, PELO NEGRO CASTAÑO, POSEE TATUAJES EN EL CUELLO Y AMBAS MANOS, POSEE TELEFONO CELULAR.",
+      "contacto": "URD SAN JAVIER",
+      "telefono": "3544426416",
+      "foto": "https://drive.google.com/open?id=1fn6Wyw-wAMcD1sjJqfmQ3GZ8v9E2h8sM",
       "estado": ""
     },
     {
