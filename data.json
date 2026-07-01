@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-01T14:32:31Z",
-  "total": 65,
+  "actualizado": "2026-07-01T16:57:07Z",
+  "total": 66,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "JUAREZ YAN URIEL",
+      "edad": "11",
+      "fecha": "25/06/2026",
+      "hora": "11:00:00",
+      "descripcion": "De estatura media, cabello teñido, vestia pantalón negro, campera negra y zapatillas negra.",
+      "contacto": "COMISARIA SAN FRANCISCO",
+      "telefono": "439646",
+      "foto": "https://drive.google.com/open?id=1tlbvhq3EhchabGlOL2Q2dR7QZkAJ7aFN",
       "estado": ""
     },
     {
