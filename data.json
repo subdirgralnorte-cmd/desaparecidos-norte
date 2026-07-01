@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-01T16:57:07Z",
-  "total": 66,
+  "actualizado": "2026-07-01T19:01:30Z",
+  "total": 67,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Villa de Maeia",
+      "nombre": "MORALES  JAZMIN",
+      "edad": "14",
+      "fecha": "30/07/2026",
+      "hora": "22:00:00",
+      "descripcion": "Campera negra, jogging color gris, zapatillas tipo cuero color blancas , chalina blanco con negro",
+      "contacto": "CRIA DTTO VILLA DE MARIA  DPTAL RIO SECO",
+      "telefono": "3522426003",
+      "foto": "https://drive.google.com/open?id=1KNKY4Lz_WQKswCvfHvF1DDXWEskmZGSI",
       "estado": ""
     },
     {
