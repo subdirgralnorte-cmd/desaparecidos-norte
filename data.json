@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-05T19:43:57Z",
-  "total": 67,
+  "actualizado": "2026-07-05T20:41:28Z",
+  "total": 68,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Salsipuedes",
+      "nombre": "Eduardo Dapia Pierini",
+      "edad": "51",
+      "fecha": "4/07/2026",
+      "hora": "16:00:00",
+      "descripcion": "vestía campera negra, pantalón gris y zapatillas rojas de 1.86 mts de altura contextura robusta, de pelo y barba canosa cutis trigueño y con tatuajes en ambos brazos y piernas",
+      "contacto": "Salsipuedes",
+      "telefono": "3516348827",
+      "foto": "https://drive.google.com/open?id=1gPI51j7DLYqL5Zi9aP8kt-01RqC3p3ox",
       "estado": ""
     },
     {
