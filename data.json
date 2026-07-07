@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-07T01:20:41Z",
-  "total": 68,
+  "actualizado": "2026-07-07T05:13:23Z",
+  "total": 70,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,30 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "GONZALEZ CARLOS ARGENTINO",
+      "edad": "64",
+      "fecha": "16/06/2026",
+      "hora": "0:00:00",
+      "descripcion": "campera camuflada de color oscuro, a la cual se le puede sacar las mangas y usarla como chaleco, sin lograr aportar más datos. El mismo  es de contextura física robusta, de 1.70 metros de altura, cabellos corto color castaño,  barba completa y ojos color marrón",
+      "contacto": "cria SAN FRANCISCO",
+      "telefono": "03564-439646",
+      "foto": "https://drive.google.com/open?id=1nOrQ-lpgY-lF8KFWUE1P6ImgUxaj0v0U",
+      "estado": ""
+    },
+    {
+      "localidad": "SALSIPUEDES",
+      "nombre": "Favre Nayara Belen",
+      "edad": "16",
+      "fecha": "6/07/2026",
+      "hora": "17:00:00",
+      "descripcion": "1,60 de estatura, robusta, cutis trigueño, pelo colorado",
+      "contacto": "COMISARIA DE SALSIPUEDES",
+      "telefono": "3516 34-8827",
+      "foto": "https://drive.google.com/open?id=1pqNfmwPA1-geunNKzO4qn6kID2xTkK_X",
       "estado": ""
     },
     {
