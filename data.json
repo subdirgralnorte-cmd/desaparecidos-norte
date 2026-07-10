@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-10T08:35:07Z",
-  "total": 70,
+  "actualizado": "2026-07-10T11:30:46Z",
+  "total": 71,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "ICHO CRUZ",
+      "nombre": "ásquez Héctor Lucas",
+      "edad": "63",
+      "fecha": "3/07/2026",
+      "hora": "22:00:00",
+      "descripcion": "1.65mts de estatura, ojos color verde con anteojos, cabello canoso, pelo largo, de barba blanca, tes, trigueño. suele usar gorro de color negro.",
+      "contacto": "ICHO CRUZ",
+      "telefono": "3516233997",
+      "foto": "https://drive.google.com/open?id=1hJeey3x8rDvzBhoId5HI9Vz5fci3CloR",
       "estado": ""
     },
     {
