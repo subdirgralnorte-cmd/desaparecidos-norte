@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-10T23:40:45Z",
-  "total": 71,
+  "actualizado": "2026-07-11T01:09:21Z",
+  "total": 72,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "unquillo",
+      "nombre": "Luján Nelson",
+      "edad": "44",
+      "fecha": "10/07/2026",
+      "hora": "18:36:00",
+      "descripcion": "no sabe precisar que vestimenta llevaba",
+      "contacto": "comisaria unquillo",
+      "telefono": "54 9 3513 13-3689",
+      "foto": "https://drive.google.com/open?id=1WZVwFCmQdSV9YB7IIlbS_DlDTbfLJrjH",
       "estado": ""
     },
     {
