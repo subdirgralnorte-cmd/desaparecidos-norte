@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-11T18:34:41Z",
-  "total": 73,
+  "actualizado": "2026-07-11T19:48:47Z",
+  "total": 74,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "PORTEÑA",
+      "nombre": "CAMPOS LOLA MIA",
+      "edad": "13",
+      "fecha": "11/07/2026",
+      "hora": "15:30:00",
+      "descripcion": "TEZ TRIGUEÑA, CONTEXTURA FÍSICA DELGADA, 1,50MTS DE ALTURA, CABELLO CASTAÑO OSCURO CON FLEQUILLO. PANTALÓN DE BUZO COLOR NEGRO Y ZAPATILLAS COLOR BEIGE",
+      "contacto": "SUBCOMISARIA PORTEÑA",
+      "telefono": "3564201111",
+      "foto": "https://drive.google.com/open?id=1ZJg6HaOieuV1aBSjzyG-MfgshGbVwtKs",
       "estado": ""
     },
     {
