@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-11T17:37:56Z",
-  "total": 72,
+  "actualizado": "2026-07-11T18:34:41Z",
+  "total": 73,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "SALAS JULIO NAHUEL",
+      "edad": "27",
+      "fecha": "9/07/2026",
+      "hora": "0:00:00",
+      "descripcion": "Vestía campera camuflada color verde, pantalón negro marca Adidas y zapatillas Vans color negras y blancas. Siendo de contextura delgada, mide 1,75, Tés trigueña, pelo corto color negro.",
+      "contacto": "Cria San Francisco",
+      "telefono": "3564439646",
+      "foto": "https://drive.google.com/open?id=16mUuvZzy3elZ3SKYDxIclt8kKoyeX-PX",
       "estado": ""
     },
     {
