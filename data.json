@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-13T21:37:13Z",
-  "total": 74,
+  "actualizado": "2026-07-13T22:36:14Z",
+  "total": 75,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "DEAN FUNES",
+      "nombre": "DUARTES SONIA MARICEL DEL VALLE",
+      "edad": "35",
+      "fecha": "10/07/2026",
+      "hora": "11:24:00",
+      "descripcion": "tiene aprox, 1,50 mts. de altura, es robusta, tés trigueña, cabello ondulado color negro, siempre lo lleva atado con una chuleta",
+      "contacto": "UNIDAD JUDICIAL DEAN FUNES",
+      "telefono": "3521428898",
+      "foto": "https://drive.google.com/open?id=1nFJsPVrdwe8Y0O2OgLhhR78G44j90Gwg",
       "estado": ""
     },
     {
