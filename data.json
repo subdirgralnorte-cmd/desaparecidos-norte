@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-14T00:59:04Z",
-  "total": 75,
+  "actualizado": "2026-07-14T04:09:53Z",
+  "total": 76,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "LAS VARILLAS",
+      "nombre": "ANGEL FRANCISCO MORENO",
+      "edad": "80",
+      "fecha": "13/07/2026",
+      "hora": "10:00:00",
+      "descripcion": "vestía un Jeans Azul, camisa rayada gris oscuro y zapatillas negro",
+      "contacto": "CRIA LAS VARILLAS",
+      "telefono": "54 9 3533 40-6837",
+      "foto": "https://drive.google.com/open?id=1zX9k-6VkqTVdQqKz_DXa305xyDCn_99Z",
       "estado": ""
     },
     {
