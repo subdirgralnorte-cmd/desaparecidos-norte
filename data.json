@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-15T23:36:20Z",
-  "total": 76,
+  "actualizado": "2026-07-16T01:05:37Z",
+  "total": 77,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "JOAQUIN RAMON FINELLI",
+      "edad": "23",
+      "fecha": "15/07/2026",
+      "hora": "19:30:00",
+      "descripcion": "El mismo es de contextura física delgada, de 1,60mts de altura, tés trigueña, pelo corto, color castaño oscuro",
+      "contacto": "CRIA DTTO. LAS VARILLAS",
+      "telefono": "3533406817",
+      "foto": "https://drive.google.com/open?id=1zLAh1hEKXLAnw0gTX7CdXoQI-4hhhRVy",
       "estado": ""
     },
     {
