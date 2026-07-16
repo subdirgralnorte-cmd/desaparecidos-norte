@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-16T04:22:26Z",
-  "total": 77,
+  "actualizado": "2026-07-16T06:40:03Z",
+  "total": 79,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,30 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SANTA CRIUZ DEL LAGO",
+      "nombre": "Luciano Fernández",
+      "edad": "13",
+      "fecha": "15/07/2026",
+      "hora": "12:00:00",
+      "descripcion": "vestía campera color azul, pantalon color negro y zapatillas color negro; de aproximadamente 1,20 m de altura, cabello castaño. Situacion que ocurre  en reiteradas ocasiones ,  en el que el menor se retira sin dar aviso y retoma a su domicilio en horas de la noche o madrugada.",
+      "contacto": "SANTA CRUZ DEL LAGO",
+      "telefono": "438211",
+      "foto": "https://drive.google.com/open?id=1QleNed2GKIGnu8vbYZc915njq0QlhdJz",
+      "estado": ""
+    },
+    {
+      "localidad": "CARLOS PAZ",
+      "nombre": "Brenda Veronica Di-Nucci",
+      "edad": "28",
+      "fecha": "13/07/2026",
+      "hora": "15:00:00",
+      "descripcion": "quien mide 1,67 mts de altura, de ojos color café, contextura robusta, tez morena, cabello oscuro, posee colocados aros en sus orejas y en la nariz, con tatuajes en varias partes de su cuerpo",
+      "contacto": "CRIA CARLOS PAZ",
+      "telefono": "438211",
+      "foto": "https://drive.google.com/open?id=1e3aLjso9j9n57EeZ4Tjg14yGHmoyJEwy",
       "estado": ""
     },
     {
