@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-17T01:11:44Z",
-  "total": 79,
+  "actualizado": "2026-07-17T04:26:12Z",
+  "total": 80,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA TULUMBA",
+      "nombre": "EULOGIO CASAS",
+      "edad": "79",
+      "fecha": "16/07/2026",
+      "hora": "18:15:00",
+      "descripcion": "BUZO COLOR NEGRO CONTEXTURA DELGADO - PELO CANOSO DE ALTURA 1,70",
+      "contacto": "U.R.D. TULUMBA",
+      "telefono": "3521497927",
+      "foto": "https://drive.google.com/open?id=1UIfJmv9sGu-HSxGuD3b61ZNFkpIcg7Um",
       "estado": ""
     },
     {
