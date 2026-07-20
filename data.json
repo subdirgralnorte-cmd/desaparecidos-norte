@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-20T10:35:47Z",
-  "total": 80,
+  "actualizado": "2026-07-20T12:53:28Z",
+  "total": 83,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,42 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Unquillo",
+      "nombre": "Juan Manuel Murua",
+      "edad": "40",
+      "fecha": "19/07/2026",
+      "hora": "0:00:00",
+      "descripcion": "mide 1,80 mts, delgado, cutis claro, barba candado tupida, campera marrón cuero, pantalón negro, zapatillas negras lona, es insulino dependiente,",
+      "contacto": "Cria Unquillo",
+      "telefono": "3513133689",
+      "foto": "https://drive.google.com/open?id=1Bx3Vl3Io9ZN3LAAqytboOp5GQjSpN0oo",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA DOLORES",
+      "nombre": "LUCAS FEDERICO PODVERSICH",
+      "edad": "18",
+      "fecha": "20/07/2026",
+      "hora": "7:00:00",
+      "descripcion": "VISTE UN BUZO DE COLOR VERDE Y PANTALON NEGRO, DE APROXIMADAMENTE 1.60 METROS DE ESTATURA, TES TRIGUEÑA",
+      "contacto": "BRIGADA DE INVESTIGACIONES, C.A.P, RESTO DE LA DEPARTAMENTAL",
+      "telefono": "3544 426416",
+      "foto": "https://drive.google.com/open?id=1pHvqy2Nrqps0P6dp0cTVbQUYOsFpaThp",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA DOLORES",
+      "nombre": "LUCAS FEDERICO PEODVERSICH",
+      "edad": "18",
+      "fecha": "20/07/2026",
+      "hora": "7:15:00",
+      "descripcion": "buzo color verde y pantalón negro",
+      "contacto": "DPTAL SAN JAVIER",
+      "telefono": "3544426416",
+      "foto": "https://drive.google.com/open?id=1xeq1lWCdaIPMFiJZtPMOE1vfW14JgkU7",
       "estado": ""
     },
     {
