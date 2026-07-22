@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-22T18:36:16Z",
-  "total": 84,
+  "actualizado": "2026-07-22T19:55:33Z",
+  "total": 85,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Villa Giardino",
+      "nombre": "Coria Daniel Omar",
+      "edad": "73",
+      "fecha": "22/07/2026",
+      "hora": "15:00:00",
+      "descripcion": "Tes trigueña, delgado, 160cm de altura aprox, pelo entrecano, barba canosa.",
+      "contacto": "Villa Giardino",
+      "telefono": "03548491213",
+      "foto": "https://drive.google.com/open?id=19IWuVUFm78lQI-FMEuetCIbkrBW_H1fK",
       "estado": ""
     },
     {
