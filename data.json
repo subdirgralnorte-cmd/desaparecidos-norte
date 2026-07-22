@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-21T23:51:42Z",
-  "total": 83,
+  "actualizado": "2026-07-22T01:50:13Z",
+  "total": 84,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "MALVINAS ARGENTINAS",
+      "nombre": "Nuñez Alfredo Gaston",
+      "edad": "34",
+      "fecha": "21/07/2026",
+      "hora": "19:00:00",
+      "descripcion": "Vestía campera roja de corderoi, mide aproximadamente 1,75 mts, delgado cabello corto color negro",
+      "contacto": "COMISARIA DE MALVINAS ARGENTINAS",
+      "telefono": "0351-6363167",
+      "foto": "https://drive.google.com/open?id=1rlnANKouspv0AvmQQY68ncLfdFxWi7Ah",
       "estado": ""
     },
     {
