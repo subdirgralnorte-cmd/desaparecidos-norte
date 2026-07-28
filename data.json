@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-28T17:01:31Z",
-  "total": 87,
+  "actualizado": "2026-07-28T18:23:11Z",
+  "total": 88,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "MAXIMILIANO GABRIEL MOBELLAN",
+      "edad": "33",
+      "fecha": "24/07/2026",
+      "hora": "3:30:00",
+      "descripcion": "estaba vestido con una campera roja, pantalón negro, y unas zapatillas negras, llevando un bolso grande con prendas de vestir varias",
+      "contacto": "COMISARIA SAN FRANCISCO",
+      "telefono": "03564-439643",
+      "foto": "https://drive.google.com/open?id=1i6H_ukVqThwtnY0CYC-i4h7UfWztA309",
       "estado": ""
     },
     {
