@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-28T03:16:15Z",
-  "total": 86,
+  "actualizado": "2026-07-28T06:05:40Z",
+  "total": 87,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Santa María de Punilla",
+      "nombre": "CHAPUR CRISTIAN AGUSTIN",
+      "edad": "19",
+      "fecha": "27/07/2026",
+      "hora": "17:40:00",
+      "descripcion": "Sin saber la vestimenta que lleva en el momento, tes blanca, delgado, 1,80m de altura, tatuajes varios",
+      "contacto": "Santa María de Punilla",
+      "telefono": "3541488180",
+      "foto": "https://drive.google.com/open?id=1yYfmoIcjMjRKDcgtLHVRAswKWX2a4sTg",
       "estado": ""
     },
     {
