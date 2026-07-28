@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-27T23:57:23Z",
-  "total": 85,
+  "actualizado": "2026-07-28T03:16:15Z",
+  "total": 86,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "TRINIDAD ALMA ASIS",
+      "edad": "17",
+      "fecha": "27/07/2026",
+      "hora": "20:00:00",
+      "descripcion": "vestía campera lila con capucha de lacra, pantalón largo de color negro y zapatillas con plataforma de color blanco. \nSiendo de contextura Física Delgada, de 1,50 mts. De altura, tez blanca, pelo largo hasta los hombros, color castaño claro con flequillo hasta las cejas, ojos marrones oscuros, sin tatuaje.",
+      "contacto": "Cria Dtto. San Francisco",
+      "telefono": "03564 443272",
+      "foto": "https://drive.google.com/open?id=1PkPw8CibDysoGigPD9SD52nWQj_QcoGL",
       "estado": ""
     },
     {
