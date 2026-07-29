@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-29T01:02:52Z",
-  "total": 88,
+  "actualizado": "2026-07-29T04:24:27Z",
+  "total": 89,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA CARLOS PAZ",
+      "nombre": "ERIC JOSE GAUNA",
+      "edad": "14",
+      "fecha": "29/07/2026",
+      "hora": "22:10:00",
+      "descripcion": "zapatillas color gris y rojo, short color negro y remera mangas cortas color negro",
+      "contacto": "CRIA CARLOS PAZ",
+      "telefono": "438277",
+      "foto": "https://drive.google.com/open?id=1aBUWgp9n4wmRSM4xL3-v0-gLvG6mNka-",
       "estado": ""
     },
     {
