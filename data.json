@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-29T04:24:27Z",
-  "total": 89,
+  "actualizado": "2026-07-29T07:17:53Z",
+  "total": 90,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "RIO CEBALLOS",
+      "nombre": "NICOLAS MORETTA",
+      "edad": "33",
+      "fecha": "29/07/2026",
+      "hora": "0:29:00",
+      "descripcion": "NO APORTAN YA QUE LA PERSONA VIVE SOLA",
+      "contacto": "CAP SIERRAS CHICAS",
+      "telefono": "+54 9 3516 13-7194",
+      "foto": "https://drive.google.com/open?id=1iHAlgWBS5Pxp2Df1IU0WQT4IcKLDht5a",
       "estado": ""
     },
     {
