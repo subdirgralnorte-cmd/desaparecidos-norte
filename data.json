@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-30T22:51:26Z",
-  "total": 90,
+  "actualizado": "2026-07-30T23:53:23Z",
+  "total": 91,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Cruz del Eje",
+      "nombre": "CACERES GENARO",
+      "edad": "12",
+      "fecha": "30/07/2026",
+      "hora": "18:35:00",
+      "descripcion": "ropa de gimnasia color azul, zapatillas blancas con rojo, mochila color negra; es de contextura robusto, cabello Castaño Claro, (tipo colorado, teñido)",
+      "contacto": "CRIA CRUZ DEL EJE, CAP CRUZ DEL EJE, DIV. MOTORIZADA, DUAR.",
+      "telefono": "3549426741",
+      "foto": "https://drive.google.com/open?id=1F9l-FXcQKvgSzh9g_jA4w3Xqto_wQJCI",
       "estado": ""
     },
     {
