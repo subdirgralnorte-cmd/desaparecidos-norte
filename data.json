@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-31T02:27:44Z",
-  "total": 91,
+  "actualizado": "2026-07-31T05:50:35Z",
+  "total": 92,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "BIALET MASSE",
+      "nombre": "Herrera Gonzalo Mario",
+      "edad": "15",
+      "fecha": "30/07/2026",
+      "hora": "19:00:00",
+      "descripcion": "Bermuda oscura, Remera marrón, Mide 1,80 mts, Test morena,  Delgado",
+      "contacto": "Comisaria Bialet Masse, DIC Cosquin",
+      "telefono": "3541441067",
+      "foto": "https://drive.google.com/open?id=1ybEjt0A5w0wmkmPE7Gw9bhe5340C5zdc",
       "estado": ""
     },
     {
