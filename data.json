@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-31T05:50:35Z",
-  "total": 92,
+  "actualizado": "2026-07-31T08:29:23Z",
+  "total": 93,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "BIALET MASSE",
+      "nombre": "Herrera Gonzalo Mario",
+      "edad": "15",
+      "fecha": "30/07/2026",
+      "hora": "19:00:00",
+      "descripcion": "tiene 1,80 de estatura, delgado, tes morena, ojos marrones, cabello castaño corto, viste bermuda negra de jeans y remera marrón.",
+      "contacto": "CRIA. BIALET MASSE - DIC PUNILLA - DIC PUNILLA NORTE",
+      "telefono": "3541441067",
+      "foto": "https://drive.google.com/open?id=1gQVtGdYaF_bJOLMD4qrDdPuG5Mlhx3f8",
       "estado": ""
     },
     {
