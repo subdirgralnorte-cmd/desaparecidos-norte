@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-01T17:44:04Z",
-  "total": 93,
+  "actualizado": "2026-08-01T18:43:23Z",
+  "total": 94,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "COSQUIN",
+      "nombre": "MARIA ITATI ENRIQUE",
+      "edad": "43",
+      "fecha": "1/08/2026",
+      "hora": "13:30:00",
+      "descripcion": "Tez trigueña pelo oscuro",
+      "contacto": "COSQUIN",
+      "telefono": "3541458160",
+      "foto": "https://drive.google.com/open?id=1FhoYFNEULAr_Da1DEAoLCqUJgBZNkVpd",
       "estado": ""
     },
     {
