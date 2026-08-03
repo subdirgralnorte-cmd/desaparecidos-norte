@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-03T01:16:26Z",
-  "total": 94,
+  "actualizado": "2026-08-03T04:51:46Z",
+  "total": 95,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SATURNINO MARIA LASPIUR",
+      "nombre": "ROJAS URIEL MANUEL",
+      "edad": "17",
+      "fecha": "2/08/2026",
+      "hora": "20:30:00",
+      "descripcion": "vestía un buzo color negro y un pantalón de pijama color claro siendo de contextura pequeña, cabello castaño claro.",
+      "contacto": "SUBCRIA LASPIUR",
+      "telefono": "+54 9 3533 58-0475",
+      "foto": "https://drive.google.com/open?id=1A16JIcRoVBGuziwmxLcOi9aTjD0wNXau",
       "estado": ""
     },
     {
