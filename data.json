@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-04T07:18:09Z",
-  "total": 96,
+  "actualizado": "2026-08-04T10:03:19Z",
+  "total": 97,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "san francisco",
+      "nombre": "CUELLO YAZMIN PERLA",
+      "edad": "17",
+      "fecha": "3/08/2026",
+      "hora": "19:00:00",
+      "descripcion": "1,60 m de estatura, posee cabello oscuro hasta los hombros y al momento de retirarse, vestía un buzo con rayas horizontales blancas y negras.",
+      "contacto": "CRIA SAN FCO",
+      "telefono": "3564443272",
+      "foto": "https://drive.google.com/open?id=1ygjSTbdFzMQwuMNojt3NoUFwZnufUURq",
       "estado": ""
     },
     {
