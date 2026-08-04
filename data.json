@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-04T04:30:27Z",
-  "total": 95,
+  "actualizado": "2026-08-04T07:18:09Z",
+  "total": 96,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "PÉREZ ISAÍAS NICOLÁS",
+      "edad": "12",
+      "fecha": "31/07/2026",
+      "hora": "22:00:00",
+      "descripcion": "vestía campera color gris y pantalón color negro con rayas blanca a sus costados, robusto de 1,60 metros de altura aproximada, piel morena, cicatriz debajo de su ojo derecho, cabello oscuro rapado a los costados y arriba largo con rulos, sabe tener un aro en la nariz y en una oreja,",
+      "contacto": "comisaria San Francisco",
+      "telefono": "3564-443272",
+      "foto": "https://drive.google.com/open?id=1rUERuuAlQHAAxTL92oCDQ4HV2Aox_Gus",
       "estado": ""
     },
     {
