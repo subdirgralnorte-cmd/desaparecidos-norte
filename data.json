@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-09T07:10:42Z",
-  "total": 97,
+  "actualizado": "2026-08-09T08:01:55Z",
+  "total": 98,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "UNQUILLO",
+      "nombre": "Tatiana Ortega",
+      "edad": "16",
+      "fecha": "8/08/2026",
+      "hora": "23:00:00",
+      "descripcion": "campera negra y jean claro)",
+      "contacto": "UNQUILLO",
+      "telefono": "3513 13-3689",
+      "foto": "https://drive.google.com/open?id=1LNnlFrKIBxboVXm2gXM4LFH1PTWCzI3t",
       "estado": ""
     },
     {
