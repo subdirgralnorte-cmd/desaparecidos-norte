@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-10T19:32:50Z",
-  "total": 100,
+  "actualizado": "2026-08-10T20:18:41Z",
+  "total": 101,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA SANTA ROSA",
+      "nombre": "BARRIOS ANTONELLA MARITE",
+      "edad": "24",
+      "fecha": "10/08/2026",
+      "hora": "11:30:00",
+      "descripcion": "UN SACO DE COLOR BLANCO DE LANA, PANTALON GRIS Y ZAPATILLAS NEGRAS, DE CONTEXTURA FISICA ROBUSTA MIDE 1.65 APROX, TES BLANCA OJOS VERDE CLARO Y PELO CASTAÑO OSCURO CON RULOS(USA SIEMPRE RODETE)",
+      "contacto": "COMISARA VILLA SANTA ROSA",
+      "telefono": "03574481831",
+      "foto": "https://drive.google.com/open?id=1B9aboTjzHsoOJCNKL6gps8KIGL3oNhpi",
       "estado": ""
     },
     {
