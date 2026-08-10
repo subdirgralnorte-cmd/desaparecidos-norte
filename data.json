@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-10T13:37:55Z",
-  "total": 99,
+  "actualizado": "2026-08-10T14:42:09Z",
+  "total": 100,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "JESUS MARIA",
+      "nombre": "ROMEO TOBIAS URIEL",
+      "edad": "16",
+      "fecha": "8/08/2026",
+      "hora": "11:00:00",
+      "descripcion": "De contextura delgada, estatura 1.68 mts. Aprox., cutis blanco, cabello teñido color gris plateado, vestía un chaleco de color negro, buzo con capucha color claro, pantalón de jeans localizado color azul, zapatillas negras, posee un tatuaje en una de sus manos",
+      "contacto": "JESUS MARIA",
+      "telefono": "3525426705",
+      "foto": "https://drive.google.com/open?id=1GSHF5mCgwRv-8l2JM4djpKjSbRp3WOt_",
       "estado": ""
     },
     {
