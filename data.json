@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-10T02:29:36Z",
-  "total": 98,
+  "actualizado": "2026-08-10T04:15:53Z",
+  "total": 99,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "DEÁN FUNES",
+      "nombre": "RODRÍGUEZ JOSÉ ALBERTO",
+      "edad": "55",
+      "fecha": "7/08/2026",
+      "hora": "15:00:00",
+      "descripcion": "Sin datos de vestimenta, de contextura física delgada, de tez trigueña, de 1,75 mts de altura, calvo, de ojos marrones",
+      "contacto": "CRÍA. DTTO. DEÁN FUNES",
+      "telefono": "3521428898 - 911",
+      "foto": "https://drive.google.com/open?id=1bcwA8_PZPL5bqIXmxste-2XmgEVqA3Mz",
       "estado": ""
     },
     {
