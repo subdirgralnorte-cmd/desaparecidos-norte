@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-12T18:30:57Z",
-  "total": 102,
+  "actualizado": "2026-08-12T19:42:15Z",
+  "total": 103,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "MONTE CRISTO",
+      "nombre": "Sandoval Candela Martina",
+      "edad": "27",
+      "fecha": "11/08/2026",
+      "hora": "23:30:00",
+      "descripcion": "contextura física robusta, de 1.50 Mts., tes trigueña, cabello castaño oscuro ondulado, ojos marrones, quien vestía campera color negra, pantalón color negro tipo cargo y zapatillas color blancas",
+      "contacto": "MONTE CRISTO",
+      "telefono": "3512009409",
+      "foto": "https://drive.google.com/open?id=1Bqx-mN6jDbyhnW65HOMmELVIrUPZxYv3",
       "estado": ""
     },
     {
