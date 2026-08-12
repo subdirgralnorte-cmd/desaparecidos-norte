@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-12T04:27:59Z",
-  "total": 101,
+  "actualizado": "2026-08-12T05:59:43Z",
+  "total": 102,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "unquillo",
+      "nombre": "Maldonado Sofia",
+      "edad": "16",
+      "fecha": "11/08/2026",
+      "hora": "21:00:00",
+      "descripcion": "0",
+      "contacto": "cria unquillo",
+      "telefono": "3513 13-3689",
+      "foto": "https://drive.google.com/open?id=1JRKSqfcDTOE3FqHEezHhV5NbTd-GQTv3",
       "estado": ""
     },
     {
