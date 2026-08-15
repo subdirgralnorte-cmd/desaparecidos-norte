@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-15T01:43:56Z",
-  "total": 103,
+  "actualizado": "2026-08-15T02:38:55Z",
+  "total": 104,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "COLONIA CAROYA",
+      "nombre": "Manzutti Víctor",
+      "edad": "64",
+      "fecha": "14/08/2026",
+      "hora": "21:50:00",
+      "descripcion": "vistiendo pantalón tipo bombacha de gaucho color negra, campero de la municipalidad de Caroya color azul, cabello entrecano, delgado de 1,75 mts.-",
+      "contacto": "COLONIA CAROYA",
+      "telefono": "3525-562030",
+      "foto": "https://drive.google.com/open?id=1bRnLwkjAVO2OeZMJg22PG9-EY1wQi7iI",
       "estado": ""
     },
     {
