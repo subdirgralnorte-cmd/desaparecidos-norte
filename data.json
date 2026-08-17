@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-17T15:59:37Z",
-  "total": 106,
+  "actualizado": "2026-08-17T16:37:27Z",
+  "total": 107,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA DE MARIA",
+      "nombre": "Arellano Juliano Franchesco",
+      "edad": "12",
+      "fecha": "17/08/2026",
+      "hora": "9:40:00",
+      "descripcion": "Contextura física delgada . 1.50mts de estatura  tez blanca. Posee una mancha de nacimiento en uno de los pómulos. Vestía buzo color gris, bombacha de gaucho color negra y alpargatas color blancas",
+      "contacto": "Dptal Rio Seco",
+      "telefono": "3622426003",
+      "foto": "https://drive.google.com/open?id=1Cy1WWPCMiP7mi8X_6Xn3Dik0N1QpY1sw",
       "estado": ""
     },
     {
