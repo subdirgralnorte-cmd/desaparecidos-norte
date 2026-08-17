@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-17T15:41:03Z",
-  "total": 105,
+  "actualizado": "2026-08-17T15:59:37Z",
+  "total": 106,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Villa de Maria",
+      "nombre": "ARELLANO JULIANO FRANCHESCO",
+      "edad": "12",
+      "fecha": "17/08/2026",
+      "hora": "9:40:00",
+      "descripcion": "Contextura física delgada. 1,50mts de estatura aprox. Tez blanca . Posee una mancha de nacimiento en uno de los pómulos. Vestía buso color gris, bombacha de gancho color negra, alpargatas blancas y sombrero marrón",
+      "contacto": "Dptal Rio Seco",
+      "telefono": "3522426003",
+      "foto": "https://drive.google.com/open?id=1vTMw6k5rctFQDDm-pD9zJ5VR6ZogO7zN",
       "estado": ""
     },
     {
