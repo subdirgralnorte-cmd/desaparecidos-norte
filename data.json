@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-22T07:57:08Z",
-  "total": 107,
+  "actualizado": "2026-08-22T08:37:26Z",
+  "total": 108,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "TANTI",
+      "nombre": "BENITEZ DANTE GABRIEL",
+      "edad": "17",
+      "fecha": "22/08/2026",
+      "hora": "4:20:00",
+      "descripcion": "chaleco negro, campera negra Adidas negra, pantalón azul Adidas, y zapatillas  blanca",
+      "contacto": "comisaria de tanti",
+      "telefono": "3541555577",
+      "foto": "https://drive.google.com/open?id=1aU9b2K3csuY-SD7Hsy_AyMTnJ8Q6LD1S",
       "estado": ""
     },
     {
