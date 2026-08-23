@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-23T12:57:02Z",
-  "total": 108,
+  "actualizado": "2026-08-23T13:36:04Z",
+  "total": 109,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA DOLORES",
+      "nombre": "ZAIRA MORENA ZUAREZ",
+      "edad": "16",
+      "fecha": "23/08/2026",
+      "hora": "3:20:00",
+      "descripcion": "La misma vestia un buzo color azul, pantalón negro, zapatillas color blancas y una mochila color rosa. contextura física delgada, de estatura baja, tez trigueño, cabello de color negro.",
+      "contacto": "DPTAL. SAN JAVIER",
+      "telefono": "354426416",
+      "foto": "https://drive.google.com/open?id=1sANedR9DIT4I3LeXD_RJonnSR_dP4ZJq",
       "estado": ""
     },
     {
