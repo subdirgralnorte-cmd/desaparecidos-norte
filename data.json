@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-24T04:54:36Z",
-  "total": 109,
+  "actualizado": "2026-08-24T05:37:01Z",
+  "total": 110,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SACANTA",
+      "nombre": "LOPEZ VILLALBA ELMA",
+      "edad": "38",
+      "fecha": "23/08/2026",
+      "hora": "18:00:00",
+      "descripcion": "vistiendo buzo oscuro y pantalón oscuro, contextura delgada, tez blanca, cabello claro ondulado, ojos marrones",
+      "contacto": "sacanta",
+      "telefono": "3533 45-8850",
+      "foto": "https://drive.google.com/open?id=1Jdd7O0k70FtazUSQ0MToCumFfde2iuwU",
       "estado": ""
     },
     {
