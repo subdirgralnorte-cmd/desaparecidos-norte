@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-08-30T01:25:22Z",
-  "total": 110,
+  "actualizado": "2026-08-30T07:08:18Z",
+  "total": 111,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "LAS VARILLAS",
+      "nombre": "ZAIRA YAEL PAZ",
+      "edad": "19",
+      "fecha": "30/08/2026",
+      "hora": "1:10:00",
+      "descripcion": "Viste Campera y zapatillas blancas, Jean oscuro gris, siendo de contextura física delgada, de 1.60 mts, tes morena.",
+      "contacto": "Cris Dtto Las Varillas",
+      "telefono": "3533 40-6837",
+      "foto": "https://drive.google.com/open?id=1V9mcZ9yOobBxV3oNpvlTAf9NIpIXteUf",
       "estado": ""
     },
     {
