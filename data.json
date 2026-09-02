@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-02T00:17:44Z",
-  "total": 111,
+  "actualizado": "2026-09-02T04:41:47Z",
+  "total": 112,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Huerta Grande",
+      "nombre": "GARCÍA LORENA VALERIA",
+      "edad": "54",
+      "fecha": "1/09/2026",
+      "hora": "21:00:00",
+      "descripcion": "Pantalón Negro, Campera Beige con Blanco, Botas Beige, Mide 1,70 mts , contextura fisica delgada, Tes trigueña, pelo teñido de rubio en las puntas.",
+      "contacto": "HUERTA GRANDE",
+      "telefono": "3548426661",
+      "foto": "https://drive.google.com/open?id=1T7Dmicf3vEg7Zfsdvkjs0bntRsRG8AoY",
       "estado": ""
     },
     {
