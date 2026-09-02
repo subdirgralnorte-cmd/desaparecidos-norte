@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-02T17:18:59Z",
-  "total": 112,
+  "actualizado": "2026-09-02T19:52:51Z",
+  "total": 113,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "San Esteban",
+      "nombre": "Vega Oscar Alberto",
+      "edad": "43",
+      "fecha": "13/08/2026",
+      "hora": "14:00:00",
+      "descripcion": "Contextura delgada, tez trigueña 1,80 mts. aprox. de altura, pelo oscuro con rulos no tan definidos, un poco más arriba de los hombros. Última vez visto vestía pantalón color marrón y suéter color verde claro.",
+      "contacto": "San Esteban",
+      "telefono": "3513947551",
+      "foto": "https://drive.google.com/open?id=1RvXxHJwwA-agALRrYg0Ab17OBL7siASs",
       "estado": ""
     },
     {
