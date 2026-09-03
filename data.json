@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-03T19:53:41Z",
-  "total": 113,
+  "actualizado": "2026-09-03T22:15:14Z",
+  "total": 114,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VALLE HERMOSO",
+      "nombre": "Sánchez Hugo Héctor",
+      "edad": "85",
+      "fecha": "2/09/2026",
+      "hora": "11:30:00",
+      "descripcion": "Mide 1.65 mts. de altura, de aprox. 65 kg, contextura física mediana, tez blanca, cara ovalada, ojos marrones, nariz recta, boca chica, labios delgados, cabellos corto y canoso, calvicie frontal, con cicatriz en mano izquierda, posee marca pasos por problemas cardiacos.",
+      "contacto": "VALLE HERMOSO",
+      "telefono": "3548471879",
+      "foto": "https://drive.google.com/open?id=1fXh63GNAQyZpaNWBZTq85KzvIahJdjxI",
       "estado": ""
     },
     {
