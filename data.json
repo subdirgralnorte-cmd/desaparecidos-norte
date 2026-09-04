@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-04T16:57:03Z",
-  "total": 114,
+  "actualizado": "2026-09-04T19:22:12Z",
+  "total": 115,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "CARLOS PAZ",
+      "nombre": "LEANDRO GOMEZ",
+      "edad": "35",
+      "fecha": "3/09/2026",
+      "hora": "23:00:00",
+      "descripcion": "vestía campera negra con capucha, pantalón de jean color azul, zapatillas color marrón. Es de cutis trigueño, contextura delgada, de aprox 1,75 mts de altura, ojos color marrón, cabello color castaño oscuro, pelo corto, posee tatuajes en brazos y piernas",
+      "contacto": "UNIDAD JUDICIAL DE CARLOS PAZ",
+      "telefono": "3541428181",
+      "foto": "https://drive.google.com/open?id=1FEbUR4I1BMWk8cxl7TNRcNlItwKvEGVy",
       "estado": ""
     },
     {
