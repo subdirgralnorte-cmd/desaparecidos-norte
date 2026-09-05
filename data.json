@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-05T01:06:39Z",
-  "total": 115,
+  "actualizado": "2026-09-05T05:43:29Z",
+  "total": 116,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Santa Maria de Punilla",
+      "nombre": "CASTRO PIZARRO DAMARIS DIXIA",
+      "edad": "14",
+      "fecha": "4/09/2026",
+      "hora": "20:40:00",
+      "descripcion": "La misma vestía un jean negro, zapatillas negra, campera azul oscura, con estampado en la espalda, de un leopardo en blanco y negro, mide aprox. 1,60 mts, tes trigueña, ojos marrones, cabello castaño con tintura rubia en parte. Está internada desde el Martes 1ro de Septiembre. La misma se encuentra  judicializada por parte del SENAF. Srio número 519/26.",
+      "contacto": "SANTA MARÍA DE PUNILLA",
+      "telefono": "3541488180",
+      "foto": "https://drive.google.com/open?id=11G6zsXZwzlY57GwodVQQmcHzK6S0eYNs",
       "estado": ""
     },
     {
