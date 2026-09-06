@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-06T16:59:28Z",
-  "total": 117,
+  "actualizado": "2026-09-06T19:02:45Z",
+  "total": 118,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "BENJAMIN PAZ",
+      "edad": "8",
+      "fecha": "6/09/2026",
+      "hora": "13:00:00",
+      "descripcion": "Se recibe llamado de un masculino manifestando ser el padrastro del menor *BENJAMIN PAZ* (09) el cual desconoce de su paradero hace más 2hs aprox. fue visto por última vez con vestimenta conjunto de Argentina y zapatillas negras. Se amplía a la movilidad para entrevistar a los familiares, recabar más datos y realizando el operativo de búsqueda en los sectores.",
+      "contacto": "CRIA SAN FRANCISCO",
+      "telefono": "3564337418",
+      "foto": "https://drive.google.com/open?id=1jrGZPbsg1pb3Sb5gMnSmHrF7dmX7DK07",
       "estado": ""
     },
     {
