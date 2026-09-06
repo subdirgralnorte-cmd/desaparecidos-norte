@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-06T01:21:55Z",
-  "total": 116,
+  "actualizado": "2026-09-06T06:10:37Z",
+  "total": 117,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Dean Funes",
+      "nombre": "Rojas Walter",
+      "edad": "49",
+      "fecha": "5/09/2026",
+      "hora": "10:30:00",
+      "descripcion": "contextura física delgada, 1.65 mts de altura, tez trigueña, pantalón negro, campera marrón, gorra roja, mochila negra con rojo",
+      "contacto": "Cria Dean Funes, Cap Dean Funes, Cria Quilino, Destacamentos de Avellaneda, Vlla Gutierrez, Cañada de Rio Pinto, Chuña.",
+      "telefono": "03521428897",
+      "foto": "https://drive.google.com/open?id=1LEXT_78WHbVJ42OP6HJuVUO_YPZlSs0z",
       "estado": ""
     },
     {
