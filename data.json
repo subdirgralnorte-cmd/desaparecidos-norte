@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-08T17:46:10Z",
-  "total": 118,
+  "actualizado": "2026-09-08T20:19:39Z",
+  "total": 119,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA CARLOS PAZ",
+      "nombre": "PEDRO CORTEZ",
+      "edad": "31",
+      "fecha": "17/08/2026",
+      "hora": "12:00:00",
+      "descripcion": "MAYOR EDAD EN SITUACION DE CALLE",
+      "contacto": "CARLOS PAZ",
+      "telefono": "428181",
+      "foto": "https://drive.google.com/open?id=1eT460Lb5nqNKOXihKJmForzWb7bLxf69",
       "estado": ""
     },
     {
