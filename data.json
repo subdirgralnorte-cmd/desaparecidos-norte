@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-09T22:33:57Z",
-  "total": 119,
+  "actualizado": "2026-09-10T00:33:10Z",
+  "total": 120,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "PALACIOS EZEQUIEL ALEJANDRO",
+      "edad": "29",
+      "fecha": "9/09/2026",
+      "hora": "19:50:00",
+      "descripcion": "CAMPERA DE COLOR CELESTE ESTILO CANELÓN, ZAPATILLAS DEPORTIVAS NEGRAS, Y JEAN O PANTALÓN OSCURO",
+      "contacto": "DIVISION INVESTIGACIONES",
+      "telefono": "3564443272",
+      "foto": "https://drive.google.com/open?id=18lTebZG117SlD1kFoSAckSNdD1JtAnz4",
       "estado": ""
     },
     {
