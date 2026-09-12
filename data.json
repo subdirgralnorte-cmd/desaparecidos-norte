@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-12T04:43:21Z",
-  "total": 121,
+  "actualizado": "2026-09-12T08:51:58Z",
+  "total": 122,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "TANTI",
+      "nombre": "CIRO BENJAMIN ALVA",
+      "edad": "14",
+      "fecha": "12/09/2026",
+      "hora": "2:22:00",
+      "descripcion": "El mismo vestia pantalon joggins color azul, buzo negro con rayas blancas y gorra negra con inscripción NEW YORK, de contextura robusta, cutis Blanco y cabello color negro, con una aureola del lado izquierdo sin pelo, rapado a los costados de 1.65 mts. de altura",
+      "contacto": "TANTI",
+      "telefono": "438215",
+      "foto": "https://drive.google.com/open?id=1TJT6TsYcVrBJ8OfgXjaaUEqKCUQ-GbZm",
       "estado": ""
     },
     {
