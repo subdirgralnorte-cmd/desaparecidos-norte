@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-12T00:15:47Z",
-  "total": 120,
+  "actualizado": "2026-09-12T04:43:21Z",
+  "total": 121,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "MARIANELA AMAYA",
+      "edad": "32",
+      "fecha": "11/09/2026",
+      "hora": "22:00:00",
+      "descripcion": "FEMENINA (32), NO TIENEN DESCRIPCIONES DE VETIMENTA, PELO ONDULADO Y MOROCHO, CON LENTES, TEZ TRIGUEÑA",
+      "contacto": "CRIA SAN FRANCISCO",
+      "telefono": "3564337418",
+      "foto": "https://drive.google.com/open?id=1JUsDh7sAiXIR-Xm4mwHUgquE3oFMPYgM",
       "estado": ""
     },
     {
