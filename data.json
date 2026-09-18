@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-17T22:52:28Z",
-  "total": 123,
+  "actualizado": "2026-09-18T00:56:33Z",
+  "total": 125,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,30 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "General Paz",
+      "nombre": "CRUZ NOLASCO MEDINA",
+      "edad": "48",
+      "fecha": "17/09/2026",
+      "hora": "20:03:00",
+      "descripcion": "vestía un pantalón joggings de color azul tipo gimnasia que mide 1.70 de contextura física robusta, cabello de color negro",
+      "contacto": "SUBCRIA. GENERAL PAZ",
+      "telefono": "3525622509",
+      "foto": "https://drive.google.com/open?id=1k04gWYC5zy2laynv9XbvUENV-jpK8tw1",
+      "estado": ""
+    },
+    {
+      "localidad": "serrezuela",
+      "nombre": "Quintero María Jimena",
+      "edad": "46",
+      "fecha": "16/09/2026",
+      "hora": "18:00:00",
+      "descripcion": "la misma vestía con pantalón celeste, remera gris, campera gris y zapatillas negras",
+      "contacto": "urd cruz del eje",
+      "telefono": "3516361613",
+      "foto": "https://drive.google.com/open?id=1HSEqO8BOakvpwlY4yyePtCkp29Nbcl0-",
       "estado": ""
     },
     {
