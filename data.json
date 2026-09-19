@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-18T22:30:37Z",
-  "total": 126,
+  "actualizado": "2026-09-19T00:34:17Z",
+  "total": 127,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "COLONIA TIROLESA",
+      "nombre": "Manzanel Miguel",
+      "edad": "20",
+      "fecha": "17/09/2026",
+      "hora": "6:00:00",
+      "descripcion": "BUZO NEGRO CON CIERRE, PANTALON JOGGING DE COLOR AZUL Y ZAPATOS NEGROS, DE CONTEXTURA ROBUSTA, TEST TRIGUEÑO, CABELLO CORTO A LOS COSTADOS Y CON UNA TIPO CRESTA AL MEDIO",
+      "contacto": "COLONIA TIROLESA",
+      "telefono": "3512486640",
+      "foto": "https://drive.google.com/open?id=1CwpNqvC4ASypt3kdSbgKKvxxxfMU0SMg",
       "estado": ""
     },
     {
