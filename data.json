@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-20T21:55:34Z",
-  "total": 127,
+  "actualizado": "2026-09-20T23:55:21Z",
+  "total": 128,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Dean Funes",
+      "nombre": "Coronel Norma Edith",
+      "edad": "63",
+      "fecha": "19/09/2026",
+      "hora": "18:00:00",
+      "descripcion": "tez blanca, contextura física delgada, 1,63 de altura aprox, ojos marrones cabello castaño claro, sin tatuajes ni señas particulares, recordando que vestía un pantalón de jeans, y una mochila de la que no recuerda color",
+      "contacto": "Cria Dean Funes, CAP Dean Funes, Cria Quilino",
+      "telefono": "03521428898",
+      "foto": "https://drive.google.com/open?id=1H-qjQrjIZ1MWL7lxvJiqBiYlJZOPFcDX",
       "estado": ""
     },
     {
