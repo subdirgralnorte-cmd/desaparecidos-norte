@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-21T23:25:25Z",
-  "total": 128,
+  "actualizado": "2026-09-22T01:43:54Z",
+  "total": 129,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "FREYRE",
+      "nombre": "ANGELINA MARIA KUNT",
+      "edad": "15",
+      "fecha": "21/09/2026",
+      "hora": "20:00:00",
+      "descripcion": "La misma es de contextura física robusta, de 1,50 de altura, tez blanca, pelo largo ondulado castaño claro, ojos de color verdes, posee lentes recetados, vistiendo camisa de jean, remera marrón, pantalón de color negro, botas cortas de color negro.",
+      "contacto": "Sub Cria Freyre",
+      "telefono": "3564 505416",
+      "foto": "https://drive.google.com/open?id=1EWQtI9qt_vriFBcfHyZ8eqkfD9qDX2fh",
       "estado": ""
     },
     {
