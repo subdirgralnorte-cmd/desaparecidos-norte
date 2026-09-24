@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-23T22:18:18Z",
-  "total": 129,
+  "actualizado": "2026-09-24T00:36:01Z",
+  "total": 130,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "RIO CEBALLOS",
+      "nombre": "DANIEL BUSTO",
+      "edad": "65",
+      "fecha": "23/09/2026",
+      "hora": "19:36:00",
+      "descripcion": "El Sr Busto es de contextura delgada, de un 1,78 de altura, test trigueña, pelo canoso, y vestia una pantalón de vestir color bordó, un remera color verde, un suéter de lana color verde.",
+      "contacto": "PERSONAL INVESTIGACIONES",
+      "telefono": "3516137194",
+      "foto": "https://drive.google.com/open?id=1tlwkiokRkip_CMGykV5a5B5_WqrZNd4D",
       "estado": ""
     },
     {
