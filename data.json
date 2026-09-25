@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-25T00:45:08Z",
-  "total": 131,
+  "actualizado": "2026-09-25T05:28:02Z",
+  "total": 132,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "LAS VARILLAS",
+      "nombre": "LOBEIRA JOSE RICARDO",
+      "edad": "16",
+      "fecha": "21/09/2026",
+      "hora": "17:00:00",
+      "descripcion": "pantalón color gris y marrón, buzo gris y zapatillas blancas.. Es de contextura delgada, pelo corto castaño escuro con mechas rubias, tez trigueña, ojos marrones  mide 1.80 aproximadamente.",
+      "contacto": "cria las varillas",
+      "telefono": "3533 40-6837",
+      "foto": "https://drive.google.com/open?id=1yi1cO3J-6aW-Gped6CfIbn44VfOroZ--",
       "estado": ""
     },
     {
