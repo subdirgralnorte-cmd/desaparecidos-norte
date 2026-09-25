@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-24T22:31:10Z",
-  "total": 130,
+  "actualizado": "2026-09-25T00:45:08Z",
+  "total": 131,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "MONTE CRISTO",
+      "nombre": "BARRERA GLADYS",
+      "edad": "51",
+      "fecha": "24/09/2026",
+      "hora": "19:40:00",
+      "descripcion": "vestía al momento una remera mangas largas de lanilla marrón claro y calza gris , zapatillas color negro .  Cutis trigueña pelo corto color negro",
+      "contacto": "MONTE CRISTO",
+      "telefono": "3512009409",
+      "foto": "https://drive.google.com/open?id=18GkuL_vnfw2CeVOK_8jX9TTMM4l8Ku7K",
       "estado": ""
     },
     {
