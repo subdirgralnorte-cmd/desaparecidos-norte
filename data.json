@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-26T23:37:51Z",
-  "total": 132,
+  "actualizado": "2026-09-27T01:48:56Z",
+  "total": 133,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "LOURDES MORENA CARIVALI ZURBRIGGEN",
+      "edad": "17",
+      "fecha": "26/09/2026",
+      "hora": "19:00:00",
+      "descripcion": "tés blanca, delgada, alta, 1.60mts, pelo castaño oscuro con flequillo y corte carre al hombro, al momento de ausentarse vestía top a cuadros banco y negros, zapatillas negras y un pantalón corto de color claro",
+      "contacto": "COMISARIA SAN FRANCISCO",
+      "telefono": "439646",
+      "foto": "https://drive.google.com/open?id=14-Bqynn26EDH2sXPGL0m_nLTUADWhHvK",
       "estado": ""
     },
     {
