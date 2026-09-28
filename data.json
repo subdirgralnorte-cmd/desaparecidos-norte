@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-27T23:17:38Z",
-  "total": 133,
+  "actualizado": "2026-09-28T01:45:51Z",
+  "total": 135,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,30 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "COLONIA CAROYA",
+      "nombre": "Ailin Jazmin Truffer",
+      "edad": "17",
+      "fecha": "25/09/2026",
+      "hora": "13:30:00",
+      "descripcion": "delgada, de 1.75 cm de estatura, cabello rubio, tés blanca, vestía pantalón negro, buzo verde claro",
+      "contacto": "COLONIA CAROYA",
+      "telefono": "351-3951364",
+      "foto": "https://drive.google.com/open?id=1cVFPCD3BJe9RBNRksFhNG0U0ifR_4yMg",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "LOURDES MORENA CARIVALI ZURBRIGGEN",
+      "edad": "17",
+      "fecha": "27/09/2026",
+      "hora": "18:00:00",
+      "descripcion": "tés blanca, delgada, alta, 1.60mts, pelo castaño oscuro con flequillo y corte carre al hombro, al momento de ausentarse estía calza tipo biker con estampado animal print una remera celeste mangas cortas con lunares negros, y zapatillas negras con suela blanca",
+      "contacto": "CRIA SAN FCO",
+      "telefono": "3564337418",
+      "foto": "https://drive.google.com/open?id=1XhpA3PqfKrLoKn40R3bLB8muP1rN2Zay",
       "estado": ""
     },
     {
