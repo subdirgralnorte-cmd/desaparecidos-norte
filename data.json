@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-09-30T02:06:08Z",
-  "total": 137,
+  "actualizado": "2026-09-30T08:27:59Z",
+  "total": 139,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,30 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Santa Maria",
+      "nombre": "Montenegro Tatiana Elisabeth",
+      "edad": "17",
+      "fecha": "29/09/2026",
+      "hora": "22:25:00",
+      "descripcion": "de contextura 1.55m, pelo largo colorado ondulado, tes blanco, vestía pantalón gris Adidas con lineas celeste, buzo blanco con manchas negras, zapatillas Adidas lila.",
+      "contacto": "Cria Santa Maria",
+      "telefono": "3541-488180",
+      "foto": "https://drive.google.com/open?id=1C8pa-T5mW9RSMTpzRdz92bzRjjhRaDLZ",
+      "estado": ""
+    },
+    {
+      "localidad": "Santa Maria",
+      "nombre": "Castro Dixia Madaris",
+      "edad": "14",
+      "fecha": "29/09/2026",
+      "hora": "22:25:00",
+      "descripcion": "1.60cm de estatura,tes blanca, Contextura normal, al momento de la fuga vestía Buzo bordo, pantalón violeta oscuro, zapatillas negras.",
+      "contacto": "Cria Santa Maria",
+      "telefono": "03541-488180",
+      "foto": "https://drive.google.com/open?id=1A1kSS_a6lF0GKTcDOPqOn8_dJQhX4g9X",
       "estado": ""
     },
     {
