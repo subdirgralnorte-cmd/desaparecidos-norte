@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-01T02:28:32Z",
-  "total": 139,
+  "actualizado": "2026-10-01T09:20:38Z",
+  "total": 140,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "ICHO CRUZ",
+      "nombre": "RODRIGUEZ LUCAS MATIAS",
+      "edad": "40",
+      "fecha": "30/09/2026",
+      "hora": "22:00:00",
+      "descripcion": "DELGADO , PELO CASTAÑO OSCURO  CON CANAS, OJOS COLOR CLARO, NO SSE SABE QUE VESTIA",
+      "contacto": "SUB CRIA DE ICHO CRUZ",
+      "telefono": "3541283086",
+      "foto": "https://drive.google.com/open?id=1Ly6kY41qMbBgLG7zFYnoH-rdhU554w9p",
       "estado": ""
     },
     {
