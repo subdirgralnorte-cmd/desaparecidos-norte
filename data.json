@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-05T08:30:38Z",
-  "total": 142,
+  "actualizado": "2026-10-05T17:21:30Z",
+  "total": 143,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "DEAN FUNES",
+      "nombre": "HUGHES MORA DELFINA",
+      "edad": "13",
+      "fecha": "4/10/2026",
+      "hora": "23:00:00",
+      "descripcion": "PIJAMA COLOR AZUL, NO RECUERDA EL COLOR DEL BUSO, NI EL COLOPR DE LAS ZAPATILLAS, TEZ BLANCA, ESTATURA 1,61 , OJOS COLOR VERDE, PELO CASTAÑO CLARO, DELGADA.",
+      "contacto": "CAP, CRIA DEAN FUNES, DIVISION INVESTIGACIONES INTERIOR",
+      "telefono": "3521428897",
+      "foto": "https://drive.google.com/open?id=1jH8zK-vFwP0Lq9HvgUc8vFMnUgOVGOWP",
       "estado": ""
     },
     {
