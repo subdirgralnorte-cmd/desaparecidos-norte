@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-05T01:55:13Z",
-  "total": 141,
+  "actualizado": "2026-10-05T08:30:38Z",
+  "total": 142,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "RIO CEBALLOS",
+      "nombre": "Bustos Daniel",
+      "edad": "65",
+      "fecha": "4/10/2026",
+      "hora": "1:15:00",
+      "descripcion": "PELO CORTO CON CANAS TÉS TRIGUEÑA DE 1,70 MTS , PROBLEMAS DE BIPOLARIDAD  SE DESCONOCE VESTIMENTA DEL MISMO .",
+      "contacto": "RIO CEBALLOS",
+      "telefono": "3543 57-2946",
+      "foto": "https://drive.google.com/open?id=1G-r9F4NBvrZNEnvBfy72ekYbzv49OQTi",
       "estado": ""
     },
     {
