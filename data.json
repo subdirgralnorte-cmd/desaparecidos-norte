@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-06T03:04:48Z",
-  "total": 143,
+  "actualizado": "2026-10-06T10:09:51Z",
+  "total": 144,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA CARLOS PAZ",
+      "nombre": "Rodríguez María Cristina",
+      "edad": "75",
+      "fecha": "5/10/2026",
+      "hora": "14:00:00",
+      "descripcion": "vestido largo color negro, pañuelo atado al cuello y zapatillas color gris. Llevaba consigo cartera grande color negra y un bolsito color verde claro.",
+      "contacto": "URD PUNILLA",
+      "telefono": "438215",
+      "foto": "https://drive.google.com/open?id=1TGEzNBZwW3G2jgtv7Dfx9Zl6K9edQS_5",
       "estado": ""
     },
     {
