@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-07T00:49:35Z",
-  "total": 144,
+  "actualizado": "2026-10-07T06:37:15Z",
+  "total": 145,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "MALVINAS ARGENTINAS",
+      "nombre": "Ludmila Magali Soage",
+      "edad": "16",
+      "fecha": "5/10/2026",
+      "hora": "18:00:00",
+      "descripcion": "campera de color negro y pantalón de color negro",
+      "contacto": "CRIA MALVINAS ARGENTINAS",
+      "telefono": "3516 557259",
+      "foto": "https://drive.google.com/open?id=1FWd50A7i86fS2A3sO36qJdegt1f0hUDe",
       "estado": ""
     },
     {
