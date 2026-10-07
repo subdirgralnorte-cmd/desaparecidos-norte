@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-07T13:55:25Z",
-  "total": 145,
+  "actualizado": "2026-10-07T19:46:40Z",
+  "total": 146,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "MALVINAS ARGENTINAS",
+      "nombre": "MONTOYA MILAGROS GENESIS",
+      "edad": "18",
+      "fecha": "7/10/2026",
+      "hora": "9:40:00",
+      "descripcion": "ZAPATILLAS DE COLOR ANARANJADO, PANTALON DE JEAN COLOR AZUL, ESTATURA DE 1.60, CUTIS BLANCO,",
+      "contacto": "CRIA MALVINAS ARGENTINAS",
+      "telefono": "3516557259",
+      "foto": "https://drive.google.com/open?id=1GeiR3uABBOeVFGu6M_o2SENU-EkshxxF",
       "estado": ""
     },
     {
