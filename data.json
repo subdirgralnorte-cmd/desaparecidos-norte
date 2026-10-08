@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-08T04:09:40Z",
-  "total": 146,
+  "actualizado": "2026-10-08T11:22:11Z",
+  "total": 148,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,30 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "LAS PEÑAS",
+      "nombre": "FERNANDEZ JUAN CRUZ",
+      "edad": "30",
+      "fecha": "7/10/2026",
+      "hora": "10:30:00",
+      "descripcion": "DESCONOCE",
+      "contacto": "SUB CRIA LAS PEÑAS",
+      "telefono": "3251496763",
+      "foto": "https://drive.google.com/open?id=1mGdQ4_mlcaml2C31zcYuw9GCVdhZzWmC",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA DEL TOTORAL",
+      "nombre": "RODRIGUEZ LAUTARO MISAEL",
+      "edad": "32",
+      "fecha": "7/10/2026",
+      "hora": "9:30:00",
+      "descripcion": "DESCONOCE",
+      "contacto": "CRIA VILLA DEL TOTORAL",
+      "telefono": "3524473696",
+      "foto": "https://drive.google.com/open?id=1UIyx8gYU0kqAQ6VBeEPknstF9Pl7pv22",
       "estado": ""
     },
     {
