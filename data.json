@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-11T06:17:53Z",
-  "total": 148,
+  "actualizado": "2026-10-11T13:06:27Z",
+  "total": 149,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "TANTI",
+      "nombre": "Rodríguez Cristina del Carmen",
+      "edad": "37",
+      "fecha": "11/10/2026",
+      "hora": "2:20:00",
+      "descripcion": "NO HAY DESCRIPCIONES",
+      "contacto": "TANTI",
+      "telefono": "3541555577",
+      "foto": "https://drive.google.com/open?id=1KV-_S3JOE3MmWe2E0us2mWYP7g6xYvxp",
       "estado": ""
     },
     {
