@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-11T18:02:30Z",
-  "total": 152,
+  "actualizado": "2026-10-11T21:50:35Z",
+  "total": 153,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "MALVINAS ARGENTINAS",
+      "nombre": "MANUEL GOMEZ",
+      "edad": "24",
+      "fecha": "11/10/2026",
+      "hora": "11:00:00",
+      "descripcion": "MISMO VESTÍA DE CAMPERA DEPORTIVA DE TALLERES O DE ARGENTINAS, PANTALÓN NEGRO  Y MIDE 1.75 MTS, DE CONTEXTURA FÍSICA ROBUSTA, CABELLO COLOR CASTAÑO OSCURO, TATUAJE EN ANTE BRAZO DERECHO Y UN TATUAJE EN EL CUELLO,  DE CUTIS TRIGUEÑA",
+      "contacto": "CRIA MALVINAS ARGENTINAS",
+      "telefono": "3516557259",
+      "foto": "https://drive.google.com/open?id=13zQBuDzFf9G7GFESBbIXf2lucTe_00wB",
       "estado": ""
     },
     {
