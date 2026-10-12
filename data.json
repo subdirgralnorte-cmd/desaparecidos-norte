@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-12T06:38:18Z",
-  "total": 153,
+  "actualizado": "2026-10-12T16:07:14Z",
+  "total": 154,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "RIO CEBALLOS",
+      "nombre": "HECTOR ABEL DOMINGUEZ",
+      "edad": "63",
+      "fecha": "11/10/2026",
+      "hora": "18:00:00",
+      "descripcion": "vestia pantalón jogging de color negro y buzo de color negro de con textura delgada test trigueña cabello negro con canas.",
+      "contacto": "CRIA DE RIO CEBALLOS,BRIGADA DE INVESTIGACIONES",
+      "telefono": "3543 57-2946",
+      "foto": "https://drive.google.com/open?id=1Ll_zerQISnJtbRcTPZZ1mWupl7ckK3Cy",
       "estado": ""
     },
     {
