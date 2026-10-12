@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-12T16:07:14Z",
-  "total": 154,
+  "actualizado": "2026-10-12T22:56:00Z",
+  "total": 156,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,30 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Villa de Soto",
+      "nombre": "ROQUE ADRIAN CASTRO",
+      "edad": "35",
+      "fecha": "12/10/2026",
+      "hora": "16:00:00",
+      "descripcion": "No hay datos",
+      "contacto": "Comisaria Villa de Soto, Patrulla Rural e Investigaciones",
+      "telefono": "03549-486784",
+      "foto": "https://drive.google.com/open?id=1poOU_nVxa95lCK-wDiBUWXyKqHEtUVfN",
+      "estado": ""
+    },
+    {
+      "localidad": "MONTE CRISTO",
+      "nombre": "VIDELA FRANCO ARIEL",
+      "edad": "32",
+      "fecha": "10/10/2026",
+      "hora": "19:00:00",
+      "descripcion": "vestía una bermuda de jean, tipo gastada con agujeros y zapatillas con franjas negras tipo Adidas de color verde oliva, no recordando la parte del torso",
+      "contacto": "MONTE CRISTO",
+      "telefono": "3512009409",
+      "foto": "https://drive.google.com/open?id=1vqwWiX0WUcW-cFvU5R9j1SfjkSvrDk79",
       "estado": ""
     },
     {
