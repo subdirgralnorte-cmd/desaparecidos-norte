@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-13T17:55:40Z",
-  "total": 156,
+  "actualizado": "2026-10-13T22:24:34Z",
+  "total": 157,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "MALVINAS ARGENTINAS",
+      "nombre": "FERREYRA GUSTAVO ROBERTO",
+      "edad": "52",
+      "fecha": "10/10/2026",
+      "hora": "7:00:00",
+      "descripcion": "NO RECUERDA COMO ESTABA VESTIDO LA ULTIMA VEZ QUE FUE VISTO, EL MISMO MIDE APROX 1.70 CMC, TES MOROCHO, CONTEXTURA DELGADA, TIENE TATUAJE EN MANO DERECHA (UN SOL Y 5 PUNTOS), BARBA, DIFICULTAD EN EL HABLA Y PARA COMUNICARSE",
+      "contacto": "COMISARIA MALVINAS ARGENTINAS- DPTAL COLON",
+      "telefono": "3516363167/ 3525422262",
+      "foto": "https://drive.google.com/open?id=15I1r_JMgXfTlTmyqTL4HBVfgtZFwpE2G",
       "estado": ""
     },
     {
