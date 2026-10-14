@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-14T06:15:14Z",
-  "total": 158,
+  "actualizado": "2026-10-14T12:04:22Z",
+  "total": 159,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "LA PAZ",
+      "nombre": "LUDMILA AILEN DE SOUSA",
+      "edad": "16",
+      "fecha": "14/10/2026",
+      "hora": "4:30:00",
+      "descripcion": "La  misma vestia una calza larga color  negra, remera negra y zapatillas negras con bordo, de contextura física robusta, estatura 1,66 cc aprox., tes color blanca, cabello castaño lacio",
+      "contacto": "URD SAN JVIER",
+      "telefono": "3544426416",
+      "foto": "https://drive.google.com/open?id=1nzFQnEoG_sXpDEv7n7riRaWXMJSIoOuV",
       "estado": ""
     },
     {
