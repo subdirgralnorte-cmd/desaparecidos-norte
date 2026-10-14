@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-14T01:18:54Z",
-  "total": 157,
+  "actualizado": "2026-10-14T06:15:14Z",
+  "total": 158,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "PARAJE EL SIMBOLAR- DEPARTAMENTO CRUZ DEL EJE",
+      "nombre": "DALMA ABIGAIL LUNA",
+      "edad": "17",
+      "fecha": "13/10/2026",
+      "hora": "12:20:00",
+      "descripcion": "contextura delgada, de tez blanca, ojos negros, cabello negro lacio largo, sin aros, ni piercings ni tatuajes y vestía un buzo negro con capucha, un pantalón tipo cargo de color negro, zapatillas de color gris y llevaba consigo una mochila negra con azul con carpeta y útiles en su interior, un camperón negro con capucha para ponerse y su billetera (de color roja con hilos blancos) con su DNI y su tarjeta de boleto educativo para el colectivo",
+      "contacto": "SDGICN",
+      "telefono": "03549-420088",
+      "foto": "https://drive.google.com/open?id=1-nuyv0WZmPkKyKSQtXCeNrbWqUOuZSrw",
       "estado": ""
     },
     {
