@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-15T06:30:23Z",
-  "total": 159,
+  "actualizado": "2026-10-15T11:59:58Z",
+  "total": 160,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA CARLOS PAZ",
+      "nombre": "Matías Andrés Martínez",
+      "edad": "39",
+      "fecha": "14/10/2026",
+      "hora": "22:00:00",
+      "descripcion": "campera camuflada gris, pantalón negro, zapatillas negras y boina azul",
+      "contacto": "CARLOS PAZ",
+      "telefono": "3513949247",
+      "foto": "https://drive.google.com/open?id=1Rz9LfK5zTpXnt6G3LZUFV35VKfKrs5Ga",
       "estado": ""
     },
     {
