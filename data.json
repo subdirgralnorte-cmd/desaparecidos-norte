@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-16T15:00:36Z",
-  "total": 161,
+  "actualizado": "2026-10-16T18:44:56Z",
+  "total": 162,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SANTA MARIA DE PUNILLA",
+      "nombre": "OZORIO JUAN CRUZ",
+      "edad": "17",
+      "fecha": "16/10/2026",
+      "hora": "10:40:00",
+      "descripcion": "PANTALON DEPORTIVO NEGRO CON VIOS BLANCOS, ZAPATILLAS NEGRAS",
+      "contacto": "COMISARIA SANTA MARIA",
+      "telefono": "3541488180",
+      "foto": "https://drive.google.com/open?id=1Wt8YiJBq_1iHUXo2nEVGGKQ32oZJR4Jd",
       "estado": ""
     },
     {
