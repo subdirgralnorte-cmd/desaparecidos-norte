@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-16T01:12:52Z",
-  "total": 160,
+  "actualizado": "2026-10-16T05:53:54Z",
+  "total": 161,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "CRUZ DEL EJE",
+      "nombre": "AGUERO ESTELA MARIS",
+      "edad": "50",
+      "fecha": "15/10/2026",
+      "hora": "18:00:00",
+      "descripcion": "un metro sesenta de estatura, cabello castaño claro, con su espalda jorobada",
+      "contacto": "comisaria dtto. cruz del eje",
+      "telefono": "3549-426741",
+      "foto": "https://drive.google.com/open?id=111851XD24QXJOSJ_MwnAsAVrAQAu9t--",
       "estado": ""
     },
     {
