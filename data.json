@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-19T06:39:51Z",
-  "total": 162,
+  "actualizado": "2026-10-19T13:58:08Z",
+  "total": 163,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "COLONIA CAROYA",
+      "nombre": "MIGUEL ÁNGEL MEJÍAS",
+      "edad": "81",
+      "fecha": "19/10/2026",
+      "hora": "9:35:00",
+      "descripcion": "DE ESTATURA 1.75, DE CUTIS BLANCO, CABELLO ENTRECANO, DE CONTEXTURA ROBUSTO",
+      "contacto": "COMISARIA COLONIA CAROYA",
+      "telefono": "3525466247",
+      "foto": "https://drive.google.com/open?id=1KrtRagsl3yujd3-trXiCvThoulcy6hUS",
       "estado": ""
     },
     {
