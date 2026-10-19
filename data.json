@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-19T19:46:04Z",
-  "total": 163,
+  "actualizado": "2026-10-19T23:07:14Z",
+  "total": 164,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA CARLOS PAZ",
+      "nombre": "María Fernanda Sarobe",
+      "edad": "50",
+      "fecha": "19/10/2026",
+      "hora": "16:30:00",
+      "descripcion": "contextura física delgada, 1.53 mts de altura, pelo castaño claro ondulado, altura de hombros,",
+      "contacto": "D.G.I.C CARLOS PAZ",
+      "telefono": "3544 50-9556",
+      "foto": "https://drive.google.com/open?id=11gtWDcq7JXTs80z8hBn_ce7ywxSGy7eX",
       "estado": ""
     },
     {
