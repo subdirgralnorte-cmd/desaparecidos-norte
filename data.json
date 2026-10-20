@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-20T06:43:19Z",
-  "total": 164,
+  "actualizado": "2026-10-20T12:16:39Z",
+  "total": 165,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "CARLOS PAZ",
+      "nombre": "MARIA FERNANDA SABORE",
+      "edad": "50",
+      "fecha": "19/10/2026",
+      "hora": "16:30:00",
+      "descripcion": "DELGADA, CABELLO CASTAÑO CLARO, ALTURA A 1.53",
+      "contacto": "DIC CARLOS PAZ",
+      "telefono": "3544509556",
+      "foto": "https://drive.google.com/open?id=1G_uAZGdfV0KtwcmZ-w7A0cH-UCT0qqpN",
       "estado": ""
     },
     {
