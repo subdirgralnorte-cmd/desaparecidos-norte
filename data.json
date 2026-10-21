@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-21T01:53:20Z",
-  "total": 165,
+  "actualizado": "2026-10-21T06:58:20Z",
+  "total": 166,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "RIO CEBALLOS",
+      "nombre": "PORTA HERRERA MAXIMO",
+      "edad": "14",
+      "fecha": "20/10/2026",
+      "hora": "23:00:00",
+      "descripcion": "el mismo vestía pantalón gris, campera gris, zapatilla negras y gorra blanca, es de contextura delgada, de  1,75 aprox de altura, con un arito en oreja izq",
+      "contacto": "PERSONAL DE INVESTIGACIONES, CRIA DE RIO CEBALLOS, CAP",
+      "telefono": "3543572946",
+      "foto": "https://drive.google.com/open?id=1ZdeP0YTQzcalTsaJ9-iMrO5iSQU9Aevb",
       "estado": ""
     },
     {
