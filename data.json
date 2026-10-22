@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-22T03:39:58Z",
-  "total": 167,
+  "actualizado": "2026-10-22T08:55:33Z",
+  "total": 168,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "CRUZ DEL EJE",
+      "nombre": "LARA JAZMIN CAMPOS",
+      "edad": "14",
+      "fecha": "22/10/2026",
+      "hora": "0:10:00",
+      "descripcion": "DESCONCE VESTIMENTA",
+      "contacto": "PATRULLA PREVENTIVA CRUZ DEL EJE- S.D.G.I.C.N",
+      "telefono": "3549426755",
+      "foto": "https://drive.google.com/open?id=1rmw-tRPatZuMm-LF8A_p159O4WRYf_H5",
       "estado": ""
     },
     {
