@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-21T23:55:16Z",
-  "total": 166,
+  "actualizado": "2026-10-22T03:39:58Z",
+  "total": 167,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA DE SOTO",
+      "nombre": "NIETO MAYRA JAZMIN",
+      "edad": "13",
+      "fecha": "19/10/2026",
+      "hora": "16:00:00",
+      "descripcion": "SE DESCONOCE",
+      "contacto": "URD CRUZ DEL EJE",
+      "telefono": "3513 13-3595 CAT  VILLA DE SOTO",
+      "foto": "https://drive.google.com/open?id=1432ucfe6akpCpD_SHHeVwnI9tseeOMUl",
       "estado": ""
     },
     {
