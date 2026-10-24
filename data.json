@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-24T13:30:55Z",
-  "total": 168,
+  "actualizado": "2026-10-24T16:53:38Z",
+  "total": 169,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Salsipuedes",
+      "nombre": "HEVES MILS NAISH",
+      "edad": "66",
+      "fecha": "23/10/2026",
+      "hora": "20:00:00",
+      "descripcion": "CANOSO CON LENTES Y BARBA",
+      "contacto": "Cria Salsipuedes",
+      "telefono": "3516 34-8827",
+      "foto": "https://drive.google.com/open?id=1k2sZ9AgAp7rNmiFnUtgO6MR_XS0-Tgjl",
       "estado": ""
     },
     {
