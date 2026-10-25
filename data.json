@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-25T01:43:28Z",
-  "total": 169,
+  "actualizado": "2026-10-25T06:56:25Z",
+  "total": 172,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,42 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "VELEZ JONATHAN LUCIANO",
+      "edad": "14",
+      "fecha": "24/10/2026",
+      "hora": "19:45:00",
+      "descripcion": "FÍSICAMENTE ES DELGADO, 1,60 METROS DE ALTURA APROXIMADA, DE PIEL TRIGUEÑA, CABELLO CORTO OSCURO CON RULOS, AL MOMENTO DE RETIRARSE VESTÍA UNA CAMPERA NEGRA Y GRIS DE ALGODÓN, UNA GORRA DE COLOR NEGRA CON BORDO, UN JOGGING DE COLOR NEGRO LARGO Y ZAPATILLAS DE COLOR NEGRO.",
+      "contacto": "COMISARIA DTTO SAN FRANCISCO",
+      "telefono": "439646",
+      "foto": "https://drive.google.com/open?id=1UyfhC_aUkmg3eZlHK-gnP5zFwcLr8RC6",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "FLORES PRISCILA MORENA",
+      "edad": "15",
+      "fecha": "24/10/2026",
+      "hora": "15:40:00",
+      "descripcion": "CONTEXTURA FÍSICA DELGADA; 1.50 METROS DE ALTURA; DE CABELLOS CASTAÑOS OSCUROS, LARGOS, Y FLEQUILLO RECTO CORTO. TIENE UN PIERCING EN SU NARIZ, NO TIENE TATUAJES. VESTÍA UN PANTALÓN UN JEAN Y UN BUZO DE COLOR MARRÓN CLARO.",
+      "contacto": "COMISARIA DTTO SAN FRANCISCO",
+      "telefono": "439646",
+      "foto": "https://drive.google.com/open?id=1XyX0x1t76P4L1EQSqCicQod1EtfguVii",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "CARIVALI ZURBRIGGEN LOURDES MORENA",
+      "edad": "17",
+      "fecha": "24/10/2026",
+      "hora": "15:40:00",
+      "descripcion": "CONTEXTURA FÍSICA DELGADA; 1.50 METROS DE ALTURA; CABELLOS CORTOS, OSCUROS, CON MECHAS RUBIAS Y FLEQUILLO RECTO. TIENE TATUADA UNA LETRA “M” EN SU ESPALDA Y POSEE UN PIERCING EN SU OMBLIGO. AL MOMENTO DE IRSE VESTÍA UN JEAN DE COLOR NEGRO, UNA CAMPERA CON FRANJAS HORIZONTALES DE COLOR NEGRA, ROJA Y BLANCA",
+      "contacto": "COMISARIA DTTO SAN FRANCISCO",
+      "telefono": "439646",
+      "foto": "https://drive.google.com/open?id=18BW7Ok9fHEVnk_wHKq5Re1Y4E4H4vjdH",
       "estado": ""
     },
     {
