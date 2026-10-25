@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-25T19:16:59Z",
-  "total": 172,
+  "actualizado": "2026-10-25T21:53:45Z",
+  "total": 173,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "LUYABA",
+      "nombre": "AYESA GONZALO ARIEL",
+      "edad": "47",
+      "fecha": "21/10/2026",
+      "hora": "12:30:00",
+      "descripcion": "TEZ TRIGUEÑA, ALTO, PELO CORTO ENTRE CANO, NO RECUERDA LA VESTIMENTA CON LA CUAL SE RETIRO.",
+      "contacto": "CRIA. DTTO. LA PAZ",
+      "telefono": "3544496600",
+      "foto": "https://drive.google.com/open?id=1bV-pafAPwUkADZuDoaMGxZJ8cnBZs3n2",
       "estado": ""
     },
     {
