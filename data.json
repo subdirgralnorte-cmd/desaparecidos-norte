@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-26T14:12:41Z",
-  "total": 174,
+  "actualizado": "2026-10-26T19:58:11Z",
+  "total": 175,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "CRUZ DEL EJE",
+      "nombre": "YAMILA MALDONADO",
+      "edad": "21",
+      "fecha": "24/10/2026",
+      "hora": "22:00:00",
+      "descripcion": "SIN PRESISAR DATOS",
+      "contacto": "D.G.I.C.",
+      "telefono": "3549426724",
+      "foto": "https://drive.google.com/open?id=1kPFlVSeQ6Ri4V-_UvNIoT3iRHXk0_SR0",
       "estado": ""
     },
     {
