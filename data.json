@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-26T01:49:16Z",
-  "total": 173,
+  "actualizado": "2026-10-26T07:06:45Z",
+  "total": 174,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "MALVINAS ARGENTINAS",
+      "nombre": "Miguel Ángel Agüero",
+      "edad": "18",
+      "fecha": "25/10/2026",
+      "hora": "18:00:00",
+      "descripcion": "contextura delgada, 1,65m de altura, tez morena, pelo corto, vestía gorra bordo, campera gris con lila , pantalón jogging  negro , y zapatillas color negras , tatuaje mano izquierda",
+      "contacto": "Comisaria Malvinas Argentinas",
+      "telefono": "3516363167",
+      "foto": "https://drive.google.com/open?id=1zcJNKnf0jx7jN6gr5zRBvOGYOzR1ZF4l",
       "estado": ""
     },
     {
