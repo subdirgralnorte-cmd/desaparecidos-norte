@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-29T12:51:56Z",
-  "total": 179,
+  "actualizado": "2026-10-29T18:44:42Z",
+  "total": 180,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA DE SOTO",
+      "nombre": "Nieto Mayra Jazmin",
+      "edad": "13",
+      "fecha": "29/10/2026",
+      "hora": "14:10:00",
+      "descripcion": "SIN APORTAR DATOS FILIATORIOS",
+      "contacto": "PATRULLA PREVENTIVA VILLA DE SOTO",
+      "telefono": "3513 13-3595",
+      "foto": "https://drive.google.com/open?id=1d0zylaUE6YhuQF3mE51KZLstsAFKIT-i",
       "estado": ""
     },
     {
