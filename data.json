@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-10-30T20:09:21Z",
-  "total": 180,
+  "actualizado": "2026-10-30T23:45:20Z",
+  "total": 181,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "TANTI",
+      "nombre": "Patricia Beatriz Prado",
+      "edad": "48",
+      "fecha": "30/10/2026",
+      "hora": "19:00:00",
+      "descripcion": "Tez morena, cabello oscuro largo, vestía pantalón color claro y campera de color rosa.",
+      "contacto": "COMISARIA DE TANTI",
+      "telefono": "3541438215",
+      "foto": "https://drive.google.com/open?id=1YZSZthU_Nc2WDS9m0BfP4Ge4P_3vk834",
       "estado": ""
     },
     {
