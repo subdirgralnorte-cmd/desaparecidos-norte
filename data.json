@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-01T08:00:51Z",
-  "total": 181,
+  "actualizado": "2026-11-01T14:58:09Z",
+  "total": 182,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "LAS VARILLAS",
+      "nombre": "BARRIOS LUCAS BENJAMIN",
+      "edad": "15",
+      "fecha": "31/10/2026",
+      "hora": "18:00:00",
+      "descripcion": "EL MISMO MIDE 1,65MTS, ES DE TEZ BLANCA, PELO COLOR CASTAÑO OSCURO CORTO, VESTÍA UN PANTALÓN DE ARGENTINA COLOR AZUL, OJOTAS NEGRAS ADIDAS Y UNA REMERA DE CLUB DE FÚTBOL DE SAN BARTOLO",
+      "contacto": "COMISARIA DTTO LAS VARILLAS",
+      "telefono": "3533406837",
+      "foto": "https://drive.google.com/open?id=124Fk8SkdkT0ozaABfug0wxOL6Dc4uZZb",
       "estado": ""
     },
     {
