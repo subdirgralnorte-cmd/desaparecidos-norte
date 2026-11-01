@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-01T19:29:34Z",
-  "total": 182,
+  "actualizado": "2026-11-01T22:59:23Z",
+  "total": 183,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA CARLOS PAZ",
+      "nombre": "GINO GERMAN FACCENDINI",
+      "edad": "20",
+      "fecha": "1/11/2026",
+      "hora": "13:10:00",
+      "descripcion": "Contextura física delgada, tez blanca. Vestido con disfraz símil táctico.",
+      "contacto": "URD PUNILLA",
+      "telefono": "438215",
+      "foto": "https://drive.google.com/open?id=170RVCCa1eb5QtNFD1u4I5FlJC_Zzxp3_",
       "estado": ""
     },
     {
