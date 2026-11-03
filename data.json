@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-03T08:53:14Z",
-  "total": 183,
+  "actualizado": "2026-11-03T16:47:42Z",
+  "total": 184,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "la granja",
+      "nombre": "TOMAS WILLIAMS",
+      "edad": "33",
+      "fecha": "28/10/2026",
+      "hora": "0:00:00",
+      "descripcion": "vestía remera blanca, shorts negro, zapatillas color gris, gorra negra y llevaba una mochila color negra, contextura física robusta, 1,92 mts de estatura, cutis blanco, cabellos castaño claro corto, y presenta una cicatriz de cirugía en el tórax.",
+      "contacto": "sub cria de la granja",
+      "telefono": "3513 94-8107",
+      "foto": "https://drive.google.com/open?id=1e90fnrfF66NUT7ru6wqo1m5R9tbumbHQ",
       "estado": ""
     },
     {
