@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-04T22:46:26Z",
-  "total": 185,
+  "actualizado": "2026-11-05T02:53:09Z",
+  "total": 186,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN JAVIER",
+      "nombre": "MARIA ELSA MOLTENI",
+      "edad": "67",
+      "fecha": "4/11/2026",
+      "hora": "15:30:00",
+      "descripcion": "vistiendo  remera verde, pantalón vestir y zapatillas gris, quien padece perdida de memoria y desorientación",
+      "contacto": "COMISARIA SAN JAVIER",
+      "telefono": "3544482137",
+      "foto": "https://drive.google.com/open?id=1nXlcg2LTtIGtEYHZFRKm_NCOepkCTQZc",
       "estado": ""
     },
     {
