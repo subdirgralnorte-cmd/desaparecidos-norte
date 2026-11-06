@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-06T18:20:33Z",
-  "total": 186,
+  "actualizado": "2026-11-06T23:19:32Z",
+  "total": 187,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA SANTA ROSA",
+      "nombre": "VIVAS ABIGAIL",
+      "edad": "24",
+      "fecha": "6/11/2026",
+      "hora": "11:00:00",
+      "descripcion": "CONTEXTURA FISICAS ROBUSTA, DE 1,50 MTS. DE ALTURA, PIEL TRIGUEÑA, OJOS COLOR MARRON, PELO COLOR CASTAÑO OSCURO, TATUAJES VARIOS NO VISIBLES. RESPECTO A LA VESTIMENTA AL MOMENTO DE LA DESPARTICIÓN CAMPERA NEGRA Y CALZA NEGRA",
+      "contacto": "CRIA. VILLA SANTA ROSA",
+      "telefono": "03574-481831",
+      "foto": "https://drive.google.com/open?id=17VdnUFyfXhtSRnMvEhhDn1iMMe49Lez_",
       "estado": ""
     },
     {
