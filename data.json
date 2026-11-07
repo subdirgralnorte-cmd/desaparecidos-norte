@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-07T02:56:19Z",
-  "total": 187,
+  "actualizado": "2026-11-07T09:47:14Z",
+  "total": 188,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "TANTI",
+      "nombre": "Gutiérrez Marcos Gonzalo",
+      "edad": "43",
+      "fecha": "7/11/2026",
+      "hora": "3:00:00",
+      "descripcion": ".",
+      "contacto": "comisaria de tanti",
+      "telefono": "3541555577",
+      "foto": "https://drive.google.com/open?id=1ctM0_hGhN0_ikaBa6XyFBkRrDXXgOvTg",
       "estado": ""
     },
     {
