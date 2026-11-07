@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-07T15:56:27Z",
-  "total": 188,
+  "actualizado": "2026-11-07T20:00:45Z",
+  "total": 189,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "FREYRE",
+      "nombre": "JEREMÍAS LUIS CORONEL",
+      "edad": "17",
+      "fecha": "4/11/2026",
+      "hora": "14:30:00",
+      "descripcion": "1.70 aproximadamente, 55 kg, tez trigueña, cabello ondulado, sin tatuajes visibles.",
+      "contacto": "SUB. CRIA FREYRE",
+      "telefono": "3564505416",
+      "foto": "https://drive.google.com/open?id=1eGT3TT3w08ILoNr33lWbVC7gP1m3JrOg",
       "estado": ""
     },
     {
