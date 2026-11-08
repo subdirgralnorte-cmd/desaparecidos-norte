@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-08T02:41:43Z",
-  "total": 189,
+  "actualizado": "2026-11-08T09:30:44Z",
+  "total": 191,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,30 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "FREYRE",
+      "nombre": "RAUL ALBERTO BUSTOS",
+      "edad": "49",
+      "fecha": "7/11/2026",
+      "hora": "21:30:00",
+      "descripcion": "1.70 de altura, cabello corto canoso, tez trigueña, contextura robusta, el mismo Vestía un pantalón largo color negro, remera mangas cortas color negro con azul y zapatillas negras",
+      "contacto": "FREYRE",
+      "telefono": "356415505416",
+      "foto": "https://drive.google.com/open?id=17xRHfUEJ_THlvrPTfpGT_mX2u7T_re0_",
+      "estado": ""
+    },
+    {
+      "localidad": "FREYRE",
+      "nombre": "RAUL ALBERTO BUSTOS",
+      "edad": "49",
+      "fecha": "7/11/2026",
+      "hora": "21:30:00",
+      "descripcion": "altura 1.74, tez trigueño, robusto, cabello canoso, Vistiendo un pantalón largo color negro, remera mangas cortas color negro con azul y zapatillas negras",
+      "contacto": "sub cria freyre",
+      "telefono": "3564505416",
+      "foto": "https://drive.google.com/open?id=1j81xEQ27Rq1kFazGBjIyOjD62I5KHB-7",
       "estado": ""
     },
     {
