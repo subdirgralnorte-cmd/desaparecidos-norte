@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-11T22:38:24Z",
-  "total": 191,
+  "actualizado": "2026-11-12T03:21:37Z",
+  "total": 193,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,30 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "RIO CEBALLOS",
+      "nombre": "Daniel Bustos",
+      "edad": "65",
+      "fecha": "31/10/2026",
+      "hora": "20:00:00",
+      "descripcion": "PELO CORTO CON CANAS TÉS TRIGUEÑA DE 1,70 MTS , PROBLEMAS DE BIPOLARIDAD  SE DESCONOCE VESTIMENTA DEL MISMO .",
+      "contacto": "CRIA RIO CEBALLOS",
+      "telefono": "3543 57-2946",
+      "foto": "https://drive.google.com/open?id=1e6CwTqA_vqMRCwIvZO3mXlvHpIGkJVU4",
+      "estado": ""
+    },
+    {
+      "localidad": "salsipuedes",
+      "nombre": "SANTIAGO JEREMIAS PAZ",
+      "edad": "22",
+      "fecha": "9/11/2026",
+      "hora": "16:30:00",
+      "descripcion": "1,90 mts de altura cutis trigueño, pelo corto castaño, ojos verdes, tatuaje en pierna izquierda y cicatriz en ceja izquierda el cual vestía zapatillas negras, jeans celeste, remera y gorra negra con mochila gris y azul",
+      "contacto": "COMISARIA SALSIPUEDES",
+      "telefono": "3516 34-8827",
+      "foto": "https://drive.google.com/open?id=1I_xGowSrJJRZwkdDGckD1zhcPoGDbgxm",
       "estado": ""
     },
     {
