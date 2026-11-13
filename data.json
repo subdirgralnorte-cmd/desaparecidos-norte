@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-13T00:16:08Z",
-  "total": 193,
+  "actualizado": "2026-11-13T06:56:20Z",
+  "total": 194,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA CARLOS PAZ",
+      "nombre": "González Joel Milton",
+      "edad": "22",
+      "fecha": "12/11/2026",
+      "hora": "23:00:00",
+      "descripcion": "vestia una camiseta de boca con la franja amarilla gorra color negra con blanca (o blanca con azul), mide un 1.85 aproximadamente de estatura, tez morena, cabello oscuro (corto)",
+      "contacto": "CABALANGO",
+      "telefono": "3541533333",
+      "foto": "https://drive.google.com/open?id=1Mz_YiWirgip3vQbLfkWBtUBpSu580sqy",
       "estado": ""
     },
     {
