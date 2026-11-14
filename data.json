@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-14T08:00:02Z",
-  "total": 196,
+  "actualizado": "2026-11-14T14:57:26Z",
+  "total": 197,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Cruz del Eje",
+      "nombre": "Maldonado Maripaz",
+      "edad": "14",
+      "fecha": "13/11/2026",
+      "hora": "6:40:00",
+      "descripcion": "Pantalón joggins de color azul, remera gris mangas cortas con logo del colegio Enet N° 1, zapatillas marca Adidas de color negras con rayas rosas.- Característica física: delgada, alta, cabello de color marrón claro lacio, de largo medio a la altura de los hombros, ojos marrones oscuros, no posee tatuajes, no tiene cicatriz, no tiene piercings",
+      "contacto": "División Investigación, Dptal Cruz del Eje, Duar, Policía Caminera",
+      "telefono": "03549-420088",
+      "foto": "https://drive.google.com/open?id=1JEWoJOy862eaHIyqxbSDLLOrA5XLQtRo",
       "estado": ""
     },
     {
