@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-14T01:37:30Z",
-  "total": 195,
+  "actualizado": "2026-11-14T08:00:02Z",
+  "total": 196,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "TINOCO",
+      "nombre": "DIAZ VICTOR GERONIMO",
+      "edad": "78",
+      "fecha": "13/11/2026",
+      "hora": "20:00:00",
+      "descripcion": "CONTEXTURA FÍSICA DELGADO, CABELLO ENTRECANO, VISTE DE SHORT CORTO DE JEAN, CROSS Y CON EL TORSO DESNUDO, MIDE 1.78 MTS",
+      "contacto": "COMISARIA DE COLONIA CAROYA",
+      "telefono": "3525464530",
+      "foto": "https://drive.google.com/open?id=1I80jEbcAIT0Q9OiXis4RbG2jlGYzrfMm",
       "estado": ""
     },
     {
