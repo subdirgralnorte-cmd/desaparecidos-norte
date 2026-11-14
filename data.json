@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-13T21:26:13Z",
-  "total": 194,
+  "actualizado": "2026-11-14T01:37:30Z",
+  "total": 195,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA CARLOS PAZ",
+      "nombre": "BANDUCCI SEBASTIAN OMAR",
+      "edad": "48",
+      "fecha": "13/11/2026",
+      "hora": "17:10:00",
+      "descripcion": "remera negra, zapatillas gris tipo pancha y Joggins",
+      "contacto": "PUNILLA",
+      "telefono": "438215",
+      "foto": "https://drive.google.com/open?id=1DNDaOFQLzF8t3HRjhI4Y5ZvAYt_tfmB-",
       "estado": ""
     },
     {
