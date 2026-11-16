@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-15T21:58:47Z",
-  "total": 197,
+  "actualizado": "2026-11-16T01:49:25Z",
+  "total": 199,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,30 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Valle Hermoso",
+      "nombre": "MALDONADO VALERIA ANDREA",
+      "edad": "40",
+      "fecha": "14/11/2026",
+      "hora": "14:00:00",
+      "descripcion": "No  sabe cómo está vestida, Contextura robusta, cabello largo, hasta los hombros de  color negro, ojos color marrón oscuro, altura  1.55,mts.",
+      "contacto": "Valle Hermoso",
+      "telefono": "3548-559182",
+      "foto": "https://drive.google.com/open?id=1kPARZ4felEHHuSrUdSmc5B-ep3wiUv6Y",
+      "estado": ""
+    },
+    {
+      "localidad": "MONTE CRISTO",
+      "nombre": "DÍAZ CLAUDIO JAVIER",
+      "edad": "29",
+      "fecha": "13/11/2026",
+      "hora": "15:30:00",
+      "descripcion": "El mismo vestía  un pantalón de jean de color negro roto, mochila negra, bolso pequeño color negro con rojo, características físicas, mide 1.65 aproximadamente, tez trigueño, cabello negro ondulado, contextura física delegada.",
+      "contacto": "MONTE CRISTO",
+      "telefono": "3512009409",
+      "foto": "https://drive.google.com/open?id=1ur2LXjuA8LTJrAn4h8301zcVcxY0yd7C",
       "estado": ""
     },
     {
