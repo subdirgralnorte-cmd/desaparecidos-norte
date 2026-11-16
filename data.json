@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-16T08:39:14Z",
-  "total": 199,
+  "actualizado": "2026-11-16T18:55:53Z",
+  "total": 201,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,30 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "CRUZ DEL EJE",
+      "nombre": "Cambeiro Natalia",
+      "edad": "28",
+      "fecha": "15/11/2026",
+      "hora": "21:11:00",
+      "descripcion": "Estatura:1,55; Peso aproximado: 70 Kg. Contextura física: robusta/o ; tez: blanca; cabello largo hasta los hombros - teñida de rubia, señas particulares: tatuaje en el brazo derecho, \"dos manos con un corazon\"",
+      "contacto": "PATRULLA PREVENTIVA, DUAR, SECCION  MOTORIZADAA",
+      "telefono": "3549426755",
+      "foto": "https://drive.google.com/open?id=1a_FB0L6NDxgrGyi-pv8BzrU5oKm28whX",
+      "estado": ""
+    },
+    {
+      "localidad": "CRUZ DEL EJE",
+      "nombre": "BAZAN ALEJANDRO LEONEL",
+      "edad": "8",
+      "fecha": "15/11/2026",
+      "hora": "0:00:00",
+      "descripcion": "UNA REMERA COLOR ANARANJADA Y UNA BERMUDA AZUL, CONTEXTURA FÍSICA ROBUSTO, TEZ TRIGUEÑA, CABELLO CORTO",
+      "contacto": "URD CRUZ DEL EJE",
+      "telefono": "3549426755",
+      "foto": "https://drive.google.com/open?id=1J19vB_DSxygeLQBGQv1lkL7twJt0SHCB",
       "estado": ""
     },
     {
