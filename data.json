@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-17T10:54:29Z",
-  "total": 204,
+  "actualizado": "2026-11-17T19:37:53Z",
+  "total": 205,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "MINA CLAVERO",
+      "nombre": "MENONI PABLO ANDRES",
+      "edad": "48",
+      "fecha": "13/11/2026",
+      "hora": "14:30:00",
+      "descripcion": "zapatillas color Blanco, Remera color gris , pantalón cargo color negro y riñonera color negro,",
+      "contacto": "COMISARIA DISTRITO NONO",
+      "telefono": "498502",
+      "foto": "https://drive.google.com/open?id=1U9_FSrknc-4G0iBbjUGqSIRfnYl8tjpd",
       "estado": ""
     },
     {
