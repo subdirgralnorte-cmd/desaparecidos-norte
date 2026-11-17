@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-17T02:21:31Z",
-  "total": 201,
+  "actualizado": "2026-11-17T10:54:29Z",
+  "total": 204,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,42 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "CRUZ DEL EJE",
+      "nombre": "PACHECO RIVEROS LESETTE DAYANA",
+      "edad": "38",
+      "fecha": "17/11/2026",
+      "hora": "2:40:00",
+      "descripcion": "LA MISMA ES DE CONTEXTURA DELGADA, 1,70 MTS. DE ESTATURA APROXIMADAMENTE, TEZ TRIGUEÑA, VISTIENDO REMERA Y SHORT DE COLOR NEGRO.",
+      "contacto": "COMISARIA VILLA DE SOTO",
+      "telefono": "3513145825",
+      "foto": "https://drive.google.com/open?id=1gyR6PAZzp19J2eNKYs7GT4wp8lcLTcPq",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "YAN URIEL JUAREZ",
+      "edad": "12",
+      "fecha": "16/11/2026",
+      "hora": "19:00:00",
+      "descripcion": "Contextura delgada, 1,50 mts, tez blanca, cabello oscuro, vistiendo una musculosa blanca y azul con franjas naranjas en los hombros, un pantalón deportivo verde y zapatillas deportivas color negro.",
+      "contacto": "CRIA DTTO SAN FRANCISCO",
+      "telefono": "439646",
+      "foto": "https://drive.google.com/open?id=1U7M0I-F0XWbQI9R7iVYuX9vH2fJ6dSj8",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "Lourdes Morena Carivali Zurbriggen",
+      "edad": "17",
+      "fecha": "16/11/2026",
+      "hora": "17:30:00",
+      "descripcion": "contextura delgada, 160 mts., tes morocha, cabello corto hasta los hombros teñido, llevaba colocada una musculosa Rosa, un jean corto y zapatillas color Fucsia.",
+      "contacto": "CRIA DTTO SAN FRANCISCO",
+      "telefono": "439646",
+      "foto": "https://drive.google.com/open?id=1c7nNgoEGmuPduhd05hKzV1M8AVzxSPTH",
       "estado": ""
     },
     {
