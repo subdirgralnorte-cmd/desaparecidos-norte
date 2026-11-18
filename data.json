@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-17T19:37:53Z",
-  "total": 205,
+  "actualizado": "2026-11-18T01:51:33Z",
+  "total": 206,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "LOS HORNILLOS",
+      "nombre": "PABLO LUIS SALVONI",
+      "edad": "53",
+      "fecha": "17/11/2026",
+      "hora": "19:00:00",
+      "descripcion": "Contextura física robusta de 1,80 MTS de altura, cabello color entrecano hasta los hombros. Vestía bermuda negra y campera",
+      "contacto": "DESTACAMENTO LOS HORNILLOS",
+      "telefono": "3544494301",
+      "foto": "https://drive.google.com/open?id=1UmWZN4lga0DaP7czfp7yM8edPx73CrUs",
       "estado": ""
     },
     {
