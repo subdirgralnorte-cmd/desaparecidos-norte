@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-19T00:32:26Z",
-  "total": 206,
+  "actualizado": "2026-11-19T07:52:00Z",
+  "total": 207,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Cosquín",
+      "nombre": "AGÜERO JUAN EMILIANO",
+      "edad": "83",
+      "fecha": "16/11/2026",
+      "hora": "10:30:00",
+      "descripcion": "manifiesta que Juan, (no) tiene familiares y que vestía Pantalon marrón, Remera a rayas Azul y Blanca, con Sweaters a rayas en tonalidades de marrón. Se activa el protocolo de búsqueda.",
+      "contacto": "COSQUÍN",
+      "telefono": "3541-458160",
+      "foto": "https://drive.google.com/open?id=1a7NEX9K6As13rDUd_iUU8vxzzu3bHJiq",
       "estado": ""
     },
     {
