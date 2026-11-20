@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-20T04:11:59Z",
-  "total": 207,
+  "actualizado": "2026-11-20T12:57:47Z",
+  "total": 208,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "VILLA SARMIENTO",
+      "nombre": "ZAMIRA ANTONELLA ZABALA",
+      "edad": "14",
+      "fecha": "19/11/2026",
+      "hora": "23:26:00",
+      "descripcion": "REMERA NEGRA,CALZA HASTA LA RODILLA AZUL CON BLANCO Y NEGRO, ZAPATILLAS NIKE, GRIS CLARO, FILIACIONES TEZ TRIGUEÑO , ROBUSTA , PELO COLOR NEGRO, ALTURA 1,68 MTS APROX.",
+      "contacto": "SUB CRIA. VILLA SARMIENTO , PATRULLA PREVENTIVA ZONA Nª 2 U.R.D.S.A.",
+      "telefono": "3544-426427",
+      "foto": "https://drive.google.com/open?id=1pXZ1dLrVDtzExkGepDcVbeZBHPhuIWuc",
       "estado": ""
     },
     {
