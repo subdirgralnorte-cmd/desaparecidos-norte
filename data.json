@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-21T02:05:12Z",
-  "total": 208,
+  "actualizado": "2026-11-21T09:41:10Z",
+  "total": 210,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,30 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "NAYLA PAULINA CHÁVEZ",
+      "edad": "13",
+      "fecha": "20/11/2026",
+      "hora": "17:00:00",
+      "descripcion": "UNIFORME ESCOLAR DEL COLEGIO SUPERIOR SAN MARTIN REMERA BLANCA JOGGING AZUL Y MOCHILA ROSADA. Es de contextura delgada, 1, 60 mts aproximadamente, tes blanca  pelo largo color castaño, ojos marrones. N MARTIN, REMERA BLANCA JOGGING AZUL -",
+      "contacto": "CRIA  SAN FRANCISCO",
+      "telefono": "3564439646",
+      "foto": "https://drive.google.com/open?id=144a7jo6jeIRDbln13KMri8JQoVDkzTS3",
+      "estado": ""
+    },
+    {
+      "localidad": "LAS VARILLAS",
+      "nombre": "CARMEN SOLEDAD YAGUANDAIRE",
+      "edad": "18",
+      "fecha": "20/11/2026",
+      "hora": "19:00:00",
+      "descripcion": "remera de la promo del colegio DVS azul, celeste y blanca, bermuda azul, zapatillas rojas, mochila. Es de contextura robusta,  1.55 cm  de altura  , test trigueña, pelo oscuro corto, ojos marrones",
+      "contacto": "comisaria LAS VARILLAS",
+      "telefono": "3533 40-6837",
+      "foto": "https://drive.google.com/open?id=1WXjNY0zs2wYG8iu5j7CdCS665-Tekq1F",
       "estado": ""
     },
     {
