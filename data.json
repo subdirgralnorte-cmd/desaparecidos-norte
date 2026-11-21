@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-21T16:57:41Z",
-  "total": 210,
+  "actualizado": "2026-11-21T22:06:32Z",
+  "total": 211,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "TANTI",
+      "nombre": "NOELI ARSELLI",
+      "edad": "38",
+      "fecha": "21/11/2026",
+      "hora": "17:00:00",
+      "descripcion": "NO APORTA",
+      "contacto": "COMISARIA DE TANTI",
+      "telefono": "3541555577",
+      "foto": "https://drive.google.com/open?id=1sn8K7tNm_1gFIqRkVhsP39gEIMH6-SIz",
       "estado": ""
     },
     {
