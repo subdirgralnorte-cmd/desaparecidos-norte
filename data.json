@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-22T02:10:07Z",
-  "total": 211,
+  "actualizado": "2026-11-22T09:46:38Z",
+  "total": 212,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "La Falda",
+      "nombre": "CRISTIAN DANIEL MURUA",
+      "edad": "29",
+      "fecha": "8/08/2026",
+      "hora": "11:50:00",
+      "descripcion": "quién mide 1.70 de alto, de contextura delgada, de tes trigueña, de cabello negro con canas.",
+      "contacto": "Unidad Judicial de la Falda",
+      "telefono": "La Falda 351-13949707",
+      "foto": "https://drive.google.com/open?id=1djES-BptAeE0yRMKm591DfUG1BMg7Fvj",
       "estado": ""
     },
     {
