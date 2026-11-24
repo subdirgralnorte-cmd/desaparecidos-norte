@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-23T12:38:52Z",
-  "total": 212,
+  "actualizado": "2026-11-24T00:22:16Z",
+  "total": 213,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "CRUZ DEL EJE",
+      "nombre": "FLORENCIA LUZ BAZAN",
+      "edad": "29",
+      "fecha": "23/11/2026",
+      "hora": "11:50:00",
+      "descripcion": "NO APORTA",
+      "contacto": "URD CRUZ DEL EJE",
+      "telefono": "3513 04-7815",
+      "foto": "https://drive.google.com/open?id=1ijIOEZnbncuIMjFGd5he8NETRgCFwNQD",
       "estado": ""
     },
     {
