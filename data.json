@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-24T20:40:14Z",
-  "total": 213,
+  "actualizado": "2026-11-25T03:45:30Z",
+  "total": 216,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,42 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "CARIVALI ZURBRIGGEN LOURDES MORENA",
+      "edad": "17",
+      "fecha": "24/11/2026",
+      "hora": "20:00:00",
+      "descripcion": "La misma vestía un pantalón cargo largo y musculosas azul y blanco. Siendo de contextura física  delgada, de 1.50mts de altura, pelo cortos y flequillo.",
+      "contacto": "CRIA SAN FCO",
+      "telefono": "3564 570111",
+      "foto": "https://drive.google.com/open?id=1ttKp-X0nH2lh5mDd1n9y4PuEio-YjQ5k",
+      "estado": ""
+    },
+    {
+      "localidad": "SAN FRANCISCO",
+      "nombre": "FLORES PRISCILA MORENA",
+      "edad": "15",
+      "fecha": "24/11/2026",
+      "hora": "20:00:00",
+      "descripcion": "La misma vestía un pantalón largo y una remera de color negro. siendo de contextura física delgada, de 1.50mts, pelo largo con flequillo.",
+      "contacto": "CRIA SAN FRANCISCO",
+      "telefono": "3564 570111",
+      "foto": "https://drive.google.com/open?id=1IDQQQdp_n2_jkmLWeL4f02LMLMeocMKg",
+      "estado": ""
+    },
+    {
+      "localidad": "Santa Maria de Punilla",
+      "nombre": "SOTO MIGUEL ÁNGEL",
+      "edad": "70",
+      "fecha": "18/11/2026",
+      "hora": "10:15:00",
+      "descripcion": "_MIGUEL ÁNGEL SOTO (70), DNI N° 12.234.499, s/c Pje Barrigón N° 690, B° El Charco, Santa María, el mismo es de contextura delgada, piel blanca, cabello canoso, ojos marrones, mide1,60 de estatura, de nariz grande, padece Alzheimer, lo habría visto por última vez el día miércoles (18) del corriente mes.",
+      "contacto": "Cria Santander María",
+      "telefono": "3541-488180",
+      "foto": "https://drive.google.com/open?id=13MH247IBQDkR5pbyLz6yvE3PEL98FjHN",
       "estado": ""
     },
     {
