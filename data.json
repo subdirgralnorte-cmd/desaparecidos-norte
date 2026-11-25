@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-25T13:36:35Z",
-  "total": 216,
+  "actualizado": "2026-11-25T22:44:25Z",
+  "total": 218,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,30 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "Serrezuela",
+      "nombre": "Ángel Adrián Quintana",
+      "edad": "28",
+      "fecha": "25/11/2026",
+      "hora": "5:00:00",
+      "descripcion": "Características físicas, presenta contextura robusta, estatura aproximada de 1,68 m, tez trigueña y cabello corto, se desconoce prendas de vestir al momento de ausentarse",
+      "contacto": "Comisaria Serrezuela- Dptal Cruz del Eje",
+      "telefono": "351-6361613",
+      "foto": "https://drive.google.com/open?id=1SwWvPNcPR7W8B09O-Bi4FBe0IzZ2bLRV",
+      "estado": ""
+    },
+    {
+      "localidad": "Villa Carlos Paz",
+      "nombre": "SALDAÑO CIRO",
+      "edad": "14",
+      "fecha": "24/11/2026",
+      "hora": "20:30:00",
+      "descripcion": "contextura física delgada, cabello castaño claro con reflejos rubios, ojos marrones, de 1,70 mts de altura, delgado, vestía una remera mangas cortas de color negro con el logo jordan de color rojo en el pecho, pantalón tipo jogging de color negro, zapatillas color negras con el logo jordan en color rojo (charoladas), mochila color gris con naranja",
+      "contacto": "DGIC PUNILLA y dependencias zona 1 y 2",
+      "telefono": "438211",
+      "foto": "https://drive.google.com/open?id=1FcuhgYYDZnhA7bwr5ieUI7CSWFkRyN3b",
       "estado": ""
     },
     {
