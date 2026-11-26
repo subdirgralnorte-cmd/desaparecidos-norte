@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-26T04:30:33Z",
-  "total": 219,
+  "actualizado": "2026-11-26T14:18:44Z",
+  "total": 220,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "PORTEÑA",
+      "nombre": "PAUTASSO DAMIAN FAVIO,",
+      "edad": "44",
+      "fecha": "25/11/2026",
+      "hora": "19:00:00",
+      "descripcion": "El mismo vestía pantalón corto gris con franja negra a los costados, remera blanca con inscripción que decía 2003 color naranja, Cross y medias negras. El masculino es de contextura delgada, mide 1.85 mts.  lleva barba, cabello corto y usa lentes.",
+      "contacto": "SUB CRIA PORTEÑA",
+      "telefono": "3564 20-1111",
+      "foto": "https://drive.google.com/open?id=1xG9yYRji0JLcGdsbF69W2g2SFQ0n56hM",
       "estado": ""
     },
     {
