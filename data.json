@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-25T22:44:25Z",
-  "total": 218,
+  "actualizado": "2026-11-26T04:30:33Z",
+  "total": 219,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "MINA CLAVERO",
+      "nombre": "GONZALEZ JORGE ABEL",
+      "edad": "82",
+      "fecha": "26/11/2026",
+      "hora": "0:18:00",
+      "descripcion": "desconoce tipo de vestimenta que estaria usando; contextura física delgada, estatura aproximada de 1.70, test trigueña, cabello corto oscuro canoso, ojos color marrón y presenta una cicatriz sobre su nariz.",
+      "contacto": "CRIA DTTO MINA CLAVERO; U.R.D. SAN ALBERTO.",
+      "telefono": "3544476261",
+      "foto": "https://drive.google.com/open?id=1_wO_Pph4FTQquz4ADCgB0uU3K3mUJU6A",
       "estado": ""
     },
     {
