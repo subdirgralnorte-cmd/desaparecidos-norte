@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-26T14:18:44Z",
-  "total": 220,
+  "actualizado": "2026-11-26T23:05:48Z",
+  "total": 222,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,30 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "JESUS MARIA",
+      "nombre": "SOSA PAULA SAMIRA",
+      "edad": "14",
+      "fecha": "25/11/2026",
+      "hora": "18:00:00",
+      "descripcion": "LA MENOR ES DE CONTEXTURA ROBUSTA, ESTATURA 1,60MTS. APROXIMADOS, CUTIS OSCURO, CABELLO LARGO NEGRO, VESTÍA UN SHORT COLOR AZUL Y UN BUZO COLOR BORDO",
+      "contacto": "CRIA JESUS MARIA",
+      "telefono": "3525426705/3525422262",
+      "foto": "https://drive.google.com/open?id=1WeQovzdLpaMXydXRrzxV1AnwJ6V2IQMC",
+      "estado": ""
+    },
+    {
+      "localidad": "JESUS MARIA",
+      "nombre": "SOSA PAULA SAMIRA",
+      "edad": "14",
+      "fecha": "25/11/2026",
+      "hora": "18:00:00",
+      "descripcion": "La femenina es de contextura robusta, estatura 1,60mts. aproximados, cutis oscuro, cabello largo negro, vestía un short color azul y un buzo color bordo",
+      "contacto": "CRIA JESUS MARIA",
+      "telefono": "3535426705/3525422262",
+      "foto": "https://drive.google.com/open?id=1NlVF4R5nkM2iFc3pDrRGHQs4-F6J34zo",
       "estado": ""
     },
     {
