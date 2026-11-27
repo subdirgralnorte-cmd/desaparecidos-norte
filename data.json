@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-11-27T14:53:23Z",
-  "total": 222,
+  "actualizado": "2026-11-27T23:10:31Z",
+  "total": 223,
   "registros": [
     {
       "localidad": "VILLA GIARDINO",
@@ -12,6 +12,18 @@
       "contacto": "Cria Villa Giardino",
       "telefono": "03548- 491262.                                    No Saben",
       "foto": "",
+      "estado": ""
+    },
+    {
+      "localidad": "COSQUIN",
+      "nombre": "MORA GUADALUPE MOLINA",
+      "edad": "13",
+      "fecha": "27/11/2026",
+      "hora": "15:00:00",
+      "descripcion": "De contextura física robusta de 1,60 metros de altura, de pelo color negro con mechas azules, vestía una remera",
+      "contacto": "COSQUIN",
+      "telefono": "3541-458160",
+      "foto": "https://drive.google.com/open?id=1mztGzzlK1q8ZU1i4GUlV2woKYaNzd0fo",
       "estado": ""
     },
     {
